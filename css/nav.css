@@ -108,9 +108,9 @@ header {
 	        
 	        /* Add dropdown menu options icon signal */   
 	        .main-menu .dropdownEuro:after {
-	            content: ' +';
+	            content: '  +';
 	            }
 	
 	        .main-menu .dropdownEuro:hover:after{
-	            content:' \25BA'
+	            content:'  +'
                 }             
