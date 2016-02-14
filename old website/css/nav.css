@@ -1,0 +1,167 @@
+body, div, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, img, form, fieldset, input, textarea, blockquote {
+	margin: 0; 
+	padding: 0; 
+	border: 0;
+}
+
+/* Body general parameters */
+body {
+	background-color: #2c2121;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif; 
+	letter-spacing:-0.4px; font-size:13px;
+	font-size: 18px; 
+	line-height: 12px;
+}
+
+/* Header general parameters */
+header {
+    height: 100px;
+    width: 100%;
+    background: #7b5c32;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    }
+    
+    /* Header-content class general parameters */
+    #header-content {
+        width: 960px;
+        margin: 0px auto;
+        padding: 10px 0 0 0;
+        }
+        
+        /* Header-content menu navigation parameters */
+        #header-content nav { 
+            margin: 20px auto; 
+	        text-align: center;
+	        padding: 33px 0 18px 0; 
+	        
+	        }
+
+        /* Main Menu Parameters */
+        nav ul ul {
+	        display: none;
+            }
+
+	        nav ul li:hover > ul {
+		        display: block;	
+            }
+
+        /* Submenu Parameters */
+        nav ul {
+            background: #efefef; 
+	        box-shadow: 0px 0px 9px rgba(0,0,0,0.15);
+	        padding: 0px 35px;
+	        border-radius: 10px;  
+	        list-style: none;
+	        position: relative;
+	        display: inline-table;
+	        transition: opacity .25s ease .1s;
+        }
+
+	        nav ul li {
+		        float: left;
+                border-radius: 10px;    
+	            }
+	            
+		        nav ul li:hover  {
+			        background: #4b545f;
+			        background: linear-gradient(top, #4f5964 0%, #5f6975 40%);
+		            }
+		            
+			        nav ul li:hover a {
+				        color: #fff;
+			            }
+			            
+		        /* Applying CSS on main menu, and not on the submenus */
+		        nav ul li a {
+			        display: block; 
+			        padding: 25px 40px;
+			        color: #757575; 
+			        text-decoration: none;
+			        transition: color .2s ease-in-out;
+		        }
+				
+	        nav ul ul {
+		        background: #5f6975; 
+		        padding: 0;
+		        position: absolute; 
+		        top: 100%;
+		        border-radius: 10px; 
+	            }
+	            	            
+	            /* Vertical Geology submenu */
+		        nav ul ul li {
+			        float: none; 
+			        border-top: 1px solid #6b727c;
+			        border-bottom: 1px solid #575f6a; 
+			        position: relative;			       
+		            }
+		            
+			        nav ul ul li a {
+				        padding: 15px 40px;
+				        color: #fff;
+				        border-radius: 10px; 
+			            }	
+			      
+			/* Adding fancy colors when hovering over submenu items */            
+			nav ul ul li a.GenGeo:hover {
+				background: #c97e78;
+				}			            
+			nav ul ul li a.IgPet:hover {
+				background: #9b3d36;
+				}
+			nav ul ul li a.Paris:hover {
+				background: #5f85dd;
+				}				            
+			nav ul ul li a.Berlin:hover {
+				background: #dd5f6e;
+				}
+		     nav ul ul li a.Prague:hover {
+				background: #dd8e5f;
+				}				            
+			nav ul ul li a.Vienna:hover {
+				background: #2b7842;
+				}
+			nav ul ul li a.Who:hover {
+				background: #ddb85f;
+				}	            
+			nav ul ul li a.Projects:hover {
+				background: #dd845f;
+				}
+		    nav ul ul li a.dropdownEuro:hover {
+			    background: #24728a;
+				}
+		    nav ul ul li a.dropdownLesserAntilles:hover {
+			    background: #1166ff;
+				}	
+		    nav ul ul li a.Guadeloupe:hover {
+			    background: #0099cc;
+				}	
+		    nav ul ul li a.Montserrat:hover {
+			    background: #9955ff;
+				}	
+	        nav ul ul ul {
+		        position: absolute; 
+		        left: 100%; 
+		        top:0;		         
+	            }
+	        
+	        /* Add a dropdown menu options icon */   
+	        .main-menu .dropdownEuro:after {
+	            content: '  +';
+	            }
+	
+	        .main-menu .dropdownEuro:hover:after{
+	            content:'  +'
+                }  
+ 	        .main-menu .dropdownLesserAntilles:after {
+	            content: '  +';
+	            }
+	
+	        .main-menu .dropdownLesserAntilles:hover:after{
+	            content:'  +'
+                }                  
+            span {
+                display: inline-block;
+                margin-right: 7px;   
+                }  
