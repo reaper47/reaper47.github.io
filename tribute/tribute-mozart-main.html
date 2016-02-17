@@ -4,8 +4,7 @@
       <meta charset="utf-8">
       <title>Tribute to Mozart</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="stylesheet" type="text/css" href="../css/foundation.css" />
-      <link rel="stylesheet" type="text/css" href="../css/app.css" />
+      <link rel="stylesheet" type="text/css" href="../css/foundation/foundation.css" />
       <link rel="stylesheet" type="text/css" href="../css/tribute.css" />
   </head>
   <body>
@@ -16,14 +15,33 @@
             <!-- Title of what the webpage is about -->
             <div class="row">
               <div class="large-12 columns">
-                <h2 class="text-center">A Tribute to Wolfgang Amadeus Mozart</h3>
+                <h2 class="text-center">A Tribute to Wolfgang Amadeus Mozart</h2>
                 <hr></hr>
               </div>
             </div>
          
             <!-- Insert a picture of Mozart before writing about him -->
-         
+            <div class="row">
+              <div class="large-12 columns">
+                  <div class="overlay-container">
+                    <img src="../img/tribute/mozart.png" 
+                         alt="Mozart's face in front one of his compositions." />
+                    <div class="overlay medium-3 columns">
+                      <span>
+                        <blockquote cite="http://www.quotezine.com/mozart-quotes-10-inspiring-sayings-to-live-by/">
+                        <p id="quote">“I pay no attention whatever to anybody’s praise 
+                        or blame. I simply follow my own feelings.”</p>
+                        </blockquote>
+                        <cite>Wolfgang Amadeus Mozart</cite>
+                       </span>
+                     </div>
+                 </div>
+              </div>
+            </div>
+            <hr>
+            
             <!-- A row starting off the tribute -->
+            <div id="content">
             <div class="row">
               <div class="medium-9 medium-centered columns">
                   <h3 class="page-subheader with-subheader text-center">
@@ -99,7 +117,9 @@
                       <ul class="none timeline-list">
                         <li>
                           Premiere of Mozart's first opera, 
-                          <i>Bastien und Bastienne</i>, in Vienna.
+                          <a href="https://www.youtube.com/watch?v=cYnJWkvOYT8" 
+                             target="_blank">
+                          <i>Bastien und Bastienne</i></a>, in Vienna.
                           It was written when he was only twelve
                           years old.
                         </li>
@@ -119,18 +139,16 @@
                           Pope Clement XIV gives the 
                           <a href="https://en.wikipedia.org/wiki/Order_of_the_Golden_Spur">
                           Order of the Golden Spur</a> to Mozart. In Milan, 
-                          he also writes the opera <i>Mitridate, re di Ponto
-                          </i>. It is performed with success.
+                          he also writes the opera 
+                          <a href="https://www.youtube.com/watch?v=eKytF98dmtA" target="_blank">
+                          <i>Mitridate, re di Ponto</i></a>. 
+                          It is performed with success.
                         </li>
                       </ul>
                     </div>
                   </div>   
-              </div>
-              
-              
-              <!-- The second batch of events that happend throughout Mozart's life -->
-              <div class="medium-4 columns">
-                <div class="row">
+                  <hr>
+                  <div class="row">
                 
                   <!-- Ascanio in Alba -->
                     <div class="medium-3 large-3 column timeline-year">
@@ -141,8 +159,9 @@
                         <li>
                           The success of <i>Mitridate, re di Ponto</i> has led to 
                           further opera commissions. Indeed, Mozart premieres 
-                          his composition <i>Ascanio in Alba</i> in Milan
-                          successfully.
+                          his composition 
+                          <a href="https://www.youtube.com/watch?v=EWyvDAzvRiI" target="_blank">
+                          <i>Ascanio in Alba</i></a> in Milan successfully.
                         </li>
                       </ul>
                     </div>
@@ -158,13 +177,20 @@
                       <ul class="none timeline-list">
                         <li>
                           The success of <i>Ascanio in Alba</i> has led to 
-                          the premiere of Mozart's next opera: <i>Luci Silla</i>.
-                          It was performed once again in Milan successfully.
+                          the premiere of Mozart's next opera: 
+                          <a href="https://www.youtube.com/watch?v=BgItqK17rMM" target="_blank">
+                          <i>Lucio Silla</i></a>. It was performed once again 
+                          in Milan successfully.
                         </li>
                       </ul>
                     </div>
                   </div>
-                  <hr>
+                </div>
+ 
+              
+              
+              <!-- The second batch of events that happend throughout Mozart's life -->
+              <div class="medium-4 columns">
                   
                   <!-- Mozart's employment -->
                   <div class="row">
@@ -193,7 +219,9 @@
                     <div class="medium-9 large-9 columns">
                       <ul class="none timeline-list">
                         <li>
-                          Mozarts premieres <i>La finta giardiniera</i> in Munich
+                          Mozarts premieres 
+                          <a href="https://www.youtube.com/watch?v=lhCorp9RgVM" target="_blank">
+                          <i>La finta giardiniera</i></a> in Munich
                           successfully after having done unsuccessful trips to 
                           Vienna and Munich with his father. 
                         </li>
@@ -219,14 +247,10 @@
                         </li>
                       </ul>
                     </div>
-                  </div>             
-                </div>  
-            
-            
-            <!-- The final batch of events that happend throughoutMozart's life -->
-            <div class="medium-4 columns">
-              <div class="row">
-              
+                  </div>  
+                  <hr>
+                  <div class="row">
+
                 <!-- Idomeno premiere -->
                   <div class="medium-3 large-3 columns timeline-year">
                     <h5 class="light">1781</h5>
@@ -234,52 +258,69 @@
                   <div class="medium-9 large-9 columns">
                     <ul class="none timeline-list">
                       <li>
-                        Hello
+                        <a href="https://www.youtube.com/watch?v=GTUkLnkwmpU" target="_blank">
+                        <i>Idomeneo</i></a> premieres with "considerable 
+                        success" in Munich.
                       </li>
                     </ul>
                   </div>
-                </div>
-                <hr>
+                </div>  
+                <hr> 
                 
                 <!-- Mozart marries a girl at Vienna -->
                 <div class="row">
                   <div class="medium-3 large-3 columns timeline-year">
-                    <h5 class="light">1781</h5>
+                    <h5 class="light">1782</h5>
                   </div>
                   <div class="medium-9 large-9 columns">
                     <ul class="none timeline-list">
                       <li>
-                        
+                        After much turmoil in the courtship, and after much 
+                        difficulty in getting his father's approval, Mozart 
+                        finally manages to marry Constanze Weber. The wedding 
+                        toke place in Vienna's St.Stephen's Cathedral.
                       </li>
                     </ul>
                   </div>
                 </div>
-                <hr>
-                
+                         
+              </div>  
+            
+            
+            <!-- The final batch of events that happend throughoutMozart's life -->
+            <div class="medium-4 columns">
+
                 <!-- Mozart composes the Mass in C minor -->
                 <div class="row">
                   <div class="medium-3 large-3 columns timeline-year">
-                    <h5 class="light">1781</h5>
+                    <h5 class="light">1783</h5>
                   </div>
                   <div class="medium-9 large-9 columns">
                     <ul class="none timeline-list">
-                      <li>
-                        
+                      <li>                   
+                        Mozart and his wife visit his family in Salzburg. His 
+                        father and sister were cordially polite to Constanze, 
+                        but the visit prompted the composition of one of 
+                        Mozart's great liturgical pieces, the 
+                        <a href="https://www.youtube.com/watch?v=EeNeckd7-OE" target="_blank">
+                        <i>Mass in C minor</i>.</a>
                       </li>
                     </ul>
                   </div>
                 </div>
-                <hr>
+                <hr>               
                 
-                <!-- The Marriage of Figaro premieres -->
+                <!-- Mozart's last decade -->
                 <div class="row">
                   <div class="medium-3 large-3 columns timeline-year">
-                    <h5 class="light">1781</h5>
+                    <h5 class="light">1786</h5>
                   </div>
                   <div class="medium-9 large-9 columns">
                     <ul class="none timeline-list">
                       <li>
-                        
+                        <a href="https://www.youtube.com/watch?v=8OZCyp-LcGw" 
+                           target="_blank"><i>The Marriage of Figaro</i></a> 
+                           premieres in Vienna successfully.
                       </li>
                     </ul>
                   </div>
@@ -289,12 +330,16 @@
                 <!-- Mozart's father dies. Don Giovanni is a success -->
                 <div class="row">
                   <div class="medium-3 large-3 columns timeline-year">
-                    <h5 class="light">1781</h5>
+                    <h5 class="light">1787</h5>
                   </div>
                   <div class="medium-9 large-9 columns">
                     <ul class="none timeline-list">
                       <li>
-                        
+                        <i>The Marriage of Figaro</i> and is a tremendous 
+                        success in Prague. Mozart's father dies on 28 May 1787. 
+                        <a href="https://www.youtube.com/watch?v=jyjVCbTo5F0"
+                           target="_blank"><i>Don Giovanni</i></a> is a huge 
+                           success in Prague.
                       </li>
                     </ul>
                   </div>
@@ -304,27 +349,31 @@
                 <!-- Cose Fan Tribute has a failed premiered -->
                 <div class="row">
                   <div class="medium-3 large-3 columns timeline-year">
-                    <h5 class="light">1781</h5>
+                    <h5 class="light">1788</h5>
                   </div>
                   <div class="medium-9 large-9 columns">
                     <ul class="none timeline-list">
                       <li>
-                        
+                        Mozart is reported to be suffering from depression, 
+                        which led to a slower work output.
                       </li>
                     </ul>
                   </div>
                 </div>
                 <hr>
                 
-                <!-- The Magic Flute opens at Vienna -->
+                <!-- Cosi fan tutte opens in Vienna -->
                 <div class="row">
                   <div class="medium-3 large-3 columns timeline-year">
-                    <h5 class="light">1781</h5>
+                    <h5 class="light">1790</h5>
                   </div>
                   <div class="medium-9 large-9 columns">
                     <ul class="none timeline-list">
                       <li>
-                        
+                        The last of the three Da Ponte operas, 
+                        <a href="https://www.youtube.com/watch?v=GwwsbEjmWjU"
+                           target="_blank"><i>Così fan tutte</i></a> premieres 
+                           in Vienna without much success.
                       </li>
                     </ul>
                   </div>
@@ -334,12 +383,19 @@
                 <!-- Mozart dies at the age of 35 -->
                 <div class="row">
                   <div class="medium-3 large-3 columns timeline-year">
-                    <h5 class="light">1781</h5>
+                    <h5 class="light">1791</h5>
                   </div>
                   <div class="medium-9 large-9 columns">
                     <ul class="none timeline-list">
                       <li>
-                        
+                         Mozart falls ill in Prague. 
+                         <a href="https://www.youtube.com/watch?v=Vwub-9dZLFU"
+                           target="_blank"><i>The Magic Flute</i></a> 
+                           premieres on 30 September in Vienna. His health 
+                           deteriorates on 20 Novemeber, at which point he 
+                           becomes bedridden, suffering from swelling, pain, 
+                           and vomiting. Mozart dies at the age of 35 in his 
+                           home on 5 December 1791 at 1:00am.
                       </li>
                     </ul>
                   </div>
@@ -361,14 +417,10 @@
                     Wikipedia</a> for more information.</h6>
               </div>   
             </div>             
-          </footer>  
-                    
+          </footer>             
         </div>
       </div>
+      </div>
      </div>
-    
-    <script src="../js/vendor/jquery.min.js"></script>
-    <script src="../js/vendor/what-input.min.js"></script>
-    <script src="../js/app.js"></script>
   </body>
 </html>

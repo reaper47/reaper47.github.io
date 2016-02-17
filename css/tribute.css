@@ -1,3 +1,82 @@
+/*******************
+ * External Links * 
+********************/
+a {
+  outline: 0;
+}
+
+a:link {
+  color: #c26767;
+}
+
+a:visited {
+  color: #c49c6b;
+}
+
+a:hover {
+  color: #6a8fc2;
+}
+
+a:active {
+  color: #67bd96;
+}
+
+a:focus {
+  color: #bbc26a;
+}
+
+/***************
+ * Quotations *
+****************/
+blockquote {
+  border: 0;
+}
+
+cite {
+  text-indent: 2rem;
+}
+
+#quote, cite {
+  color: #bdc3c7;
+  font-size: 1rem;
+}
+
+/***********
+* Footer * 
+************/
+footer {
+  background: #2c3e50;
+  color: #bdc3c7;
+  padding-top:10px;
+}
+
+/*******************
+ * Text on Images *
+********************/
+.overlay-container {
+  position: relative; 
+}
+
+.overlay-container .overlay {
+  position: absolute; 
+  bottom: 0;                 
+  right: 0;          
+  padding: 0.4rem;
+
+}
+
+/******************
+ * Other goodies *
+*******************/
 .timeline-list {
-    list-style-type: none;
+  list-style-type: none;
+}
+
+.timeline-year {
+ padding-left: 10%;
+}
+
+.light {
+  color: #4a4a4a;
+  font-weight: 100;
 }
