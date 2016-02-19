@@ -11,16 +11,19 @@ body {
   font-family: 'Lora', sans-serif, georgia, arial, monospace;
 }
 
+nav li a, header, footer, #footer-list a {
+  color: #ecf0f1;
+}
 
-/*******************
- * Navigation bar *
-********************/
-header {
+header, footer {
   background: #001c1f;
   color: white;
   width: 100%;
 }
 
+/*******************
+ * Navigation bar *
+********************/
 #container-nav-name {
   display: inline-block;
   margin-left: 3%;
@@ -41,10 +44,10 @@ nav ul {
 nav li {
   display: inline;
   padding-right: 1.2rem;
+  
 }
 
 nav li a {
-  color: #ffffff;
   text-decoration: none;
   padding-top: 1.2rem;
   padding-bottom: 1.2rem;
@@ -54,19 +57,19 @@ a {
   outline: 0;
 }
 
-nav li a:hover {
-  color: red;
+nav li a:hover, #footer-list li a:hover {
+  color: #c0392b;
 }
 
-nav li a.current {
-  color: orange;
+nav li a.current, #footer-list li a.current {
+  color: #f39c12;
 }
 
-nav li a:active {
+nav li a:active, #footer-list li a:active {
 
 }
 
-nav li a:focus {
+nav li a:focus, #footer-list li a:focus {
 
 }
 
@@ -160,5 +163,36 @@ nav li a:focus {
 /**********************
  * Footer properties *
 ***********************/
+footer {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+}
 
+#footer-copyright {
+  font-size: 0.85rem;
+  float: left;
+  margin-top: 22px;
+  margin-bottom: 22px;
+  margin-left: 22px;
+}
 
+#footer-list {
+  float: right;
+  margin-right: 20px;
+  font-size: 1.1rem;
+  
+}
+
+#footer-list ul {
+  margin: 0;
+  padding-top: 1.2rem;
+}
+
+#footer-list li {
+  display: inline-block;
+}
+
+#footer-list li a{
+  padding-right: 3rem;
+}
