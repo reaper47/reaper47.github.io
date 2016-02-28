@@ -185,13 +185,13 @@ footer {
   text-align: center;
   padding-top: 2.5rem;
   min-width: 746px;
+  height: 87px;
 }
 
 #footer-copyright {
   font-size: 0.95rem;
   float: left;
   margin-top: 22px;
-  margin-bottom: 45px;
   margin-left: 22px;
 }
 
