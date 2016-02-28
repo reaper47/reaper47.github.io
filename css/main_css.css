@@ -30,7 +30,6 @@ body {
 
 .parallax__group {
   position: relative;
-  height: 500px;
   height: 100vh;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
@@ -126,19 +125,12 @@ body {
   font-family: 'Parisienne', 'cursive';
 }
 
-#group1 {
-  z-index: 5;
-}
-
 #group1 .parallax__layer--base {
   background: url('https://v47guw.bn1.livefilestore.com/y2mx8EVSkg7rB2F0itaEB4pPJUvOpy1FjSa8Ya2b5QsHSR2SxD_4LHr3JAL3UwbrcTxgO-3-YSoqDL6OPFmlwJ_YcRspTB1aI-tE3c45xd39GgW9q4hVsI8RTX5opvAZfwt/747.jpg?psid=1') no-repeat center center fixed;
   background-size: cover !important;
   min-height: 100vh;
 }
 
-#group2 {
-  z-index: 3;
-}
 
 #group2 .parallax__layer--fore {
   background: url('http://payload336.cargocollective.com/1/17/574234/9038704/DSC_0049-1_1250.JPG') no-repeat center center fixed;
@@ -146,18 +138,12 @@ body {
   background-size: 100% 100%;
 }
 
-#group3 {
-  z-index: 5\4;
-}
 
 #group3 .parallax__layer--fore {
   background: url('https://upload.wikimedia.org/wikipedia/commons/2/2f/Buna-mission1943-killed.jpg') no-repeat center center fixed;
   background-size: 100% 100%;
 }
 
-#home-image {
-  width: 100%;
-}
 
 
 /* Footer CSS Properties 

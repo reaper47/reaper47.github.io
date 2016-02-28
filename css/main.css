@@ -19,6 +19,7 @@ header, footer {
   background: #001c1f;
   color: white;
   width: 100%;
+  min-width: 716px;
 }
 
 /*******************
@@ -32,7 +33,6 @@ header, footer {
 nav {
   float: right;
   padding-top: 1.3rem;
-  
 }
 
 nav ul {
@@ -42,7 +42,7 @@ nav ul {
 }
 
 nav li {
-  display: inline;
+  display: inline-block;
   padding-right: 1.2rem;
   
 }
@@ -105,43 +105,59 @@ nav li a:focus, #footer-list li a:focus {
   -webkit-transform-origin-x: 100%;
 }
 
-.parallax__layer--base {
-  z-index: 4;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-}
-
-.parallax__layer--back {
-  z-index: 3;
-  transform: translateZ(-1px) scale(2);
-  -webkit-transform: translateZ(-1px) scale(2);
-}
-
-.parallax__layer--deep {
-  z-index: 2;
-  transform: translateZ(-600px) scale(3);
-  -webkit-transform: translateZ(-600px) scale(3);
-}
-
-.parallax__layer--fore {
-  z-index: 1;
-  transform: translateZ(90px) scale(.7);
-  -webkit-transform: translateZ(90px) scale(.7);
-}
-
 /***************************************
  * Home slide parallax and properties *
 ****************************************/
+#home {
+  background: url(../img/home-page/fan.jpg) no-repeat center center fixed;
+  background-size: 101% 100%;
+}
 
-
-
+#company-title {
+  position: absolute;
+  font-family: 'Parisienne', 'cursive';
+  font-size: 300%;
+  text-align: center;
+  width: 33%;
+  min-width: 700px;
+  color: #ecf0f1;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -75%);
+}
 
 /****************************************
  * About slide parallax and properties *
 *****************************************/
+#about .parallax__layer--fore {
+  background: url(../img/home-page/about/berlin-forest.JPG) no-repeat center center fixed;
+  background-size: 101% 100%;
+}
 
+.about-container {
+  margin-top: 8rem;
+  width: 100%;
+  text-align: center;
+  min-width: 785px;
+}
 
+#about-pic {
+  display: inline-block;
+}
 
+#me {
+  height: 25rem;
+  width: 20rem;
+  border-radius: 50%;
+}
+
+#about-me {
+ display: inline-block;
+ vertical-align: top;
+ margin-left: 2rem;
+ margin-top: 1rem;
+}
 
 /**********************************************
  * Programming slide parallax and properties *
@@ -167,20 +183,22 @@ footer {
   position: absolute;
   bottom: 0;
   text-align: center;
+  padding-top: 2.5rem;
+  min-width: 746px;
 }
 
 #footer-copyright {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   float: left;
   margin-top: 22px;
-  margin-bottom: 22px;
+  margin-bottom: 45px;
   margin-left: 22px;
 }
 
 #footer-list {
   float: right;
   margin-right: 20px;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   
 }
 
@@ -193,6 +211,9 @@ footer {
   display: inline-block;
 }
 
-#footer-list li a{
-  padding-right: 3rem;
+#footer-list li a {
+  padding-right: 2rem;
+  padding-left: 2rem;
+  padding-top: 3.4rem;
+  padding-bottom: 2.6rem;
 }
