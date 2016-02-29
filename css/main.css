@@ -9,6 +9,7 @@ html {
 body {
   margin: 0 0 100px;
   font-family: 'Lora', sans-serif, georgia, arial, monospace;
+  color: #212121;
 }
 
 nav li a, header, footer, #footer-list a {
@@ -16,7 +17,7 @@ nav li a, header, footer, #footer-list a {
 }
 
 header, footer {
-  background: #001c1f;
+  background: #030b0c;
   color: white;
   width: 100%;
   min-width: 716px;
@@ -130,13 +131,13 @@ nav li a:focus, #footer-list li a:focus {
 /****************************************
  * About slide parallax and properties *
 *****************************************/
-#about .parallax__layer--fore {
-  background: url(../img/home-page/about/berlin-forest.JPG) no-repeat center center fixed;
+#about .parallax__layer {
+  background: url(../img/home-page/about/berlin-forest-full.JPG) no-repeat center center fixed;
   background-size: 101% 100%;
 }
 
 .about-container {
-  margin-top: 8rem;
+  margin-top: 6rem;
   width: 100%;
   text-align: center;
   min-width: 785px;
@@ -173,8 +174,64 @@ nav li a:focus, #footer-list li a:focus {
 /****************************************
  * Contact slide parallax and properties *
 *****************************************/
+#contact .parallax__layer {
+  background: url(../img/home-page/contact/contact-full.JPG) no-repeat center center fixed;
+  background-size: 101% 100%;
+}
 
+#contact-email {
+  text-align: center;
+  margin-top: 9rem;
+  margin-left: 1.5rem;
+}
 
+.social-icon {
+  color: rgba(251, 255, 215, 0.5);
+
+}
+
+.contact-left {
+  float: left;
+  text-align: center;
+}
+
+.contact-right {
+  float: right;
+  text-align: center;
+}
+
+.contact-left, .contact-right {
+  margin:0 auto;
+  width: 50%;
+}
+
+#email-icon:hover {
+  color: #B93534;
+}
+
+#github-icon:hover {
+  color: #171515;
+}
+
+#linkedin-icon:hover {
+  color: #3AA7CE;
+}
+
+#FCC-icon:hover {
+  color: #406421;
+}
+
+#twitter-icon:hover {
+  color: #4495d4;
+}
+
+#soundcloud-icon:hover {
+  color: #FF6B00;
+}
+
+#gplus-icon:hover {
+  color: #34A853;
+}
 
 /**********************
  * Footer properties *
