@@ -137,7 +137,7 @@ nav li a:focus, #footer-list li a:focus {
 }
 
 .about-container {
-  margin-top: 6rem;
+  margin-top: 3rem;
   width: 100%;
   text-align: center;
   min-width: 785px;
@@ -163,13 +163,75 @@ nav li a:focus, #footer-list li a:focus {
 /**********************************************
  * Programming slide parallax and properties *
 ***********************************************/
+#programming .parallax__layer {
+  background: url(../img/home-page/programming/birds.JPG) no-repeat center center fixed;
+  background-size: 101% 100%;
+}
 
+.project-image {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 33%;
+}
 
+figcaption {
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 33%;
+  width: 10rem;
+  text-align: center;
+}
 
 /****************************************
  * Music slide parallax and properties *
 *****************************************/
+#music .parallax__layer {
+  background: url(../img/home-page/music/music1.JPG) no-repeat center center fixed;
+  background-size: 101% 100%;
+}
 
+#music-quote {
+  background-color: rgba(255, 255, 255, 0.6);
+  font-size: 1.2rem;
+  border-radius: 50%;
+  text-align: center;
+  width: 50rem;
+  margin-top: 15rem;
+  margin-left: auto;
+  margin-right: 10rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+cite::before {
+  content: '\2014 \0020';
+}
+
+#music-songs .parallax__layer {
+  background: url(../img/home-page/music/music2.JPG) no-repeat center center fixed;
+  background-size: 101% 100%;
+}
+
+.mid-title {
+  width: 35rem;
+  text-align: center;
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 27%;
+  margin-top: 3rem;
+}
+
+.music-player-song {
+  display: inline-block;
+  padding: 2rem;
+}
+
+#music-player {
+  text-align: center;
+}
+
+#music-player h4 {
+  background-color: rgba(255, 255, 255, 0.6);
+}
 
 /****************************************
  * Contact slide parallax and properties *
