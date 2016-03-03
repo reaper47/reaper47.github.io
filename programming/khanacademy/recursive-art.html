@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Project: Recursive Art</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='../../css/khanacademy.css' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="../../js/processingJS/processing.min.js"></script>
+  </head>
+  <body>
+    <div class="container-khanacademy">
+      <div class="container-text">
+        <h2>Recursive Art</h2>
+        <p>The goal of this project was to use the principle of recursion to 
+        generate art. A new set of random colors are generated every time the
+        webpage is refreshed.</p>
+      </div>
+      <div class="container-program">
+        <canvas id="canvas"></canvas>
+        <!-- Credits to Robert Tupelo-Schneck for this processingJS template -->
+        <script>
+          var canvas = document.getElementById("canvas");
+          var processing = new Processing(canvas, function(processing) {
+              processing.size(400, 400);
+              processing.background(0xFFF);
+
+              var mouseIsPressed = false;
+              processing.mousePressed = function () { mouseIsPressed = true; };
+              processing.mouseReleased = function () { mouseIsPressed = false; };
+
+              var keyIsPressed = false;
+              processing.keyPressed = function () { keyIsPressed = true; };
+              processing.keyReleased = function () { keyIsPressed = false; };
+
+              function getImage(s) {
+                  var url = "https://www.kasandbox.org/programming-images/" + s + ".png";
+                  processing.externals.sketch.imageCache.add(url);
+                  return processing.loadImage(url);
+              }
+
+              // use degrees rather than radians in rotate function
+              var rotateFn = processing.rotate;
+              processing.rotate = function (angle) {
+                  rotateFn(processing.radians(angle));
+              };
+
+              with (processing) {
+                /* This function applies a random color and stroke to a shape */
+                var randColor = function() {
+                    fill(random(0, 255), random(0, 255), random(0, 255));
+                    stroke(random(0, 255), random(0, 255), random(0, 255));
+                    strokeWeight(random(0, 20));
+                };
+
+                /* This function calls a rectangle recursively until its size is negligeable. */
+                var drawRect = function(x, y, width, height, radius) {
+                    // Apply a random color
+                    randColor();
+                    
+                    // Make sure the rectangle is drawn from its center
+                    rectMode(CENTER);
+                    rect(x, y, width, height/2, radius);
+                    rect(x, y, width/2, height, radius);
+                    
+                    // Calculate a new width, height, and radius for the recursion 
+                    var newWidth = width*1/3;
+                    var newHeight = height*1/3;
+                    var newRadius = radius*3/2;
+                    
+                    // Draw the rectangles until the width or height is under 5px
+                    if (newWidth >= 5 || newHeight >= 5) {
+                        drawRect(x, y, newWidth, newHeight, newRadius);
+                    }
+                };
+
+                /* This function uses recursion to draw ellipses and additional rectangles */
+                var drawEllipse = function(x, y, radius) {
+                    // Apply a random color
+                    randColor();
+                    
+                    // Create the initial, classic ellipse
+                    // from the initial parameters
+                    ellipse(x, y, radius, radius);
+                    
+                    // Draw rectangles from the center that alternate
+                    // between vertical and horizontal positions 
+                    rectMode(CENTER);
+                    rect(x, y, radius, radius/2);
+                    rect(x, y, radius/2, radius);
+                    
+                    // Use recursion to draw ellipses forever
+                    var newRadius = radius/2;
+                    if (newRadius >= 2) {
+                        drawEllipse(x, y, newRadius);
+                    }
+                };
+
+                // Call the recursion functions that draw ellipses, and rectangles
+                drawEllipse(width/2, height/2, 869);
+                drawRect(width/2, height/2, 200, 100, 100);
+
+
+              }
+              if (typeof draw !== 'undefined') processing.draw = draw;
+          });
+        </script>
+      </div>
+    </div>
+  </body>
+</html>

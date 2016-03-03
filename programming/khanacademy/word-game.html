@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Project: Word game </title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+            .container p {
+                font-size: 22px;
+            }
+            form {
+                font-size: 1.5em;
+            }
+            .container {
+                text-align: center;
+                border: 5px solid rgb(0, 110, 0);
+                border-radius: 180px;
+                padding: 0px 0px 20px 0px;
+                background-color: rgba(194, 193, 174, 0.5);
+            }
+            .scrambled, input, button {
+                
+                font-size: 1.5em;
+            }
+            #jquery-form {
+                padding: 0px 0px 15px 0px;
+            }
+            .scramble {
+                float: left;
+                margin: 0px 240px;
+            }
+        </style>
+        <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+        <link href='../../css/khanacademy.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+    <div class="container-khanacademy">
+      <div class="container-text">
+        <h2>Scene Change</h2>
+        <p>The goal of this project was to write a webpage with a classic word
+        game. The player inputs what they think the word is, and clicks on
+        check to check whether or not the word is the correct one. jQuery was
+        used.</p>
+      </div>
+    <div class='container'>
+        <h1>Word game!</h1>
+        <p>Unscramble these letters to form a word:</p>
+        
+        <form id="jquery-form">
+            <label>
+                <span class='scramble'>REYJUQ</span>
+                <br>
+                <input type="text" size="10" name='answer'>
+            </label>
+            <button type="submit">Check</button>
+        </form>
+        
+        <form id='phantom-form'>
+            <label>
+                <span class='scramble'>AMTPNOH</span>
+                <br>
+                <input type="text" size="10" name="answer">
+            </label>
+            <button type="submit">Check</button>
+        </form>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        var stateOne = false;
+        var stateTwo = false;
+        var win = function() {
+            $('.win').remove();
+            $('.lose').remove();
+            $('<div>')
+                .html('Congratulations, <br>you successfully unscrambled the word!')
+                .addClass('win')
+                .css('padding-top', '23px')
+                .appendTo('#phantom-form');
+                
+            $('.container').css('background-color', 'rgba(86, 206, 227, 0.3)');
+        }
+        
+        var lose = function() {
+            $('.win').remove();
+            $('.lose').remove();
+            $('<div>')
+                .text('Unfortunately, this is not the right word.')
+                .addClass('lose')
+                .css('padding-top', '23px')
+                .appendTo('#phantom-form');
+            $('.container').css('background-color', 'rgba(255, 0, 0, 0.7)');
+        }
+        
+        // When the user submits the first form
+        $('#jquery-form').on('submit', function(event) {
+            event.preventDefault();
+            var $input = $(this).find('[name=answer]');
+            var input = $input.val().toLowerCase();
+            if (input === 'jquery' && (stateOne === false || 'nope')) {
+                stateOne = true;
+                win();
+            } else if (stateOne === false && input != 'jquery'){
+                stateOne = 'nope';
+                lose();
+            }
+        });
+        
+        // When the user submits the second form
+        $('#phantom-form').on('submit', function(event) {
+            event.preventDefault();
+            var $input = $(this).find('[name=answer]');
+            var input = $input.val().toLowerCase();
+            if (input === 'phantom' && (stateTwo === false || 'nope')) {
+                stateTwo = true;
+                win();
+            } else if (stateTwo === false && input != 'jquery') {
+                stateTwo = 'nope';
+                lose();
+            }
+            
+        });
+        
+    </script>
+    </div>
+  </body>
+</html>

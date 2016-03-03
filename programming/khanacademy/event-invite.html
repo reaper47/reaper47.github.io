@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Project: Event invite</title>
+  <style>
+    .container{
+        position: absolute;
+        background-color: rgba(240, 252, 5, 0.1);
+        border: 4px solid rgb(184, 96, 76);
+        z-index: 1;
+        width: 97%;
+        height: 350px;
+        font-family: monospace;
+            }
+    .content {
+        position: relative;
+        text-align: center;
+        z-index: 2;
+    }
+    .sub-content1 {
+        position: absolute;
+        z-index: 3;
+        float: left;
+        font-family: sans-serif;
+        margin-top: 35px;
+    }
+    .sub-content2 {
+        position: relative;
+        z-index: 3;
+        float: right;
+        margin-right: 66px;
+        font-family: sans-serif;
+        margin-top: 35px;
+    }
+    p {
+        margin-left: 25px;
+        text-decoration: underline;
+    }
+    #space {
+        position: absolute;
+        margin-top: -21px;
+    }
+    #img1 {
+        position: absolute;
+        float: left;
+        top: 0;
+        margin-top: -30px;
+        margin-left: 69px;
+    }
+    #img2 {
+        float: right;
+        margin-top: -129px;
+        margin-right: -145px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="content">
+      <h1>You're invited!</h1>
+      <h2>To a <em>special</em> LAN party event!</h2>
+      <div class="sub-content1">
+        <p>The details:</p>
+        <ul>
+          <li>Address: Underworld Cellar</li>
+          <li>Time: 11pm
+            <li>Duration: All night</li>
+        </ul>
+      </div>
+      <img src="https://www.kasandbox.org/programming-images/space/rocketship.png" id="space" />
+      <div class="sub-content2">
+        <p>Available games</p>
+        <ul>
+          <li>Diablo 3</li>
+          <li>Titan Quest</li>
+          <li>Unreal Tournament</li>
+          <li>Quake</li>
+        </ul>
+      </div>
+
+    </div>
+    <img src="https://www.kasandbox.org/programming-images/cute/CharacterHornGirl.png" id="img1" />
+    <img src="https://www.kasandbox.org/programming-images/cute/CharacterPinkGirl.png" id="img2" />
+  </div>
+</body>
+</html>

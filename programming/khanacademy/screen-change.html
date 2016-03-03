@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Project: Scene change</title>
+        <style>
+        #leafers {
+            position: absolute;
+            top: 167px;
+            left: 445px;
+        }
+        
+        .leafer-div {
+            border-radius: 15px;
+            background: white;
+            position: absolute;
+            width: 50px;
+            height: 50px;
+        }
+        
+        .leafer-div2 {
+            border-radius: 30px;
+            background: white;
+            position: absolute;
+            width: 10px;
+            height: 10px;
+        }
+        .image-container {
+            position:relative;
+            float: left;
+        }   
+        .text-overlay {
+            position: absolute;
+            text-align: center;
+            top: 10px;
+            left: 110px;
+            width: 450px;
+        }  
+        h1 {
+            font-family: monospace;
+            font-size: 24px;
+        }
+        </style>
+        <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+        <link href='../../css/khanacademy.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <div class="container-khanacademy">
+      <div class="container-text">
+        <h2>Scene Change</h2>
+        <p>The goal of this project was to draw a scene using HTML, CSS, 
+        and jQuery. Three jQuery events were implemented: a click on the 
+        title that changes the scene, a click on the avatar that toggles a 
+        greeting message, and a click on the background image that plays a 
+        sound.</p>
+      </div>
+        <div class="image-container">
+            <img src="https://www.kasandbox.org/programming-images/landscapes/fields-of-wine.png" id='bg'>
+            <div class="text-overlay">
+                <h1>A grand adventure awaits...</h1>
+            </div>
+            <img src="https://www.kasandbox.org/programming-images/avatars/leafers-seedling.png" id="leafers">
+        </div>
+        
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Variables used to activate code on click
+            var leafer_click = false;
+            var head_click = false;
+            
+            // This sound will be played when the bg is clicked
+            var $sound = $('<audio preload=auto>');
+            $sound.attr('src', "https://www.kasandbox.org/programming-sounds/retro/whistle1.mp3");
+            
+            // Call function when the leafer is clicked
+            $("#leafers").on("click", function(event) {
+                if (leafer_click === false) {
+                    leafer_click = true;
+                    $('<div>')
+                        .addClass('leafer-div')
+                        .css('color', 'red')
+                        .css('border', '5px solid red')
+                        .css('top', (event.pageY - 55) + 'px')
+                        .css('right', event.pageX/1.7 + 'px')
+                        .appendTo('body');
+                    
+                    $('<div>')
+                            .addClass('leafer-div2')
+                            .css('color', 'red')
+                            .css('border', '2px solid red')
+                            .css('top', event.pageY +'px')
+                            .css('right', event.pageX/1.8 + 'px')
+                            .appendTo('body');
+                         
+                    $('<p>')
+                        .text("Hello!")
+                        .css('color', 'blue')
+                        .prependTo('div.leafer-div');
+                } else if (leafer_click === true) {
+                    leafer_click = false;
+                    $('.leafer-div, .leafer-div2').hide();
+                }
+            });
+            
+            // Call function when the image title is clicked
+            $('h1').on('click', function(event) {
+                if (head_click === false) {
+                    head_click = true;
+                    $('#bg')
+                        .attr('src', 'https://www.kasandbox.org/programming-images/landscapes/lake.png')
+                        .appendTo('#bg');
+                    
+                } else if (head_click = true) {
+                    head_click = false;
+                    $('#bg')
+                        .attr('src', 'https://www.kasandbox.org/programming-images/landscapes/fields-of-wine.png')
+                        .appendTo('#bg');
+                }
+            });
+            
+            // Call function when a click is done on the image
+            $('#bg').on('click', function(event) {
+                $('body').append($sound);
+                $sound[0].play();
+            });
+        });
+        
+        
+    </script>
+    </div>
+  </body>
+</html>

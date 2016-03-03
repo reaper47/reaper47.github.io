@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Project: Interactive slideshow</title>
+        <style>
+            h1 {
+                text-align: center;
+            }
+            img {
+                width: 400px;
+                height: 250px;
+            }
+            .container {
+                height: 373px;
+                border: 5px solid black;
+                background-color: rgba(187, 207, 174, 0.5);
+            }
+            .image {
+                text-align: center;
+                padding: 0px 0px 0px 50px;
+            }
+            #prev:hover, #next:hover {
+                color: red;
+            }
+        </style>
+        <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+        <link href='../../css/khanacademy.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+    <div class="container-khanacademy">
+      <div class="container-text">
+        <h2>Interactive Slideshow</h2>
+        <p>The goal of this project was use jQuery to make an interactive
+        slideshow with multiple images and animated transitions. An improvement
+        to the program has to be made when the user clicks next for the buttons
+        are not supposed to move.
+        </p>
+      </div>
+    <div class='container'>
+        <h1>Agent46's Image Gallery Slideshow!</h1>
+        <div class="image">
+            <br>
+            <button type="button" id="prev">&#x2190; Previous</button>
+            <img id="first-slide" src="https://www.kasandbox.org/programming-images/food/mushroom.png" width="400" alt="Mushrooms">
+            <button type="button" id="next">Next &rarr;</button>
+            
+        </div>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        var images = ["https://www.kasandbox.org/programming-images/food/mushroom.png", 
+            'https://www.kasandbox.org/programming-images/food/grapes.png', 
+            'https://www.kasandbox.org/programming-images/food/fruits.png',
+            'https://www.kasandbox.org/programming-images/landscapes/lake.png',
+            'https://www.kasandbox.org/programming-images/food/oysters.png',
+            "https://www.kasandbox.org/programming-images/landscapes/mountains-sunset.png",
+            "https://www.kasandbox.org/programming-images/animals/birds_rainbow-lorakeets.png",
+            "https://www.kasandbox.org/programming-images/animals/cat.png",
+            "https://www.kasandbox.org/programming-images/landscapes/beach.png",
+            "https://www.kasandbox.org/programming-images/landscapes/crop-circle.png",
+            "https://www.kasandbox.org/programming-images/seasonal/fireworks-2015.png",
+            "https://www.kasandbox.org/programming-images/seasonal/gingerbread-houses.png",
+            "https://www.kasandbox.org/programming-images/seasonal/gingerbread-house.png",
+            "https://www.kasandbox.org/programming-images/animals/shark.png",
+            "https://www.kasandbox.org/programming-images/animals/penguins.png", 
+            "https://www.kasandbox.org/programming-images/animals/retriever.png",
+            "https://www.kasandbox.org/programming-images/landscapes/beach-waves-daytime.png",
+            "https://www.kasandbox.org/programming-images/landscapes/waterfall_niagara-falls.png",
+            "https://www.kasandbox.org/programming-images/food/chocolates.png",
+            "https://www.kasandbox.org/programming-images/food/croissant.png",
+            "https://www.kasandbox.org/programming-images/landscapes/mountains-in-hawaii.png" ,
+            "https://www.kasandbox.org/programming-images/food/tomatoes.png",
+            "https://www.kasandbox.org/programming-images/food/strawberries.png",
+            "https://www.kasandbox.org/programming-images/animals/horse.png",
+            "https://www.kasandbox.org/programming-images/animals/dogs_collies.png"]
+        
+        var slide = 0;
+        var initialSlide = function() {
+            $("div.image #first-slide").hide();
+            $("div.image #first-slide").fadeIn(1200);
+        }
+        var nextButton = function() {
+            if (slide != (images.length - 1)) {
+                $("img").hide()
+                $('img').attr('src', images[slide+1])
+                $("img").fadeIn(1200)
+                slide++;
+            }
+        };
+        
+        var prevButton = function() {
+            if (slide != 0) {
+                $("img").hide()
+                $("img").attr('src', images[slide-1])
+                $("img").fadeIn(1200)
+                slide--;
+            }
+        };
+    
+        $('div #next').on('click', function() {
+            nextButton();
+        })
+        
+        $('div #prev').on('click', function() {
+            prevButton();
+        })
+        
+        initialSlide();
+    
+    </script> 
+    </div>
+  </body>
+</html>

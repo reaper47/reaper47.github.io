@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Project: Blog</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif, Verdana;
+    }
+    a {
+         text-decoration:none;
+         font-family: serif;
+    }
+    a:hover {
+         color:rgb(206, 67, 224);
+    }
+    table {
+        font-family: monospace;
+        line-height: 2.0em;
+    }
+    th, td {
+        text-align: center;
+        background-color:#e0e9f0;
+    }
+    .center {
+        text-align: center;
+    }
+    h1 {
+        text-decoration: underline;
+    }
+    .end {
+        font-size: 0.9em;
+        font-style: italic;
+    }
+    .caption {
+        font-family: serif;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1 class="center">Agent46's blog</h1>
+
+  <h3 class="center">Contents</h3>
+  <ul class="center">
+    <li><a href="#first">Programming Languages</a></li>
+    <li><a href="#second">Beautiful Songs</a></li>
+  </ul>
+
+  <h2 id="first" class="center">Programming Languages</h2>
+  <h6 class="center date">16 December 2015</h6>
+
+  <p>
+    Programming is beautiful. Indeed, we humans are able to solve a bunch 
+    of problems to make our lives simpler and easier. It even saves lives as
+    the world of medecine depends, to a certain extent, on the use of technology
+    to treat patients, and to detect
+    possible diseases and malfunctions. What are those technological 
+    tools based on? Code. What is code? Generally combinations of ASCII
+    alphabetical letters. What are ASCII letters? Letters represented by 
+    bits. What are bits?Zeroes and ones working flawlessly
+    together, perfectly in synchronization, to get special stuff done. 
+    Hence, programming gets a job done. And it's a canon skillset.
+  </p>
+  <p class="center">Programming languages are divided into three categories:</p>
+  <ul class="center">
+    <li>Low-level</li>
+    <li>High-level</li>
+    <li>Very high-level
+  </ul>
+  <p>
+    The latter being said, let's get down to business. 
+    Since the beginning of the digital age, numerous programming 
+    languages have been developed as to solve problems. 
+    This beginning of a new era saw it's roots back in 1949 with the creation of assembly.
+  </p>
+  <p>
+    Low-level programming languages, as defined by Wikipedia,
+    provide little or no abstraction from a computer's instruction
+    set architecture—commands or functions in the language map closely
+    to processor instructions. Generally this refers to either machine
+    code or assembly language. The word "low" refers to the small
+    or nonexistent amount of abstraction between the language and
+    machine language; because of this, low-level languages are sometimes 
+    described as being "close to the hardware." Because of
+    the close relationship between the language and the hardware architecture 
+    programs written in low-level languages tend to be relatively non-portable.
+    If you want to learn on the subject, head over
+    <a href="https://en.wikipedia.org/wiki/Assembly_language"> here</a>.
+    In other words, low-level programming languages such as Assembly provide 
+    the fastest programs at a cost of being harder and longer to write.
+  </p>
+  <p>
+    The following figure shows a sample of how the assembly
+    language looks like. It's actually a Motorola MC6800 Assembly
+    listing which shows original assembly language and the assembled
+    form. Does it look like the JavaScript we've been learning through Khan
+    Academy? I bet you not!
+  </p>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Motorola_6800_Assembly_Language.png" width="700" height="700" />
+  <p>
+    Not really love at first sight, eh? Below is another 
+    program written in Assembly that outputs not a Motorola 
+    protocol, but a simple "Hello, World" program. Enjoy!
+  </p>
+  <table>
+    <tbody>
+      <tr>
+        <td>section</td>
+        <td>.text</td>
+      </tr>
+      <tr>
+        <td>global</td>
+        <td>_start</td>
+      </tr>
+      <tr>
+        <td>_start:</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>mov</td>
+        <td>edx,len</td>
+      </tr>
+      <tr>
+        <td>mov</td>
+        <td>ecx,msg</td>
+      </tr>
+      <tr>
+        <td>mov</td>
+        <td>ebx,1</td>
+      </tr>
+      <tr>
+        <td>mov</td>
+        <td>eax,4</td>
+      </tr>
+      <tr>
+        <td>int</td>
+        <td>0x80</td>
+      </tr>
+      <tr>
+        <td>mov</td>
+        <td>eax,1</td>
+      </tr>
+      <tr>
+        <td>int</td>
+        <td>0x80</td>
+      </tr>
+      <tr>
+        <td>-------</td>
+        <td>-------</td>
+      </tr>
+      <tr>
+        <td>section</td>
+        <td>.data</td>
+      </tr>
+      <tr>
+        <td>msg</td>
+        <td>db 'Hello, world!',0xa</td>
+      </tr>
+      <tr>
+        <td>len</td>
+        <td>equ $ - msg</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    This program is the fastest way for a computer to 
+    output "Hello, world!" Now, let's stop fiddling around,
+    and move on to high-level programming language!
+  </p>
+  <p>
+    A high-level programming language is one that offers 
+    a certain level of abstraction.
+    <a href="https://en.wikipedia.org/wiki/High-level_programming_language">Wikipedia</a> 
+    defines such concept as a programming language with strong 
+    abstraction from the details of the computer. In comparison to
+    low-level programming languages, it may
+    use natural language elements, be easier to use, or may automate 
+    (or even hide entirely) significant areas of computing systems 
+    (e.g. memory management), making the process of developing a program 
+    simpler and more understandable relative to a lower-level
+    language. The amount of abstraction provided defines how "high-level"
+    a programming language is. "High-level language" refers to the higher 
+    level of abstraction from machine language. Rather than dealing with 
+    registers, memory addresses and call stacks,
+    high-level languages deal with variables, arrays, objects, complex arithmetic
+    or boolean expressions, subroutines and functions, loops, threads, locks, 
+    and other abstract computer science concepts, with a focus on usability over
+    optimal program efficiency.
+    Unlike low-level assembly languages, high-level languages have few, if any,
+    language elements that translate directly into a machine's native opcodes. 
+    Other features, such as string handling routines, object-oriented language 
+    features, and file input/output,
+    may also be present.
+  </p>
+  <p>
+    Hence, a high-level programming language requires a compiler or an
+    interpreter that is responsable in translating the written code to 
+    machine code, being zeroes and ones. Examples include C, C++, C#, 
+    Python, Ruby, Java, JavaScript, Lisp, Fortran, etc.
+  </p>
+  <p>
+    Finally, very high-level programming languages is a programming 
+    language with a very high level of abstraction.
+    <a href="https://en.wikipedia.org/wiki/Very_high-level_programming_language">
+     Wikipedia</a> adds that Very high-level programming languages are 
+     usually domain-specific languages, limited to a very specific 
+     application, purpose, or type of task, and often scripting 
+     languages (especially extension languages), controlling
+    a specific environment. For this reason, very high-level programming 
+    languages are often referred to as goal-oriented programming languages.
+    It also adds that the term VHLL [very high-level programming language] 
+    was used in the 1990s for what are
+    today more often called high-level languages (not "very") used 
+    for scripting, such as Perl, Python, Ruby, and Visual Basic.
+  </p>
+
+  <p class="center end">********************************************************************************************************************************************
+    <br>And this ends Agent46's first crash course on some programming languages stuff blog post!
+    <br>********************************************************************************************************************************************</p>
+
+  <h2 id="second" class="center">Beautiful Songs</h2>
+  <h6 class="center date">16 December 2015 \\ Updated: 02 February 2016</h6>
+  <h4>There is no doubt music is part of us</h4>
+  <p>
+    Music has the power kick start the steam engine for hours before 
+    falling back to offline mode; it gives us the energy to motivate 
+    us in completing tasks. There is a saying that states magic does 
+    not exist, but this cannot hold true when <em>good</em> music plays!
+    Yes, music is a rather touchy, and subjective subject, but every
+    human being on this Earth likes a particular genre of music. A genre 
+    that fuels their blood and soul.
+  </p>
+  <p>
+    Now, enough of this chatter, and let's get down to business! 
+    The goal of this blog post is to showcase a not one, but <em>six</em> 
+    songs I personally really like. Perhaps you will like them, perhaps not. 
+    Anyway, here it comes!
+  </p>
+  <h4>Six Great Songs</h4>
+  <ol>
+    <li>
+      <a href="https://www.youtube.com/watch?v=ndAOIKzI_A8">
+            Children of Bodom: A Symphony Tribute</a>
+    </li>
+    <p class="caption">
+      This first one is a, as the title implies, a symphonic tribute 
+      to the finnish melodic death metal band: <strong>Children of Bodom</strong>. 
+      Formed in 1993, these finnish metallers are 
+      widely known worldwide for their state-of-art creative music, 
+      musicianship, and jaw-dropping guitar and keyboard solos. 
+      This tribute proves how <em>great</em> their work translates
+      to classical music. Go on, give it a spin!
+    </p>
+    <li>
+      <a href="https://www.youtube.com/watch?v=Vs5727QFhtw">
+              Wintersun - Battle Against Time
+           </a>
+    </li>
+    <p class="caption">
+      Wintersun is truly a <em>magnificent</em> 
+      finnish band. It all started out in 2003 with 
+      Jari Mäenpää after being fired from Ensiferum. 
+      Originally, Wintersun was a one-man band; the debut
+      album was crafted by this master mind while later albums featured
+      a band of four. Wintersun is considered as epic metal, 
+      combining mind-crushing melodies, proficient guitar playing, 
+      beautiful keyboard melodies, and fast drums. Give them a listen, you will not regret it!
+
+    </p>
+    <li>
+      <a href="https://www.youtube.com/watch?v=_1lXdLus2WI">
+               Eluveitie - A Rose for Epona
+           </a>
+    </li>
+    <p class="caption">The Swiss folk metal band <strong>Eluveitie</strong> 
+    was formed in 2002. Their music features the use of traditional instruments 
+    along with a mix of harsh & clean vocals as well as guitars. One instrument 
+    they use many have never heard of is the hurdy-gurdy.
+    </p>
+    <li>
+      <a href="https://www.youtube.com/watch?v=SZMWKCgvaDY">
+               Insomnium - One For Sorrow
+           </a>
+    </li>
+    <p class="caption">Insomnium is a legendary melodic 
+    death metal band from Finland that play dark songs filled 
+    with sorrow. The guitars are tuned at a couple steps below 
+    standard tuning to achieve this darkness. Also, one can relate 
+    directly to their lyrics. Enjoy the darkness!
+    </p>
+    <li>
+      <a href="https://www.youtube.com/watch?v=3aYiiGd3PZc">
+               E.S. Posthumus - Unstoppable
+           </a>
+    </li>
+    <p class="caption">
+        Prepare for the ultimate 
+        productivity-enhancement power song! 
+        Anonymous sure love it.
+    </p>
+    <li>
+      <a href="https://www.youtube.com/watch?v=YwJqUbd1vzs">
+               Syd Matters - To All Of You
+           </a>
+    </li>
+    <p class="caption">
+        I discovered this song while
+        playing <em>Life Is Strange</em>.
+        I fell in love with it, and
+        I'm convinced you will too! It is
+        a perfect song to boost your motivation.
+        Also, the lyrics are beautiful.
+        
+    </p>
+  </ol>
+  <p class="center end">********************************************************************************************************************************************
+    <br>And this ends Agent46's second blog!
+    <br>********************************************************************************************************************************************</p>
+</body>
+
+</html>

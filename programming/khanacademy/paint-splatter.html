@@ -1,0 +1,389 @@
+<html>
+  <head>
+    <title>Project: Paint Splatter</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='../../css/khanacademy.css' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="../../js/processingJS/processing.min.js"></script>
+  </head>
+  <body>
+    <div class="container-khanacademy">
+      <div class="container-text">
+        <h2>Paint Splatter</h2>
+        <p>The goal of this project was to create a paint splatter simulation. 
+        I thus decided to create one such with adjustable parameters. Those 
+        include the standard deviation from the mouse pointer, the mean, the 
+        size of the paint balls, the alpha channel, and three rgb color 
+        sliders. Simply adjust your parameters, and start clicking or dragging!
+        To restart the simulation, refesh the page.</p>
+      </div>
+      <div class="container-program">
+        <canvas id="canvas" 
+                style="background-color: white; 
+                       border: 2px solid green; 
+                       border-radius: 5px">
+        </canvas>
+        <!-- Credits to Robert Tupelo-Schneck for this processingJS template -->
+        <script>
+          var canvas = document.getElementById("canvas");
+          var processing = new Processing(canvas, function(processing) {
+              processing.size(400, 400);
+              processing.background(0xFFF);
+
+              var mouseIsPressed = false;
+              processing.mousePressed = function () { mouseIsPressed = true; };
+              processing.mouseReleased = function () { mouseIsPressed = false; };
+
+              var keyIsPressed = false;
+              processing.keyPressed = function () { keyIsPressed = true; };
+              processing.keyReleased = function () { keyIsPressed = false; };
+
+              function getImage(s) {
+                  var url = "https://www.kasandbox.org/programming-images/" + s + ".png";
+                  processing.externals.sketch.imageCache.add(url);
+                  return processing.loadImage(url);
+              }
+
+              // use degrees rather than radians in rotate function
+              var rotateFn = processing.rotate;
+              processing.rotate = function (angle) {
+                  rotateFn(processing.radians(angle));
+              };
+
+              with (processing) {
+               /*****************************************
+                 * This programs splatters paint on the
+                 * screen after a mouse click. The user
+                 * chooses a color using the sliders then 
+                 * clicks on the canvas to paint.
+                 * The splatter follows a Gaussian 
+                 * distribution.
+                 * 
+                 * std is short for standard deviation
+                ******************************************/
+
+                /*************************************************
+                 * Create the objects used throughout the program
+                **************************************************/
+                // The line object
+                var Line = function(config) {
+                    this.x = config.x || 0;
+                    this.y = config.y || 0;
+                    this.width = config.width || 20;
+                    this.height = config.height || 5;
+                    this.min = config.min || 0;
+                    this.current_value = config.current_value || min;
+                    this.max = config.max || 255;
+                    this.Color = config.Color || (82, 76, 76);
+                    this.val = config.val || 128;
+                };
+
+                // The circle slider object
+                var Circle = function(config) {
+                    this.x = config.x || 0;
+                    this.y = config.y || 0;
+                    this.size = config.size || 10;
+                    this.Color = config.Color || color(119, 255, 0);
+                };
+
+                // The color-preview box object
+                var Preview = function(config) {
+                    this.x = config.x || 0;
+                    this.y = config.y || 0;
+                    this.width = config.width || 20;
+                    this.height = config.height || 20;
+                    this.radius = config.radius || 0;
+                };
+
+                /************************************************
+                 * Establish position constraints to the objects
+                *************************************************/
+                Line.prototype.isMouseInside = function(x, y) {
+                    return (x >= this.x) && 
+                           (x <= this.x + this.width) &&
+                           (y >= this.y) &&
+                           (y <= this.y + this.height);
+                };
+
+                /*******************************************
+                 * Establish a draw methods for the objects
+                ********************************************/
+                // This method calculates a number between 0 and 255
+                Line.prototype.value = function(value) {
+                    this.min = this.x / this.width;
+                    this.max = (this.x + this.width) / this.width;
+                    this.current_value = mouseX / ((this.x + this.width) - this.x);
+                    this.val = ((this.current_value - this.min) / (this.max - this.min)) * value;
+                };
+
+                Line.prototype.draw = function() {
+                    fill(this.Color);
+                    rect(this.x, this.y, this.width, this.height, 20);
+                };
+
+                Circle.prototype.draw = function() {
+                    fill(this.Color);
+                    ellipse(this.x, this.y, this.size, this.size);
+                };
+
+                Preview.prototype.draw = function(color1, color2, color3, alpha) {
+                    fill(color1, color2, color3, alpha);
+                    rect(this.x, this.y, this.width, this.height, this.radius);
+                };
+
+                /***********************************************
+                 * Create arrays that hold rgb circle and line
+                 * objects used for the sliders. After each 
+                 * array are the instances of the rgb shapes.
+                ************************************************/
+                var sliders = [
+                    {
+                        x: 310,
+                        y: 10,
+                        width: 72,
+                        height: 5,
+                    },
+                    {
+                        x: 310,
+                        y: 30,
+                        width: 72,
+                        height: 5,
+                    },
+                    {
+                        x: 310,
+                        y: 50,
+                        width: 72,
+                        height: 5,
+                    },
+                    {
+                        x: 70,
+                        y: 10,
+                        width: 72,
+                        height: 5,
+                        val: 25
+                    },
+                    {
+                        x: 70,
+                        y: 30,
+                        width: 72,
+                        height: 5,
+                        val: 50
+                    },
+                    {
+                        x: 160, 
+                        y: 30,
+                        width: 72,
+                        height: 5,
+                        val: 128
+                    },
+                    {
+                        x: 70, 
+                        y: 50,
+                        width: 72,
+                        height: 5,
+                        val: 25
+                    }];
+
+                var sliderObjects = [];
+                for (var i = 0; i < sliders.length; i++) {
+                    sliderObjects.push(new Line(sliders[i]));
+                }
+                  
+                var sliderCircles = [
+                    {
+                        x: (sliderObjects[0].x + (sliderObjects[0].x + sliderObjects[0].width))/2,
+                        y: sliderObjects[0].y+2,
+                        size: 15,
+                        Color: color(sliderObjects[0].max, 0, 0)
+                    },
+                    {
+                        x: (sliderObjects[1].x + (sliderObjects[1].x + sliderObjects[1].width))/2,
+                        y: sliderObjects[1].y+2,
+                        size: 15,
+                        Color: color(0, sliderObjects[1].max, 0)
+                    },
+                    {
+                        x: (sliderObjects[2].x + (sliderObjects[2].x + sliderObjects[2].width))/2,
+                        y: sliderObjects[2].y+2,
+                        size: 15,
+                        Color: color(0, 0, sliderObjects[2].max)
+                    },
+                    {
+                        x: (sliderObjects[3].x + (sliderObjects[3].x + sliderObjects[3].width))/2,
+                        y: sliderObjects[3].y+2,
+                        size: 15,
+                        Color: color(0, 0, 0)
+                    },
+                    {
+                        x: (sliderObjects[4].x + (sliderObjects[4].x + sliderObjects[4].width))/2,
+                        y: sliderObjects[4].y+2,
+                        size: 15,
+                        Color: color(0, 0, 0)
+                    },
+                    {
+                        x: (sliderObjects[5].x + (sliderObjects[5].x + sliderObjects[5].width))/2,
+                        y: sliderObjects[5].y+2,
+                        size: 15,
+                        Color: color(0, 0, 0)
+                    },
+                    {
+                        x: (sliderObjects[6].x + (sliderObjects[6].x + sliderObjects[6].width))/2,
+                        y: sliderObjects[6].y+2,
+                        size: 15,
+                        Color: color(0, 0, 0)
+                    }];
+
+                var circleObjects = [];
+                for (var i = 0; i < sliderCircles.length; i++) {
+                    circleObjects.push(new Circle(sliderCircles[i]));
+                }
+
+                var preview = new Preview(
+                    {
+                        x: 250,
+                        y: 10,
+                        width: 50,
+                        height: 50,
+                        radius: 20
+                    });
+
+                var illusion = new Preview(
+                    {
+                        x: -5,
+                        y: -5,
+                        width: 410,
+                        height: 75,
+                    });
+                    
+                /**************************************************
+                 * Defining functions that will save time later on 
+                ***************************************************/
+                // This function draws the slider object parts efficiently
+                var drawDragObjects = function() {
+                    illusion.draw();
+                    noStroke();
+                    for (var i = 0; i < sliderObjects.length; i++) {
+                        sliderObjects[i].draw();
+                        circleObjects[i].draw();
+                        if (i === 3) {
+                            text("std: " + round(sliderObjects[i].val), sliderObjects[i].x - 60,
+                                  sliderObjects[i].y + 7);
+                        } else if (i === 4) {
+                            text("mean: " + round(sliderObjects[i].val), sliderObjects[i].x - 67,
+                                  sliderObjects[i].y + 7);
+                        } else if (i === 5) {
+                            text("alpha: " + round(sliderObjects[i].val), sliderObjects[i].x + 2,
+                                  sliderObjects[i].y - 9);
+                        } else if (i === 6) {
+                            text("size: " + round(sliderObjects[i].val), sliderObjects[i].x - 60,
+                                  sliderObjects[i].y + 7);
+                        } 
+                    }
+                    preview.draw(sliderObjects[0].val,
+                                 sliderObjects[1].val, 
+                                 sliderObjects[2].val,
+                                 sliderObjects[5].val);
+                };
+
+                // Function that checks which slider object is being played with
+                var  checkSlider = function() {
+                    for (var i = 0; i < sliderObjects.length; i++) {
+                        if (sliderObjects[i].isMouseInside(mouseX, mouseY) && (i < 3 || i === 5)) {
+                            circleObjects[i].x = mouseX;
+                            drawDragObjects();
+                            sliderObjects[i].value(255);
+                        } else if (sliderObjects[i].isMouseInside(mouseX, mouseY) && (i === 3 || i === 6)) {
+                            circleObjects[i].x = mouseX;
+                            drawDragObjects();
+                            sliderObjects[i].value(50);     
+                        } else if (sliderObjects[i].isMouseInside(mouseX, mouseY) && i === 4){
+                            circleObjects[i].x = mouseX;
+                            drawDragObjects();
+                            sliderObjects[i].value(100);  
+                        }
+                    }
+                };
+
+                // This function checks whether or not the mouse is 
+                // positioned inside the illusionary rectangle
+                var checkIllusion = function() {
+                    if (mouseY < illusion.height) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                };
+
+                /******************************************************
+                 * Write the code related to the normal distribution * 
+                *******************************************************/
+                
+                /* This function was written to make the new Random(1) work */
+                function Random(n) {
+                    this.n = n;
+                }
+
+                var generator = new Random(1);
+
+                /* generator.nextGaussian() was replaced to Math.random()
+                   as the former function does not work. Hence, the randomness 
+                   does not follow a pure normal distribution. Head over to  
+                   https://www.khanacademy.org/computer-programming/spin-off-of-project-paint-splatter/5476749265207296 for the correct version. */
+                var normalDist = function() {
+                    var genArray = [];
+                    var stdMean = [];
+                    var std = sliderObjects[3].val;
+                    var mean = sliderObjects[4].val;
+                    
+                    // Push a bunch of Gaussian numbers inside an array
+                    for (var i = 0; i < 10; i++) {
+                        genArray.push(Math.random());
+                    }
+                    
+                    // Store a bunch of standard deviation + the mean inside an array
+                    for (var i = 0; i < genArray.length; i++) {
+                        stdMean.push(std * genArray[i] + mean);
+                    }
+                    
+                    // The color of the spheres depend on the user
+                    fill(sliderObjects[0].val, sliderObjects[1].val, sliderObjects[2].val,
+                         sliderObjects[5].val);
+                    
+                    for (var i = 0; i < stdMean.length; i++) {
+                        var size = random(1, sliderObjects[6].val);
+                    
+                        // This boolean is used to determine the position of the ellipse
+                        var bool = floor(random(2));
+                        
+                        // Draw the ellipses around the mouse cursor
+                        if (bool === 0 && (mouseY + stdMean[i]) > illusion.height && checkIllusion() === false) {
+                            ellipse(mouseX - stdMean[i], mouseY + stdMean[i], size, size);
+                        } else if (bool === 1 && (mouseY + stdMean[i]) > illusion.height && checkIllusion() === false) {
+                            ellipse(mouseX + stdMean[i], mouseY + stdMean[i], size, size);
+                        }
+                    }
+                };
+
+                /*************************
+                 * Program initialization
+                **************************/
+                drawDragObjects();
+                mouseDragged = function() {
+                    normalDist();
+                    checkSlider();
+                };
+
+                mouseClicked = function() {
+                    normalDist();
+                    checkSlider();
+                };
+
+              }
+              if (typeof draw !== 'undefined') processing.draw = draw;
+          });
+        </script>
+      </div>
+    </div>
+  </body>
+</html>

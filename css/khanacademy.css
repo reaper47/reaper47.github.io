@@ -21,3 +21,31 @@ body {
   margin-top: 1rem;
   outline: 0;
 }
+
+/*******************
+ * External Links * 
+********************/
+a {
+  outline: 0;
+  text-decoration: none;
+}
+
+a:link {
+  color: #c26767;
+}
+
+a:visited {
+  color: #c49c6b;
+}
+
+a:hover {
+  color: #6a8fc2;
+}
+
+a:active {
+  color: #67bd96;
+}
+
+a:focus {
+  color: #bbc26a;
+}

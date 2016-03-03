@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Project: Make it Rain</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='../../css/khanacademy.css' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="../../js/processingJS/processing.min.js"></script>
+  </head>
+  <body>
+    <div class="container-khanacademy">
+      <div class="container-text">
+        <h2>Make it Rain</h2>
+        <p>The goal of this project was to make an animation of rain drops 
+        falling down to the ground. Every rain drop is stored inside an array
+        and looped continuously. More rain drops can be added to the canvas
+        by cliking anywhere on it. To restart the animation, refresh the page.</p>
+      </div>
+      <div class="container-program">
+        <canvas id="canvas"></canvas>
+        <!-- Credits to Robert Tupelo-Schneck for this processingJS template -->
+        <script>
+          var canvas = document.getElementById("canvas");
+          var processing = new Processing(canvas, function(processing) {
+              processing.size(400, 400);
+              processing.background(0xFFF);
+
+              var mouseIsPressed = false;
+              processing.mousePressed = function () { mouseIsPressed = true; };
+              processing.mouseReleased = function () { mouseIsPressed = false; };
+
+              var keyIsPressed = false;
+              processing.keyPressed = function () { keyIsPressed = true; };
+              processing.keyReleased = function () { keyIsPressed = false; };
+
+              function getImage(s) {
+                  var url = "https://www.kasandbox.org/programming-images/" + s + ".png";
+                  processing.externals.sketch.imageCache.add(url);
+                  return processing.loadImage(url);
+              }
+
+              // use degrees rather than radians in rotate function
+              var rotateFn = processing.rotate;
+              processing.rotate = function (angle) {
+                  rotateFn(processing.radians(angle));
+              };
+
+              with (processing) {
+                // Store x and y coordinates of
+                // the intial rain drop array.
+                var xPositions = [];
+                var yPositions = [];
+
+                // Variables used to store random colors
+                var randRed = [];
+                var randGreen = [];
+                var randBlue = [];
+
+                // Add inital raindrops to the x and
+                // y matrices by looping 25 times
+                // over random numbers. 
+                var randXY = function() {
+                    for (var i = 0; i < 25; i++) {
+                        xPositions.push(random(0, 400));
+                        yPositions.push(random(-400, 0));
+                    }
+                };
+
+                // Function that generates an array of random colors
+                var randColor = function() {
+                    for (var i = 0; i < 25; i++) {
+                        randRed.push(random(0, 255));
+                        randGreen.push(random(0, 255));
+                        randBlue.push(random(0, 255));
+                    }
+                };
+
+                // Draw and animate the rain drops
+                draw = function() {
+                    background(20, 50, 100);
+
+                    for (var i = 0; i < xPositions.length; i++) {
+                        noStroke();
+                        fill(randRed[i], randGreen[i], randBlue[i]);
+                        ellipse(xPositions[i], yPositions[i], 10, 10);
+                        yPositions[i] += 3;
+                        
+                        // When the rain drop hits the grass,
+                        // bring it back up. 
+                        if (yPositions[i] > 370) {
+                            yPositions[i] = -190;
+                            yPositions[i] += 3;
+                        }
+                    }
+                    
+                    // Draw a row of grass in the foreground
+                    var grassW = 66;
+                    var grassH = 75;
+                    var grassY = 350; 
+
+                    for (var i=0; i < 8; i++) {
+                        var grassX = -22 + (i * 64);
+                        fill (15, 6, 61);
+                        image(getImage("cute/GrassBlock"), grassX, grassY, grassW, grassH);
+                }
+                };
+
+                // Mouse click function that adds a rain drop on click
+                var mouseClicked = function() {
+                    xPositions.push(mouseX);
+                    yPositions.push(mouseY);
+                    randColor();
+                };
+
+                // Call the random functions to generate 
+                // an array of random numbersand colors
+                randColor();
+                randXY();  
+              }
+              if (typeof draw !== 'undefined') processing.draw = draw;
+          });
+        </script>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Project: Bookshelf</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='../../css/khanacademy.css' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="../../js/processingJS/processing.min.js"></script>
+  </head>
+  <body>
+    <div class="container-khanacademy">
+      <div class="container-text">
+        <h2>Bookshelf</h2>
+        <p>The goal of this project was to store books in an array of objects.
+        Every book has three object properties being title, author, and the
+        number of stars. Those objects were then drawn to a bookshelf. Every
+        time the page is refreshed, a new set of random colors are assigned to
+        the books.</p>
+      </div>
+      <div class="container-program">
+        <canvas id="canvas"></canvas>
+        <!-- Credits to Robert Tupelo-Schneck for this processingJS template -->
+        <script>
+          var canvas = document.getElementById("canvas");
+          var processing = new Processing(canvas, function(processing) {
+              processing.size(400, 400);
+              processing.background(0xFFF);
+
+              var mouseIsPressed = false;
+              processing.mousePressed = function () { mouseIsPressed = true; };
+              processing.mouseReleased = function () { mouseIsPressed = false; };
+
+              var keyIsPressed = false;
+              processing.keyPressed = function () { keyIsPressed = true; };
+              processing.keyReleased = function () { keyIsPressed = false; };
+
+              function getImage(s) {
+                  var url = "https://www.kasandbox.org/programming-images/" + s + ".png";
+                  processing.externals.sketch.imageCache.add(url);
+                  return processing.loadImage(url);
+              }
+
+              // use degrees rather than radians in rotate function
+              var rotateFn = processing.rotate;
+              processing.rotate = function (angle) {
+                  rotateFn(processing.radians(angle));
+              };
+
+              with (processing) {
+                // Store multiple books in an object
+                var books = [
+                    {
+                        title: "The Giver",
+                        author: "Lois Lowry",
+                        stars: 4
+                    }, 
+                    {
+                        title: "1984",
+                        author: "George Orwell",
+                        stars: 5
+                    },
+                    {
+                        title: "The Bible",
+                        author: "Various authors",
+                        stars: 4
+                    },
+                    {
+                        title: "Catch-22",
+                        author: "Joseph Heller",
+                        stars: 3
+                    },
+                    {
+                        title: "Lord of the Flies",
+                        author: "William Golding",
+                        stars: 4
+                    },
+                    {
+                        title: "The Hobbit",
+                        author: "J. R. R. Tolkien",
+                        stars: 4
+                    },
+                    {
+                        title: "The Lord of the Rings",
+                        author: "J. R. R. Tolkien",
+                        stars: 5
+                    },
+                    {
+                        title: "Mein Kampf",
+                        author: "Adolf Hitler",
+                        stars: 5
+                    },
+                    {
+                        title: "The Brothers Karamazov",
+                        author: "Fyodor \nDostoevsky",
+                        stars: 5
+                    },
+                    {
+                        title: "Fahrenheit 451",
+                        author: "Ray Bradbury",
+                        stars: 4
+                    },
+                    {
+                        title: "Flowers For Algernon",
+                        author: "Daniel Keyes",
+                        stars: 3
+                    },
+                    {
+                        title: "The Selfish Gene",
+                        author: "Richard Dawkins",
+                        stars: 3
+                    },
+                    {
+                        title: "Everybody Poops",
+                        author: "Tarō Gomi",
+                        stars: 5
+                    },
+                ];
+
+                // Draw a nice background wall
+                for (var i = 0; i < 10; i++) {
+                    for (var j = 0; j < 10; j++) {
+                        image(getImage("cute/ShadowNorth"), 40*i, -7 + j*39, 40, 113);
+                    }
+                }
+
+                // Draw the shelves
+                var shelfY = 160;
+                for (var i = 0; i < 5; i++) {
+                    if (400 % i === 0) {
+                        fill(173, 117, 33);
+                        rect(0, shelfY*i, width, 10);
+                    }
+                }
+
+                var rectW = 90;
+                var rectH = 100;
+                var booksOnShelf = shelfY * (1/4);
+
+                // This function yields a random color on call
+                var randomColor = function() {
+                    var randRed = random(0, 255);
+                    var randGreen = random(0, 255);
+                    var randBlue = random(0, 255);
+                    fill(randRed, randGreen, randBlue);
+                };
+
+                // This function draws books on the shelf
+                var drawBooks = function() {
+                    // These variables will help position the text on the books
+                    var rectX = 10;
+                    var rectY = 20;
+
+                    for (var i = 0; i < books.length; i++) {
+                        // Draw the book cover
+                        randomColor();
+                        rect(3 + rectX, (shelfY*1/4) + rectY, rectW, rectH);
+                        
+                        // Draw the binding
+                        randomColor();
+                        rect(0 + rectX, booksOnShelf + rectY, rectW * (1/33), rectH);
+                        
+                        // Display the text
+                        var titlePos = booksOnShelf + (rectY + 8); 
+                        var authorPos = booksOnShelf + (rectY + 8);
+                        var starPos = booksOnShelf + (rectY+67);
+                        fill(0, 0, 0);
+                        textSize(11);
+                        text(books[i].title, rectX + 5, titlePos+0, rectW - 20, rectH);
+                        textSize(10);
+                        text(books[i].author, rectX + 6, authorPos+40, rectW - 20, rectH);
+                    
+                        // Draw the stars according to the rating
+                        for (var j = 0; j < books[i].stars; j++) {
+                            image(getImage("cute/Star"), (rectX + 5) + (j * 15), 
+                                  starPos, rectW*(1/5), rectW/3);
+                        }
+                        
+                        // Modify the position of the book after each iteration
+                        rectX += 61;
+                        
+                        // If the x position becomes greater than 400 px
+                        // Move the books down one shelf
+                        if (rectX > 400) {
+                            rectX = 10;
+                            // The third row goes off-canvas as the 
+                            //book shelf is greater than 400px tall
+                            rectY += 160;
+                        }
+                    }
+                };
+
+                drawBooks(); 
+              }
+              if (typeof draw !== 'undefined') processing.draw = draw;
+          });
+        </script>
+      </div>
+    </div>
+  </body>
+</html>
