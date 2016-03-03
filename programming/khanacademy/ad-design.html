@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Project: Ad Design</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='../../css/khanacademy.css' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="../../js/processingJS/processing.min.js"></script>
+  </head>
+  <body>
+    <div class="container-khanacademy">
+      <div class="container-text">
+        <h2>Ad Design</h2>
+        <p>The goal of this project was to design an advertisement for a 
+        fictional or real product using text stored in variables. 
+        To play the animation once again, refesh the page.</p>
+      </div>
+      <div class="container-program">
+        <canvas id="canvas"></canvas>
+        <!-- Credits to Robert Tupelo-Schneck for this processingJS template -->
+        <script>
+          var canvas = document.getElementById("canvas");
+          var processing = new Processing(canvas, function(processing) {
+              processing.size(400, 400);
+              processing.background(0xFFF);
+
+              var mouseIsPressed = false;
+              processing.mousePressed = function () { mouseIsPressed = true; };
+              processing.mouseReleased = function () { mouseIsPressed = false; };
+
+              var keyIsPressed = false;
+              processing.keyPressed = function () { keyIsPressed = true; };
+              processing.keyReleased = function () { keyIsPressed = false; };
+
+              function getImage(s) {
+                  var url = "https://www.kasandbox.org/programming-images/" + s + ".png";
+                  processing.externals.sketch.imageCache.add(url);
+                  return processing.loadImage(url);
+              }
+
+              // use degrees rather than radians in rotate function
+              var rotateFn = processing.rotate;
+              processing.rotate = function (angle) {
+                  rotateFn(processing.radians(angle));
+              };
+
+              with (processing) {
+                // Text variables storing the strings.
+                var productName = "ATARI 3500";
+                var benefitOne = "CAPTURE THE LATEST POKEMON \n        IN POKEMANIA DIAMOND!";
+                var benefitTwo = "EQUIPPED WITH TECHNOLOGY \n          FROM THE FUTURE!";
+                var benefitThree = "BUY A CONSOLE NOW!!\n        ONLY 777 USD!";
+
+                // Text positioning variables
+                var x = 120;
+                var y = 60;
+
+                // Variables used to plot the ad's outline
+                var xBox = 0;
+                var yBox = 0;
+                var wBox = 15;
+                var hBox = 400;
+
+                // Variables used to plot the simple console
+                var xAtari = 50;
+                var yAtari = 352;
+                var wAtari = 40;
+                var hAtari = 15;
+
+                var xAtari2 = 260;
+                var yAtari2 = 352;
+                var wAtari2 = 40;
+                var hAtari2 = 15;
+
+                draw = function() {
+                    background(0, 0, 0);
+                    fill(255, 0, 0);
+                    textSize(y/2);
+                    text(productName, x, y);
+                    textSize(y/6);
+                    
+                    fill(217, 0, 217);
+                    text('--------------------------------------------------------------------------------------------------------------------', x/6, y+10);
+                    
+                    textSize(y/3);
+                    fill(0, 255, 0);
+                    text(benefitOne, x/4, y*2);
+                    fill(255, 200, 0);
+                    text(benefitTwo, x/3, y*3);
+                    fill(255, 50, 199);
+                    text(benefitThree, x*(2/3), y*4);
+                        
+                    // Plot the Atari 3500 controllers
+                    fill(0, 240, 68);
+                    rect(xAtari-90, yAtari, wAtari, hAtari);
+                    rect(xAtari2+147, yAtari2-30, wAtari2, hAtari2);
+                    fill(0, 0, 0);
+                    ellipse(xAtari-80, yAtari+8, wAtari-29, hAtari-5);
+                    ellipse(xAtari+-61, yAtari+8, wAtari-29, hAtari-5);
+                    
+                    ellipse(xAtari2+157, yAtari2-22, wAtari2-29, hAtari2-5);
+                    ellipse(xAtari2+176, yAtari2-22, wAtari2-29, hAtari2-5);
+                    
+                    // Plot the outline
+                    noStroke();
+                    fill(201, 100, 100);
+                    rect(xBox, yBox, wBox, hBox);
+                    rect(xBox+385, yBox, wBox, hBox);
+                    rect(xBox, yBox, hBox, wBox);
+                    rect(xBox, yBox+385, hBox, wBox);
+
+                    // Animate the Atari 3500 controllers
+                    xAtari += 1;
+                    xAtari2 -= 1;
+                };
+
+              }
+              if (typeof draw !== 'undefined') processing.draw = draw;
+          });
+        </script>
+      </div>
+    </div>
+  </body>
+</html>

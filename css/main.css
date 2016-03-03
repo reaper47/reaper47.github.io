@@ -12,13 +12,12 @@ body {
   color: #212121;
 }
 
-nav li a, header, footer, #footer-list a {
+nav li a, header, footer, #footer-list a, figcaption {
   color: #ecf0f1;
 }
 
 header, footer {
   background: #030b0c;
-  color: white;
   width: 100%;
   min-width: 716px;
 }
@@ -171,16 +170,48 @@ nav li a:focus, #footer-list li a:focus {
 .project-image {
   width: 10rem;
   height: 10rem;
-  border-radius: 33%;
+  border-radius: 50%;
 }
 
-figcaption {
-  background-color: rgba(255, 255, 255, 0.6);
-  border-radius: 33%;
-  width: 10rem;
+.program-container {
   text-align: center;
+  width: 700px;
+  margin: auto;
+  list-style-type: none;
 }
 
+ul.program-list li {
+  display: inline-block;
+  margin: 2rem 2rem 2rem 0;
+  position: relative;
+}
+
+ul.program-list figcaption {
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  position: absolute;
+  height: 10rem;
+  width: 10rem;
+  top: 0;
+  left: 0;
+  font-size: 1.2em;
+  cursor: pointer;
+  display: table;
+  opacity: 0;
+  -webkit-transition: opacity 500ms;
+  -moz-transition: opacity 500ms;
+  -o-transition: opacity 500ms;
+  transition: opacity 500ms;
+}
+
+ul.program-list figcaption p {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+ul.program-list li:hover figcaption {
+	opacity: 1;
+}
 /****************************************
  * Music slide parallax and properties *
 *****************************************/
@@ -216,13 +247,18 @@ cite::before {
   text-align: center;
   margin: auto;
   background-color: rgba(255, 255, 255, 0.6);
-  border-radius: 27%;
+  border-radius: 40px;
   margin-top: 3rem;
+  padding: 2px;
 }
 
 .music-player-song {
   display: inline-block;
   padding: 2rem;
+}
+
+.music-player-song h4 {
+  border-radius: 25px;
 }
 
 #music-player {

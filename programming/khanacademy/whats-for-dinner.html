@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Project: What's for Dinner?</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='../../css/khanacademy.css' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="../../js/processingJS/processing.min.js"></script>
+  </head>
+  <body>
+    <div class="container-khanacademy">
+      <div class="container-text">
+        <h2>What's for Dinner?</h2>
+        <p>The first Khanacademy processingJS script I wrote. Although those 
+        food items do not really mix well for dinner, it's still a pretty cute 
+        processingJS drawing if you ask me.</p>
+      </div>
+      <div class="container-program">
+        <canvas id="canvas"></canvas>
+        <!-- Credits to Robert Tupelo-Schneck for this processingJS template -->
+        <script>
+          var canvas = document.getElementById("canvas");
+          var processing = new Processing(canvas, function(processing) {
+              processing.size(400, 400);
+              processing.background(0xFFF);
+
+              var mouseIsPressed = false;
+              processing.mousePressed = function () { mouseIsPressed = true; };
+              processing.mouseReleased = function () { mouseIsPressed = false; };
+
+              var keyIsPressed = false;
+              processing.keyPressed = function () { keyIsPressed = true; };
+              processing.keyReleased = function () { keyIsPressed = false; };
+
+              function getImage(s) {
+                  var url = "https://www.kasandbox.org/programming-images/" + s + ".png";
+                  processing.externals.sketch.imageCache.add(url);
+                  return processing.loadImage(url);
+              }
+
+              // use degrees rather than radians in rotate function
+              var rotateFn = processing.rotate;
+              processing.rotate = function (angle) {
+                  rotateFn(processing.radians(angle));
+              };
+
+              with (processing) {
+                  background(186, 145, 20); // wooden table
+
+                  fill(188, 193, 194);
+                  ellipse(200, 200, 350, 350); // plate
+
+                  fill(230, 225, 230);
+                  ellipse(200, 200, 300, 300); 
+
+                  fill(255, 0, 0);
+                  ellipse(137, 135, 61, 53); 
+
+                  fill(0, 0, 0);
+                  line(131, 94, 135, 110);
+
+                  // Plate decoration
+                  fill(32, 0, 240);
+                  // Northern hemisphere
+                  ellipse(198, 38, 19, 14);
+                  ellipse(245, 44, 19, 14);
+                  ellipse(282, 60, 19, 14);
+                  ellipse(151, 46, 19, 14);
+                  ellipse(109, 65, 19, 14);
+                  ellipse(313, 83, 19, 14);
+                  ellipse(337, 112, 19, 14);
+                  ellipse(83, 87, 19, 14);
+                  ellipse(64, 112, 19, 14);
+                  ellipse(350, 140, 19, 14);
+                  ellipse(359, 173, 19, 14);
+                  ellipse(47, 145, 19, 14);
+                  ellipse(39, 177, 19, 14);
+                  ellipse(361, 207, 19, 14);
+                  ellipse(83, 87, 19, 14);
+                  // Southern hemisphere
+                  ellipse(198, 363, 19, 14);
+                  ellipse(245, 354, 19, 14);
+                  ellipse(282, 338, 19, 14);
+                  ellipse(151, 354, 19, 14);
+                  ellipse(109, 334, 19, 14);
+                  ellipse(313, 316, 19, 14);
+                  ellipse(337, 286, 19, 14);
+                  ellipse(83, 312, 19, 14);
+                  ellipse(64, 288, 19, 14);
+                  ellipse(350, 263, 19, 14);
+                  ellipse(359, 237, 19, 14);
+                  ellipse(47, 255, 19, 14);
+                  ellipse(39, 225, 19, 14);
+                  ellipse(37, 201, 19, 14);
+
+                  // Pizza slice
+                  fill(230, 225, 225);
+                  triangle(208, 100, 304, 114, 235, 279);
+
+                  // Pepperoni slices
+                  fill(255, 0, 0);
+                  ellipse(229, 171, 10, 10);
+                  ellipse(260, 171, 10, 10);
+                  ellipse(240, 188, 10, 10);
+                  ellipse(246, 148, 10, 10);
+                  ellipse(242, 232, 10, 10);
+                  ellipse(260, 188, 10, 10);
+                  ellipse(247, 214, 10, 10);
+                  ellipse(269, 148, 10, 10);
+
+                  // Pizza Bread
+                  fill(204, 173, 47);
+                  beginShape();
+                  vertex(207, 100);
+                  vertex(305, 115);
+                  vertex(297, 132);
+                  vertex(211, 120);
+                  endShape();
+
+                  // Fish 
+                  fill(121, 205, 209);
+                  bezier(95, 283, 306, 95, 173, 422, 96, 206);
+
+                  // Fish eye
+                  strokeWeight(12);
+                  point(184, 242);
+              }
+              if (typeof draw !== 'undefined') processing.draw = draw;
+          });
+        </script>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Project: Fish Tank</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='../../css/khanacademy.css' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="../../js/processingJS/processing.min.js"></script>
+  </head>
+  <body>
+    <div class="container-khanacademy">
+      <div class="container-text">
+        <h2>Fish Tank</h2>
+        <p>The goal of this project was to draw fish in a fish tank. As a bonus,
+        the program was designed to be interactive with the mouse. Every fish and
+        pebble generated after a mouse click has random dimensions. To empty the
+        fish tank, refesh the page.</p>
+      </div>
+      <div class="container-program">
+        <canvas id="canvas"></canvas>
+        <!-- Credits to Robert Tupelo-Schneck for this processingJS template -->
+        <script>
+          var canvas = document.getElementById("canvas");
+          var processing = new Processing(canvas, function(processing) {
+              processing.size(400, 400);
+              processing.background(0xFFF);
+
+              var mouseIsPressed = false;
+              processing.mousePressed = function () { mouseIsPressed = true; };
+              processing.mouseReleased = function () { mouseIsPressed = false; };
+
+              var keyIsPressed = false;
+              processing.keyPressed = function () { keyIsPressed = true; };
+              processing.keyReleased = function () { keyIsPressed = false; };
+
+              function getImage(s) {
+                  var url = "https://www.kasandbox.org/programming-images/" + s + ".png";
+                  processing.externals.sketch.imageCache.add(url);
+                  return processing.loadImage(url);
+              }
+
+              // use degrees rather than radians in rotate function
+              var rotateFn = processing.rotate;
+              processing.rotate = function (angle) {
+                  rotateFn(processing.radians(angle));
+              };
+
+              with (processing) {
+                // Initial fish tank
+                background(89, 216, 255);
+                fill(0, 0, 0);
+                var mssg = "Right-click/left-click to add fish/pebbles in the tank!";
+                textSize(16);
+                text(mssg, 20, 20);
+                fill(0, 69, 1);
+                noStroke();
+                rect(0, 360, 400, 40);
+
+                // Draw the fish function
+                var drawFish = function(mouseX, mouseY) {
+                    noStroke();
+                    
+                    // Set random color variables
+                    var randRed = random(0, 255);
+                    var randGreen = random(0, 255);
+                    var randBlue = random(0, 255);
+                    var fishColor = fill(randRed, randGreen, randBlue);
+                    fill(randRed, randGreen, randBlue);
+                    
+                    // Create random fish parameter variables
+                    var length = random(15, 100);
+                    var height = random(10, 100);
+
+                    // Plot fish's body
+                    ellipse(mouseX, mouseY, length, height);
+                    
+                    // Plot the fish's tail
+                    var tailWidth = length/4;
+                    var tailHeight = height/2;
+                    triangle(mouseX-length/2, mouseY, mouseX-length/2-tailWidth, 
+                             mouseY-tailHeight, mouseX-length/2-tailWidth, mouseY+tailHeight);
+                             
+                    // Plot the fish's eye
+                    fill(33, 33, 33);
+                    ellipse(mouseX+length/4, mouseY, height/5, height/5);
+                };
+
+                var drawPebble = function(mouseX, mouseY) {
+                    // Pebble random dimensions
+                    var pebHeight = random(10, 30);
+                    stroke(0, 0, 0);
+                    strokeWeight(0.6);
+                    fill(227, 214, 214);
+                    
+                    // Draw the pebble
+                    if (mouseY > 350) {
+                        ellipse(mouseX, mouseY, pebHeight*3, pebHeight);
+                    }
+                };
+
+                // Create interactive function
+                mouseClicked = function() {
+                    if (mouseButton === LEFT) {
+                        drawFish(mouseX, mouseY);
+                    } else if (mouseButton === RIGHT) {
+                        drawPebble(mouseX, mouseY);
+                    }
+                };
+
+              }
+              if (typeof draw !== 'undefined') processing.draw = draw;
+          });
+        </script>
+      </div>
+    </div>
+  </body>
+</html>

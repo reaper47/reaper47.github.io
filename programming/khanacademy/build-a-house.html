@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Project: Build-a-House</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='../../css/khanacademy.css' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="../../js/processingJS/processing.min.js"></script>
+  </head>
+  <body>
+    <div class="container-khanacademy">
+      <div class="container-text">
+        <h2>Build-a-House</h2>
+        <p>The goal of this project was to build a house using loops for 
+        repetitive tasks such as laying out endless rows of bricks. 
+        For some reason, if no trees nor grass nor windows appear, refresh the
+        page once again to load the images from the Khanacademy servers.</p>
+      </div>
+      <div class="container-program">
+        <canvas id="canvas"></canvas>
+        <!-- Credits to Robert Tupelo-Schneck for this processingJS template -->
+        <script>
+          var canvas = document.getElementById("canvas");
+          var processing = new Processing(canvas, function(processing) {
+              processing.size(400, 400);
+              processing.background(0xFFF);
+
+              var mouseIsPressed = false;
+              processing.mousePressed = function () { mouseIsPressed = true; };
+              processing.mouseReleased = function () { mouseIsPressed = false; };
+
+              var keyIsPressed = false;
+              processing.keyPressed = function () { keyIsPressed = true; };
+              processing.keyReleased = function () { keyIsPressed = false; };
+
+              function getImage(s) {
+                  var url = "https://www.kasandbox.org/programming-images/" + s + ".png";
+                  processing.externals.sketch.imageCache.add(url);
+                  return processing.loadImage(url);
+              }
+
+              // use degrees rather than radians in rotate function
+              var rotateFn = processing.rotate;
+              processing.rotate = function (angle) {
+                  rotateFn(processing.radians(angle));
+              };
+
+              with (processing) {
+                background(219, 255, 255);
+
+                // Roof
+                fill(209, 77, 77);
+                triangle(200, 28, 350, 150, 50, 150);
+
+                // Rectangular shape of the main building
+                fill(255, 255, 255);
+                rect(60, 150, 280, 207);
+
+                // Draw the bricks
+                var brickH = 40; 
+                var brickW = 1;
+                for (var i = 4; i < 283; i++) {
+                    for (var j = 6; j < 15; j++) {
+                        image(getImage("cute/RampSouth"), i+57, j*23, brickW, brickH);
+                    }
+                }
+
+                // Draw the windows
+                var windowHeight = 65;
+                var windowWidth = 26;
+                var windowY = 190;
+                for (var i=0; i < 3; i++) {
+                    var windowX = i + (160*i);
+                    image(getImage("cute/WindowTall"), 100+windowX, windowY, 
+                          windowWidth, windowHeight);
+                    if (i === 1) {
+                        fill(232, 232, 5);
+                        ellipse(35+windowX, 35+windowY, 32+windowWidth, windowHeight);
+                        line(windowX+34, windowY+2, windowX+35, windowY+67);
+                        line(windowY+-22, windowX+66, windowY+36, windowX+65);
+                    }
+                }
+
+                // Door
+                fill(120, 80, 19);
+                rect(180, 280, 40, 77);
+
+                // Door knob
+                fill(255, 117, 117);
+                ellipse(207, 317, 15, 15);
+
+                // Draw a row of grass in the foreground
+                var grassW = 66;
+                var grassH = 75;
+                var grassY = 330; 
+
+                for (var i=0; i < 8; i++) {
+                    var grassX = -22 + (i * 64);
+                    fill (15, 6, 61);
+                    image(getImage("cute/GrassBlock"), grassX, grassY, grassW, grassH);
+                }
+
+                // Add two small trees
+                var treeW = 75;
+                var treeH = 169;
+                var treeY = 231; 
+                var treeX = 16; 
+
+                while (treeX < 400) {
+                    image(getImage("cute/TreeTall"), treeX, treeY, treeW, treeH);
+                    treeX += 300;
+                }    
+              }
+              if (typeof draw !== 'undefined') processing.draw = draw;
+          });
+        </script>
+      </div>
+    </div>
+  </body>
+</html>

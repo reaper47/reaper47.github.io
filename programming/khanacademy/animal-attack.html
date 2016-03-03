@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Project: Animal Attack</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='../../css/khanacademy.css' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="../../js/processingJS/processing.min.js"></script>
+  </head>
+  <body>
+    <div class="container-khanacademy">
+      <div class="container-text">
+        <h2>Animal Attack</h2>
+        <p>The goal of this project was to animate the body parts of an animal. 
+        A cute little bird was thus drawn. This bird is quite a special one as
+        he's able to increase his size considerably when under attack, as here.
+        To play the animation once again, refesh the page.</p>
+      </div>
+      <div class="container-program">
+        <canvas id="canvas"></canvas>
+        <!-- Credits to Robert Tupelo-Schneck for this processingJS template -->
+        <script>
+          var canvas = document.getElementById("canvas");
+          var processing = new Processing(canvas, function(processing) {
+              processing.size(400, 400);
+              processing.background(0xFFF);
+
+              var mouseIsPressed = false;
+              processing.mousePressed = function () { mouseIsPressed = true; };
+              processing.mouseReleased = function () { mouseIsPressed = false; };
+
+              var keyIsPressed = false;
+              processing.keyPressed = function () { keyIsPressed = true; };
+              processing.keyReleased = function () { keyIsPressed = false; };
+
+              function getImage(s) {
+                  var url = "https://www.kasandbox.org/programming-images/" + s + ".png";
+                  processing.externals.sketch.imageCache.add(url);
+                  return processing.loadImage(url);
+              }
+
+              // use degrees rather than radians in rotate function
+              var rotateFn = processing.rotate;
+              processing.rotate = function (angle) {
+                  rotateFn(processing.radians(angle));
+              };
+
+              with (processing) {
+                // Position variables
+                var x = 53;
+                var y = 329;
+
+                // Body width and height variables
+                var bodyW = 94;
+                var bodyH = 83;
+
+                // Main animation function
+                draw = function() {
+                    background(170, 201, 235);
+                    noStroke();
+
+                    // Draw the feet
+                    fill(199, 171, 115);
+                    rect(x-bodyW*(3/11), y+bodyH*(1/3), bodyW/5, bodyH/3);
+                    rect(x+bodyW*(1/7), y+bodyH*(1/3), bodyW/5, bodyH/3);
+                    quad(x-bodyW/100, y+bodyH*(5/6), x-bodyW/14, y+bodyH*(3/5),
+                         x-bodyW*(3/11), y+bodyH*(3/5), x-bodyW*(2/6),
+                         y+bodyH*(5/6));
+                    quad(x+bodyW*(7/16), y+bodyH*(5/6), x+bodyW*(2/6), 
+                         y+bodyH*(4/7), x+bodyW*(3/22), y+bodyH*(2/3), 
+                         x+bodyW*(2/20), y+bodyH*(5/6));
+                    
+                    // Draw the bird's beak
+                    fill(255, 234, 0);
+                    triangle(x-bodyW*(1/10), y-bodyH*(4/5), x-bodyW*(1/10), 
+                             y-bodyH*(4/9), x+bodyW*(3/4), y-bodyH*(8/13));
+                    
+                    fill(200, 65, 25);
+                    // Draw the main body of the bird
+                    ellipse(x, y, bodyW, bodyH);
+                    
+                    // Draw the bird's head
+                    ellipse(x, y-bodyH*3/5, bodyW/2, bodyH/2);
+                    
+                    // Draw the bird's eye
+                    fill(0, 0, 0);
+                    var eyeSizeW = bodyW/8;
+                    var eyeSizeH = bodyH/8;
+                    ellipse(x+bodyW*2/25, y-bodyH*7/10, eyeSizeW, eyeSizeH);
+                    
+                    // Draw the wing
+                    stroke(0, 0, 0);
+                    strokeWeight(4);
+                    line(x+bodyW*1/50, y-bodyH/5, x-bodyW/3, y+bodyH/15);
+                    line(x+bodyW/20, y+bodyH/32, x-bodyW*1/3, y+bodyH/14);
+                    
+                    // Add a line through the beak
+                    strokeWeight(1.5);
+                    line(x+bodyW*(9/12), y-bodyH*(11/18), x+bodyW*(1/4),
+                         y-bodyH*(3/5));
+                    
+                    // Animate
+                    x += 0.5;
+                    y -= 0.45;
+                    bodyW += 0.5;
+                    bodyH += 0.5;
+                };
+              }
+              if (typeof draw !== 'undefined') processing.draw = draw;
+          });
+        </script>
+      </div>
+    </div>
+  </body>
+</html>

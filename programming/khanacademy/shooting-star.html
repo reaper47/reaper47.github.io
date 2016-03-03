@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Project: Shooting Stars</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='../../css/khanacademy.css' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="../../js/processingJS/processing.min.js"></script>
+  </head>
+  <body>
+    <div class="container-khanacademy">
+      <div class="container-text">
+        <h2>Shooting Stars</h2>
+        <p>The goal of this project was to create an animation of two or more
+        shooting stars. I thus decided to create a nice skyscraper-filled
+        landscape with two such stars moving in opposite directions. To play 
+        the animation once again, refesh the page.</p>
+      </div>
+      <div class="container-program">
+        <canvas id="canvas"></canvas>
+        <!-- Credits to Robert Tupelo-Schneck for this processingJS template -->
+        <script>
+          var canvas = document.getElementById("canvas");
+          var processing = new Processing(canvas, function(processing) {
+              processing.size(400, 400);
+              processing.background(0xFFF);
+
+              var mouseIsPressed = false;
+              processing.mousePressed = function () { mouseIsPressed = true; };
+              processing.mouseReleased = function () { mouseIsPressed = false; };
+
+              var keyIsPressed = false;
+              processing.keyPressed = function () { keyIsPressed = true; };
+              processing.keyReleased = function () { keyIsPressed = false; };
+
+              function getImage(s) {
+                  var url = "https://www.kasandbox.org/programming-images/" + s + ".png";
+                  processing.externals.sketch.imageCache.add(url);
+                  return processing.loadImage(url);
+              }
+
+              // use degrees rather than radians in rotate function
+              var rotateFn = processing.rotate;
+              processing.rotate = function (angle) {
+                  rotateFn(processing.radians(angle));
+              };
+
+              with (processing) {
+                 // Starting coordinates of the first comet.
+                var xPos1 = -10; 
+                var yPos1 = 50;
+
+                // Starting coordinates of the second comet.
+                var xPos2 = 410;
+                var yPos2 = 25;
+
+                var xPosT1 = -10;
+                var yPosT1 = 50;
+                var xPosT2 = 410; 
+                var yPosT2 = 25;
+
+                // Variables used to position the sky scrapers
+                var xScraper = 85;
+                var yScraper = 148; 
+                var wScraper = 75; 
+                var hScraper = 251;
+
+                // Variables used to plot the tree trunks
+                var xTree = 30;
+                var yTree = 345; 
+                var hTree = 55;
+                var wTree = 20;
+
+                // Variables used to plot the sky scraper's windows
+                var xWindow = 91;
+                var yWindow = 165;
+                var wWindow = 18; 
+                var hWindow = 19; 
+
+                // Variables used to plot the sky scraper's doors
+                var xDoor = 114;
+                var yDoor = 373; 
+                var wDoor = 16; 
+                var hDoor = 26; 
+
+                // Variables used to plot the foliage
+                var xFoliage = 40;
+                var yFoliage = 337; 
+                var wFoliage = 66;
+                var hFoliage = 42; 
+
+                // Parameters used to plot small stars here and there
+                var xStar1 = 22.4+10*3;
+                var xStar2 = 24.0+10*3;
+                var xStar3 = 20.6+10*3;
+                var xStar4 = 23.4+10*3;
+                var xStar5 = 24.0+10*3;
+                var xStar6 = 21.0+10*3;
+
+                var yStar1 = 23.8+15*2;
+                var yStar2 = 27.2+15*2;
+                var yStar3 = 24.8+15*2;
+                var yStar4 = 24.9+15*2;
+                var yStar5 = 24.9+15*2;
+                var yStar6 = 27.2+15*2;
+
+                draw = function() {
+                    
+                    // Starry night background fill
+                    background(29, 40, 115);
+                    
+                    // Plot stars
+                    beginShape();
+                    fill(0, 0, 0);
+                    vertex(xStar1*1.2, yStar1*3.7);
+                    vertex(xStar2*1.2, yStar2*3.5);
+                    vertex(xStar3*1.2, yStar3*3.5);
+                    vertex(xStar4*1.2, yStar4*3.5);
+                    vertex(xStar5*1.2, yStar5*3.5);
+                    vertex(xStar6*1.2, yStar6*3.5);
+                    endShape(CLOSE);
+                    beginShape();
+                    
+                    beginShape();
+                    fill(0, 0, 0);
+                    vertex(xStar1*7, yStar1*3.5);
+                    vertex(xStar2*7, yStar2*3.5);
+                    vertex(xStar3*7, yStar3*3.5);
+                    vertex(xStar4*7, yStar4*3.5);
+                    vertex(xStar5*7, yStar5*3.5);
+                    vertex(xStar6*7, yStar6*3.5);
+                    endShape(CLOSE);
+                    beginShape();
+                    
+                    beginShape();
+                    fill(0, 0, 0);
+                    vertex(xStar1*7, yStar1*1.5);
+                    vertex(xStar2*7, yStar2*1.8);
+                    vertex(xStar3*7, yStar3*1.6);
+                    vertex(xStar4*7, yStar4*1.6);
+                    vertex(xStar5*7, yStar5*1.6);
+                    vertex(xStar6*7, yStar6*1.8);
+                    endShape(CLOSE);
+                    beginShape();
+                    
+                    beginShape();
+                    fill(0, 0, 0);
+                    vertex(xStar1*2.2, yStar1*1.5);
+                    vertex(xStar2*2.2, yStar2*1.7);
+                    vertex(xStar3*2.2, yStar3*1.6);
+                    vertex(xStar4*2.2, yStar4*1.7);
+                    vertex(xStar5*2.2, yStar5*1.6);
+                    vertex(xStar6*2.2, yStar6*1.7);
+                    endShape(CLOSE);
+                    beginShape();
+                    
+                    beginShape();
+                    fill(0, 0, 0);
+                    vertex(xStar1*1.2, yStar1*1.2);
+                    vertex(xStar2*1.2, yStar2*1.2);
+                    vertex(xStar3*1.2, yStar3*1.2);
+                    vertex(xStar4*1.2, yStar4*1.2);
+                    vertex(xStar5*1.2, yStar5*1.2);
+                    vertex(xStar6*1.2, yStar6*1.2);
+                    endShape(CLOSE);
+                    beginShape();
+                    
+                    beginShape();
+                    fill(0, 0, 0);
+                    vertex(xStar1*5.2, yStar1*0.9);
+                    vertex(xStar2*5.2, yStar2*1.3);
+                    vertex(xStar3*5.2, yStar3*1.0);
+                    vertex(xStar4*5.2, yStar4*1.0);
+                    vertex(xStar5*5.2, yStar5*1.0);
+                    vertex(xStar6*5.2, yStar6*1.2);
+                    endShape(CLOSE);
+                    beginShape();
+                    
+                    // Color of the comets
+                    fill(255, 242, 0);
+                    
+                    // Shape definition of both comets
+                    ellipse(xPos1, yPos1, 10, 10);
+                    ellipse(xPos2, yPos2, 10, 10);
+                    
+                    // Shape definition of the comet tails
+                    fill(159, 212, 205);
+                    ellipse(xPosT1-27, yPosT1, 44, 12);
+                    ellipse(xPosT2+59, yPosT2, 109, 14);
+                    
+                    // Plot the animation trajectory of the left tail
+                    xPosT1 += 2.5;
+                    yPosT1 += (0.15/1);
+                    
+                    // Plot the animation trajectory of the right tail
+                    xPosT2 -= 2.75;
+                    yPosT2 += (0.2/1);
+                    
+                    fill(255, 242, 0);
+                    // Plot the animation trajectory of the left comet
+                    xPos1 += 2.5;
+                    yPos1 += (0.15/1);
+                    
+                    // Plot the animation trajectory of the right comet
+                    xPos2 -= 2.75;
+                    yPos2 += (0.2/1);
+                    
+                    // Plot the buildings
+                    fill(174, 179, 181);
+                    rect(xScraper+21, yScraper-25, wScraper, hScraper+25);
+                    rect(xScraper, yScraper, wScraper, hScraper);
+                    
+                    // Plot another building
+                    rect(xScraper+80, yScraper-50, wScraper, hScraper+50);
+                    
+                    // Plot the overlapping windows
+                    fill(255, 227, 71);
+                    rect(xWindow+181, yWindow, wWindow, hWindow, 5);
+                    rect(xWindow+82, yWindow+-25, wWindow, hWindow, 5);
+                    rect(xWindow+82, yWindow+25, wWindow, hWindow, 5);
+                    rect(xWindow+82, yWindow+25*2, wWindow, hWindow, 5);
+                    rect(xWindow+82, yWindow+25*4, wWindow, hWindow, 5);
+                    rect(xWindow+82, yWindow+25*5, wWindow, hWindow, 5);
+                    rect(xWindow+82, yWindow+25*6, wWindow, hWindow, 5);
+                    rect(xWindow+82, yWindow+25*3, wWindow, hWindow, 5);
+                    rect(xWindow+82, yWindow+25*7, wWindow, hWindow, 5);
+                    rect(xWindow+82, yWindow, wWindow, hWindow, 5);
+                    
+                     // Continue plotting buildings
+                    fill(174, 179, 181);
+                    rect(xScraper+160, yScraper-35, wScraper, hScraper+35);
+                    
+                    // Plot this building's door partially
+                    fill(36, 27, 30);
+                    rect(xDoor+161, yDoor, wDoor, hDoor, 2);
+                    
+                    // Plot the overlapping windows
+                    fill(255, 227, 71);
+                    rect(xWindow+181, yWindow, wWindow, hWindow, 5);
+                    rect(xWindow+204, yWindow+25, wWindow, hWindow, 5);
+                    rect(xWindow+181, yWindow+25, wWindow, hWindow, 5);
+                    rect(xWindow+204, yWindow, wWindow, hWindow, 5);
+                    
+                    rect(xWindow+181, yWindow+50, wWindow, hWindow, 5);
+                    rect(xWindow+204, yWindow+25+25, wWindow, hWindow, 5);
+                    rect(xWindow+181, yWindow+25*2, wWindow, hWindow, 5);
+                    rect(xWindow+204, yWindow, wWindow, hWindow, 5);
+                    
+                    rect(xWindow+181, yWindow, wWindow, hWindow, 5);
+                    rect(xWindow+204, yWindow+25*3, wWindow, hWindow, 5);
+                    rect(xWindow+181, yWindow+25*3, wWindow, hWindow, 5);
+                    
+                    rect(xWindow+204, yWindow+25*4, wWindow, hWindow, 5);
+                    rect(xWindow+181, yWindow+25*4, wWindow, hWindow, 5);
+                    
+                    rect(xWindow+181, yWindow+25*5, wWindow, hWindow, 5);
+                    rect(xWindow+204, yWindow+25*5, wWindow, hWindow, 5);
+                    rect(xWindow+181, yWindow+25*6, wWindow, hWindow, 5);
+                    
+                    rect(xWindow+204, yWindow+25*6, wWindow, hWindow, 5);
+                    rect(xWindow+204, yWindow+25*7, wWindow, hWindow, 5);
+                    rect(xWindow+181, yWindow+25*7, wWindow, hWindow, 5);
+                    
+                    rect(xWindow+204, yWindow-25, wWindow, hWindow, 5);
+                    rect(xWindow+181, yWindow-25, wWindow, hWindow, 5);
+                    rect(xWindow+204, yWindow-23*2, wWindow, hWindow, 5);
+                    rect(xWindow+181, yWindow-23*2, wWindow, hWindow, 5);
+                    
+                    // Plot the last building
+                    fill(174, 179, 181);
+                    rect(xScraper+116, yScraper-30, wScraper, hScraper+30);
+                    
+                    // Plot the trees
+                    fill(150, 86, 21);
+                    rect(xTree, yTree, wTree, hTree);
+                    rect(xTree+319, yTree, wTree, hTree);
+                    
+                    // Plot the foliage
+                    fill(30, 140, 20);
+                    ellipse(xFoliage, yFoliage, wFoliage, hFoliage);
+                    ellipse(xFoliage+320, yFoliage, wFoliage, hFoliage);
+                    
+                    // Plot the windows of the left-most sky scraper
+                    fill(255, 227, 71);
+                    rect(xWindow, yWindow, wWindow, hWindow, 5);
+                    rect(xWindow+23, yWindow, wWindow, hWindow, 5);
+                    rect(xWindow+46, yWindow, wWindow, hWindow, 5);
+                    
+                    rect(xWindow, yWindow+25, wWindow, hWindow, 5);
+                    rect(xWindow+23, yWindow+25, wWindow, hWindow, 5);
+                    rect(xWindow+46, yWindow+25, wWindow, hWindow, 5);
+                    
+                    rect(xWindow, yWindow+50, wWindow, hWindow, 5);
+                    rect(xWindow+23, yWindow+50, wWindow, hWindow, 5);
+                    rect(xWindow+46, yWindow+50, wWindow, hWindow, 5);
+                    
+                    rect(xWindow, yWindow+75, wWindow, hWindow, 5);
+                    rect(xWindow+23, yWindow+75, wWindow, hWindow, 5);
+                    rect(xWindow+46, yWindow+75, wWindow, hWindow, 5);
+                    
+                    rect(xWindow, yWindow+100, wWindow, hWindow, 5);
+                    rect(xWindow+23, yWindow+100, wWindow, hWindow, 5);
+                    rect(xWindow+46, yWindow+100, wWindow, hWindow, 5);
+                    
+                    rect(xWindow, yWindow+125, wWindow, hWindow, 5);
+                    rect(xWindow+23, yWindow+125, wWindow, hWindow, 5);
+                    rect(xWindow+46, yWindow+125, wWindow, hWindow, 5);
+                    
+                    rect(xWindow, yWindow+150, wWindow, hWindow, 5);
+                    rect(xWindow+23, yWindow+150, wWindow, hWindow, 5);
+                    rect(xWindow+46, yWindow+150, wWindow, hWindow, 5);
+                    
+                    rect(xWindow, yWindow+175, wWindow, hWindow, 5);
+                    rect(xWindow+23, yWindow+175, wWindow, hWindow, 5);
+                    rect(xWindow+46, yWindow+175, wWindow, hWindow, 5);
+                    
+                    // Plot the windows of the left-most sky scraper
+                    rect(xWindow+115, yWindow-25, wWindow, hWindow, 5);
+                    rect(xWindow+23+115, yWindow-25, wWindow, hWindow, 5);
+                    rect(xWindow+46+115, yWindow-25, wWindow, hWindow, 5);
+                    
+                    rect(xWindow+115, yWindow, wWindow, hWindow, 5);
+                    rect(xWindow+23+115, yWindow, wWindow, hWindow, 5);
+                    rect(xWindow+46+115, yWindow, wWindow, hWindow, 5);
+                    
+                    rect(xWindow+115, yWindow+25, wWindow, hWindow, 5);
+                    rect(xWindow+23+115, yWindow+25, wWindow, hWindow, 5);
+                    rect(xWindow+46+115, yWindow+25, wWindow, hWindow, 5);
+                    
+                    rect(xWindow+115, yWindow+50, wWindow, hWindow, 5);
+                    rect(xWindow+23+115, yWindow+50, wWindow, hWindow, 5);
+                    rect(xWindow+46+115, yWindow+50, wWindow, hWindow, 5);
+                    
+                    rect(xWindow+115, yWindow+75, wWindow, hWindow, 5);
+                    rect(xWindow+23+115, yWindow+75, wWindow, hWindow, 5);
+                    rect(xWindow+46+115, yWindow+75, wWindow, hWindow, 5);
+                    
+                    rect(xWindow+115, yWindow+100, wWindow, hWindow, 5);
+                    rect(xWindow+23+115, yWindow+100, wWindow, hWindow, 5);
+                    rect(xWindow+46+115, yWindow+100, wWindow, hWindow, 5);
+                    
+                    rect(xWindow+115, yWindow+125, wWindow, hWindow, 5);
+                    rect(xWindow+23+115, yWindow+125, wWindow, hWindow, 5);
+                    rect(xWindow+46+115, yWindow+125, wWindow, hWindow, 5);
+                    
+                    rect(xWindow+115, yWindow+150, wWindow, hWindow, 5);
+                    rect(xWindow+23+115, yWindow+150, wWindow, hWindow, 5);
+                    rect(xWindow+46+115, yWindow+150, wWindow, hWindow, 5);
+                    
+                    rect(xWindow+115, yWindow+175, wWindow, hWindow, 5);
+                    rect(xWindow+23+115, yWindow+175, wWindow, hWindow, 5);
+                    rect(xWindow+46+115, yWindow+175, wWindow, hWindow, 5);
+                    
+                    // Plot the door of three sky scrapers
+                    fill(36, 27, 30);
+                    rect(xDoor, yDoor, wDoor, hDoor, 2);
+                    rect(xDoor+118, yDoor, wDoor, hDoor, 2);
+    
+                  };
+              }
+              if (typeof draw !== 'undefined') processing.draw = draw;
+          });
+        </script>
+      </div>
+    </div>
+  </body>
+</html>

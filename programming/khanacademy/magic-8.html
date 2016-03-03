@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Project: Magic-8 Ball</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='../../css/khanacademy.css' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="../../js/processingJS/processing.min.js"></script>
+  </head>
+  <body>
+    <div class="container-khanacademy">
+      <div class="container-text">
+        <h2>Magic-8 Ball</h2>
+        <p>The goal of this project was to use if-else clauses in a magic-8 
+        ball game. To play the game, spam F5. Every time you refresh, the 
+        script generates a random number between 0 and the answer to life. If
+        the number is even, a special message appears in the triangle. Colors 
+        are generated randomly.</p>
+      </div>
+      <div class="container-program">
+        <canvas id="canvas"></canvas>
+        <!-- Credits to Robert Tupelo-Schneck for this processingJS template -->
+        <script>
+          var canvas = document.getElementById("canvas");
+          var processing = new Processing(canvas, function(processing) {
+              processing.size(400, 400);
+              processing.background(0xFFF);
+
+              var mouseIsPressed = false;
+              processing.mousePressed = function () { mouseIsPressed = true; };
+              processing.mouseReleased = function () { mouseIsPressed = false; };
+
+              var keyIsPressed = false;
+              processing.keyPressed = function () { keyIsPressed = true; };
+              processing.keyReleased = function () { keyIsPressed = false; };
+
+              function getImage(s) {
+                  var url = "https://www.kasandbox.org/programming-images/" + s + ".png";
+                  processing.externals.sketch.imageCache.add(url);
+                  return processing.loadImage(url);
+              }
+
+              // use degrees rather than radians in rotate function
+              var rotateFn = processing.rotate;
+              processing.rotate = function (angle) {
+                  rotateFn(processing.radians(angle));
+              };
+
+              with (processing) {
+                fill(0, 0, 0);
+                ellipse(200, 200, 375, 375);
+                fill(60, 0, 255);
+                triangle(200, 104, 280, 280, 120, 280);
+                fill(255, 255, 255);
+
+                // Function for a randomly generated background
+                var randomBackground = function() {
+                    var randomRed = random(0, 255);
+                    var randomGreen = random(0, 255);
+                    var randomBlue = random(0, 255);
+                    background(randomRed, randomGreen, randomBlue);
+                    
+                    fill(0, 0, 0);
+                    ellipse(200, 200, 375, 375);
+                    fill(60, 0, 255);
+                    triangle(200, 104, 280, 280, 120, 280);
+                    fill(255, 255, 255);
+                };
+
+                // Function that draws a random fill color
+                var randomFill = function() {
+                    var randomRed = random(0, 255);
+                    var randomGreen = random(0, 255);
+                    var randomBlue = random(0, 255);
+                    fill(randomRed, randomGreen, randomBlue);
+                };
+
+                // Function that draws a random set of three ellipses
+                var drawEllipse = function() {
+                    var randomRed = random(0, 255);
+                    var randomGreen = random(0, 255);
+                    var randomBlue = random(0, 255);
+                    
+                    var design = round(random(0, 4));
+                    if (design === 0) {
+                        randomBackground();
+                        fill(randomRed, randomGreen, randomBlue);
+                        ellipse(100, 100, 30, 30);
+                        ellipse(300, 100, 30, 30);
+                        ellipse(200, 350, 30, 30);
+                    } else if (design === 1) {
+                        randomBackground();
+                        fill(randomRed, randomGreen, randomBlue);
+                        ellipse(75, 150, 30, 30);
+                        ellipse(325, 150, 30, 30);
+                        ellipse(200, 350, 30, 30);
+                    } else if (design === 2) {
+                        randomBackground();
+                        fill(randomRed, randomGreen, randomBlue);
+                        ellipse(100, 300, 30, 30);
+                        ellipse(300, 300, 30, 30);
+                        ellipse(200, 50, 30, 30);
+                    } else if (design === 3) {
+                        randomBackground();
+                        fill(randomRed, randomGreen, randomBlue);
+                        ellipse(75, 200, 30, 30);
+                        ellipse(200, 350, 30, 30);
+                        ellipse(200, 50, 30, 30);
+                    } else if (design === 4) {
+                        randomBackground();
+                        fill(randomRed, randomGreen, randomBlue);
+                        ellipse(325, 200, 30, 30);
+                        ellipse(200, 350, 30, 30);
+                        ellipse(200, 50, 30, 30);
+                    }
+                };
+
+                // Implementing the magic
+                var answer = floor(random(0, 42));
+                if (answer === 0) {
+                    drawEllipse();
+                    randomFill();
+                    text(answer, 193, 165);
+                    text("THOU", 181, 213); 
+                    text("SHALL NOT", 166, 239); 
+                    text("DIVIDE BY ZERO!!", 153, 264);  
+                } else if (answer === 2) {
+                    drawEllipse();
+                    randomFill();
+                    text(answer, 197, 165);
+                    text("IS THE", 181, 213); 
+                    text("THE BASE OF", 159, 239); 
+                    text("THE BINARY SYSTEM!!", 139, 264); 
+                } else if (answer === 4) {
+                    drawEllipse();
+                    randomFill();
+                    text(answer, 198, 165);
+                    text("IS THE", 181, 213); 
+                    text("SMALLEST", 168, 239); 
+                    text("SQUARED PRIME!!", 150, 264); 
+                } else if (answer === 6) {
+                    drawEllipse();
+                    randomFill();
+                    text(answer, 197, 165);
+                    text("IS THE", 181, 213); 
+                    text("CLASSICAL HEXA", 149, 239); 
+                    text("NUMBER IN GREEK!!", 145, 264); 
+                } else if (answer === 8) {
+                    drawEllipse();
+                    randomFill();
+                    text(answer, 198, 165);
+                    text("IS THE", 181, 213); 
+                    text("NUMBER AFTER", 157, 239); 
+                    text("THE LUCKY NUMBER!!", 137, 264); 
+                } else if (answer === 10) {
+                    drawEllipse();
+                    randomFill();
+                    text(answer, 193, 165);
+                    text("IS THE", 181, 213); 
+                    text("BASE OF THE ", 164, 239); 
+                    text("DECIMAL SYSTEM!!", 150, 264); 
+                } else if (answer === 12) {
+                    drawEllipse();
+                    randomFill();
+                    text(answer, 193, 165);
+                    text("IS THE", 181, 213); 
+                    text("SMALLEST NUMBER ", 144, 239); 
+                    text("WITH SIX DIVISORS!!", 143, 264); 
+                } else if (answer === 14) {
+                    drawEllipse();
+                    randomFill();
+                    text(answer, 193, 165);
+                    text("IS THE", 181, 213); 
+                    text("# OF STATIONS", 158, 239); 
+                    text("OF THE CROSS!!", 154, 264); 
+                } else if (answer === 16) {
+                    drawEllipse();
+                    randomFill();
+                    text(answer, 193, 165);
+                    text("IS THE", 181, 213); 
+                    text("ATOMIC NUMBER", 149, 239); 
+                    text("OF SULFUR!!", 164, 264); 
+                }else if (answer === 18) {
+                    drawEllipse();
+                    randomFill();
+                    text(answer, 193, 165);
+                    text("IS THE", 181, 213); 
+                    text("TRANSITION FROM", 147, 239); 
+                    text("TEEN TO ADULT!!", 154, 264); 
+                } else if (answer === 20) {
+                    drawEllipse();
+                    randomFill();
+                    text(answer, 193, 165);
+                    text("IS THE", 181, 213); 
+                    text("THIRD MAGICAL #", 149, 239); 
+                    text("IN PHYSICS!!", 164, 264); 
+                } else if (answer === 22) {
+                    drawEllipse();
+                    randomFill();
+                    text(answer, 193, 165);
+                    text("IS THE", 182, 213); 
+                    text("ATOMIC NUMBER", 153, 239); 
+                    text("OF TITANIUM!!", 165, 264); 
+                } else if (answer === 24) {
+                    drawEllipse();
+                    randomFill();
+                    text(answer, 193, 165);
+                    text("IS THE", 182, 213); 
+                    text("FACTORIAL", 172, 239); 
+                    text("OF FOUR!!", 174, 264); 
+                } else if (answer === 26) {
+                    drawEllipse();
+                    randomFill();
+                    text(answer, 193, 165);
+                    text("REPRESENTS", 160, 213); 
+                    text("THE", 185, 239); 
+                    text("LETTER Z!!", 168, 264); 
+                } else if (answer === 28) {
+                    drawEllipse();
+                    randomFill();
+                    text(answer, 193, 165);
+                    text("IS THE", 181, 213); 
+                    text("ATOMIC MASS", 164, 239); 
+                    text("OF SILICON!!", 166, 264);
+                } else if (answer === 30) {
+                    drawEllipse();
+                    randomFill();
+                    text(answer, 193, 165);
+                    text("IS THE", 182, 213); 
+                    text("SUM OF THE", 166, 239); 
+                    text("1ST FOUR SQUARES!!", 138, 264);
+                } else if (answer === 32) {
+                    drawEllipse();
+                    randomFill();
+                    text(answer, 193, 165);
+                    text("COMES RIGHT", 161, 213); 
+                    text("AFTER", 181, 239); 
+                    text("THIRTY-ONE!!", 162, 264);
+                } else if (answer === 34) {
+                    drawEllipse();
+                    randomFill();
+                    text(answer, 193, 165);
+                    text("AULUS", 180, 213); 
+                    text("PERSIUS FLACCUS", 145, 239); 
+                    text("IS BORN!!", 173, 264);
+                } else if (answer === 36) {
+                    drawEllipse();
+                    randomFill();
+                    text(answer, 193, 165);
+                    text("IT IS THE", 176, 213); 
+                    text("YEAR 789 AB", 164, 239); 
+                    text("URBE CONDITA!!", 153, 264);
+                } else if (answer === 38) {
+                    drawEllipse();
+                    randomFill();
+                    text(answer, 193, 165);
+                    text("THE SUM", 175, 213); 
+                    text("OF THE FIRST", 163, 239); 
+                    text("THREE PRIMES!!", 154, 264);
+                } else if (answer === 40) {
+                    drawEllipse();
+                    randomFill();
+                    text(answer, 193, 165);
+                    text("THE ATOMIC\n\n   NUMBER", 165, 213); 
+                    text("OF ZIRCONIUM!!", 155, 264);
+                } else if (answer === 42) {
+                    drawEllipse();
+                    randomFill();
+                    text(answer, 193, 165);
+                    text("THE ANSWER\n\n     TO LIFE", 161, 213); 
+                    text("HATH BEEN FOUND!!", 143, 264);
+                } else {
+                    randomFill();
+                    text("BETTER", 176, 200);
+                    text("LUCK NEXT\n\n       TIME", 166, 229);
+                }
+
+              }
+              if (typeof draw !== 'undefined') processing.draw = draw;
+          });
+        </script>
+      </div>
+    </div>
+  </body>
+</html>
