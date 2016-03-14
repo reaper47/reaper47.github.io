@@ -49,7 +49,7 @@ nav li {
 nav li a {
   text-decoration: none;
   padding-top: 1.2rem;
-  padding-bottom: 1.2rem;
+  padding-bottom: 1.6rem;
 }
 
 a {
@@ -109,7 +109,7 @@ nav li a:focus, #footer-list li a:focus {
 ****************************************/
 #home .parallax__layer {
   background: url(../img/home-page/fan.jpg) no-repeat center center fixed;
-  background-size: 101% 100%;
+  background-size: 101% 10%;
 }
 
 #company-title {
@@ -117,7 +117,7 @@ nav li a:focus, #footer-list li a:focus {
   font-family: 'Parisienne', 'cursive';
   font-size: 300%;
   text-align: center;
-  width: 33%;
+
   min-width: 700px;
   color: #ecf0f1;
   top: 50%;
@@ -343,6 +343,7 @@ footer {
   padding-top: 2.5rem;
   min-width: 746px;
   height: 87px;
+  margin: auto;
 }
 
 #footer-copyright {

@@ -1,441 +1,526 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html class="no-js" lang="en">
   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Agent46's Portfolio</title>
-    
-    <!-- All the stuff pertaining to meta data -->
-    <meta charset="UTF-8" />
+    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
-    <!-- Links -->
-    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/vendor/normalize.css">
+    <link rel="stylesheet" href="css/main-alt.css">
     <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Parisienne' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" media="all" href="css/main.css" />
+    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
   </head>
   <body>
-
-    <!-- navigation bar -->
-    <header>
-      <div id="container-nav-name">
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div class="wrapper">
+      <header>
         <h3>Agent46</h3>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="#home" class="current"><i class="fa fa-home"></i> Home</a></li>
-          <li><a href="#about"><i class="fa fa-user"></i> About</a></li>
-          <li><a id="pro-nav" href="#programming"><i class="fa fa-code"></i> Programming</a></li>
-          <li><a id="music-nav" href="#music"><i class="fa fa-music"></i> Music</a></li>
-          <li><a id="contact-nav" href="#contact"><i class="fa fa-question"></i> Contact</a></li>  
-        </ul> 
-      </nav>
-    </header>
-   
-    <!-- home slide -->
-    <div class="parallax" id="home">
-      <div class="parallax__group">
-        <div class="parallax__layer">
-          <div id="company-title">
-            <hr>
-            <p>Reaper Pandemic Designs</p>
-            <hr>
-          </div>
+        <hr id="hr-title"></hr>
+        <nav>
+          <ul>
+            <li><a href="#home" id="nav-home">Home</a></li>
+            <li><a href="#about" id="nav-about">About</a></li>
+            <li><a href="#programming" id="nav-programming">Programming</a></li>
+            <li><a href="#music" id="nav-music">Music</a></li>
+            <li><a href="#contact" id="nav-contact">Contact</a></li>  
+          </ul>
+        </nav>
+      </header>
+      
+      <section id="home">
+        <article>
+          <hgroup>
+            <hr></hr>
+            <h1>Reaper Pandemic Designs</h1>
+            <hr></hr>
+            <h2>A personal portfolio dedicated to creator Agent46</h2>
+          </hgroup>
+        </article>
+      </section>
+      
+      <section id="about">
+        <figure>
+           <img id="me" src="img//home-page/about/me.jpg" alt="How Agent46 looks like." />
+        </figure>
+        <div id="about-me">
+          <h3>Agent46 welcomes you to his personal site</h3>
+          <p>Greetings!<br />Enjoy my personal portfolio website.<br>There
+          is plenty going on.</p>
         </div>
-      </div>
-    </div>
-    
-    <!-- about slide -->
-    <div class="parallax" id="about">
-      <div class="parallax__group">
-        <div class="parallax__layer">
-           <div class="about-container">
-              <div id="about-pic">
-                <img id="me" src="img//home-page/about/me.jpg" alt="How Agent46 looks like." />
-              </div>
-              <div id="about-me">
-                <h3>Agent46 welcomes you to his personal site</h3>
-                <p>Greetings!<br />Enjoy my personal portfolio website.<br>There
-                is plenty going on.</p>
-              </div>
-           </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- programming welcome slide -->
-    <div class="parallax programming">
-      <div class="parallax__group">
-        <div class="parallax__layer">
-          <div class="mid-title">
-            <h3>PROGRAMMING IS ART</h3>
-            <p>Humans are destined to create. Showcased here are some of my creations.</p>
-          </div>
-          <div class="bottom-title">
-            <p></p>
-          </div>
-        </div>
-      </div>
-    </div> 
-    
-    <!-- Free Code Camp Projects -->
-    <div class="parallax programming">
-      <div class="parallax__group">
-        <div class="parallax__layer">
-          <div class="mid-title">
-            <h3>FREE CODE CAMP PROJECTS</h3>
-            <p>Free Code Camp is an open source community that helps you learn
-            to code. They offer an extensive JS curriculum that requires us to
-            build projects. Here are projects I have completed.</p>
-          </div>
-          <div class="program-container">
-            <ul class="program-list">
-              <li>
+      </section>
+      
+      <section class="programming" id="programming">
+        <article id="programming-intro">
+          <hgroup>
+            <h1>PROGRAMMING IS ART</h1>
+            <h3>Humans have forever been destined to create. Here are some of mine.</h3>
+          </hgroup>
+        </article>
+      </section>
+      
+      <section class="programming">
+        <article id="programming-fcc">
+          <hgroup>
+            <h2>FREE CODE CAMP PROJECTS</h2>
+            <h4>Free Code Camp is an open source community that helps you learn
+            to code. <br>They offer an extensive JS curriculum that requires us to
+            build projects.</h4>
+          </hgroup>
+          <div class="entries">
+            <div class="entry-fcc">
+              <figure class="programming-project-fcc">
                 <a href="tribute/tribute-mozart-main.html">
-                  <img class="project-image" 
-                       src="img/home-page/programming/tribute-mozart.png"
-                       alt="A tribute to Mozart."><br>
-                  <figcaption class="program-title"><p>Tribute to Mozart</p></figcaption>
-                </a>
-              </li>
-            </ul>   
+                <div class="fcc-hover">
+                  <i class="fa fa-html5 fa-4x">+</i><i class="fa fa-css3 fa-4x"></i>
+                </div>
+                <img class="project-image" src="img/home-page/programming/tribute-mozart.png"
+                     alt="A tribute to Mozart."><br>
+                </a> 
+              </figure>
+              <figcaption><p>Tribute to Mozart</p></figcaption>
+            </div>
           </div>
-        </div>
-      </div>
-    </div> 
-    
-    <!-- Khan Academy Projects -->
-    <div class="parallax programming" id="ka-programming">
-      <div class="parallax__group">
-        <div class="parallax__layer">
-          <div class="mid-title">
-            <h3>KHAN ACADEMY PROJECTS</h3>
-            <p>Khan Academy is a non-profit educational organization that aims
-            to provide free education. They have an extensive computer 
+        </article>
+      </section>
+      
+      <section class="programming">
+        <article id="programming-ka">
+          <hgroup>
+            <h2>KHAN ACADEMY PROJECTS</h2>
+            <h4>Khan Academy is a non-profit educational organization that aims
+            to provide free education. <br>They have an extensive computer 
             programming and computer science curriculum with plenty of
-            projects.</p>
-          </div>
-          <div class="program-container">
-            <ul class="program-list">
-              <li>
+            projects.</h4>
+          </hgroup>
+          <div class="entries-row">
+            <div class="entry-ka">
+              <figure class="programming-project-ka">
                 <a href="programming/khanacademy/whats-for-dinner.html">
-                  <img class="project-image" 
-                       src="img/home-page/programming/KA-1.png"
-                       alt="A processingJS program that draws a delicious meal."><br>
-                  <figcaption class="program-title"><p>What's for Dinner?</p></figcaption>
-                </a>
-              </li>
-              <li>
+                <div class="ka-processing-hover">
+                  <i class="fa fa-code fa-4x"></i>
+                </div>
+                <img src="img/home-page/programming/KA-1.png"
+                     alt="A processingJS program that draws a delicious meal."><br>
+                </a> 
+              </figure>
+              <figcaption><p>What's for Dinner?</p></figcaption>
+            </div>
+            <div class="entry-ka">
+              <figure class="programming-project-ka">
                 <a href="programming/khanacademy/shooting-star.html">
-                  <img class="project-image" 
-                       src="img/home-page/programming/KA-2.png"
-                       alt="A processingJS program animating shooting stars."><br>
-                  <figcaption class="program-title"><p>Shooting Stars</p></figcaption>
-                </a>
-              </li>
-              <li>
+                <div class="ka-processing-hover">
+                  <i class="fa fa-code fa-4x"></i>
+                </div>
+                <img src="img/home-page/programming/KA-2.png"
+                     alt="A processingJS program animating shooting stars."><br>
+                </a> 
+              </figure>
+              <figcaption><p>Shooting Stars</p></figcaption>
+            </div>    
+          <div class="entry-ka">
+              <figure class="programming-project-ka">
                 <a href="programming/khanacademy/animal-attack.html">
-                  <img class="project-image" 
-                       src="img/home-page/programming/KA-3.png"
-                       alt="A processingJS program animating a bird."><br>
-                  <figcaption class="program-title"><p>Animal Attack</p></figcaption>
-                </a>
-              </li>
-              <li>
+                <div class="ka-processing-hover">
+                  <i class="fa fa-code fa-4x"></i>
+                </div>
+                <img src="img/home-page/programming/KA-3.png"
+                     alt="A processingJS program animating a bird."><br>
+                </a> 
+              </figure>
+              <figcaption><p>Animal Attack</p></figcaption>
+            </div>
+            <div class="entry-ka">
+              <figure class="programming-project-ka">
                 <a href="programming/khanacademy/ad-design.html">
-                  <img class="project-image" 
-                       src="img/home-page/programming/KA-4.png"
-                       alt="Drawing an advertisement using processingJS."><br>
-                  <figcaption class="program-title"><p>Ad Design</p></figcaption>
-                </a>
-              </li>
-              <li>
+                <div class="ka-processing-hover">
+                  <i class="fa fa-code fa-4x"></i>
+                </div>
+                <img src="img/home-page/programming/KA-4.png"
+                     alt="Drawing an advertisement using processingJS."><br>
+                </a> 
+              </figure>
+              <figcaption><p>Ad Design</p></figcaption>
+            </div>
+          </div>
+          <div class="entries-row">
+            <div class="entry-ka">
+              <figure class="programming-project-ka">
                 <a href="programming/khanacademy/fish-tank.html">
-                  <img class="project-image" 
-                       src="img/home-page/programming/KA-5.png"
-                       alt="Draw fish and pebbles in a fish tank using processingJS."><br>
-                  <figcaption class="program-title"><p>Fish Tank</p></figcaption>
-                </a>
-              </li>
-              <li>
+                <div class="ka-processing-hover">
+                  <i class="fa fa-code fa-4x"></i>
+                </div>
+                <img src="img/home-page/programming/KA-5.png"
+                     alt="Drawing fish and pebbles in a fish tank using processingJS."><br>
+                </a> 
+              </figure>
+              <figcaption><p>Fish Tank</p></figcaption>
+            </div>
+            <div class="entry-ka">
+              <figure class="programming-project-ka">
                 <a href="programming/khanacademy/magic-8.html">
-                  <img class="project-image" 
-                       src="img/home-page/programming/KA-6.png"
-                       alt="A magic-8 ball game programmed in processingJS."><br>
-                  <figcaption class="program-title"><p>Magic-8 Ball</p></figcaption>
-                </a>
-              </li>
-              <li>
+                <div class="ka-processing-hover">
+                  <i class="fa fa-code fa-4x"></i>
+                </div>
+                <img src="img/home-page/programming/KA-6.png"
+                     alt="A magic-8 ball game programmed in processingJS."><br>
+                </a> 
+              </figure>
+              <figcaption><p>Magic-8 Ball</p></figcaption>
+            </div>
+            <div class="entry-ka">
+              <figure class="programming-project-ka">
                 <a href="programming/khanacademy/build-a-house.html">
-                  <img class="project-image" 
-                       src="img/home-page/programming/KA-7.png"
-                       alt="Building a house using processingJS."><br>
-                  <figcaption class="program-title"><p>Build-a-House</p></figcaption>
-                </a>
-              </li>
-              <li>
+                <div class="ka-processing-hover">
+                  <i class="fa fa-code fa-4x"></i>
+                </div>
+                <img src="img/home-page/programming/KA-7.png"
+                     alt="Building a house using processingJS."><br>
+                </a> 
+              </figure>
+              <figcaption><p>Build-a-House</p></figcaption>
+            </div>
+            <div class="entry-ka">
+              <figure class="programming-project-ka">
                 <a href="programming/khanacademy/make-it-rain.html">
-                  <img class="project-image" 
-                       src="img/home-page/programming/KA-8.png"
-                       alt="Making it rain using processingJS."><br>
-                  <figcaption class="program-title"><p>Make it Rain</p></figcaption>
-                </a>
-              </li>
-              <li>
+                <div class="ka-processing-hover">
+                  <i class="fa fa-code fa-4x"></i>
+                </div>
+                <img src="img/home-page/programming/KA-8.png"
+                     alt="Making it rain using processingJS."><br>
+                </a> 
+              </figure>
+              <figcaption><p>Make it Rain</p></figcaption>
+            </div>
+          </div>
+          <div class="entries-row">
+            <div class="entry-ka">
+              <figure class="programming-project-ka">
                 <a href="programming/khanacademy/bookshelf.html">
-                  <img class="project-image" 
-                       src="img/home-page/programming/KA-9.png"
-                       alt="Creating a bookshelf using processingJS."><br>
-                  <figcaption class="program-title"><p>Bookshelf</p></figcaption>
-                </a>
-              </li>
-            </ul>   
-          </div>
-        </div>
-      </div>
-    </div> 
-    
-    <!-- Second set of khan Academy projects -->
-    <div class="parallax programming">
-      <div class="parallax__group">
-        <div class="parallax__layer">
-          <div class="program-container">
-            <ul class="program-list">
-              <li>
+                <div class="ka-processing-hover">
+                  <i class="fa fa-code fa-4x"></i>
+                </div>
+                <img src="img/home-page/programming/KA-9.png"
+                     alt="Creating a bookshelf using processingJS."><br>
+                </a> 
+              </figure>
+              <figcaption><p>Bookshelf</p></figcaption>
+            </div>
+            <div class="entry-ka">
+              <figure class="programming-project-ka">
                 <a href="programming/khanacademy/travel-webpage.html">
-                  <img class="project-image" 
-                       src="img/home-page/programming/KA-10.png"
-                       alt="A basic webpage about Quebec City."><br>
-                  <figcaption class="program-title"><p>Travel Webpage</p></figcaption>
-                </a>
-              </li>
-              <li>
+                <div class="ka-processing-hover">
+                  <i class="fa fa-code fa-4x"></i>
+                </div>
+                <img src="img/home-page/programming/KA-10.png"
+                     alt="A basic webpage on Quebec City."><br>
+                </a> 
+              </figure>
+              <figcaption><p>Travel Webpage</p></figcaption>
+            </div>
+            <div class="entry-ka">
+              <figure class="programming-project-ka">
                 <a href="programming/khanacademy/blog.html">
-                  <img class="project-image" 
-                       src="img/home-page/programming/KA-11.png"
-                       alt="A basic blog webpage."><br>
-                  <figcaption class="program-title"><p>Blog</p></figcaption>
-                </a>
-              </li>
-              <li>
+                <div class="ka-processing-hover">
+                  <i class="fa fa-code fa-4x"></i>
+                </div>
+                <img src="img/home-page/programming/KA-11.png"
+                     alt="A basic blog webpage."><br>
+                </a> 
+              </figure>
+              <figcaption><p>Blog</p></figcaption>
+            </div>
+            <div class="entry-ka">
+              <figure class="programming-project-ka">
                 <a href="programming/khanacademy/recipe-book.html">
-                  <img class="project-image" 
-                       src="img/home-page/programming/KA-12.png"
-                       alt="A basic webpage listing recipes."><br>
-                  <figcaption class="program-title"><p>Recipe Book</p></figcaption>
-                </a>
-              </li>
-              <li>
+                <div class="ka-processing-hover">
+                  <i class="fa fa-code fa-4x"></i>
+                </div>
+                <img src="img/home-page/programming/KA-12.png"
+                     alt="A basic webpage listing recipes."><br>
+                </a> 
+              </figure>
+              <figcaption><p>Recipe Book</p></figcaption>
+            </div> 
+          </div>
+          <div class="entries-row">
+            <div class="entry-ka">
+              <figure class="programming-project-ka">
                 <a href="programming/khanacademy/event-invite.html">
-                  <img class="project-image" 
-                       src="img/home-page/programming/KA-13.png"
-                       alt="A basic webpage LAN party invitation card."><br>
-                  <figcaption class="program-title"><p>Event Invite</p></figcaption>
-                </a>
-              </li>
-              <li>
+                <div class="ka-processing-hover">
+                  <i class="fa fa-code fa-4x"></i>
+                </div>
+                <img src="img/home-page/programming/KA-13.png"
+                     alt="A basic webpage LAN party invitation card."><br>
+                </a> 
+              </figure>
+              <figcaption><p>Event Invite</p></figcaption>
+            </div> 
+            <div class="entry-ka">
+              <figure class="programming-project-ka">
                 <a href="programming/khanacademy/hoppy-beaver.html">
-                  <img class="project-image" 
-                       src="img/home-page/programming/KA-14.png"
-                       alt="A cool game written in processingJS and JS."><br>
-                  <figcaption class="program-title"><p>Hoppy Beaver Extreme</p></figcaption>
-                </a>
-              </li>
-              <li>
+                <div class="ka-processing-hover">
+                  <i class="fa fa-code fa-4x"></i>
+                </div>
+                <img src="img/home-page/programming/KA-14.png"
+                     alt="A cool game written in processingJS and JS."><br>
+                </a> 
+              </figure>
+              <figcaption><p>Hoppy Beaver Extreme</p></figcaption>
+            </div>
+            <div class="entry-ka">
+              <figure class="programming-project-ka">
                 <a href="programming/khanacademy/paint-splatter.html">
-                  <img class="project-image" 
-                       src="img/home-page/programming/KA-15.png"
-                       alt="A paint splatter simulation with adjustable 
-                            parameters coded in processingJS + JS."><br>
-                  <figcaption class="program-title"><p>Paint Splatter</p></figcaption>
-                </a>
-              </li>
-              <li>
+                <div class="ka-processing-hover">
+                  <i class="fa fa-code fa-4x"></i>
+                </div>
+                <img src="img/home-page/programming/KA-15.png"
+                     alt="A paint splatter simulation with adjustable 
+                          parameters coded in processingJS + JS."><br>
+                </a> 
+              </figure>
+              <figcaption><p>Paint Splatter</p></figcaption>
+            </div> 
+            <div class="entry-ka">
+              <figure class="programming-project-ka">
                 <a href="programming/khanacademy/mountain-range.html">
-                  <img class="project-image" 
-                       src="img/home-page/programming/KA-17.png"
-                       alt="A mountain range drawn using Perlin noise. Coded in
-                           processingJS + JS."><br>
-                  <figcaption class="program-title"><p>Mountain Range</p></figcaption>
-                </a>
-              </li>
-              <li>
+                <div class="ka-processing-hover">
+                  <i class="fa fa-code fa-4x"></i>
+                </div>
+                <img src="img/home-page/programming/KA-17.png"
+                     alt="A mountain range drawn using Perlin noise. Coded in
+                          processingJS + JS."><br>
+                </a> 
+              </figure>
+              <figcaption><p>Mountain Range</p></figcaption>
+            </div> 
+          </div>
+          <div class="entries-row">
+            <div class="entry-ka">
+              <figure class="programming-project-ka">
                 <a href="programming/khanacademy/screen-change.html">
-                  <img class="project-image" 
-                       src="img/home-page/programming/KA-18.png"
-                       alt="An interactive scene built with HTML, CSS, and jQuery"><br>
-                  <figcaption class="program-title"><p>Screen Change</p></figcaption>
-                </a>
-              </li>
-              <li>
+                <div class="ka-processing-hover">
+                  <i class="fa fa-code fa-4x"></i>
+                </div>
+                <img src="img/home-page/programming/KA-18.png"
+                     alt="An interactive scene built with HTML, CSS, and jQuery."><br>
+                </a> 
+              </figure>
+              <figcaption><p>Screen Change</p></figcaption>
+            </div> 
+            <div class="entry-ka">
+              <figure class="programming-project-ka">
                 <a href="programming/khanacademy/word-game.html">
-                  <img class="project-image" 
-                       src="img/home-page/programming/KA-20.png"
-                       alt="A simple word game webpage."><br>
-                  <figcaption class="program-title"><p>Word Game</p></figcaption>
-                </a>
-              </li>
-              <li>
+                <div class="ka-processing-hover">
+                  <i class="fa fa-code fa-4x"></i>
+                </div>
+                <img src="img/home-page/programming/KA-20.png"
+                     alt="A simple word game webpage."><br>
+                </a> 
+              </figure>
+              <figcaption><p>Word Game</p></figcaption>
+            </div> 
+            <div class="entry-ka">
+              <figure class="programming-project-ka">
                 <a href="programming/khanacademy/interactive-slideshow.html">
-                  <img class="project-image" 
-                       src="img/home-page/programming/KA-21.png"
-                       alt="A basic webpage showcasing an interactive slideshow."><br>
-                  <figcaption class="program-title"><p>Interactive Slideshow</p></figcaption>
-                </a>
-              </li>
-              <li>
+                <div class="ka-processing-hover">
+                  <i class="fa fa-code fa-4x"></i>
+                </div>
+                <img src="img/home-page/programming/KA-21.png"
+                     alt="A basic webpage showcasing an interactive slideshow."><br>
+                </a> 
+              </figure>
+              <figcaption><p>Interactive Slideshow</p></figcaption>
+            </div> 
+            <div class="entry-ka">
+              <figure class="programming-project-ka">
                 <a href="programming/khanacademy/selection-sort.html">
-                  <img class="project-image" 
-                       src="img/home-page/programming/KA-22.png"
-                       alt="Visualizing the selection sort algorithm."><br>
-                  <figcaption class="program-title"><p>Selection Sort</p></figcaption>
-                </a>
-              </li>
-              <li>
+                <div class="ka-processing-hover">
+                  <i class="fa fa-code fa-4x"></i>
+                </div>
+                <img src="img/home-page/programming/KA-22.png"
+                     alt="Visualizing the selection sort algorithm."><br>
+                </a> 
+              </figure>
+              <figcaption><p>Selection Sort</p></figcaption>
+            </div>
+          </div>
+          <div class="entries-row">
+            <div class="entry-ka">
+              <figure class="programming-project-ka">
                 <a href="programming/khanacademy/recursive-art.html">
-                  <img class="project-image" 
-                       src="img/home-page/programming/KA-23.png"
-                       alt="Using the principle of recursion to generate art."><br>
-                  <figcaption class="program-title"><p>Recursive Art</p></figcaption>
-                </a>
-              </li>
-            </ul>   
-          </div>
-        </div>
-      </div>
-    </div> 
-    
-    <!-- Third set of khan Academy projects -->
-    <div class="parallax programming">
-      <div class="parallax__group">
-        <div class="parallax__layer">
-          <div class="program-container">
-            <ul class="program-list">
-              <li>
+                <div class="ka-processing-hover">
+                  <i class="fa fa-code fa-4x"></i>
+                </div>
+                <img src="img/home-page/programming/KA-23.png"
+                     alt="Visualizing the selection sort algorithm."><br>
+                </a> 
+              </figure>
+              <figcaption><p>Recursive Art</p></figcaption>
+            </div> 
+            <div class="entry-ka">
+              <figure class="programming-project-ka">
                 <a href="https://www.khanacademy.org/computer-programming/spin-off-of-project-design-a-store-database/6566867342327808">
-                  <img class="project-image" 
-                       src="img/home-page/programming/KA-24.png"
-                       alt="Designing a store database using SQL."><br>
-                  <figcaption class="program-title"><p>SQL Store Database</p></figcaption>
-                </a>
-              </li>
-              <li>
+                <div class="ka-processing-hover">
+                  <i class="fa fa-code fa-4x"></i>
+                </div>
+                <img src="img/home-page/programming/KA-24.png"
+                     alt="Designing a store database using SQL."><br>
+                </a> 
+              </figure>
+              <figcaption><p>SQL Store Database</p></figcaption>
+            </div> 
+            <div class="entry-ka">
+              <figure class="programming-project-ka">
                 <a href="https://www.khanacademy.org/computer-programming/spin-off-of-project-data-dig/5012600626216960">
-                  <img class="project-image" 
-                       src="img/home-page/programming/KA-25.png"
-                       alt="Digging data in a database of the top 100 countries."><br>
-                  <figcaption class="program-title"><p>SQL Data Dig</p></figcaption>
-                </a>
-              </li>
-              <li>
+                <div class="ka-processing-hover">
+                  <i class="fa fa-code fa-4x"></i>
+                </div>
+                <img src="img/home-page/programming/KA-25.png"
+                     alt="Digging data in a database of the top 100 countries."><br>
+                </a> 
+              </figure>
+              <figcaption><p>SQL Data Dig</p></figcaption>
+            </div> 
+            <div class="entry-ka">
+              <figure class="programming-project-ka">
                 <a href="https://www.khanacademy.org/computer-programming/spin-off-of-project-famous-people/6373180687646720">
-                  <img class="project-image" 
-                       src="img/home-page/programming/KA-26.png"
-                       alt="Making tables of famous people with SQL."><br>
-                  <figcaption class="program-title"><p>SQL Famous People</p></figcaption>
-                </a>
-              </li>
-              <li>
-                <a href="programming/khanacademy/mountain-range.html">
-                  <img class="project-image" 
-                       src="img/home-page/programming/KA-27.png"
-                       alt="An application database in SQL."><br>
-                  <figcaption class="program-title"><p>SQL App Impersonator</p></figcaption>
-                </a>
-              </li>
-            </ul>   
+                <div class="ka-processing-hover">
+                  <i class="fa fa-code fa-4x"></i>
+                </div>
+                <img src="img/home-page/programming/KA-26.png"
+                     alt="Making tables of famous people with SQL."><br>
+                </a> 
+              </figure>
+              <figcaption><p>SQL Famous People</p></figcaption>
+            </div> 
           </div>
-        </div>
-      </div>
-    </div> 
-    
-    <!-- music slide 1 -->
-    <div class="parallax" id="music">
-      <div class="parallax__group">
-        <div class="parallax__layer">
-          <div id="music-quote">
-            <blockquote cite="https://www.reddit.com/r/quotes/comments/kz6q8/if_i_were_not_a_physicist_i_would_probably_be_a/"><p>If I were not a physicist, I would probably be 
-            a musician. I often think in music. I live my daydreams in music. 
+          <div class="entries-row">
+            <div class="entry-ka">
+              <figure class="programming-project-ka">
+                <a href="https://www.khanacademy.org/computer-programming/spin-off-of-project-app-impersonator/5812458614292480">
+                <div class="ka-processing-hover">
+                  <i class="fa fa-code fa-4x"></i>
+                </div>
+                <img src="img/home-page/programming/KA-27.png"
+                     alt="An application database in SQL."><br>
+                </a> 
+              </figure>
+              <figcaption><p>SQL App Impersonator</p></figcaption>
+            </div> 
+          </div>
+        </article>
+      </section>
+      
+      <section id="music">
+        <h1>MUSIC IS LIFE</h1>
+        <h3>Can one's life be fulfilled without the power of melodies?</h3>
+        <article>
+          <blockquote cite="https://www.reddit.com/r/quotes/comments/kz6q8/if_i_were_not_a_physicist_i_would_probably_be_a/">
+            <p>If I were not a physicist, I would probably be 
+            a musician.<br>I often think in music. I live my daydreams in music.<br>
             I see my life in terms of music... I do know that I get most joy 
-            in life out of my violin.</p></blockquote>
-            <cite>Albert Einstein</cite>
-          </div>    
-        </div>
-      </div>
-    </div>
-    
-    <!-- music slide 2 -->
-    <div class="parallax" id="music-songs">
-      <div class="parallax__group">
-        <div class="parallax__layer">
-          <div class="mid-title">
-            <h3>MOMENTS OF CREATIVE OUTBURSTS</h3>
-            <p>Not only is programming my sole source of creations, but also
-            music. Shown here are songs I have composed. Although there are not
-            many of them yet, more will come soon. Enjoy!</p>
+            in life out of my violin.
+            </p>
+          </blockquote>
+          <cite>Albert Einstein</cite>
+        </article>
+      </section>
+      
+      <section id="music-songs">
+        <article>
+          <hrgroup>
+            <h2>MOMENTS OF CREATIVE OUTBURSTS</h2>
+            <h3 id="music-h3">Not only is programming my sole source of creations, but also
+            music. Shown here are songs I have composed. <br>Although there are not
+            many of them yet, more will come soon. Enjoy!</h3>
+          </hgroup>
+        </article>
+        <article id="music-player">
+          <div class="music-player-song">
+            <audio src="audio/Valor.ogg" controls></audio>
+            <p>Valor</p>
           </div>
-          <div id="music-player">
-            <div class="music-player-song">
-              <h4>Valor</h4>
-              <audio src="audio/Valor.ogg" controls></audio>
-            </div>
-            <div class="music-player-song">
-              <h4>Unititled</h4>
-              <audio src="audio/Composition_2.ogg" controls></audio>
-            </div>
+          <div class="music-player-song">
+            <audio src="audio/Composition_2.ogg" controls></audio>
+            <p>Unititled</p>
           </div>
+        </article>
+      </section>
+      
+      <section id="contact">
+        <div class="contact-list contact-group1">
+         <h3>GET IN TOUCH</h2>
+         <p>Feel free to drop me a line! I'll be happy to chat with you.</p>
+         <hr></hr>
+         <a href="mailto:macpoule@gmail.com" class="contact-effect email-effect">
+           <i class="fa fa-envelope">
+           </i><span class="word-effect">Email</span>
+         </a>
+         <div id="contact-img">
+          <img src="img/home-page/earth.png" 
+               alt="Picture of the Earth.">
         </div>
-      </div>
-    </div>
-    
-    <!-- contact slide -->    
-    <div class="parallax" id="contact">
-      <div class="parallax__group">
-        <div class="parallax__layer">
-          <div id="contact-email">
-            <h3>GET IN TOUCH</h3>
-            <p>Feel free to drop me a line! I'll be happy to chat with you.</p>
-            <a href="mailto:macpoule@gmail.com" class="social-icon" id="email-icon">
-              <i class="fa fa-envelope fa-4x"></i>
+        </div>
+        
+        <div class="contact-group2">
+          <div class="contact-list contact-group-element1">
+            <h3>FOLLOW ME</h3>
+            <p>Follow me through my latest endeavours.</p>
+            <hr></hr>
+            <a href="https://github.com/reaper47" class="contact-effect github-effect">
+              <i class="fa fa-github-square"></i>
+              <span class="word-effect">Github</span>
+            </a><br>
+            <a href="http://www.freecodecamp.com/reaper47" class="contact-effect fcc-effect">
+              <i class="fa fa-fire"></i>
+              <span class="word-effect">FreeCodeCamp</span>
+            </a><br>
+            <a href="https://www.linkedin.com/in/marc-andr%C3%A9-charland-18776788?trk=nav_responsive_tab_profile" class="contact-effect linkedin-effect">
+              <i class="fa fa-linkedin"></i>
+              <span class="word-effect">LinkedIn</span>
             </a>
           </div>
-          <div id="contact-follow">
-            <div class="contact-left">
-              <h3>FOLLOW ME</h3>
-              <p>Follow me through my latest endeavours.</p>
-              <div class="contact-icons">
-                <a href="https://github.com/reaper47" class="social-icon" id="github-icon" target="_blank"><i class="fa fa-github-square fa-4x"></i></a>
-                <a href="http://www.freecodecamp.com/reaper47" class="social-icon" id="FCC-icon" target="_blank"><i class="fa fa-fire fa-4x"></i></a>
-                <a href="https://www.linkedin.com/in/marc-andr%C3%A9-charland-18776788?trk=nav_responsive_tab_profile" class="social-icon" id="linkedin-icon" target="_blank">              <i class="fa fa-linkedin-square fa-4x"></i></a>    
-              </div>
-            </div>
-            <div class="contact-right">
-              <h3>STAY SOCIAL</h3>
-              <p>Stay in touch with me around the web.</p>
-              <div class="contact-icons">
-                <a href="https://twitter.com/Macpoule" class="social-icon" id="twitter-icon" target="_blank"><i class="fa fa-twitter-square fa-4x"></i></a> 
-                <a href="https://soundcloud.com/agent46" class="social-icon" id="soundcloud-icon" target="_blank"><i class="fa fa-soundcloud fa-4x"></i></a>
-                <a href="https://plus.google.com/+MarcAndreCharland/posts" class="social-icon" id="gplus-icon" target="_blank"><i class="fa fa-google-plus-square fa-4x"></i></a> 
-              </div>
-            </div>
+          <div class="contact-list contact-group-element2">
+            <h3>STAY SOCIAL</h3>
+            <p>Stay in touch with me around the web.</p>
+            <hr></hr>
+            <a href="https://twitter.com/Macpoule" class="contact-effect twitter-effect">
+              <i class="fa fa-twitter"></i>
+              <span class="word-effect">Twitter</span>
+            </a><br>
+            <a href="https://soundcloud.com/agent46" class="contact-effect soundcloud-effect">
+              <i class="fa fa-soundcloud"></i>
+              <span class="word-effect">Soundcloud</span>
+            </a><br>
+            <a href="https://plus.google.com/+MarcAndreCharland/posts" 
+               class="contact-effect google-effect">
+               <i class="fa fa-google-plus"></i>
+               <span class="word-effect">GooglePlus</span>
+            </a>
           </div>
         </div>
-      </div>
-    </div>
-       
-    <!-- footer -->
-    <footer>
-      <div id="footer-list">
-        <ul>
-          <li><a href="#home" class="current"><i class="fa fa-home"></i> </a></li>
-          <li><a href="#about"><i class="fa fa-user"></i></a></li>
-          <li><a href="#programming"><i class="fa fa-code"></i></a></li>
-          <li><a href="#music"><i class="fa fa-music"></i></a></li>
-          <li><a href="#contact"><i class="fa fa-question"></i></a></li> 
-        </ul>
-      </div>
-      <div id="footer-copyright">
-        &copy; 2016 Reaper Pandemic Designs
-      </div>
-    </footer>   
+      </section>
+    
+      <footer>
+        <div class="footer-container">
+          <div class="footer-list">
+            <ul>
+              <li><a href="#home" id="footer-home"><i class="fa fa-home"></i> </a></li>
+              <li><a href="#about" id="footer-about"><i class="fa fa-user"></i></a></li>
+              <li><a href="#programming" id="footer-code"><i class="fa fa-code"></i></a></li>
+              <li><a href="#music" id="footer-music"><i class="fa fa-music"></i></a></li>
+              <li><a href="#contact" id="footer-contact"><i class="fa fa-question"></i></a></li> 
+            </ul>
+          </div>
+          <div class="footer-copyright">
+            &copy; 2016 Reaper Pandemic Designs
+          </div>
+        </div>
+      </footer>     
+    </div> <!-- .wrapper -->
   </body>
 </html>
