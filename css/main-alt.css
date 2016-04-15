@@ -3,81 +3,63 @@
 *****************************/
 html {
   position: relative;
-  min-height: 100%;
   background-color: #ecf0f1;
 }
-
 body {
   color: #ecf0f1;
   font-family: 'Lora', sans-serif, georgia, arial, monospace;
   margin: 0 0 30rem;
-
 }
-
 hr {
   color: #B6B6B6;
 }
-
 #about, .programming {
   line-height: 1.5rem;
 }
-
 /******************************
  * Navigation bar properties *
 *******************************/
 header {
-  background-color: #7b1fa2;
+  background-color: #a21f31;
   display: inline-block;
   width: 100%;
   text-align: center;
   border-bottom: thick solid #7c4dff;
 }
-
 #hr-title {
   width: 45rem;
 }
-
 nav li {
   display: inline;
 }
-
 nav li a {
   text-decoration: none;
   color: inherit;
 }
-
 a {
   outline: 0;
 }
-
 nav li a {
   padding-left: 2rem;
   padding-right: 2rem;
   padding-top: 1.2rem;
   padding-bottom: 1rem;
-  
 }
-
 #nav-home:hover {
   border-bottom: thick solid #03a9f4;
 }
-
 #nav-about:hover {
   border-bottom: thick solid #e67e22;
 }
-
 #nav-programming:hover {
   border-bottom: thick solid #c0392b;
 }
-
 #nav-music:hover {
   border-bottom: thick solid #27ae60;
 }
-
 #nav-contact:hover {
   border-bottom: thick solid #f1c40f;
 }
-
 /****************************
  * Home Section properties *
 *****************************/
@@ -85,17 +67,15 @@ nav li a {
   background: #ecf0f1;
   color: #212121;
   font-family: 'Parisienne', 'cursive';
-  font-size: 200%;
+  font-size: 2rem;
   text-align: center;
   width: 100%;
   padding-top: 10rem;
   padding-bottom: 25rem;
 }
-
 #home hr {
   width: 50rem;
 }
-
 /*****************************
  * About Section properties *
 ******************************/
@@ -106,25 +86,20 @@ nav li a {
   padding-top: 5rem;
   padding-bottom: 12rem;
 }
-
 #about figure {
   display: inline-block;
 }
-
 #me {
   height: 25rem;
   width: 20rem;
-  border-radius: 50%;
+  border-radius: 5rem;
 }
-
 #about-me {
  display: inline-block;
  vertical-align: top;
  margin-left: 2rem;
  margin-top: 1rem;
 }
-
-
 /***********************************
  * Programming Section properties *
 ************************************/
@@ -132,32 +107,27 @@ nav li a {
   color: #212121;
   text-align: center;
 }
-
 #programming-intro {
   background: #ecf0f1;
   padding-top: 15rem;
   padding-bottom: 35rem;
+  font-size: 1.5rem;
 }
-
 #programming-fcc, #programming-ka {
   background: #27ae60;
   padding-top: 5rem;
   padding-bottom: 15rem;
 }
-
 #programming-ka {
   background: #ecf0f1;
 }
-
 #programming-ka h2 {
   margin-top: 0;
 }
-
-#programming-fcc hgroup, #programming-ka hgroup {
+#programming-fcc .hgroup, #programming-ka .hgroup {
   padding-left: 5rem;
   padding-right: 5rem;
 }
-
 .entries-row {
   text-align: center;
 }
@@ -166,43 +136,35 @@ nav li a {
   display: inline-block;
   text-align: center;
 }
-
 .programming-project-fcc, .programming-project-ka {
   padding: 0.5rem;
   margin: 0;
   border: thick solid #673ab7;
   background-color: #ecf0f1;
 }
-
 .programming-project-fcc {
   border: thick solid #673ab7;
 }
-
 .programming-project-ka {
   border: thick solid #e64a19;
 }
-
 .programming-project-fcc img, .programming-project-ka img {
   width: 12rem;
   height: 10rem;
 }
-
-.entry-fcc figcaption p, .entry-ka figcaption p {
+.entry-fcc figcaption, .entry-ka figcaption {
   padding-left: 1rem;
   padding-bottom: 0.3rem;
   margin: 0;
 }
-
-.entry-fcc figcaption p {
+.entry-fcc figcaption {
   background: #673ab7;
   color: #ecf0f1;
 }
-
-.entry-ka figcaption p {
+.entry-ka figcaption {
   background: #e64a19;
   color: #ecf0f1;
 }
-
 .fcc-hover, .ka-processing-hover {
   position: absolute;
   background: rgba(0, 0, 0, .6);
@@ -212,24 +174,18 @@ nav li a {
   opacity: 0;
   transition: all .4s ease-out;
 }
-
 .fcc-hover {
   color: #673ab7;
 }
-
 .ka-processing-hover {
   color: #e64a19;
 }
-
 .fcc-hover i, .ka-processing-hover i {
   margin-top: 2.5rem;
 }
-
 .fcc-hover:hover, .ka-processing-hover:hover {
   opacity: 1;
 }
-
-
 /*****************************
  * Music Section properties *
 ******************************/
@@ -240,36 +196,28 @@ nav li a {
   padding-top: 10rem;
   padding-bottom: 23rem;
 }
-
 blockquote p {
   line-height: 1.8rem;
   font-weight: 600;
   padding-bottom: 1.3rem;
 }
-
-#music article {
+#music div {
   margin-top: 10rem;
 }
-
 blockquote, blockquote p {
   margin: 0;
   font-size: 1.2rem;
 }
-
 cite::before {
 	content: '\2014 \0020';
 }
-
 cite {
   font-weight: 500;
-  margin-left: 10rem;
   font-size: 1.1rem;
 }
-
 #music-h3 {
   padding-top: 2rem;
 }
-
 #music-songs {
   background: #ecf0f1;
   color: #212121;
@@ -278,28 +226,27 @@ cite {
   padding-bottom: 23rem;
   line-height: 1.5rem;
 }
-
 .music-player-song {
   display: inline-block;
   padding-top: 5rem;
   padding-right: 5rem;
   padding-left: 5rem;
 }
-
 .music-player-song p {
   background: #575555;
   color: #ecf0f1;
   font-weight: 500;
   margin-top: -0.4rem;
   padding-bottom: 0.6rem;
-  border-bottom-right-radius: 30px;
-  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 2rem;
+  border-bottom-left-radius: 2rem;
 }
-
 #music-player {
   text-align: center;
 }
-
+audio {
+  outline: 0;
+}
 /**********************
  * Contact properties *
 ***********************/
@@ -309,54 +256,42 @@ cite {
   padding-top: 7rem;
   padding-bottom: 10rem;
 }
-
 .contact-list {
   display: inline-block;
   padding: 0 2rem 0 2rem;
   vertical-align: top;
 }
-
 .contact-list h3 {
   margin-bottom: 0;
 }
-
 .contact-list hr {
   margin-bottom: 1.2rem;
 }
-
 #contact li {
   float: right;
 }
-
 #contact a {
   text-decoration: none;
 }
-
 #contact-img {
   position: absolute;
-  width: 190px;
+  width: 12.5rem;
   margin: 0;
   right: 50%;
-  
 }
-
 #contact-img img {
   width: 25rem;
   height: 25rem;
 }
-
 .contact-group1 {
   margin-bottom: 5rem;
 }
-
 .contact-group-element1 {
   padding-right: 15rem;
 }
-
 .contact-group-element2 {
   padding-left: 15rem;
 }
-
 .email-effect, .github-effect, .fcc-effect, .linkedin-effect,
 .twitter-effect, .soundcloud-effect, .google-effect {
   background: #E54141;
@@ -366,110 +301,90 @@ cite {
   padding-top: 0.5rem;
   padding-left: 0.62rem;
   margin-left: 6rem;
-  border-radius: 50px;
+  border-radius: 2rem;
   display: block;
   box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.4);
   white-space: nowrap;
   box-sizing: border-box;
   transition: all 0.2s ease-out;
 }
-
 .email-effect {
   margin-left: 12rem;
 }
-
 .github-effect {
   padding-top: 0.55rem;
   padding-left: 0.7rem;
 }
-
 .soundcloud-effect {
   padding-left: 0.45rem;
 }
-
 .google-effect {
   padding-left: 0.5rem;
 }
-
 .contact-effect i {
   color: #FFF;
-  margin-right: 15px;
+  margin-right: 0.9rem;
 }
-
 .email-effect:hover {
   padding-right: 6rem;
 }
-
 .github-effect:hover {
   background: #7f8c8d;
   padding-right: 6.2rem;
 }
-
 .fcc-effect:hover {
   background: #406421;
   padding-right: 10rem;
 }
-
 .linkedin-effect:hover {
   background: #3AA7CE;;
   padding-right: 7rem;
 }
-
 .twitter-effect:hover {
   background: #4495d4;
   padding-right: 6.3rem;
 }
-
 .soundcloud-effect:hover {
   background: #FF6B00;
   padding-right: 9rem;
 }
-
 .google-effect:hover {
   background: #34A853;
   padding-right: 8.5rem;
 }
-
 .contact-effect:hover .word-effect {
   color: #ecf0f1;
   transition: color 0.2s ease-out;
 }
-
 /**********************
  * Footer properties *
 ***********************/
 footer {
   position: absolute;
-  background-color: #7b1fa2;
+  background-color: #a21f31;
   width: 100%;
-  height: 87px;
+  height: 5.5rem;
   bottom: 0;
   border-top: thick solid #7c4dff;
 }
-
 .footer-copyright {
   font-size: 0.95rem;
   float: left;
   margin-top: 2.3rem;
   margin-left: 2rem;
 }
-
 .footer-list {
   float: right;
-  margin-right: 20px;
+  margin-right: 2rem;
   font-size: 1.3rem;
-  
 }
-
 .footer-list ul {
   margin: 0;
   padding-top: 2rem;
 }
-
 .footer-list li {
   display: inline-block;
 }
-
 .footer-list li a {
   color: #ecf0f1;
   padding-right: 2rem;
@@ -477,32 +392,23 @@ footer {
   padding-top: 2rem;
   padding-bottom: 1.8rem;
 }
-
 #footer-home:hover {
   border-top: thick solid #03a9f4;
 }
-
 #footer-about:hover {
   border-top: thick solid #e67e22;
 }
-
 #footer-code:hover {
   border-top: thick solid #c0392b;
 }
-
 #footer-music:hover {
   border-top: thick solid #27ae60;
 }
-
 #footer-contact:hover {
   border-top: thick solid #f1c40f;
 }
-
 /******************************************
  * Media queries for a responsive design *
 *******************************************/
-
-
-
 
 

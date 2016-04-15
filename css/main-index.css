@@ -5,127 +5,88 @@ html {
   position: relative;
   min-height: 100%;
 }
-
 body {
-  margin: 0 0 100px;
+  margin: 0 0 0.5rem;
   font-family: 'Lora', sans-serif, georgia, arial, monospace;
   color: #212121;
 }
-
 nav li a, header, footer, #footer-list a, figcaption {
   color: #ecf0f1;
 }
-
 header, footer {
   background: #030b0c;
   width: 100%;
 }
-
 /*******************
  * Navigation bar *
 ********************/
 #container-nav-name {
   display: inline-block;
-  margin-left: 3%;
+  margin-left: 5rem;
 }
-
 nav {
   float: right;
   padding-top: 1.3rem;
 }
-
 nav ul {
   margin: 0;
-  padding-right: 5%;
-  padding: auto;
+  padding-right: 1.5rem;
 }
-
 nav li {
   display: inline-block;
   padding-right: 1.2rem;
   
 }
-
 nav li a {
   text-decoration: none;
   padding-top: 1.2rem;
   padding-bottom: 1.6rem;
 }
-
 a {
   outline: 0;
 }
-
 nav li a:hover, #footer-list li a:hover {
   color: #c0392b;
 }
-
-nav li a.current, #footer-list li a.current {
-  color: #f39c12;
-}
-
-nav li a:active, #footer-list li a:active {
-
-}
-
-nav li a:focus, #footer-list li a:focus {
-
-}
-
-/*****************************************************************
- * General CSS Parallax adapted from Keith                      *       
- * Clark's CSS parallax tutorial.                               *
- * http://keithclark.co.uk/articles/pure-css-parallax-websites/ * 
-******************************************************************/
+/********************************************
+ * General CSS Parallax adapted from Keith *       
+*********************************************/
 .parallax {
   perspective: 300px;
-  perspective-origin-x: 100%;
-  -webkit-perspective: 300px;
-  -webkit-perspective-origin-x: 100%;
   height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
 }
-
 .parallax__group {
   position: relative;
   height: 100vh;
   transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d;
 }
-
 .parallax__layer {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  transform-origin-x: 100%;
-  -webkit-transform-origin-x: 100%;
 }
-
 /***************************************
  * Home slide parallax and properties *
 ****************************************/
 #home .parallax__layer {
   background: url(../img/home-page/fan.jpg) no-repeat center center fixed;
-  background-size: 101% 10%;
+  background-size: 101% 100%;
 }
-
 #company-title {
   position: absolute;
   font-family: 'Parisienne', 'cursive';
   font-size: 300%;
   text-align: center;
-
   min-width: 700px;
   color: #ecf0f1;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -75%);
 }
-
 /****************************************
  * About slide parallax and properties *
 *****************************************/
@@ -134,31 +95,26 @@ nav li a:focus, #footer-list li a:focus {
   background-size: cover;
   opacity: 0.97;
 }
-
 .about-container {
   margin-top: 3rem;
   width: 100%;
   text-align: center;
   min-width: 785px;
 }
-
 #about-pic {
   display: inline-block;
 }
-
 #me {
   height: 25rem;
   width: 20rem;
   border-radius: 50%;
 }
-
 #about-me {
  display: inline-block;
  vertical-align: top;
  margin-left: 2rem;
  margin-top: 1rem;
 }
-
 /**********************************************
  * Programming slide parallax and properties *
 ***********************************************/
@@ -166,29 +122,25 @@ nav li a:focus, #footer-list li a:focus {
   background: url(../img/home-page/programming/birds.JPG) no-repeat center center fixed;
   background-size: 101% 100%;
 }
-
 .project-image {
   width: 10rem;
   height: 10rem;
-  border-radius: 50%;
+  border-radius: 2.5rem;
 }
-
 .program-container {
   text-align: center;
   width: 700px;
   margin: auto;
   list-style-type: none;
 }
-
 ul.program-list li {
   display: inline-block;
   margin: 2rem 2rem 2rem 0;
   position: relative;
 }
-
-ul.program-list figcaption {
+ul.program-list div {
   background: rgba(0, 0, 0, 0.6);
-  border-radius: 50%;
+  border-radius: 2.5rem;
   position: absolute;
   height: 10rem;
   width: 10rem;
@@ -197,22 +149,17 @@ ul.program-list figcaption {
   font-size: 1.2em;
   cursor: pointer;
   display: table;
+  color: #ecf0f1;
   opacity: 0;
-  -webkit-transition: opacity 500ms;
-  -moz-transition: opacity 500ms;
-  -o-transition: opacity 500ms;
   transition: opacity 500ms;
 }
-
-ul.program-list figcaption p {
+ul.program-list div p {
   display: table-cell;
   vertical-align: middle;
 }
-
-ul.program-list li:hover figcaption {
+ul.program-list li:hover div {
 	opacity: 1;
 }
-
 /****************************************
  * Music slide parallax and properties *
 *****************************************/
@@ -221,7 +168,6 @@ ul.program-list li:hover figcaption {
   background-size: 101% 100%;
   opacity: 0.98;
 }
-
 #music-quote {
   background-color: rgba(255, 255, 255, 0.6);
   font-size: 1.2rem;
@@ -234,16 +180,13 @@ ul.program-list li:hover figcaption {
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
-
 cite::before {
   content: '\2014 \0020';
 }
-
 #music-songs .parallax__layer {
   background: url(../img/home-page/music/music2.JPG) no-repeat center center fixed;
   background-size: 101% 100%;
 }
-
 .mid-title {
   width: 35rem;
   text-align: center;
@@ -253,24 +196,22 @@ cite::before {
   margin-top: 3rem;
   padding: 2px;
 }
-
 .music-player-song {
   display: inline-block;
   padding: 2rem;
 }
-
 .music-player-song h4 {
   border-radius: 25px;
 }
-
 #music-player {
   text-align: center;
 }
-
 #music-player h4 {
   background-color: rgba(255, 255, 255, 0.6);
 }
-
+audio {
+  outline: 0;
+}
 /****************************************
  * Contact slide parallax and properties *
 *****************************************/
@@ -278,61 +219,47 @@ cite::before {
   background: url(../img/home-page/contact/contact-full.JPG) no-repeat center center fixed;
   background-size: 101% 100%;
 }
-
 #contact-email {
   text-align: center;
   margin-top: 9rem;
   margin-left: 1.5rem;
 }
-
 .social-icon {
   color: rgba(251, 255, 215, 0.5);
-
 }
-
 .contact-left {
   float: left;
   text-align: center;
 }
-
 .contact-right {
   float: right;
   text-align: center;
 }
-
 .contact-left, .contact-right {
   margin:0 auto;
   width: 50%;
 }
-
 #email-icon:hover {
   color: #B93534;
 }
-
 #github-icon:hover {
   color: #171515;
 }
-
 #linkedin-icon:hover {
   color: #3AA7CE;
 }
-
 #FCC-icon:hover {
   color: #406421;
 }
-
 #twitter-icon:hover {
   color: #4495d4;
 }
-
 #soundcloud-icon:hover {
   color: #FF6B00;
 }
-
 #gplus-icon:hover {
   color: #34A853;
 }
-
 /**********************
  * Footer properties *
 ***********************/
@@ -345,37 +272,31 @@ footer {
   height: 87px;
   margin: auto;
 }
-
 #footer-copyright {
   font-size: 0.95rem;
   float: left;
   margin-top: 22px;
   margin-left: 22px;
 }
-
 #footer-list {
   float: right;
   margin-right: 20px;
   font-size: 1.3rem;
   
 }
-
 #footer-list ul {
   margin: 0;
   padding-top: 1.2rem;
 }
-
 #footer-list li {
   display: inline-block;
 }
-
 #footer-list li a {
   padding-right: 2rem;
   padding-left: 2rem;
   padding-top: 3.4rem;
   padding-bottom: 2.6rem;
 }
-
 /*****************************
  * Adding media queries for *
  *    a responsive design   *
@@ -389,13 +310,11 @@ footer {
     text-align: center;
   }
 }
-
 @media all and (max-width: 800px) {
   body {
     overflow-x: hidden;
   }
 }
-
 @media all and (max-width: 715px) {
   nav {
     width: 100%;
@@ -405,28 +324,23 @@ footer {
     background-color: #030b0c;
     padding-bottom: 15px;
     padding-top: 0;
-    content: " (" attr(fa fa-question) ")";
   }
-  
   #container-nav-name {
     display: inline-block;
     width: 100%;
     text-align: center;
   }
 }
-
 @media all and (max-width: 557px) {
   #contact-nav {
     padding-top: 0;
   }
 }
-
 @media all and (max-width: 458px) {
   #contact-nav, #music-nav, #pro-nav {
     padding-top: 0;
   }
 }
-
 @media all and (max-width: 369px) {
   #contact-nav, #music-nav {
     padding-top: 0;
@@ -435,28 +349,24 @@ footer {
     min-width: 230px;
   }
 }
-
 @media all and (max-width: 715px) {
    #company-title {
       font-size: 250%;
       min-width: 500px;
   }
 }
-
 @media all and (max-width: 557px) {
    #company-title {
       font-size: 225%;
       min-width: 300px;
   }
 }
-
 @media all and (max-width: 458px) {
    #company-title {
      font-size: 200%;
      min-width: 250px;
   }
 }
-
 @media all and (max-width: 768px) {
   #me {
     height: 20rem;
@@ -478,7 +388,6 @@ footer {
     text-align: left;
   }
 }
-
 @media all and (max-width: 653px) {
   #about-me {
     display: block;
@@ -491,7 +400,6 @@ footer {
     margin-left: 9rem;
   }
 }
-
 @media all and (max-width: 490px) {
   #about-me {
     display: block;
@@ -503,7 +411,6 @@ footer {
     margin-left: 4.7rem;
   }
 }
-
 @media all and (max-width: 320px) {
   #about-me {
     width: 30%; 
@@ -513,7 +420,6 @@ footer {
     margin-left: 3rem;
   }
 }
-
 @media all and (max-height: 905px) {
   .project-image {
     width: 9rem;
@@ -528,7 +434,6 @@ footer {
     margin: 0rem 2rem 2rem 0;
   }
 }
-
 @media all and (max-height: 757px) {
   .project-image {
     width: 8rem;
@@ -539,7 +444,6 @@ footer {
     width: 8rem;
   }
 }
-
 @media all and (max-height: 710px) {
   .project-image {
     width: 6rem;
@@ -550,7 +454,6 @@ footer {
     width: 6rem;
   }
 }
-
 @media all and (max-width: 664px) {
   ul.program-list {
     width: 650px;
@@ -560,7 +463,6 @@ footer {
     margin-top: 5px;
   }
 }
-
 @media all and (max-width: 550px) {
   .program-container {
     text-align: left;
@@ -571,7 +473,6 @@ footer {
     width: 550px;
   }
 }
-
 @media all and (max-width: 500px) {
   .program-container {
     text-align: left;
@@ -591,7 +492,6 @@ footer {
     font-size: 1rem;
   }
 }
-
 @media all and (max-width: 500px) {
   .program-container {
     text-align: left;
@@ -603,7 +503,6 @@ footer {
   }
   
 }
-
 @media all and (max-height: 500px) {
   .project-image {
     width: 5rem;
@@ -615,7 +514,6 @@ footer {
     font-size: 1rem;
   }
 }
-
 @media all and (max-height: 480px) {
   #ka-programming {
     margin-top: 0;
@@ -625,26 +523,22 @@ footer {
     text-align: center;
   }
 }
-
 @media all and (max-width: 1750px) {
   #music-quote {
     width: 35rem;
     margin-right: 12rem;
   }
 }
-
 @media all and (max-width: 768px) {
   #music-quote {
     margin-right: 2rem;
   }
 }
-
 @media all and (max-width: 610px) {
   #music-quote {
     width: 35rem;
   }
 }
-
 @media all and (max-width: 550px) {
   .mid-title {
     width: 25rem;
@@ -674,7 +568,6 @@ footer {
     margin-top: 6rem;
   }
 }
-
 @media all and (max-width: 720px) {
   .contact-left h3, .contact-left p, 
   .contact-right h3, .contact-right p,
@@ -687,7 +580,6 @@ footer {
     margin-right: 1rem;
   }
 }
-
 @media all and (max-width: 440px) {
   .contact-left h3, .contact-left p, 
   .contact-right h3, .contact-right p,
@@ -698,7 +590,6 @@ footer {
     margin-top: 6rem;
   }
 }
-
 @media all and (max-width: 373px) {
   .contact-left, .contact-right {
     margin-bottom: 1rem;
@@ -707,40 +598,19 @@ footer {
     margin-top: 4rem;
   }
 }
-
 /* Font size media queries */ 
 @media all and (max-width: 653px) {
   body {
     font-size: 15px;
   }
 }
-
 @media all and (max-width: 490px) {
   body {
     font-size: 13px;
   }
 }
-
 @media all and (max-width: 320px) {
   body {
     font-size: 11px;
-  }
-}
-
-@media all and (max-height: 1920px) {
-  #home .parallax__layer {
-    background-size: cover;
-  }
-  #about .parallax__layer {
-    background-size: cover;
-  }
-  .programming .parallax__layer {
-    background-size: cover;
-  }
-  #music .parallax__layer {
-    background-size: cover;
-  }
-  #contact .parallax__layer {
-    background-size: cover;
   }
 }
