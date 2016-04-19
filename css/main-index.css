@@ -73,7 +73,7 @@ nav li a:hover, #footer-list li a:hover {
  * Home slide parallax and properties *
 ****************************************/
 #home .parallax__layer {
-  background: url(../img/home-page/fan.jpg) no-repeat center center fixed;
+  background: url(../img/home-page/spider.JPG) no-repeat center center fixed;
   background-size: 101% 100%;
 }
 #company-title {
@@ -91,7 +91,7 @@ nav li a:hover, #footer-list li a:hover {
  * About slide parallax and properties *
 *****************************************/
 #about .parallax__layer {
-  background: url(../img/home-page/about/berlin-forest-full.JPG) no-repeat center center fixed;
+  background: url(../img/home-page/about/flag-of-valor.JPG) no-repeat center center fixed;
   background-size: cover;
   opacity: 0.97;
 }
@@ -107,7 +107,7 @@ nav li a:hover, #footer-list li a:hover {
 #me {
   height: 25rem;
   width: 20rem;
-  border-radius: 50%;
+  border-radius: 3rem;
 }
 #about-me {
  display: inline-block;
@@ -119,7 +119,7 @@ nav li a:hover, #footer-list li a:hover {
  * Programming slide parallax and properties *
 ***********************************************/
 .programming .parallax__layer {
-  background: url(../img/home-page/programming/birds.JPG) no-repeat center center fixed;
+  background: url(../img/home-page/programming/paris-eiffel2.JPG) no-repeat fixed;
   background-size: 101% 100%;
 }
 .project-image {
@@ -187,14 +187,21 @@ cite::before {
   background: url(../img/home-page/music/music2.JPG) no-repeat center center fixed;
   background-size: 101% 100%;
 }
+.music-dl {
+  color: #212121;
+}
+.music-dl:hover {
+  color: #c0392b;
+}
 .mid-title {
-  width: 35rem;
+  width: 36rem;
   text-align: center;
   margin: auto;
-  background-color: rgba(255, 255, 255, 0.6);
-  border-radius: 40px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 1rem;
   margin-top: 3rem;
   padding: 2px;
+  line-height: 1.5rem;
 }
 .music-player-song {
   display: inline-block;
@@ -216,7 +223,7 @@ audio {
  * Contact slide parallax and properties *
 *****************************************/
 #contact .parallax__layer {
-  background: url(../img/home-page/contact/contact-full.JPG) no-repeat center center fixed;
+  background: url(../img/home-page/contact/contact.JPG) no-repeat center center fixed;
   background-size: 101% 100%;
 }
 #contact-email {
@@ -225,7 +232,7 @@ audio {
   margin-left: 1.5rem;
 }
 .social-icon {
-  color: rgba(251, 255, 215, 0.5);
+  color: rgba(246, 238, 238, 0.8);
 }
 .contact-left {
   float: left;
@@ -268,7 +275,6 @@ footer {
   bottom: 0;
   text-align: center;
   padding-top: 2.5rem;
-  min-width: 746px;
   height: 87px;
   margin: auto;
 }
