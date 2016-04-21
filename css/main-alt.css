@@ -10,12 +10,8 @@ body {
   font-family: 'Lora', sans-serif, georgia, arial, monospace;
   margin: 0 0 30rem;
 }
-hr {
-  color: #B6B6B6;
-}
-#about, .programming {
-  line-height: 1.5rem;
-}
+hr { color: #B6B6B6; }
+#about, .programming { line-height: 1.5rem; }
 /******************************
  * Navigation bar properties *
 *******************************/
@@ -26,40 +22,24 @@ header {
   text-align: center;
   border-bottom: thick solid #7c4dff;
 }
-#hr-title {
-  width: 45rem;
-}
-nav li {
-  display: inline;
-}
+#hr-title { width: 45rem; }
+nav li { display: inline; }
 nav li a {
   text-decoration: none;
   color: inherit;
 }
-a {
-  outline: 0;
-}
+a, audio { outline: 0; }
 nav li a {
   padding-left: 2rem;
   padding-right: 2rem;
   padding-top: 1.2rem;
   padding-bottom: 1rem;
 }
-#nav-home:hover {
-  border-bottom: thick solid #03a9f4;
-}
-#nav-about:hover {
-  border-bottom: thick solid #e67e22;
-}
-#nav-programming:hover {
-  border-bottom: thick solid #c0392b;
-}
-#nav-music:hover {
-  border-bottom: thick solid #27ae60;
-}
-#nav-contact:hover {
-  border-bottom: thick solid #f1c40f;
-}
+#nav-home:hover { border-bottom: thick solid #03a9f4; }
+#nav-about:hover { border-bottom: thick solid #e67e22; }
+#nav-programming:hover { border-bottom: thick solid #c0392b; }
+#nav-music:hover { border-bottom: thick solid #27ae60; }
+#nav-contact:hover { border-bottom: thick solid #f1c40f; }
 /****************************
  * Home Section properties *
 *****************************/
@@ -73,9 +53,7 @@ nav li a {
   padding-top: 10rem;
   padding-bottom: 28rem;
 }
-#home hr {
-  width: 50rem;
-}
+#home hr { width: 50rem; }
 /*****************************
  * About Section properties *
 ******************************/
@@ -86,12 +64,8 @@ nav li a {
   padding-top: 5rem;
   padding-bottom: 12rem;
 }
-#about h3 {
-  font-size: 1.5rem;
-}
-#about figure {
-  display: inline-block;
-}
+#about h3 { font-size: 1.5rem; }
+#about figure { display: inline-block; }
 #me {
   height: 25rem;
   width: 20rem;
@@ -132,19 +106,13 @@ nav li a {
   padding-top: 5rem;
   padding-bottom: 15rem;
 }
-#programming-ka {
-  background: #ecf0f1;
-}
-#programming-ka h2 {
-  margin-top: 0;
-}
+#programming-ka { background: #ecf0f1; }
+#programming-ka h2 { margin-top: 0; }
 #programming-fcc .hgroup, #programming-ka .hgroup {
   padding-left: 5rem;
   padding-right: 5rem;
 }
-.entries-row {
-  text-align: center;
-}
+.entries-row { text-align: center; }
 .entry-fcc, .entry-ka {
   margin: 0.7rem;
   display: inline-block;
@@ -158,12 +126,8 @@ nav li a {
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
 }
-.programming-project-fcc {
-  border: thick solid #673ab7;
-}
-.programming-project-ka {
-  border: thick solid #e64a19;
-}
+.programming-project-fcc { border: thick solid #673ab7; }
+.programming-project-ka { border: thick solid #e64a19; }
 .programming-project-fcc img, .programming-project-ka img {
   width: 12rem;
   height: 10rem;
@@ -192,18 +156,10 @@ nav li a {
   opacity: 0;
   transition: all .4s ease-out;
 }
-.fcc-hover {
-  color: #673ab7;
-}
-.ka-processing-hover {
-  color: #e64a19;
-}
-.fcc-hover i, .ka-processing-hover i {
-  margin-top: 2.5rem;
-}
-.fcc-hover:hover, .ka-processing-hover:hover {
-  opacity: 1;
-}
+.fcc-hover { color: #673ab7; }
+.ka-processing-hover { color: #e64a19; }
+.fcc-hover i, .ka-processing-hover i { margin-top: 2.5rem; }
+.fcc-hover:hover, .ka-processing-hover:hover { opacity: 1; }
 /*****************************
  * Music Section properties *
 ******************************/
@@ -214,24 +170,18 @@ nav li a {
   padding-top: 10rem;
   padding-bottom: 18rem;
 }
-#music h2 {
-  font-size: 1.3rem;
-}
+#music h2 { font-size: 1.3rem; }
 blockquote p {
   line-height: 1.8rem;
   font-weight: 600;
   padding-bottom: 1.3rem;
 }
-#music div {
-  margin-top: 10rem;
-}
+#music div { margin-top: 10rem; }
 blockquote, blockquote p {
   margin: 0;
   font-size: 1.1rem;
 }
-cite::before {
-  content: '\2014 \0020';
-}
+cite::before { content: '\2014 \0020'; }
 cite {
   font-weight: 500;
   font-size: 1rem;
@@ -260,23 +210,14 @@ cite {
   border-bottom-left-radius: 2rem;
   border-bottom-right-radius: 2rem;
 }
-#music-player {
-  text-align: center;
-}
+#music-player { text-align: center; }
 .music-dl {
   margin-left: 6.5rem;
   position: absolute;
   padding-bottom: 1px;
 }
-.music-dl {
-  color: #212121;
-}
-.music-dl:hover {
-  color: #c0392b;
-}
-audio {
-  outline: 0;
-}
+.music-dl {color: #212121;}
+.music-dl:hover {color: #c0392b;}
 /**********************
  * Contact properties *
 ***********************/
@@ -291,18 +232,10 @@ audio {
   padding: 0 2rem 0 2rem;
   vertical-align: top;
 }
-.contact-list h3 {
-  margin-bottom: 0;
-}
-.contact-list hr {
-  margin-bottom: 1.2rem;
-}
-#contact li {
-  float: right;
-}
-#contact a {
-  text-decoration: none;
-}
+.contact-list h3 { margin-bottom: 0; }
+.contact-list hr { margin-bottom: 1.2rem; }
+#contact li { float: right; }
+#contact a { text-decoration: none; }
 #contact-img {
   position: absolute;
   width: 12.5rem;
@@ -313,15 +246,9 @@ audio {
   width: 25rem;
   height: 25rem;
 }
-.contact-group1 {
-  margin-bottom: 5rem;
-}
-.contact-group-element1 {
-  padding-right: 15rem;
-}
-.contact-group-element2 {
-  padding-left: 15rem;
-}
+.contact-group1 { margin-bottom: 5rem; }
+.contact-group-element1 { padding-right: 15rem; }
+.contact-group-element2 { padding-left: 15rem; }
 .email-effect, .github-effect, .fcc-effect, .linkedin-effect,
 .twitter-effect, .soundcloud-effect, .google-effect {
   background: #E54141;
@@ -338,9 +265,7 @@ audio {
   box-sizing: border-box;
   transition: all 0.2s ease-out;
 }
-.email-effect {
-  margin-left: 12rem;
-}
+.email-effect { margin-left: 12rem; }
 .github-effect {
   padding-top: 0.55rem;
   padding-left: 0.7rem;
@@ -412,9 +337,7 @@ footer {
   margin: 0;
   padding-top: 2rem;
 }
-.footer-list li {
-  display: inline-block;
-}
+.footer-list li { display: inline-block; }
 .footer-list li a {
   color: #ecf0f1;
   padding-right: 2rem;
@@ -422,21 +345,11 @@ footer {
   padding-top: 2rem;
   padding-bottom: 1.8rem;
 }
-#footer-home:hover {
-  border-top: thick solid #03a9f4;
-}
-#footer-about:hover {
-  border-top: thick solid #e67e22;
-}
-#footer-code:hover {
-  border-top: thick solid #c0392b;
-}
-#footer-music:hover {
-  border-top: thick solid #27ae60;
-}
-#footer-contact:hover {
-  border-top: thick solid #f1c40f;
-}
+#footer-home:hover { border-top: thick solid #03a9f4; }
+#footer-about:hover { border-top: thick solid #e67e22; }
+#footer-code:hover { border-top: thick solid #c0392b; }
+#footer-music:hover { border-top: thick solid #27ae60; }
+#footer-contact:hover { border-top: thick solid #f1c40f; }
 /******************************************
  * Media queries for a responsive design *
 *******************************************/

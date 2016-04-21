@@ -10,9 +10,7 @@ body {
   font-family: 'Lora', sans-serif, georgia, arial, monospace;
   color: #212121;
 }
-nav li a, header, footer, #footer-list a, figcaption {
-  color: #ecf0f1;
-}
+nav li a, header, footer, #footer-list a, figcaption { color: #ecf0f1; }
 header, footer {
   background: #030b0c;
   width: 100%;
@@ -42,12 +40,8 @@ nav li a {
   padding-top: 1.2rem;
   padding-bottom: 1.6rem;
 }
-a {
-  outline: 0;
-}
-nav li a:hover, #footer-list li a:hover {
-  color: #c0392b;
-}
+a, audio { outline: 0; }
+nav li a:hover, #footer-list li a:hover { color: #c0392b; }
 /********************************************
  * General CSS Parallax adapted from Keith *       
 *********************************************/
@@ -101,9 +95,7 @@ nav li a:hover, #footer-list li a:hover {
   text-align: center;
   min-width: 785px;
 }
-#about-pic {
-  display: inline-block;
-}
+#about-pic { display: inline-block; }
 #me {
   height: 25rem;
   width: 20rem;
@@ -129,7 +121,7 @@ nav li a:hover, #footer-list li a:hover {
 }
 .program-container {
   text-align: center;
-  width: 700px;
+  width: 60rem;
   margin: auto;
   list-style-type: none;
 }
@@ -157,9 +149,7 @@ ul.program-list div p {
   display: table-cell;
   vertical-align: middle;
 }
-ul.program-list li:hover div {
-	opacity: 1;
-}
+ul.program-list li:hover div { opacity: 1; }
 /****************************************
  * Music slide parallax and properties *
 *****************************************/
@@ -180,19 +170,13 @@ ul.program-list li:hover div {
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
-cite::before {
-  content: '\2014 \0020';
-}
+cite::before { content: '\2014 \0020'; }
 #music-songs .parallax__layer {
   background: url(../img/home-page/music/music2.JPG) no-repeat center center fixed;
   background-size: 101% 100%;
 }
-.music-dl {
-  color: #212121;
-}
-.music-dl:hover {
-  color: #c0392b;
-}
+.music-dl { color: #212121; }
+.music-dl:hover { color: #c0392b; }
 .mid-title {
   width: 36rem;
   text-align: center;
@@ -207,18 +191,9 @@ cite::before {
   display: inline-block;
   padding: 2rem;
 }
-.music-player-song h4 {
-  border-radius: 25px;
-}
-#music-player {
-  text-align: center;
-}
-#music-player h4 {
-  background-color: rgba(255, 255, 255, 0.6);
-}
-audio {
-  outline: 0;
-}
+.music-player-song h4 { border-radius: 25px; }
+#music-player { text-align: center; }
+#music-player h4 { background-color: rgba(255, 255, 255, 0.6); }
 /****************************************
  * Contact slide parallax and properties *
 *****************************************/
@@ -231,9 +206,7 @@ audio {
   margin-top: 9rem;
   margin-left: 1.5rem;
 }
-.social-icon {
-  color: rgba(246, 238, 238, 0.8);
-}
+.social-icon { color: rgba(246, 238, 238, 0.8); }
 .contact-left {
   float: left;
   text-align: center;
@@ -246,27 +219,13 @@ audio {
   margin:0 auto;
   width: 50%;
 }
-#email-icon:hover {
-  color: #B93534;
-}
-#github-icon:hover {
-  color: #171515;
-}
-#linkedin-icon:hover {
-  color: #3AA7CE;
-}
-#FCC-icon:hover {
-  color: #406421;
-}
-#twitter-icon:hover {
-  color: #4495d4;
-}
-#soundcloud-icon:hover {
-  color: #FF6B00;
-}
-#gplus-icon:hover {
-  color: #34A853;
-}
+#email-icon:hover { color: #B93534; }
+#github-icon:hover { color: #171515; }
+#linkedin-icon:hover { color: #3AA7CE; }
+#FCC-icon:hover { color: #406421; }
+#twitter-icon:hover { color: #4495d4; }
+#soundcloud-icon:hover { color: #FF6B00; }
+#gplus-icon:hover { color: #34A853; }
 /**********************
  * Footer properties *
 ***********************/
@@ -308,18 +267,14 @@ footer {
  *    a responsive design   *
 ******************************/
 @media all and (max-width: 746px) {
-  footer {
-    min-width: 500px;
-  }
+  footer { min-width: 500px; }
   #footer-copyright {
     width: 100%;
     text-align: center;
   }
 }
 @media all and (max-width: 800px) {
-  body {
-    overflow-x: hidden;
-  }
+  body { overflow-x: hidden; }
 }
 @media all and (max-width: 715px) {
   nav {
@@ -338,22 +293,14 @@ footer {
   }
 }
 @media all and (max-width: 557px) {
-  #contact-nav {
-    padding-top: 0;
-  }
+  #contact-nav { padding-top: 0; }
 }
 @media all and (max-width: 458px) {
-  #contact-nav, #music-nav, #pro-nav {
-    padding-top: 0;
-  }
+  #contact-nav, #music-nav, #pro-nav { padding-top: 0; }
 }
 @media all and (max-width: 369px) {
-  #contact-nav, #music-nav {
-    padding-top: 0;
-  }
-  nav, #container-nav-name {
-    min-width: 230px;
-  }
+  #contact-nav, #music-nav { padding-top: 0; }
+  nav, #container-nav-name { min-width: 230px; }
 }
 @media all and (max-width: 715px) {
    #company-title {
@@ -400,7 +347,6 @@ footer {
     width: 60%; 
     margin-left: 30px;
   }
-  
   #me {
     height: 15rem;
     margin-left: 9rem;
@@ -413,18 +359,14 @@ footer {
     padding: 4px;
     margin-left: 3rem;
   }
-  #me {
-    margin-left: 4.7rem;
-  }
+  #me { margin-left: 4.7rem; }
 }
 @media all and (max-width: 320px) {
   #about-me {
     width: 30%; 
     padding: 3px;
   }
-  #me {
-    margin-left: 3rem;
-  }
+  #me { margin-left: 3rem; }
 }
 @media all and (max-height: 905px) {
   .project-image {
@@ -436,9 +378,7 @@ footer {
     width: 9rem;
     font-size: 1.1em;
   }
-  ul.program-list li {
-    margin: 0rem 2rem 2rem 0;
-  }
+  ul.program-list li { margin: 0rem 2rem 2rem 0; }
 }
 @media all and (max-height: 757px) {
   .project-image {
@@ -470,9 +410,7 @@ footer {
   }
 }
 @media all and (max-width: 550px) {
-  .program-container {
-    text-align: left;
-  }
+  .program-container { text-align: left; }
   ul.program-list {
     padding-left: 10px;
     margin-bottom: 0;
@@ -480,9 +418,7 @@ footer {
   }
 }
 @media all and (max-width: 500px) {
-  .program-container {
-    text-align: left;
-  }
+  .program-container { text-align: left; }
   ul.program-list {
     padding-left: 10px;
     margin-bottom: 0;
@@ -499,9 +435,7 @@ footer {
   }
 }
 @media all and (max-width: 500px) {
-  .program-container {
-    text-align: left;
-  }
+  .program-container { text-align: left; }
   ul.program-list {
     padding-left: 10px;
     margin-bottom: 0;
@@ -521,13 +455,8 @@ footer {
   }
 }
 @media all and (max-height: 480px) {
-  #ka-programming {
-    margin-top: 0;
-    
-  }
-  ul.program-list figcaption {
-    text-align: center;
-  }
+  #ka-programming { margin-top: 0; }
+  ul.program-list figcaption { text-align: center; }
 }
 @media all and (max-width: 1750px) {
   #music-quote {
@@ -536,39 +465,27 @@ footer {
   }
 }
 @media all and (max-width: 768px) {
-  #music-quote {
-    margin-right: 2rem;
-  }
+  #music-quote { margin-right: 2rem; }
 }
 @media all and (max-width: 610px) {
-  #music-quote {
-    width: 35rem;
-  }
+  #music-quote { width: 35rem; }
 }
 @media all and (max-width: 550px) {
-  .mid-title {
-    width: 25rem;
-  }
-  .music-player-song {
-    padding: 1rem;
-  }
+  .mid-title { width: 25rem; }
+  .music-player-song { padding: 1rem; }
   #music-quote {
     width: 30rem;
     margin-top: 12rem;
   }
 }
-
 @media all and (max-width: 450px) {
   #music-quote {
     width: 25rem;
     margin-top: 10rem;
   }
 }
-
 @media all and (max-width: 390px) {
-  .mid-title {
-    width: 18rem;
-  }
+  .mid-title { width: 18rem; }
   #music-quote {
     width: 20rem;
     margin-top: 6rem;
@@ -592,31 +509,19 @@ footer {
   #contact-email h3, #contact-email p {
     border-radius: 10px;
   }
-  #contact-email {
-    margin-top: 6rem;
-  }
+  #contact-email { margin-top: 6rem; }
 }
 @media all and (max-width: 373px) {
-  .contact-left, .contact-right {
-    margin-bottom: 1rem;
-  }
-  #contact-email {
-    margin-top: 4rem;
-  }
+  .contact-left, .contact-right { margin-bottom: 1rem; }
+  #contact-email { margin-top: 4rem; }
 }
 /* Font size media queries */ 
 @media all and (max-width: 653px) {
-  body {
-    font-size: 15px;
-  }
+  body { font-size: 15px; }
 }
 @media all and (max-width: 490px) {
-  body {
-    font-size: 13px;
-  }
+  body { font-size: 13px; }
 }
 @media all and (max-width: 320px) {
-  body {
-    font-size: 11px;
-  }
+  body { font-size: 11px; }
 }
