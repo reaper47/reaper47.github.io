@@ -12,15 +12,21 @@
       <div class="container-text">
         <h2>Bookshelf</h2>
         <p>The goal of this project was to store books in an array of objects.
-        Every book has three object properties being title, author, and the
-        number of stars. Those objects were then drawn to a bookshelf. Every
-        time the page is refreshed, a new set of random colors are assigned to
-        the books.</p>
+        Every book has three object properties being the title, the author, and
+        the number of stars. Those objects were then drawn on shelves. Every
+        time the page is refreshed, a new set of random book cover colors are 
+        generated.</p>
       </div>
       <div class="container-program">
         <canvas id="canvas"></canvas>
         <!-- Credits to Robert Tupelo-Schneck for this processingJS template -->
         <script>
+          window.onload = function() {
+            if (!window.location.hash) {
+              window.location = window.location + "#loaded";
+              window.location.reload();
+            }
+          }
           var canvas = document.getElementById("canvas");
           var processing = new Processing(canvas, function(processing) {
               processing.size(400, 400);

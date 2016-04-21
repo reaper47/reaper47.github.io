@@ -11,11 +11,10 @@
     <div class="container-khanacademy">
       <div class="container-text">
         <h2>Hoppy Beaver Extreme</h2>
-        <p>The goal of this project was to create a game where you avoid and 
-        collect objects and collect coins. Select your hero, click on play, and 
-        rule the world using arrow keys! Note: Refresh the page to load the hero images 
-        if they do not appear. Also, before pressing 'play', click on the 
-        canvas, and press a key to focus on it. To play the game once again, 
+        <p>The goal of this project was to create a game whose goals is to avoid 
+        objects and and collect coins. Select your hero, click on play, and 
+        rule the world using arrow keys! Note: before pressing 'play', click on 
+        the canvas, and press a key to focus on it. To play the game once again, 
         refesh the page.</p>
         <p>Distribution of points: <br>Purple circles: 2 pts; 
         Back circles: -5 pts; Red rectangles: -10 pts</p>
@@ -24,6 +23,12 @@
         <canvas id="canvas"></canvas>
         <!-- Credits to Robert Tupelo-Schneck for this processingJS template -->
         <script>
+          window.onload = function() {
+            if (!window.location.hash) {
+              window.location = window.location + "#loaded";
+              window.location.reload();
+            }
+          }
           var canvas = document.getElementById("canvas");
           var processing = new Processing(canvas, function(processing) {
               processing.size(400, 400);

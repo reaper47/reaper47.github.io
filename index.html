@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Agent46's Portfolio</title>
+    <title>Macfolio</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/vendor/normalize.css">
@@ -38,7 +38,12 @@
         outline: 0;
         text-decoration: none;
       }
+      .tag { 
+        transition: 1s all ease-out; 
+        border-radius: 20%;
+      }
       .tag:hover {
+        transition: all 1s ease; 
         background-color: #c0392b;
         border-radius: 50%;
         color: #ecf0f1;
@@ -46,9 +51,12 @@
     </style>
   </head>
   <body>
-    <!--[if lt IE 8]>
-        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+    <!-- preload the heavy images used in Real World -->
+    <img class="preload-img" src="img/home-page/spider.JPG" alt="A photogenic spider shot in Paris." />
+    <img class="preload-img" src="img/home-page/programming/paris-eiffel2.JPG" alt="A shot of the Eiffel Tower"/>
+    <img class="preload-img" src="img/home-page/music/music1.JPG" alt="Me"/>
+    <img class="preload-img" src="img/home-page/music/music2.JPG" alt="Me"/>
+    <img class="preload-img" src="img/home-page/contact/contact.JPG" alt="Statue in a building, Berlin"/>
     <div class="wrapper">
       <section>
         <h1>GREETINGS TRAVELLER</h1>
@@ -71,11 +79,5 @@
         </div>
       </section>
     </div> <!-- .wrapper -->
-    <!-- preload the heavy images used in Real World -->
-    <img class="preload-img" src="img/home-page/spider.JPG" alt="A photogenic spider shot in Paris." />
-    <img class="preload-img" src="img/home-page/programming/paris-eiffel2.JPG" alt="A shot of the Eiffel Tower"/>
-    <img class="preload-img" src="img/home-page/music/music1.JPG" alt="Me"/>
-    <img class="preload-img" src="img/home-page/music/music2.JPG" alt="Me"/>
-    <img class="preload-img" src="img/home-page/contact/contact.JPG" alt="Statue in a building, Berlin"/>
   </body>
 </html>

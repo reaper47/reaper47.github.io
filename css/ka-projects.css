@@ -1,9 +1,6 @@
 @import url('http://fonts.googleapis.com/css?family=Lora');
 
-body {
-  background-color: #2c3e50;
-}
-
+body { background-color: #ecf0f1; }
 .container-khanacademy {
   text-align: center;
   width: 700px;
@@ -11,43 +8,22 @@ body {
   margin: 0 auto;
   line-height: 1.5rem;
 }
-
 .container-text {
   font-family: 'Lora', sans-serif, Verdana;
   margin-top: 5rem;
-  color: #bdc3c7;
+  color: #212121;
 }
-
 #canvas {
-  border-radius: 40px;
+  border-radius: 2rem;
   margin-top: 1rem;
   outline: 0;
 }
-
-/*******************
- * External Links * 
-********************/
 a {
   outline: 0;
   text-decoration: none;
 }
-
-a:link {
-  color: #c26767;
-}
-
-a:visited {
-  color: #c49c6b;
-}
-
-a:hover {
-  color: #6a8fc2;
-}
-
-a:active {
-  color: #67bd96;
-}
-
-a:focus {
-  color: #bbc26a;
-}
+a:link { color: #c26767; }
+a:visited { color: #c49c6b; }
+a:hover { color: #6a8fc2; }
+a:active { color: #67bd96; }
+a:focus { color: #bbc26a; }
