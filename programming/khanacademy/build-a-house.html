@@ -20,6 +20,12 @@
         <canvas id="canvas"></canvas>
         <!-- Credits to Robert Tupelo-Schneck for this processingJS template -->
         <script>
+          window.onload = function() {
+            if (!window.location.hash) {
+              window.location = window.location + "#loaded";
+              window.location.reload();
+            }
+          }
           var canvas = document.getElementById("canvas");
           var processing = new Processing(canvas, function(processing) {
               processing.size(400, 400);

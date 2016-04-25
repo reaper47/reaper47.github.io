@@ -1,0 +1,279 @@
+@keyframes padding-top { 
+  100% { padding-top: 15rem; } 
+}
+@keyframes opacity { 
+  100% { opacity: 1; } 
+}
+@keyframes margin-zero { 
+  100% { margin-left: 0rem; margin-right: 0rem;} 
+}
+html {
+  position: relative;
+  background-color:  #cfd8dc;      
+  background: linear-gradient(to left, #556270 , #FF6B6B); 
+  animation-name: padding-top;
+  animation-delay: 0.5s;
+  animation-duration: 4s; 
+  animation-fill-mode: forwards; 
+}
+body {
+  color: #212121;
+  font-family: 'Lora', sans-serif, georgia, arial, monospace;
+}
+section { text-align: center; }
+h2#first-name { margin-left: -80rem; }
+h2#last-name { margin-right: -80rem; }
+h2 {
+  color: #ecf0f1;
+  line-height: 1rem;
+  font-size: 2rem;
+  opacity: 0;
+  animation-name: margin-zero, opacity;
+  animation-duration: 4s; 
+  animation-fill-mode: forwards; 
+}
+p { 
+  font-size: 1.2rem;
+  padding-top: 2rem; 
+}
+a {
+  outline: 0;
+  text-decoration: none;
+}
+span {
+  letter-spacing: -0.25rem;
+}
+.container-choose-path { margin-top: 3rem; }
+#alt, #main { display: inline-block; }
+#main { margin-right: 8rem; }
+#alt { margin-left: 8rem; }
+.preload-img { 
+  position: absolute;
+  visibility: hidden; 
+  width: 1px;
+  top: 0;
+}
+.tag { 
+  color: #ecf0f1;
+  padding: 1rem;
+  border-radius: 25%;
+  font-size: 1.05rem;
+  opacity: 0;
+  transition: 0.5s all ease-out; 
+  animation-name: opacity;
+  animation-delay: 3s;
+  animation-duration: 8.2s; 
+  animation-fill-mode: forwards; 
+}
+.tag:hover {
+  transition: all 1s ease;
+  color: #2980b9;
+  background-color: #f1c40f;
+  border-radius: 50%;
+} 
+#g {
+  opacity: 0;
+  animation-name: opacity;
+  animation-delay: 2.3s;
+  animation-duration: 5.3s; 
+  animation-fill-mode: forwards;
+}
+#e {
+  opacity: 0;
+  animation-name: opacity;
+  animation-delay: 2.4s;
+  animation-duration: 5.4s; 
+  animation-fill-mode: forwards;
+}
+#o1 {
+  opacity: 0;
+  animation-name: opacity;
+  animation-delay: 2.5s;
+  animation-duration: 5.5s; 
+  animation-fill-mode: forwards;
+}
+#l {
+  opacity: 0;
+  animation-name: opacity;
+  animation-delay: 2.6s;
+  animation-duration: 5.6s; 
+  animation-fill-mode: forwards;
+}
+#o2 {
+  opacity: 0;
+  animation-name: opacity;
+  animation-delay: 2.7s;
+  animation-duration: 5.7s; 
+  animation-fill-mode: forwards;
+}
+#g2 {
+  opacity: 0;
+  animation-name: opacity;
+  animation-delay: 2.8s;
+  animation-duration: 5.8s; 
+  animation-fill-mode: forwards;
+}
+#i {
+  opacity: 0;
+  animation-name: opacity;
+  animation-delay: 2.9s;
+  animation-duration: 5.9s; 
+  animation-fill-mode: forwards;
+}
+#s {
+  opacity: 0;
+  animation-name: opacity;
+  animation-delay: 3.0s;
+  animation-duration: 6.0s; 
+  animation-fill-mode: forwards;
+}
+#t {
+  opacity: 0;
+  animation-name: opacity;
+  animation-delay: 3.1s;
+  animation-duration: 6.1s; 
+  animation-fill-mode: forwards;
+}
+#a-and {
+  padding-left:0.5rem;
+  opacity: 0;
+  animation-name: opacity;
+  animation-delay: 3.2s;
+  animation-duration: 6.2s; 
+  animation-fill-mode: forwards;
+}
+#n-and {
+  opacity: 0;
+  animation-name: opacity;
+  animation-delay: 3.3s;
+  animation-duration: 6.3s; 
+  animation-fill-mode: forwards;
+}
+#d-and {
+  padding-right: 0.5rem;
+  opacity: 0;
+  animation-name: opacity;
+  animation-delay: 3.4s;
+  animation-duration: 6.4s; 
+  animation-fill-mode: forwards;
+}
+#a-am {
+  opacity: 0;
+  animation-name: opacity;
+  animation-delay: 3.5s;
+  animation-duration: 6.5s; 
+  animation-fill-mode: forwards;
+}
+#m-am {
+  opacity: 0;
+  animation-name: opacity;
+  animation-delay: 3.6s;
+  animation-duration: 6.6s; 
+  animation-fill-mode: forwards;
+}
+#a2-am {
+  opacity: 0;
+  animation-name: opacity;
+  animation-delay: 3.7s;
+  animation-duration: 6.7s; 
+  animation-fill-mode: forwards;
+}
+#t-am {
+  opacity: 0;
+  animation-name: opacity;
+  animation-delay: 3.8s;
+  animation-duration: 6.8s; 
+  animation-fill-mode: forwards;
+}
+#e-am {
+  opacity: 0;
+  animation-name: opacity;
+  animation-delay: 3.9s;
+  animation-duration: 6.9s; 
+  animation-fill-mode: forwards;
+}
+#u-am {
+  opacity: 0;
+  animation-name: opacity;
+  animation-delay: 4.0s;
+  animation-duration: 7.0s; 
+  animation-fill-mode: forwards;
+}
+#r-am {
+  padding-right: 0.5rem;
+  opacity: 0;
+  animation-name: opacity;
+  animation-delay: 4.1s;
+  animation-duration: 7.1s; 
+  animation-fill-mode: forwards;
+}
+#p-prog {
+  opacity: 0;
+  animation-name: opacity;
+  animation-delay: 4.2s;
+  animation-duration: 7.2s; 
+  animation-fill-mode: forwards;
+}
+#r-prog {
+  opacity: 0;
+  animation-name: opacity;
+  animation-delay: 4.3s;
+  animation-duration: 7.3s; 
+  animation-fill-mode: forwards;
+}
+#o-prog {
+  opacity: 0;
+  animation-name: opacity;
+  animation-delay: 4.4s;
+  animation-duration: 7.4s; 
+  animation-fill-mode: forwards;
+}
+#g-prog {
+  opacity: 0;
+  animation-name: opacity;
+  animation-delay: 4.5s;
+  animation-duration: 7.5s; 
+  animation-fill-mode: forwards;
+}
+#r2-prog {
+  opacity: 0;
+  animation-name: opacity;
+  animation-delay: 4.6s;
+  animation-duration: 7.6s; 
+  animation-fill-mode: forwards;
+}
+#a-prog {
+  opacity: 0;
+  animation-name: opacity;
+  animation-delay: 4.7s;
+  animation-duration: 7.7s; 
+  animation-fill-mode: forwards;
+}
+#m-prog {
+  opacity: 0;
+  animation-name: opacity;
+  animation-delay: 4.8s;
+  animation-duration: 7.8s; 
+  animation-fill-mode: forwards;
+}
+#m2-prog {
+  opacity: 0;
+  animation-name: opacity;
+  animation-delay: 4.9s;
+  animation-duration: 7.9s; 
+  animation-fill-mode: forwards;
+}
+#e-prog {
+  opacity: 0;
+  animation-name: opacity;
+  animation-delay: 5.0s;
+  animation-duration: 8.0s; 
+  animation-fill-mode: forwards;
+}
+#r3-prog {
+  opacity: 0;
+  animation-name: opacity;
+  animation-delay: 5.1s;
+  animation-duration: 8.1s; 
+  animation-fill-mode: forwards;
+}             

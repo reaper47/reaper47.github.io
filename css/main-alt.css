@@ -21,6 +21,7 @@ header {
   width: 100%;
   text-align: center;
   border-bottom: thick solid #7c4dff;
+  padding-top: 1rem;
 }
 #hr-title { width: 45rem; }
 nav li { display: inline; }
@@ -50,8 +51,8 @@ nav li a {
   font-size: 2rem;
   text-align: center;
   width: 100%;
-  padding-top: 10rem;
-  padding-bottom: 28rem;
+  padding-top: 6rem;
+  padding-bottom: 15rem;
 }
 #home hr { width: 50rem; }
 /*****************************
