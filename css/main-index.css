@@ -77,8 +77,8 @@ nav li a:hover, #footer-list li a:hover { color: #c0392b; }
   text-align: center;
   min-width: 700px;
   color: #ecf0f1;
-  top: 45%;
-  left: 50%;
+  top: 14rem;
+  left: 11.5rem;;
   transform: translate(-50%, -75%);
 }
 /****************************************
