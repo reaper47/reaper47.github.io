@@ -9,8 +9,8 @@ $(function() {
         dataType: 'json',
         timeOut: 2000,
         success: function(data) { 
-          $('#rand-quote').html(data.quote);
-          $('#rand-author').html('- ' + data.author);
+          $('#chuck-quote').html(data.value.joke); 
+          $('#chuck-author').html('- Chuck Norris');
           quotesRand.insert(quoteCountRand, data.quote);
           quotesRandAuthor.insert(quoteCountRand, data.author);
         },
