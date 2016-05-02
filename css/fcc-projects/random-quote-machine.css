@@ -1,0 +1,330 @@
+@import url('http://fonts.googleapis.com/css?family=Lora');
+html {
+  position: relative;
+  background-color: #4dbd79;
+  margin-top: 10rem;
+}
+body {
+  font-family: 'Lora', sans-serif, georgia, arial, monospace;
+  text-align: center;
+  color: #212121;
+  line-height: 1.5rem;
+  font-size: 1.1rem;
+}
+h1 { 
+  margin: 0;
+  padding-bottom: 1rem;
+}
+main {
+  background-color: #ecf0f1;
+  border-radius: 1.3rem;
+  height: 21rem;
+}
+p.welcome-p { text-align: left; }
+main > div p {
+  margin: 0;
+  padding-top: 0.8rem;
+}
+main > div > p:first-child {
+  margin: 0;
+  padding-top: 2rem;
+}
+cite { 
+  float: right;
+  margin-right: 2rem;
+  margin-top: -0.5rem;
+}
+aside#chuck, aside#rand {
+  float: right;
+  display: flex;
+  margin-top: -10rem;
+  margin-right: -14rem;
+}
+aside#rand { 
+  clear: right;
+  margin-top: -11.3rem;
+  margin-right: -4.15rem;
+}
+aside#chuck > a, aside#rand > a { color: #C0392B; padding-right: 0.2rem; }
+a { outline: 0; text-decoration: none; }
+.nav-buttons { padding: 4.5rem; }
+.nav-buttons a { margin-left: 1rem; }
+.nav-buttons a:nth-child(2) { color: #26A65B; }
+.nav-buttons a:nth-child(3):hover, .nav-buttons a:first-child:hover { color: #F89406; }
+.nav-buttons a:nth-child(3):focus, .nav-buttons a:first-child:focus { color: #5c6a79; }
+.nav-buttons a:nth-child(3), .nav-buttons a:first-child { color: #4183D7; }
+blockquote { height: 5rem; }
+aside#chuck > a:hover, aside#rand > a:hover { color: #663399; }
+aside .share-icon2, aside .share-icon3 { color: #9A12B3; }
+a.welcome-link:link { color: #c26767; }
+a.welcome-link:visited { color: #6a8fc2; }
+a.welcome-link:hover { color: #c267b1; } 
+a.welcome-link:active { color: #6a8fc2; }
+a.welcome-link:focus { color: #6a8fc2; }
+.fa-facebook-official:hover { color: #4862A3; }
+.fa-twitter-square:hover { color: #55ACEE; }
+.fa-google-plus-square:hover { color: #D04539; }
+#social-main:hover { color: #663399; }
+aside a.share-icon1, aside a.share-icon2, aside a.share-icon3 { display: none; }
+#main-tab p { padding-top: 0; }
+#love-it {
+  color:  #C0392B;
+  display: inline-flex;
+  margin-top: 1rem;
+}
+#love-it > a {
+  margin-left: 0.5rem;
+  color:  #C0392B;
+  cursor: default;
+}
+#love-it aside a.share-icon1 {
+  padding-left: 0.2rem;
+  color: #9A12B3;
+}
+#love-it > a > i { cursor: pointer; }
+#main-tab, #chuck-tab, #random-quotes {
+  padding: 4rem 6rem;
+}
+#rand-quote, #chuck-quote { padding: 0; }
+.fa-quote-left {
+  float: left;
+  clear: right;
+  margin-top: -3rem;
+  margin-left: -3rem;
+}
+.fa-quote-right {
+  float: right;
+  clear: left;
+  margin-right: -4rem;
+  margin-top: -2rem;
+}
+.quote-page {
+  text-align: center;
+  width: 45%;
+  margin-left: 28%;
+}
+.tab-control {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  text-align: center;
+  color: #212121;
+  font-size: 1.1rem;
+}
+.tab-panel {
+  display: none;
+  overflow: none;
+}
+.tab-panel.active {
+  display: block;
+}
+.tab-list {
+  margin: 0;
+  padding: 0;
+}
+.tab-list li {
+  display: inline-block;
+  list-style-type: none;
+}
+.tab-list li a {
+  display: block;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  padding-top: 0.3rem;
+}
+.tab-list li.active a, .tab-list li a:hover {
+  color: #212121;
+  background-color: #ecf0f1;
+  border-bottom: 3px solid #ecf0f1;
+}
+.rotate-refresh.rot360 {
+  transform: rotate(360deg);
+  transition: transform 0.3s ease-in;
+  animation-fill-mode: forwards;
+}
+.changeColor {
+  transition: background-color 2.5s;
+    -moz-transition: background-color 2.5s;
+    -webkit-transition: background-color 2.5s;
+    -o-transition: background-color 2.5s;
+    animation-fill-mode: forwards;
+}
+@media (max-height: 550px) { html { margin-top: 4rem; } }
+@media (min-width: 286px) and (max-width: 635px) {
+  body {
+    font-size: 12px;
+    position: fixed;
+  }
+  h1 { 
+    margin: 0;
+    padding-bottom: 1rem;
+    margin-top: -2.5rem;
+  }
+  .tab-list li a {
+    border-top-left-radius: 0.3rem;
+    border-top-right-radius: 0.25rem;
+    padding-right: 0.1rem;
+  }
+  cite {
+    float: right;
+    margin-right: 2rem;
+    margin-top: 0rem;
+  }
+  blockquote { height: 7.5rem; }
+  #main-tab { padding: 4.5rem 2rem; }
+  #chuck-tab { padding: 4rem 1rem; }
+  #rand-quote, #chuck-quote { margin-left:0; }
+  #random-quotes {
+    padding: 3rem 0rem;
+    padding-top: 4rem;
+  }
+  #love-it { margin-top: 3rem; }
+  .fa-quote-right {
+    margin-right: 0.2rem;
+    margin-top: -1rem;
+  }
+  .fa-quote-left {
+    margin-left: 0.2rem;
+    margin-top: -3.5rem;
+  }
+  .nav-buttons {
+    padding: 2rem;
+    margin-top: 3.5rem;
+  }
+  aside#chuck {
+    margin-top: -12rem;
+    margin-right: -9.5rem;
+  }
+  aside#rand {
+    margin-top: -13.5rem;
+    margin-right: 0.8rem;
+  }
+  #rand-block { padding: 0 2rem; }
+  .tab-control {
+    padding-left: 0;
+    padding-right: 0;
+    font-size: 12px;
+  }
+  .quote-page {
+    text-align: center;
+    width: 97%;
+    margin-left: 2%;
+    padding-right: 100%;
+  } 
+}
+@media (min-width: 636px) and (max-width: 1082px) {
+  body { font-size: 14px; }
+  h1 { 
+    margin: 0;
+    padding-bottom: 1rem;
+    margin-top: -2.5rem;
+    font-size: 1rem;
+  }
+  .quote-page {
+    width: 75%;
+    margin-left: 14%;
+  } 
+  #main-tab { padding: 4rem 4rem; }
+  .tab-control {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 1rem;
+  }
+  #love-it { margin-top: 2.5rem; }
+  .tab-list li a {
+    border-top-left-radius: 0.8rem;
+    border-top-right-radius: 0.8rem;
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+  aside#chuck {
+    margin-top: -10rem;
+    margin-right: -11.5rem;
+  }
+  aside#rand {
+    margin-top: -12rem;
+    margin-right: -3.45rem;
+  }
+  cite {
+    float: right;
+    margin-right: 2rem;
+    margin-top: 0.5rem;
+  }
+  #main-tab, #chuck-tab, #random-quotes {
+    padding: 4rem 4rem;
+  }
+  .fa-quote-right {
+    margin-right: -3rem;
+    margin-top: -1rem;
+  }
+  .fa-quote-left {
+    margin-left: -3rem;
+    margin-top: -4rem;
+  }
+}
+@media (min-width: 1083px) and (max-width: 1368px) {
+  body { font-size: 1rem; }
+  h1 { 
+    margin: 0;
+    padding-bottom: 1rem;
+    margin-top: -2.5rem;
+  }
+  .tab-list li a {
+    border-top-left-radius: 0.8rem;
+    border-top-right-radius: 0.8rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+  cite {
+    float: right;
+    margin-right: 2rem;
+    margin-top: 0rem;
+  }
+  blockquote {
+    height: 7.5rem;
+  }
+  main { height: 22rem; }
+  #main-tab { padding: 4.5rem 5rem; }
+  #chuck-tab { padding: 4.5rem 2rem; }
+  #rand-quote, #chuck-quote { margin-left:0; }
+  #random-quotes {
+    padding: 4rem 2rem;
+    padding-top: 4.5rem;
+  }
+  #love-it { margin-top: 3rem; }
+  .fa-quote-right {
+    margin-right: -4rem;
+    margin-top: -1rem;
+  }
+  .fa-quote-left {
+    margin-left: -4rem;
+    margin-top: -4rem;
+  }
+  .nav-buttons {
+    padding: 2rem;
+    margin-top: 3.5rem;
+  }
+  aside#chuck {
+    margin-top: -13rem;
+    margin-right: -12.9rem;
+  }
+  aside#rand {
+    margin-top: -15rem;
+    margin-right: -1rem;
+  }
+  #rand-block { padding: 0 2rem; }
+  .tab-control {
+    padding-left: 0;
+    padding-right: 0;
+    font-size: 1rem;
+  }
+  .quote-page {
+    width: 60%;
+    margin-left: 20%;
+  } 
+  .quote-area {
+    padding: 0rem;
+    padding-left: 4rem;
+    padding-right: 3rem;
+  }
+  .nav-buttons { margin-top: 2.5rem; }
+}

@@ -1,0 +1,120 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Random Quote Machine</title>
+    <meta name="description" content="Random Quote Machine">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../css/fcc-projects/random-quote-machine.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  </head>
+  <body>
+    <section class="quote-page">
+      <div class="tabs">
+        <ul class="tab-list">
+          <li class="active"><a class="tab-control" href="#main-tab">Welcome</a></li>
+          <li><a class="tab-control" href="#chuck-tab">Chuck Norris Jokes</a></li>
+          <li><a class="tab-control" href="#random-quotes">Random Quotes</a></li>
+        </ul>
+        <main class="app">
+          <div class="tab-panel active" id="main-tab">
+            <h1>Random Quote Machine</h1>
+            <p class="welcome-p">
+               Choose between Chuck Norris jokes and random quotes. The former 
+               and latter are requested from the 
+               <a href="http://www.icndb.com/" target="_blank" class="welcome-link">
+               Internet Chuck Norris Database</a> and the 
+               <a href="https://market.mashape.com/andruxnet/random-famous-quotes"
+                  target="_blank" class="welcome-link">Andruxnet API</a>, 
+               respectively. Share this web app or the quotes you like on Facebook, 
+               Twitter or Google Plus!
+            </p>
+            <div id="love-it">
+              <h2>You'll love it.</h2>
+              <a href="#" title="Toggle social options">
+                <i id="social-main" class="fa fa-heart fa-2x"></i>
+              </a>
+              <aside>
+                <div class="social-options">
+                  <a href="#" title="Share this web app on Facebook!" class="share-icon1" id="facebook1">
+                    <i class="fa fa-facebook-official fa-2x"></i>
+                  </a>
+                  <a href="#" title="Tweet this web app!" target="_blank" class="share-icon1" id="twitter1">
+                    <i class="fa fa-twitter-square fa-2x"></i>
+                  </a>
+                  <a href="https://plus.google.com/share?url=reaper47.github.io" title="Share this web app on Google Plus!" class="share-icon1" id="gplus1">
+                    <i class="fa fa-google-plus-square fa-2x"></i>
+                  </a>
+                </div>
+              </aside>
+            </div>
+          </div>
+          
+          <div class="tab-panel" id="chuck-tab">
+            <div class="quote-area">
+              <i class="fa fa-quote-left fa-3x" aria-hidden="true"></i>
+              <blockquote><p id="chuck-quote"><p></blockquote>
+              <i class="fa fa-quote-right fa-3x" aria-hidden="true"></i>
+              <cite id="chuck-author"></cite>
+            </div>
+            <aside id="chuck">
+              <a href="#" title="Toggle social options">
+                <i id="social-chuck" class="fa fa-heart fa-2x"></i>
+              </a>
+              <div class="social-options chuck-div">
+                <a href="#" title="Share this joke on Facebook!" class="share-icon2" id="facebook2">
+                  <i class="fa fa-facebook-official fa-2x rotate"></i>
+                </a>
+                <a href="#" title="Tweet this joke!" target="_blank" class="share-icon2" id="twitter2">
+                  <i class="fa fa-twitter-square fa-2x rotate"></i>
+                </a>
+                <a href="https://plus.google.com/share?url=reaper47.github.io" title="Share this joke on Google Plus!" class="share-icon2" id="gplus2">
+                  <i class="fa fa-google-plus-square fa-2x rotate"></i>
+                </a>
+              </div>
+            </aside>
+            <div class="nav-buttons">
+              <a href="#" id="prev-quote-chuck"><i class="fa fa-arrow-left fa-3x"></i></a>
+              <a href="#" id="new-quote-chuck" class="rotate"><i class="fa fa-refresh fa-3x rotate-refresh"></i></a>
+              <a href="#" id="next-quote-chuck"><i class="fa fa-arrow-right fa-3x"></i></a>
+            </div>
+          </div>
+          
+          <div class="tab-panel" id="random-quotes">
+            <div class="quote-area">
+              <i class="fa fa-quote-left fa-3x" aria-hidden="true"></i>
+              <blockquote id="rand-block"><p id="rand-quote"><p></blockquote>
+              <i class="fa fa-quote-right fa-3x" aria-hidden="true"></i>
+              <cite id="rand-author"></cite>
+            </div>
+            <aside id="rand">
+              <a href="#" title="Toggle social options">
+                <i id="social-rand" class="fa fa-heart fa-2x"></i>
+              </a>
+              <div class="social-options">
+                <a href="#" title="Share this quote on Facebook!" class="share-icon3" id="facebook3">
+                  <i class="fa fa-facebook-official fa-2x"></i>
+                </a>
+                <a href="#" title="Tweet this quote!" target="_blank" class="share-icon3" id="twitter3">
+                  <i class="fa fa-twitter-square fa-2x"></i>
+                </a>
+                <a href="https://plus.google.com/share?url=reaper47.github.io" title="Share this quote on Google Plus!" class="share-icon3" id="gplus3">
+                   <i class="fa fa-google-plus-square fa-2x"></i>
+                </a>              
+              </div>
+            </aside>
+            <div class="nav-buttons">
+              <a href="#" id="prev-quote-rand"><i class="fa fa-arrow-left fa-3x"></i></a>
+              <a href="#" id="new-quote-rand"><i class="fa fa-refresh fa-3x rotate-refresh"></i></a>
+              <a href="#" id="next-quote-rand"><i class="fa fa-arrow-right fa-3x"></i></a>
+            </div>
+          </div>
+        </main>
+      </div>
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../js/vendor/jquery-2.2.2.min.js"><\/script>')</script>
+    <script src="../../js/fcc-projects/random-quote-machine.js"></script>
+  </body>
+</html>

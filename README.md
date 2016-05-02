@@ -8,6 +8,7 @@ To access the site, type or copy **reaper47.github.io** in your browser's addres
 - [ ] Optimize for Chrome, IE, Edge
 - [ ] Add an invisible fixed menu that becomes visible upon hover
 - [ ] Add a quick access back-to-top arrow button
+- [ ] Add a no-js message
 - [ ] Logo: fix the snake on the scythe
 - [X] Design a logo
 - [X] Make a 64x64 website icon and use X-Icon Editor
