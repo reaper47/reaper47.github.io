@@ -112,7 +112,7 @@ $(function() {
     setTimeout(function() { $('html').removeClass('changeColor'); }, 2500);
     $('#chuck-quote').fadeIn(600);
     $('#chuck-author').fadeIn(600);
-    quoteCountChuck += 1
+    quoteCountChuck += 1;
   });  
   
   // Request a random quotes
@@ -127,7 +127,7 @@ $(function() {
     setTimeout(function() { $('html').removeClass('changeColor'); }, 2500);
     $('#rand-quote').fadeIn(1500);
     $('#rand-author').fadeIn(1500);
-    quoteCountRand += 1
+    quoteCountRand += 1;
   });
   
   // Rotate the refresh icon on click
