@@ -2,7 +2,12 @@ $(function() {
   function GenerateRandomQuote(type) {
     if (type === "chuck") {
       // Fetch a new quote
-      $.getJSON('http://api.icndb.com/jokes/random')
+      try {
+        $json = $.getJSON('http://api.icndb.com/jokes/random');
+      } catch(e) {
+        $json = $.getJSON('https://api.icndb.com/jokes/random');
+      }
+      $json
         .done(function(data){ 
           try {
             $('#chuck-quote').html(data.value.joke); 
