@@ -183,17 +183,17 @@ $(function() {
                 ',toolbar=0,status=0,width=' + winWidth + ',height=' + winHeight);
   }
   $fb1.on('click', function() {
-    const projectURL = 'http%3A%2F%2Freaper47.github.io%2Frandom-quote-machine.html&';
+    const projectURL = 'http%3A%2F%2Freaper47.github.io%2Ffcc-projects%2Frandom-quote-machine.html&';
     const quote = 'Check%20out%20this%20beautiful%20random%20quote%20generator!';
     fbShare(projectURL, quote, 520, 350);
   });
   $fb2.on('click', function() {
-    const projectURL = 'http%3A%2F%2Freaper47.github.io%2Frandom-quote-machine.html&';
+    const projectURL = 'http%3A%2F%2Freaper47.github.io%2Ffcc-projects%2Frandom-quote-machine.html&';
     const quote = '"' + $('#chuck-quote').html() + '"' + '  ' + '-' + $('#chuck-author').html();
     fbShare(projectURL, quote, 520, 350);
   });
   $fb3.on('click', function() {
-    const projectURL = 'http%3A%2F%2Freaper47.github.io%2Frandom-quote-machine.html&';
+    const projectURL = 'http%3A%2F%2Freaper47.github.io%2Ffcc-projects%2Frandom-quote-machine.html&';
     const quote = '"' + $('#rand-quote').html() + '"' + '  ' + '-' + $('#rand-author').html();
     fbShare(projectURL, quote, 520, 350);
   });
@@ -204,7 +204,7 @@ $(function() {
   
   $tweet1.on('click', function() {
     const tweetText = 'text=Check%20out%20this%20beautiful%20random%20quote%20generator!&';
-    const projectURL = 'url=http%3A%2F%2Freaper47.github.io%2Frandom-quote-machine.html&';
+    const projectURL = 'url=http%3A%2F%2Freaper47.github.io%2Ffcc-projects%2Frandom-quote-machine.html&';
     const hashtags = 'hashtags=quotes,colorful,canada&';
     const related = 'related=freecodecamp%3AFree%20Code%20Camp&';
     const winTop = (document.documentElement.clientHeight / 2) - (350 / 2);
@@ -238,22 +238,22 @@ $(function() {
   $gplus1.on('click', function() {
     const winTop = (document.documentElement.clientHeight / 2) - (600 / 2);
     const winLeft = (document.documentElement.clientWidth / 2) - (600 / 2);
-    window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,' + 
-                'scrollbars=yes,height=600,width=600,left=' + winLeft + ',top=' + winTop);
+    window.open(this.href + '%2Ffcc-projects%2Frandom-quote-machine.html', 
+                '', 'menubar=no,toolbar=no,resizable=yes,' + 'scrollbars=yes,height=600,width=600,left=' + winLeft + ',top=' + winTop);
     return false;
   });
   $gplus2.on('click', function() {
     const winTop = (document.documentElement.clientHeight / 2) - (600 / 2);
     const winLeft = (document.documentElement.clientWidth / 2) - (600 / 2);
-    window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,' + 
-                'scrollbars=yes,height=600,width=600,left=' + winLeft + ',top=' + winTop);
+    window.open(this.href + '%2Ffcc-projects%2Frandom-quote-machine.html', 
+                '', 'menubar=no,toolbar=no,resizable=yes,' + 'scrollbars=yes,height=600,width=600,left=' + winLeft + ',top=' + winTop);
     return false;
   });
   $gplus3.on('click', function() {
     const winTop = (document.documentElement.clientHeight / 2) - (600 / 2);
     const winLeft = (document.documentElement.clientWidth / 2) - (600 / 2);
-    window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,' + 
-                'scrollbars=yes,height=600,width=600,left=' + winLeft + ',top=' + winTop);
+    window.open(this.href + '%2Ffcc-projects%2Frandom-quote-machine.html', 
+                '', 'menubar=no,toolbar=no,resizable=yes,' + 'scrollbars=yes,height=600,width=600,left=' + winLeft + ',top=' + winTop);
     return false;
   });
   
