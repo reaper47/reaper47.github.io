@@ -2,22 +2,37 @@ $(function() {
   function GenerateRandomQuote(type) {
     if (type === "chuck") {
       // Fetch a new quote
-      try {
-        $json = $.getJSON('http://api.icndb.com/jokes/random');
-      } catch(e) {
-        $json = $.getJSON('https://api.icndb.com/jokes/random');
-      }
-      $json
-        .done(function(data){ 
+      $.ajax({
+        url: 'https://api.icndb.com/jokes/random',
+        type: 'GET',
+        data: {},
+        dataType: 'json',
+        timeOut: 2000,
+        success: function(data) { 
+          $('#rand-quote').html(data.quote);
+          $('#rand-author').html('- ' + data.author);
+          quotesRand.insert(quoteCountRand, data.quote);
+          quotesRandAuthor.insert(quoteCountRand, data.author);
+        },
+        error: function(err) { 
           try {
-            $('#chuck-quote').html(data.value.joke); 
-            $('#chuck-author').html('- Chuck Norris');
-            quotesChuck.insert(quoteCountChuck, data.value.joke);
+            $.getJSON('http://api.icndb.com/jokes/random')
+            .done(function(data){ 
+            try {
+              $('#chuck-quote').html(data.value.joke); 
+              $('#chuck-author').html('- Chuck Norris');
+              quotesChuck.insert(quoteCountChuck, data.value.joke);
+            } catch(e) {
+              const msg = "Chuck Norris is currently in a bad mood.";
+              $('#chuck-quote').html(msg); 
+              }
+            });
           } catch(e) {
-            const msg = "Chuck Norris is currently in a bad mood.";
-            $('#chuck-quote').html(msg); 
+              $('#chuck-quote').html("Chuck Norris is gone somewhere.");
+              $('#chuck-author').html("- said No One");
           }
-        }); 
+        }
+      });
     } else if (type === "random") {
       const url = 'https://andruxnet-random-famous-quotes.p.mashape.com';
       const API_KEY = 'K7Vx9w8OhamshM3i54T8214UgSIvp1agM5cjsn5ytRmW0F1oZI';
@@ -39,7 +54,7 @@ $(function() {
         },
         error: function(err) { 
           $('#rand-quote').html("An error has occurred.");
-          $('#author').html("Batman");
+          $('#rand-author').html("Batman");
         }
       });
     }
