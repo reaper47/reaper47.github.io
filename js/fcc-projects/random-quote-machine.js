@@ -11,8 +11,7 @@ $(function() {
         success: function(data) { 
           $('#chuck-quote').html(data.value.joke); 
           $('#chuck-author').html('- Chuck Norris');
-          quotesRand.insert(quoteCountRand, data.quote);
-          quotesRandAuthor.insert(quoteCountRand, data.author);
+          quotesChuck.insert(quoteCountChuck, data.value.joke);
         },
         error: function(err) { 
           try {
