@@ -127,7 +127,7 @@ $(function() {
     $('#chuck-author').fadeOut(600);
     $('html').addClass('changeColor');
     $('html').css('background-color', randColor);
-    setTimeout(function() { GenerateRandomQuote("chuck"); }, 600);
+    setTimeout(function() { GenerateRandomQuote("chuck"); }, 300);
     setTimeout(function() { $('html').removeClass('changeColor'); }, 2500);
     $('#chuck-quote').fadeIn(600);
     $('#chuck-author').fadeIn(600);
@@ -143,7 +143,7 @@ $(function() {
     $('html').addClass('changeColor');
     $('html').css('background-color', randColor);
     setTimeout(function() { GenerateRandomQuote("random"); }, 300);
-    setTimeout(function() { $('html').removeClass('changeColor'); }, 2500);
+    setTimeout(function() { $('html').removeClass('changeColor'); }, 2000);
     $('#rand-quote').fadeIn(1500);
     $('#rand-author').fadeIn(1500);
     quoteCountRand += 1;
