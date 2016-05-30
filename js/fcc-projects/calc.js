@@ -91,9 +91,10 @@ $(function() {
    
   function carriageReturn() {
     const expression = $('h3').text();
-	  $('h4').html('&nbsp;');
-	  if (expression.length > 2) {
-	    $('h3').text(expression.substr(0, expression.length - 2));
+    numDots = 0;
+	$('h4').html('&nbsp;');
+	if (expression.length > 2) {
+	  $('h3').text(expression.substr(0, expression.length - 2));
     }
   }
    
@@ -137,5 +138,6 @@ $(function() {
 		    $('h4').text('Error: Missing multiplication sign');
 	    }
      }
+     numDots = 0;
    }
 });
