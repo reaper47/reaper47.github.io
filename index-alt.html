@@ -478,7 +478,9 @@
         </div>
         <div id="music-player">
           <div class="music-player-song">
-            <audio src="audio/Valor.ogg" controls preload="none"></audio>
+            <audio controls preload="metadata">
+              <source src="audio/Valor.ogg" type="audio/ogg" />
+            </audio>
             <span>
               <a href="audio/Valor.ogg" download="Valor.ogg" title="Download this track!" class="music-dl">
                 <i class="fa fa-arrow-circle-down fa-2x"></i>
@@ -487,7 +489,7 @@
             <p>Valor</p>
           </div>
           <div class="music-player-song">
-          <audio src="audio/Composition_2.ogg" controls preload="none"></audio>
+          <audio src="audio/Composition_2.ogg" controls preload="metadata"></audio>
             <span>
               <a href="audio/Composition_2.ogg" download="Untitled.ogg" title="Download this track!" class="music-dl">
                 <i class="fa fa-arrow-circle-down fa-2x"></i>

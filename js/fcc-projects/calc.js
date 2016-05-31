@@ -1,6 +1,7 @@
 $(function() {
   let numSigns = 0;
   let numDots = 0;
+  let chgSign = "plus";
   let equalSignPressed = false;
   const numKeys = [40, 41, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57];
   const signKeys = [45, 43, 42, 47, 37, 120];
@@ -30,10 +31,23 @@ $(function() {
 	} else if (className.match(/clear/g)) {
 		$('h3').html('&nbsp;');
 		$('h4').html('&nbsp;');
+		numDots = 0;
 	} else if (className.match(/clr-current/g)){
 	    $('h4').html('&nbsp;');
+	    numDots = 0;
 	} else if (className.match(/return/g)) {
 		carriageReturn();
+	} else if (className.match(/plus-minus/g)) {
+	    if (chgSign === "plus") {
+	      let $text = $('h4').text();
+	      $text = '-' + $text[1, $text.length-1];
+	      $('h4').text($text);
+	      chgSign = "minus";
+	    } else {
+	      const $text = $('h4').text();
+	      $('h4').text($text[1, $text.length-1]);
+	      chgSign = "plus";
+	    }
 	}
   });
    
@@ -109,8 +123,6 @@ $(function() {
   }
    
   function evaluateExpr() {
-    // Evaluate the stuff inside the string 
-    // expression and handle all kinds of errors
     try {
       if ($('h3').html() === "&nbsp;" && $('h4').html() === '&nbsp;'){
         $('h4').text('Please enter an expression');
