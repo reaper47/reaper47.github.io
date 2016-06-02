@@ -1,6 +1,96 @@
+@import url(https://fonts.googleapis.com/css?family=Lato);
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 html {
-	
+  font-family: 'Lato', sans-serif, Verdana, Arial;
+  color: #212121;
 }
 body {
-	
+  min-height: 100%;
+  position: relative;
 }
+
+/**** Header Properties ****/
+header {
+  border-bottom: solid 0.2rem #3498db;
+  display: flex;
+  flex-flow: row wrap;
+}
+.center { 
+  width: 50%;
+  padding-top: 1.5rem;
+}
+.left { flex: 1; }
+#h-left-inline { display: inline-flex; }
+.left #h-left-inline {
+  margin-left: 1rem;
+  cursor: default; 
+}
+input[type="submit"]::-moz-focus-inner { border: 0; outline: none; }
+input[type="submit"] {
+    font-family: FontAwesome;
+    border: 0 none;
+    background-color: #ecf0f1;
+    cursor: pointer;
+    outline: 0;
+}
+input[type=radio] { display: none; }
+input[type="radio"] + label {
+  display: inline-block;
+  margin: -0.1rem;
+  margin-bottom: 0;
+  padding: 0.4rem 1rem;
+  background-color: #f5f5f5;
+  background-image: -moz-linear-gradient(top,#fff,#e6e6e6);
+  background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#e6e6e6));
+  background-image: -webkit-linear-gradient(top,#fff,#e6e6e6);
+  background-image: linear-gradient(to bottom,#fff,#e6e6e6);
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+input[type="radio"]:checked + label {
+  background-image: none;
+  outline: 0;
+  background-color:#e0e0e0;
+  -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+  -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+}
+#units-form { margin-right: 1rem; }
+
+/**** Main Section Properties ****/
+main {
+  padding-bottom: 10rem;
+  background-color: #bdc3c7;
+}
+main > p { margin: 0; }
+a { text-decoration: none; }
+a:hover { }
+a:visited { }
+a:focus { }
+a:link { }
+
+/**** Footer Properties ****/
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  padding-top: 0.1rem;
+  border-top: solid 0.2rem #3498db;
+}
+footer .center { padding-top: 0; }
+footer div { display: inline-block; }
+footer div > i { color: #2c3e50; }
+footer div > i:hover { 
+  cursor: pointer; 
+  color: #c0392b;
+}
+header, footer { background-color: #ecf0f1; }

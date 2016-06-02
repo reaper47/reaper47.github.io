@@ -4,27 +4,62 @@
     <meta charset="utf-8">
     <title>Macweather</title>
     <link href="css/weather-style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
   </head>
   <body>
-    <ul>
-	  <li><a href="#localWeather">Local Weather</a></li>
-	  <li><a href="#anyWeather">Anywhere on Earth</a></li>
-	</ul>
-    <section id="localWeather">
-	  <h2 id="localCityName"></h2>
-	  <div class="weatherInfo">
-	    <h3>Temperature</h3>
-	    <p id="localTemp"></p>
+    <header>
+      <div class="left">
+        <div id="h-left-inline">
+          <img src="http://findicons.com/files/icons/2617/weather_icons/128/sunny.png" alt="Macweather logo" width="64">
+          <h2>Macweather</h2>
+        </div>
       </div>
-	  <div class="weatherInfo">
-	    <h3>Humidity</h3>
-		<p id="localHumidity"></p>
-	  </div>
-	</section>
-	<section id="anyWeather">
-	  
-	</section>
-	<button id="toggleSystem">Celsius/Fahrenheit</button>
-    <script href="js/weather.js"></script>
+      <div class="center">
+        <form id="search-form" name="search-form" onsubmit="redirect();return f;">
+          <div>
+            <input name="city-search" type="search" placeholder="enter city">
+            <input type="submit" class="search" value="&#xf002;" />
+          </div>
+        </form>
+      </div>
+      <div class="right">
+        <form id="units-form">
+          <fieldset>
+            <legend>Units</legend>
+            <input type="radio" id="radio1" name="radios" value="celsius" checked>
+              <label for="radio1">C</label>
+            <input type="radio" id="radio2" name="radios" value="fahrenheit">
+              <label for="radio2">F</label>
+          </fieldset>
+        </form>
+      </div>
+    </header>
+    <main>
+      <p id="loc"></p>
+    </main>
+    <footer>
+      <div class="left"><time id="current-time" datetime=""></time></div>
+      <div class="center"><p>Daily weather for: <b><span id="footer-area"></span></b></p></div>
+      <div class="right"><i class="fa fa-info-circle fa-2x" aria-hidden="true"></i></div>
+    </footer>
+    <aside>
+      <p>Additional Information</p>
+      <div>
+      <ul>
+        <li>Latitude : <span></span></li>
+        <li>Longitude : <span></span></li>
+        <li>Altitude : <span></span></li>
+      </ul>
+      </div>
+      <p>Powered by</p>
+      <ul>
+        <li><a href="http:forecast.io">Forecast</a></li>
+        <li><a href="https://developers.google.com/maps/documentation/geocoding/intro">Geocoding API</a></li> 
+      </ul>
+    </aside>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script src="../js/vendor/jquery-2.2.4.min.js"></script>
+	<script src="js/modernizr-geo.js"></script>
+	<script src="js/weather.js"></script>
   </body>
 </html>
