@@ -35,6 +35,11 @@ const modal = (function() {
       $content.empty();
       $modal.detach();
       $(window).off('resize', modal.center);
+    },
+    addContent: function(target, content) {
+      $(target).each(function() {
+        $(this).addClass(content);
+      });
     }
   };
 }());

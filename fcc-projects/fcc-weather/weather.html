@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Macweather</title>
+    
     <link href="css/weather-style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
   </head>
@@ -15,7 +16,7 @@
         </div>
       </div>
       <div class="center">
-        <form id="search-form" name="search-form" onsubmit="redirect();return f;">
+        <form id="search-form" name="search-form" method="GET">
           <div>
             <input name="city-search" type="search" placeholder="enter city">
             <input type="submit" class="search" value="&#xf002;" />
@@ -35,31 +36,104 @@
       </div>
     </header>
     <main>
-      <p id="loc"></p>
+      <div class="main-wrapper">
+        <div class="row today-forecast">
+          <div id="current-temp">
+            <p class="large-text bold">Currently at </p>
+            <div class="icon-text-grp info-grp">
+              <img href='' alt="Weather icon" class="weather-icon">
+              <p class="large-text"></p>
+            </div>
+          </div>
+          <div id="today-temp">
+            <p class="mid-large-text">Today's Forecast</p>
+            <hr>
+            <div class="info-grp med-text">
+              <p id="today-summary"></p>
+              <div class="wind med-text" id="today-wind">
+                <p>Wind:</p>
+                <p></p>
+              </div>
+              <div class="humidity" id="today-humidity">
+                <p>Humidity:</p>
+                <p></p>
+              </div>
+              <div class="sun med-text" id="today-sun">
+                <p></p>
+                <p></p>
+              </div>
+            </div>
+            <hr>
+            <div class="min-max mid-large-text" id="today-min-max">
+              <p class="min"></p>
+              <p class="max"></p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row hourly-forecast">
+          <div id="hour-1">
+            <p class="med-text hourly-1"></p>
+            <p class="small-text"></p>
+            <img href="" alt="Weather icon" class="weather-icon">
+            <p class="small-text max"></p>
+            <div class="rain-chance icon-text-grp">
+                <img href='' alt="Precipitation icon" class="weather-icon">
+                <p class="small-text"></p>
+            </div>
+            <p class="small-text"></p>
+          </div>
+        </div>
+        
+        <div class="row future-forecast">
+          <div id="tomorrow-1">
+            <p class="mid-large-text tomorrow-1"></p>
+            <hr>
+            <div class="icon-text-grp info-grp">
+              <img href='' alt="Weather icon" class="weather-icon">
+              <p class="med-text"></p>
+            </div>
+            <hr>
+            <div class="min-max mid-large-text">
+              <p class="min"></p>
+              <p class="max"></p>
+              <div class="rain-chance icon-text-grp">
+                <img href='' alt="Precipitation icon" class="weather-icon">
+                <p class="med-text"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
     </main>
     <footer>
       <div class="left"><time id="current-time" datetime=""></time></div>
       <div class="center"><p>Daily weather for: <b><span id="footer-area"></span></b></p></div>
       <div class="right"><i class="fa fa-info-circle fa-2x" aria-hidden="true"></i></div>
     </footer>
-    <aside>
+    <div id="weather-info">
       <p>Additional Information</p>
-      <div>
-      <ul>
-        <li>Latitude : <span></span></li>
-        <li>Longitude : <span></span></li>
-        <li>Altitude : <span></span></li>
-      </ul>
+      <div id="ul-info">
+        <ul>
+          <li>Latitude &nbsp;: <span></span></li>
+          <li>Longitude : <span></span></li>
+          <li>Accuracy &nbsp;: <span></span></li>
+        </ul>
       </div>
       <p>Powered by</p>
-      <ul>
-        <li><a href="http:forecast.io">Forecast</a></li>
-        <li><a href="https://developers.google.com/maps/documentation/geocoding/intro">Geocoding API</a></li> 
-      </ul>
-    </aside>
+      <div>
+        <ul>
+          <li><a href="http:forecast.io" target="_blank">Forecast</a></li>
+          <li><a href="https://developers.google.com/maps/documentation/geocoding/intro" target="_blank">Geocoding API</a></li> 
+        </ul>
+      </div>
+    </div>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-	<script src="../js/vendor/jquery-2.2.4.min.js"></script>
-	<script src="js/modernizr-geo.js"></script>
-	<script src="js/weather.js"></script>
+    <script src="../js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="js/modernizr-geo.js"></script>
+    <script src="../../js/content-panels/modal-init.js"></script>
+    <script src="../../js/content-panels/modal-window.js"></script>
+    <script src="js/weather.js"></script>
   </body>
 </html>

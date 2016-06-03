@@ -91,6 +91,7 @@ button:hover { color: #ff5722; }
   padding: 50px;
   background-color: #555;
   cursor: default;
+  border-radius: 1rem;
 }
 #window {
   background: #fff;
