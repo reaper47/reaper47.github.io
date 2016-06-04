@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Macweather</title>
-    
+      <link rel="icon" href="meteo.svg">
     <link href="css/weather-style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
   </head>
@@ -11,7 +11,7 @@
     <header>
       <div class="left">
         <div id="h-left-inline">
-          <img src="http://findicons.com/files/icons/2617/weather_icons/128/sunny.png" alt="Macweather logo" width="64">
+          <img src="meteo.svg" alt="Chaos logo">
           <h2>Macweather</h2>
         </div>
       </div>
@@ -41,65 +41,65 @@
           <div id="current-temp">
             <p class="large-text bold">Currently at </p>
             <div class="icon-text-grp info-grp">
-              <img href='' alt="Weather icon" class="weather-icon">
-              <p class="large-text"></p>
+              <canvas class="weather-icon" id="current-weather-icon"></canvas>
+              <p class="large-text loading"></p>
             </div>
           </div>
           <div id="today-temp">
             <p class="mid-large-text">Today's Forecast</p>
             <hr>
             <div class="info-grp med-text">
-              <p id="today-summary"></p>
+              <p id="today-summary" class="loading"></p>
               <div class="wind med-text" id="today-wind">
                 <p>Wind:</p>
-                <p></p>
+                <p class="loading"></p>
               </div>
               <div class="humidity" id="today-humidity">
                 <p>Humidity:</p>
-                <p></p>
+                <p class="loading"></p>
               </div>
               <div class="sun med-text" id="today-sun">
-                <p></p>
-                <p></p>
+                <p class="loading"></p>
+                <p class="loading"></p>
               </div>
             </div>
             <hr>
             <div class="min-max mid-large-text" id="today-min-max">
-              <p class="min"></p>
-              <p class="max"></p>
+              <p class="min loading"></p>
+              <p class="max loading"></p>
             </div>
           </div>
         </div>
         
         <div class="row hourly-forecast">
           <div id="hour-1">
-            <p class="med-text hourly-1"></p>
-            <p class="small-text"></p>
-            <img href="" alt="Weather icon" class="weather-icon">
-            <p class="small-text max"></p>
-            <div class="rain-chance icon-text-grp">
-                <img href='' alt="Precipitation icon" class="weather-icon">
-                <p class="small-text"></p>
+            <p class="med-text hourly-1 loading"></p>
+            <p class="small-text loading"></p>
+            <canvas class="weather-icon to-the-hour-icon" id="to-the-hour-icon1"></canvas>
+            <p class="small-text max loading"></p>
+            <div class="rain-chance icon-text-grp hourly">
+                <canvas class="weather-icon hourly-icon" id="hourly-icon1"></canvas>
+                <p class="small-text loading"></p>
             </div>
-            <p class="small-text"></p>
+            <p class="small-text loading"></p>
           </div>
         </div>
         
         <div class="row future-forecast">
           <div id="tomorrow-1">
-            <p class="mid-large-text tomorrow-1"></p>
+            <p class="mid-large-text tomorrow-1 loading"></p>
             <hr>
             <div class="icon-text-grp info-grp">
-              <img href='' alt="Weather icon" class="weather-icon">
-              <p class="med-text"></p>
+              <canvas class="weather-icon future-weather-icons" id="future-weather-icon1"></canvas>
+              <p class="med-text loading"></p>
             </div>
             <hr>
             <div class="min-max mid-large-text">
-              <p class="min"></p>
-              <p class="max"></p>
-              <div class="rain-chance icon-text-grp">
-                <img href='' alt="Precipitation icon" class="weather-icon">
-                <p class="med-text"></p>
+              <p class="min loading"></p>
+              <p class="max loading"></p>
+              <div class="rain-chance icon-text-grp daily">
+                <canvas class="weather-icon daily-precip-icons" id="daily-precip-icon1"></canvas>
+                <p class="med-text loading"></p>
               </div>
             </div>
           </div>
@@ -124,7 +124,9 @@
       <p>Powered by</p>
       <div>
         <ul>
+          <li><a href="https://darkskyapp.github.io/skycons/" target="_blank">Skycons</a></li>
           <li><a href="http:forecast.io" target="_blank">Forecast</a></li>
+          
           <li><a href="https://developers.google.com/maps/documentation/geocoding/intro" target="_blank">Geocoding API</a></li> 
         </ul>
       </div>
@@ -134,6 +136,7 @@
     <script src="js/modernizr-geo.js"></script>
     <script src="../../js/content-panels/modal-init.js"></script>
     <script src="../../js/content-panels/modal-window.js"></script>
+    <script src="js/skycons.js"></script>
     <script src="js/weather.js"></script>
   </body>
 </html>

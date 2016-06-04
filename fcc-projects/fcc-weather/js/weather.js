@@ -6,7 +6,7 @@ We recommend using the Open Weather API. This will require creating a free API k
 */
 
 $(function() {
-  
+
   // 1. Place the current date in the header
   const dob = new Date(),
         today = { day: dob.getDate(), month: dob.getMonth(), year: dob.getFullYear() };
@@ -17,7 +17,9 @@ $(function() {
     
   // 2.1. Display current location data
   const elMap = document.getElementById('footer-area'),
-        errMsg = 'Unable to fetch location.';
+        errMsg = 'Unable to fetch location.',
+        errMsg2 = 'No data',
+        skycons = new Skycons({"color": "rgb(60, 74, 89)"});
         
   if (Modernizr.geolocation) {
     navigator.geolocation.getCurrentPosition(success, fail);
@@ -43,32 +45,27 @@ $(function() {
       }
     }
   });
-  
+
   // 2.3. Clone the hourly forecast divs
   for (let i = 0; i < 7; ++i) {    
     $hourlyForecast = $('#hour-1').clone();
     $hourlyForecast.attr('id', 'hour-' + (i + 2));
     $('.hourly-forecast').append($hourlyForecast);
   }
-  
-  // 2.3.1. Modify the class of the hourly forecast
-  $('.hourly-forecast > div > p.hourly-1').each(function(index, value) {
-    $(this).removeClass('hourly-1').addClass('hourly-' + (index + 1));
-  });
-  
+
   // 2.4. Clone the daily forecast divs
   for (let i = 0; i < 3; ++i) {
     $futureForecast = $('#tomorrow-1').clone();
     $futureForecast.attr('id', 'tomorrow-' + (i + 2));
     $('.future-forecast').append($futureForecast);
   }
-     
+ 
   // 3. Display search query weather data
   $('#search-form').on('submit', function(e) {
     e.preventDefault();
 
   });
-      
+
   function displayData(data) {
     const APIKEY = '892f2f3e695745ddcdca40b9c3e5561d',
           LATITUDE = data['lat'],
@@ -85,10 +82,10 @@ $(function() {
         if (xhr.overrideMimeType) {
           xhr.overrideMimeType("application/jsonp");
         }
-        $('#loc').append('<div id="load">Loading...</div>');
+        $('.loading').text('Loading...');
       },
       complete: function() {
-        $('#load').remove();
+        //$('.loading').remove();
       },
       success: function(data) {
         // Current forecast
@@ -96,7 +93,10 @@ $(function() {
           .html(data.currently.summary + ', ' + '<span class="celsius">' + 
                 Math.round(data.currently.temperature) + 
                 tempUnitSign() + '</span>');
-        $('#current-temp img').addClass(data.currently.icon);
+        $('#current-weather-icon').addClass(data.currently.icon);
+        const $currentClass = $('#current-weather-icon').attr('class').split(' ');
+        skycons.set('current-weather-icon', $currentClass[$currentClass.length-1])
+        
         // Today's forecast
         $('#today-summary').text(data.daily.data[0].summary);
         $('#today-wind p:nth-child(2)')
@@ -117,7 +117,66 @@ $(function() {
         $('#today-min-max p:last-child')
           .addClass('celsius')
           .html(Math.round(Math.round(data.daily.data[0].apparentTemperatureMax)) + tempUnitSign());
+
+
+        // 2.3.1. Modify the class of the hourly forecast
+        $('.hourly-forecast > div > p.hourly-1').each(function(index, value) {
+          $(this).removeClass('hourly-1').addClass('hourly-' + (index + 1));
+        });
+
+        // 2.3.2. Modify the id of the hourly forecast
+        $('.hourly-forecast > div > canvas').each(function(index, value) {
+          $(this).attr('id', 'to-the-hour-icon' + (index+1));
+        });
+
+        // 2.3.3. Modify the id of the hourly precipiation forecast
+        $('.hourly-forecast > div > div > canvas').each(function(index, value) {
+          $(this).attr('id', 'hourly-icon' + (index+1));
+        });
+        
+        // Add data to the hourly forecast
+        for (let i = 1; i < 9; ++i) {
+         
+          // Add the hourly forecast time
+          const $unix_time = data.hourly.data[i].time;
+          const $time = convertUnixTime($unix_time, false);
+          $('.hourly-' + i).text($time);
           
+          // Add the summary and the weather icon
+          $('#hour-' + i + ' > p:nth-child(2)').text(data.hourly.data[i].summary);
+          $('#hour-' + i + ' canvas').addClass(data.hourly.data[i].icon);
+          const $hourClasses = $('#to-the-hour-icon' + i).attr('class').split(' ');
+          skycons.set('to-the-hour-icon' + i, $hourClasses[$hourClasses.length-1]);
+          skycons.set('hourly-icon' + i, "rain");
+          
+          // Add the forecast temperature, precipitation and wind speed
+          $('#hour-' + i + ' > p:nth-child(4)')
+            .addClass('celsius')
+            .html(Math.round(data.hourly.data[i].apparentTemperature) + tempUnitSign());
+          $('#hour-' + i + ' > div:nth-child(5) canvas').addClass(data.hourly.data[i].precipType);
+          $('#hour-' + i + ' > div:nth-child(5) p')
+            .text(Math.round(data.hourly.data[i].precipProbability * 100) + '%');
+          try {
+            $('#hour-' + i + ' > p:nth-child(6)')
+              .html(windDirection(data.hourly.data[i].windBearing) + 
+                    '<span class="wind-kmph">' + 
+                    Math.round(data.hourly.data[i].windSpeed * 3.6) + 
+                    unitSpeed() + '</span>');
+          } catch(err) {
+            $('#hour-' + i + ' > p:nth-child(6)').text(errMsg2)
+          }
+        }
+        
+        // Modify the id of the daily weather icons
+        $('.future-forecast > div > div > canvas').each(function(index, value) {
+          $(this).attr('id', 'future-weather-icon' + (index+1));
+        });
+        
+        // 2.3.3. Modify the id of the daily precipitation forecast
+        $('.future-forecast > div > div > div > canvas').each(function(index, value) {
+          $(this).attr('id', 'daily-precip-icon' + (index+1));
+        });
+        
         // Add data to the daily forecast
         for (let i = 1; i < 5; ++i) {
           // Add the day to the header
@@ -126,8 +185,11 @@ $(function() {
           $('#tomorrow-' + i + '> p' ).text($date.substr(0, 3) + ', ' + $date.substr(4, 6));
           
           // Add the icon and the summary data to the body
-          $('#tomorrow-' + i + '> div > img').addClass(data.daily.data[i].icon);
+          $('#tomorrow-' + i + '> div > canvas').addClass(data.daily.data[i].icon);
           $('#tomorrow-' + i + '> div > p').text(data.daily.data[i].summary);
+          const $dailyClasses = $('#future-weather-icon' + i).attr('class').split(' ');
+          skycons.set('daily-precip-icon' + i, "rain");
+          skycons.set('future-weather-icon' + i, $dailyClasses[$dailyClasses.length-1]);
           
           // Add the temperature and chance-of-precipitation data to the footer
           $('#tomorrow-' + i + ' div:last-child p.min')
@@ -143,32 +205,7 @@ $(function() {
             .text(Math.round(data.daily.data[i].precipProbability * 100) + '%');
         }
         
-        // Add data to the hourly forecast
-        for (let i = 1; i < 9; ++i) {
-          // Add the hourly forecast time
-          const $unix_time = data.hourly.data[i].time;
-          const $time = convertUnixTime($unix_time, false);
-          $('.hourly-' + i).text($time);
-          
-          // Add the summary and the weather icon
-          $('#hour-' + i + ' > p:nth-child(2)').text(data.hourly.data[i].summary);
-          $('#hour-' + i + ' > img').addClass(data.hourly.data[i].icon);
-          
-          // Add the forecast temperature, precipitation and wind speed
-          $('#hour-' + i + ' > p:nth-child(4)')
-            .addClass('celsius')
-            .html(Math.round(data.hourly.data[i].apparentTemperature) + tempUnitSign());
-          $('#hour-' + i + ' > div:nth-child(5) img').addClass(data.hourly.data[i].precipType);
-          $('#hour-' + i + ' > div:nth-child(5) p')
-            .text(Math.round(data.hourly.data[i].precipProbability * 100) + '%');
-          $('#hour-' + i + ' > p:nth-child(6)')
-            .html(windDirection(data.daily.data[i].windBearing) + 
-                  '<span class="wind-kmph">' + 
-                  Math.round(data.hourly.data[i].windSpeed * 3.6) + 
-                  unitSpeed() + '</span>');
-        }
-         
-        // data.hourly.data[i] 1 -> 8
+        skycons.play();
         console.log(data);
       },
       fail: function() {
