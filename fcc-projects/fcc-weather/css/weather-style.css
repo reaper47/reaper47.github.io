@@ -101,6 +101,10 @@ main > p { margin: 0; }
   margin-bottom: 4rem;
   padding-top: 1.5rem;
 }
+.row.today-forecast { 
+  display: flex;
+  flex-flow: row wrap;
+}
 #current-temp > p { 
   margin: 0;
   margin-top: 0rem;
