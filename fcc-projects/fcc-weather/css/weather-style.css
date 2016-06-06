@@ -18,10 +18,13 @@ body:after {
   display: block;
   height: 100px;
 }
-.large-text { font-size: 1.5rem; }
+.large-text { font-size: 1.7rem; }
+.large-text.bold { width: 95%; }
+.bold { font-weight: bold; }
 .med-text { font-size: 1rem; }
 .mid-large-text { font-size: 1.3rem; }
 .small-text { font-size: 0.8rem;}
+
 /**** Header Properties ****/
 header {
   border-bottom: solid 0.2rem #3498db;
@@ -115,7 +118,7 @@ main > p { margin: 0; }
   margin: 0 auto;
 }
 #current-temp .icon-text-grp.info-grp {
-  width: 70%;
+  width: 50%;
   margin: 0 auto;
   margin-top: 1.5rem;
   padding-bottom: 1rem;
@@ -137,15 +140,10 @@ main > p { margin: 0; }
   text-align: left;
 }
 #today-temp .mid-large-text { margin-bottom: 0.7rem; }
-.icon-text-grp img { 
-  flex: 1;
-  margin: 0;
-}
 #today-summary, #today-wind, #today-sun, #today-humidity { flex: 4; }
 .icon-text-grp p { 
   flex: 1; 
   margin: 0;
-  padding-right: 1rem;
   text-align: left;
 }
 .min-max, .future-forecast, .min-max.mid-large-text, .icon-text-grp
@@ -153,6 +151,7 @@ main > p { margin: 0; }
   display: flex;
   flex-flow: row wrap;
 }
+.icon-text-grp img { width: 26%; }
 #today-min-max {
   margin: 0;
   margin-top: 1rem;
@@ -169,18 +168,22 @@ main > p { margin: 0; }
   text-align: center;
   margin-bottom: 1rem;
 }
-.hourly-icon { height: 20px; }
 .to-the-hour-icon { width: 64px; }
 .rain-chance.icon-text-grp.hourly {
     width: 50%;
     margin: 0 auto;
-    padding-left: 1rem;
+    display: flex;
+}
+.hourly-icon { 
+  height: 20px;
+  padding-right: 0.5rem;
+  padding-left: 0.3rem;
 }
 #current-weather-icon { width: 128px; }
 .future-weather-icons { width: 96px; }
 .daily-precip-icons {
-  width: 40px;
-  height: 20px;
+    height: 25px;
+    padding-right: 0.5rem;
 }
 #hour-1, #hour-2, #hour-3, #hour-4,
 #hour-5, #hour-6, #hour-7, #hour-8 { 
@@ -188,6 +191,7 @@ main > p { margin: 0; }
   border: 1px solid #bdc3c7;
   border-radius: 1rem;
   margin-left: 0.7rem;
+  
 }
 #hour-1 {
   padding-left: 0.5rem;
@@ -212,9 +216,7 @@ main > p { margin: 0; }
 }
 .min-max.mid-large-text p:first-child, 
 .min-max.mid-large-text p:nth-child(2),
-.min-max.mid-large-text div:last-child {
-  flex: 3;
-}
+.min-max.mid-large-text div:last-child { flex: 3; }
 .rain-chance.icon-text-grp.daily {
   display: flex;
   margin: 1.4rem 0;
@@ -266,17 +268,20 @@ header, footer { background-color: #ecf0f1; }
   border-radius: 1rem;
   line-height: 1.rem;
 }
-#ul-info {
+#ul-info { 
   padding-left: 1.5rem;
   font-family: monospace;
 }
 #weather-info > p:first-child { margin-top: 0; }
-#weather-info > div:last-child, #weather-info p {
+#weather-info > div:last-child, #weather-info p { 
   text-align: center;
   margin-bottom: 0;
 }
-#weather-info > div:last-child { padding-right: 2.2rem; margin-top: -0.5rem;}
-.modal-content li {
+#weather-info > div:last-child { 
+  padding-right: 2.2rem;
+  margin-top: -0.5rem;
+}
+.modal-content li { 
   list-style-type: none;
   line-height: 1.5rem;
 }
@@ -298,4 +303,5 @@ button:focus { outline:0;}
 button.modal-close:hover { background-color: #ed612f; }
 @media all and (max-width: 1029px) {
   .mid-large-text { font-size: 1rem; }
+  .med-text { font-size: 0.9rem; }
 }
