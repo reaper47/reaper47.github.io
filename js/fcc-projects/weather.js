@@ -1,9 +1,4 @@
 /*
-TODO Implement weather image backgrounds
-TODO Implement search
-TODO Implement complete
-TODO Implement fail
-TODO Implement error
 TODO Catch all errors when fetching data
 */
 
@@ -33,18 +28,19 @@ $(function() {
   // 2.2. Display additional data in the modal window and the footer
   let currentGeoData;
   $('footer .right').on('click', function() {
-    const $modalList = $('#ul-info > ul > li');
-    
-    if ($modalList.children().text().length === 0) {
-      const $infoUl = $modalList.children(),
-            components = [['lat', '°'], ['long', '°'], ['accuracy', 'm']];
+    const $modalList = $('#ul-info > ul > li'),
+          $infoUl = $modalList.children(),
+          components = [['lat', '°'], ['long', '°'], ['accuracy', 'm']];
+
+    if (currentGeoData.accuracy === 'N/A') {
+      components[2][1] = ' ';
+    }
                       
-      // Add the geographical information to the span element of each li
-      for (let child = 0; child < $infoUl.length; ++child) {
-        $($infoUl[child])
-          .text(currentGeoData[components[child][0]] + components[child][1])
-          .parent().removeClass('init');
-      }
+    // Add the geographical information to the span element of each li
+    for (let child = 0; child < $infoUl.length; ++child) {
+      $($infoUl[child])
+        .text(currentGeoData[components[child][0]] + components[child][1])
+        .parent().removeClass('init');
     }
   });
 
@@ -65,7 +61,38 @@ $(function() {
   // 3. Display search query weather data
   $('#search-form').on('submit', function(e) {
     e.preventDefault();
+    const address = this.elements[0].value,
+          geocodeAPI = 'AIzaSyDRxZMD44zoX7gbsvBduP_NxaXCIrPeXS8',
+          baseURL = 'https://maps.googleapis.com/maps/api/geocode/json?',
+          xhr = new XMLHttpRequest();
+               
+    let geocodeURL = baseURL + 'address=' + address + '&key=' + geocodeAPI;
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        responseObject = JSON.parse(xhr.responseText); 
 
+        if (responseObject.status === "OK") {
+          currentGeoData = { 
+            lat: responseObject.results[0].geometry.location.lat,
+            long: responseObject.results[0].geometry.location.lng,
+            accuracy: 'N/A'
+          }
+          const queryLocation = responseObject.results[0].formatted_address,
+                modalWindowInfo = [currentGeoData.lat, currentGeoData.long, currentGeoData.accuracy];
+          
+          // Display new place in current forecast and footer
+          $('#current-temp > p').text('Currently at ' + queryLocation);
+          elMap.textContent = queryLocation;
+          
+          // Fetch and display the forecast data
+          displayData(currentGeoData);
+        } else {
+          fail(responseObject.status);
+        }
+      }
+    }
+    xhr.open('GET', geocodeURL, true);
+    xhr.send(null);
   });
   
   // 4. Toggle between the imperial and metric system
@@ -128,10 +155,6 @@ $(function() {
           xhr.overrideMimeType("application/jsonp");
         }
         $('.loading').text('Loading...');
-      },
-      complete: function() {
-        // Implement stuff that will happen after the function is complete
-        // ..
       },
       success: function(data) {
         // Current forecast
@@ -241,12 +264,14 @@ $(function() {
         skycons.play();
       },
       fail: function() {
-        // Implement stuff that will happen if a fail occurs
-        // ..
+        $('.loading').text("Failed");
+        $('#current-temp > p').text("Failed to fetch info");
+        elMap.textContent = 'Fetch failed...';
       },
       error: function(err) {
-        // Implement stuff that will happen if an error occurs
-        // ..
+        $('.loading').text("Refresh");
+        $('#current-temp > p').text("An unknown error occurred");
+        elMap.textContent = 'Error while fetching...';
       }
     });
   }
@@ -288,12 +313,12 @@ $(function() {
     $('#current-temp .loading').css('line-height', '2rem');
     $('#current-temp .loading').css('margin-left', '-10rem');
     $('.loading').text(errMsg2);
-    
+    console.log(msg);
     if (msg === "ZERO_RESULTS") {
-      const noRes = "No results";
-      $('.loading').text(noRes);
-      $('#current-temp > p').append(noRes);
+      $('.loading').text("No results");
+      $('#current-temp > p').text("Zero results");
       $('#current-temp .loading').css('margin-left', '-3rem');
+      $('#current-temp .loading').css('margin-left', '0rem'); // Fix display issue
     } else if (msg === "OVER_QUERY_LIMIT") {
       if (!Date.now) {
         Date.now = function now() {

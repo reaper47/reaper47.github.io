@@ -3,23 +3,23 @@
   <head>
     <meta charset="utf-8">
     <title>Macweather</title>
-      <link rel="icon" href="meteo.svg">
-    <link href="css/weather-style.css" rel="stylesheet">
+    <link rel="icon" href="../img/home-page/programming/fcc-meteo.svg">
+    <link rel="stylesheet" href="../css/fcc-projects/weather-style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
   </head>
   <body>
     <header>
       <div class="left">
         <div id="h-left-inline">
-          <img src="meteo.svg" alt="Chaos logo">
+          <img src="../img/home-page/programming/fcc-meteo.svg" alt="Chaos logo">
           <h2>Macweather</h2>
         </div>
       </div>
       <div class="center">
         <form id="search-form" name="search-form" method="GET">
           <div>
-            <input name="city-search" type="search" placeholder="enter city">
-            <input type="submit" class="search" value="&#xf002;" />
+            <input type="search" name="city-search" placeholder="enter city or lat,lng" required>
+            <input type="submit" value="&#xf002;" class="search"  />
           </div>
         </form>
       </div>
@@ -70,7 +70,6 @@
             </div>
           </div>
         </div>
-        
         <div class="row hourly-forecast">
           <div id="hour-1">
             <p class="med-text hourly-1 loading"></p>
@@ -78,13 +77,12 @@
             <canvas class="weather-icon to-the-hour-icon" id="to-the-hour-icon1"></canvas>
             <p class="small-text max loading"></p>
             <div class="rain-chance icon-text-grp hourly">
-                <img class="weather-icon hourly-icon" src="rain.svg" alt="Precipitation">
+                <img class="weather-icon hourly-icon" src="../img/home-page/programming/fcc-rain.svg" alt="Precipitation">
                 <p class="small-text loading"></p>
             </div>
             <p class="small-text loading"></p>
           </div>
         </div>
-        
         <div class="row future-forecast">
           <div id="tomorrow-1">
             <p class="mid-large-text tomorrow-1 loading"></p>
@@ -98,13 +96,12 @@
               <p class="min loading"></p>
               <p class="max loading"></p>
               <div class="rain-chance icon-text-grp daily">
-                <img class="weather-icon daily-precip-icons" src="rain.svg" alt="Precipitation">
+                <img class="weather-icon daily-precip-icons" src="../img/home-page/programming/fcc-rain.svg" alt="Precipitation">
                 <p class="med-text loading"></p>
               </div>
             </div>
           </div>
         </div>
-        
       </div>
     </main>
     <footer>
@@ -133,10 +130,10 @@
     </div>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="../js/vendor/jquery-2.2.4.min.js"></script>
-    <script src="js/modernizr-geo.js"></script>
-    <script src="../../js/content-panels/modal-init.js"></script>
-    <script src="../../js/content-panels/modal-window.js"></script>
-    <script src="js/skycons.js"></script>
-    <script src="js/weather.js"></script>
+    <script src="../js/vendor/modernizr-geo.js"></script>
+    <script src="../js/content-panels/modal-init.js"></script>
+    <script src="../js/content-panels/modal-window.js"></script>
+    <script src="../js/vendor/skycons.js"></script>
+    <script src="../js/fcc-projects/weather.js"></script>
   </body>
 </html>

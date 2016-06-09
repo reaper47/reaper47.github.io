@@ -111,6 +111,8 @@ main > p { margin: 0; }
 #current-temp > p { 
   margin: 0;
   margin-top: 0rem;
+  line-height: 2rem;
+  padding-left: 1rem;
 }
 #today-temp .info-grp.med-text {
   text-align: center;
@@ -304,4 +306,6 @@ button.modal-close:hover { background-color: #ed612f; }
 @media all and (max-width: 1029px) {
   .mid-large-text { font-size: 1rem; }
   .med-text { font-size: 0.9rem; }
+  #today-temp { margin-bottom: 3rem; }
+  .row.today-forecast { margin-bottom: -2.5rem; }
 }
