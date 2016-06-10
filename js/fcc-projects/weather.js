@@ -13,20 +13,45 @@ $(function() {
     .text(dob.toDateString());
     
   // 2.1. Display data on the current location
+  let currentGeoData;
   const elMap = document.getElementById('footer-area'),
         errMsg = 'Unable to fetch location.',
         errMsg2 = 'No data',
         skycons = new Skycons({"color": "rgb(60, 74, 89)"});
         
   if (Modernizr.geolocation) {
-    navigator.geolocation.getCurrentPosition(success, fail);
-    elMap.textContent = 'Fetching location...';
+	  elMap.textContent = 'Fetching location...';
+
+	  const isChrome = /chrome/i.test(navigator.userAgent);
+	  if (!isChrome) {
+	    navigator.geolocation.getCurrentPosition(success, fail);
+	  } else {
+		  const ip = 'http://ip-api.com/json';
+		  $('#h-left-inline  img').css('display', 'none');
+		  $('.future-weather-icons').css('height', '96px');
+		  $('#current-weather-icon').css('height', '128px');
+		  
+		  $.getJSON(ip)
+		    .done(function(data) {
+				console.log(data)
+			    const latlng = {
+					lat: data.lat,
+				    long: data.lon,
+					accuracy: 'N/A'
+				};
+				$('#current-temp > p').text('Currently at ' + data.city + ', ' + data.country);
+				elMap.textContent =  data.city + ', ' + data.country;
+				currentGeoData = latlng;
+				displayData(latlng);
+			})
+			.fail(function(err) { fail(err);});
+	  }
   } else {
     elMap.textContent = errMsg;
   }
   
   // 2.2. Display additional data in the modal window and the footer
-  let currentGeoData;
+ 
   $('footer .right').on('click', function() {
     const $modalList = $('#ul-info > ul > li'),
           $infoUl = $modalList.children(),
@@ -363,40 +388,22 @@ $(function() {
   }
   
   function windDirection(direction) {
-    if (direction >= 348.75) {
-      return 'N ';
-    } else if (direction >= 326.25) {
-      return 'NNW ';   
-    } else if (direction >= 303.75) {
-      return 'NW ';
-    } else if (direction >= 281.25) {
-      return 'WNW ';
-    } else if (direction >= 258.75) {
-      return 'W ';
-    } else if (direction >= 236.25) {
-      return 'WSW ';
-    } else if (direction >= 213.75) {
-      return 'SW ';
-    } else if (direction >= 191.25) {
-      return 'SSW ';
-    } else if (direction >= 168.75) {
-      return 'S ';
-    } else if (direction >= 146.25) {
-      return 'SSE ';
-    } else if (direction >= 123.75) {
-      return 'SE ';
-    } else if (direction >= 101.25) {
-      return 'ESE ';
-    } else if (direction >= 78.75) {
-      return 'E ';
-    } else if (direction >= 56.25) {
-      return 'ENE ';
-    } else if (direction >= 33.75) {
-      return 'NE ';
-    } else if (direction >= 11.25) {
-      return 'NNE ';
-    } else if (direction >= 0) {
-      return 'N ';
-    }
+    if (direction >= 348.75) return 'N ';
+    else if (direction >= 326.25) return 'NNW ';   
+    else if (direction >= 303.75) return 'NW ';
+    else if (direction >= 281.25) return 'WNW ';
+    else if (direction >= 258.75) return 'W ';
+    else if (direction >= 236.25) return 'WSW ';
+    else if (direction >= 213.75) return 'SW ';
+    else if (direction >= 191.25) return 'SSW ';
+    else if (direction >= 168.75) return 'S ';
+    else if (direction >= 146.25) return 'SSE ';
+    else if (direction >= 123.75) return 'SE ';
+    else if (direction >= 101.25) return 'ESE ';
+    else if (direction >= 78.75) return 'E ';
+    else if (direction >= 56.25) return 'ENE ';
+    else if (direction >= 33.75) return 'NE ';
+    else if (direction >= 11.25) return 'NNE ';
+    else if (direction >= 0) return 'N ';
   }
 });
