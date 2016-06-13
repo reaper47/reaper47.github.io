@@ -1,10 +1,6 @@
-/*
-TODO Catch all errors when fetching data
-*/
-
 $(function() {
 
-  // 1. Place the current date in the header
+  // 1. Place current date in the header
   const dob = new Date(),
         today = { day: dob.getDate(), month: dob.getMonth(), year: dob.getFullYear() };
         
@@ -33,25 +29,17 @@ $(function() {
 		  
 		  $.getJSON(ip)
 		    .done(function(data) {
-				console.log(data)
-			    const latlng = {
-					lat: data.lat,
-				    long: data.lon,
-					accuracy: 'N/A'
-				};
+			    const latlng = { lat: data.lat, long: data.lon,	accuracy: 'N/A' };
 				$('#current-temp > p').text('Currently at ' + data.city + ', ' + data.country);
 				elMap.textContent =  data.city + ', ' + data.country;
 				currentGeoData = latlng;
 				displayData(latlng);
 			})
-			.fail(function(err) { fail(err);});
+			.fail(function(err) { fail(err); });
 	  }
-  } else {
-    elMap.textContent = errMsg;
-  }
+  } else { elMap.textContent = errMsg; }
   
   // 2.2. Display additional data in the modal window and the footer
- 
   $('footer .right').on('click', function() {
     const $modalList = $('#ul-info > ul > li'),
           $infoUl = $modalList.children(),
@@ -111,9 +99,7 @@ $(function() {
           
           // Fetch and display the forecast data
           displayData(currentGeoData);
-        } else {
-          fail(responseObject.status);
-        }
+        } else { fail(responseObject.status); }
       }
     }
     xhr.open('GET', geocodeURL, true);
@@ -176,9 +162,7 @@ $(function() {
       dataType: 'jsonp',
       timeOut: 2000,
       beforeSend: function(xhr) {
-        if (xhr.overrideMimeType) {
-          xhr.overrideMimeType("application/jsonp");
-        }
+        if (xhr.overrideMimeType) { xhr.overrideMimeType("application/jsonp"); }
         $('.loading').text('Loading...');
       },
       success: function(data) {
@@ -189,7 +173,7 @@ $(function() {
                 tempUnitSign() + '</span>');
         $('#current-weather-icon').addClass(data.currently.icon);
         const $currentClass = $('#current-weather-icon').attr('class').split(' ');
-        skycons.set('current-weather-icon', $currentClass[$currentClass.length-1])
+        skycons.set('current-weather-icon', $currentClass[$currentClass.length-1]);
         
         // Today's forecast
         $('#today-summary').text(data.daily.data[0].summary);
