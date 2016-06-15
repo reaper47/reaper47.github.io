@@ -34,7 +34,31 @@ $(function(){
       console.log(err);
     }
   });
+  
+  // 1.3. Focus on the search form
+  document.getElementById('search').focus();
+  $('#searchForm').children('input').val('');
 
+  // 1.4. Make sure fast mode is checked on page load
+  let noSubmit;
+  if ($('#radio1').prop('checked', true)) {
+    noSubmit = true;
+  }
+  
+  // 1.4.1. Determine which radio button is checked. 
+  $('input[name=radios]').on('click', function() {
+    if ($(this['value']).selector === 'fast') {
+      document.getElementById('radio1').setAttribute('checked', true);
+      document.getElementById('radio2').setAttribute('checked', false);
+      noSubmit = true;
+    } else {
+      document.getElementById('radio1').setAttribute('checked', false);
+      document.getElementById('radio2').setAttribute('checked', true);
+      noSubmit = false;
+    }
+  });
+  
+  
   // 2.0. Get a random article when the random button is pressed
   $('#search-rand').on('click', function(e) {
     e.preventDefault();
@@ -45,8 +69,102 @@ $(function(){
      window.open(randURL);
   });
   
-  // 3.0. Set up the wiki search API to search for any article. Fast mode sends 
-  // an api request after every keyboard input. Slow mode sends a request after a submit.
+  // 3.0. Set up the wiki search API to search for any article. 
+  // 3.1. Slow mode sends a request after a submit.
+  let wikiInfo = {};
+  $('#searchForm').submit(function(e) {
+    e.preventDefault();
+    if (document.getElementById("radio2").checked && noSubmit === false) {
+      const selectTag = document.getElementById('language').selectedIndex,
+          abv = document.getElementsByTagName('option')[selectTag].value,
+          $searchQuery = "&search=" + $('#search').val(),
+          baseURL = "https://" + abv + ".wikipedia.org/w/api.php" + 
+                    "?action=opensearch" + "&format=json" + "&limit=100" + 
+                    "&profile=classic" + "&utf8=1" + "&formatversion=2" + $searchQuery;
+      $('#searchForm').children('input').val('');
+      if ($searchQuery.substr(8, $searchQuery.length-1).length > 0) {
+        getWikiArticles(baseURL, 0, 10);
+      }
+    }
+  });
   
+  // 3.2. Fast mode sends an api request after every keyboard input.
+  $('#search').keypress(function(event) {
+    if (document.getElementById("radio1").checked && $('#search').val().length > 0) {
+      const selectTag = document.getElementById('language').selectedIndex,
+            abv = document.getElementsByTagName('option')[selectTag].value
+            $searchQuery = "&search=" + $('#search').val();
+      
+      // 3.3. Make sure all typed letters are in the query string
+      if (event.which !== 13 && event.which !== 8) {
+        $searchQuery += String.fromCharCode(event.which);
+      } else if (event.which === 8) {
+        $searchQuery = $searchQuery.substr(0, $searchQuery.length-1);
+      } else if (event.which === 13) {
+        $('#searchForm').children('input').val('');
+        return;
+      } 
+            
+      const baseURL = "https://" + abv + ".wikipedia.org/w/api.php" + 
+                      "?action=opensearch" + "&format=json" + "&limit=100" + 
+                      "&profile=classic" + "&utf8=1" + "&formatversion=2" + $searchQuery;
+      
+      // Only request pages if the query length is not empty
+      if ($searchQuery.substr(8, $searchQuery.length-1).length > 0) {
+        getWikiArticles(baseURL, 0, 10);
+      }
+    }
+  });  
   
+  // 4.0. Append more results when the load more button is clicked/pressed.
+  $('#load-more').on('click', function() {
+    console.log(wikiInfo["resOnDisp"]);
+  });
+  
+  function getWikiArticles(url, start, end) {
+    $.ajax({
+      url: url,
+      async: false,
+      type: 'GET',
+      data: {},
+      dataType: 'jsonp',
+      timeOut: 2000,
+      beforeSend: function(xhr) {
+        if (xhr.overrideMimeType) { xhr.overrideMimeType("application/json"); }
+      },
+      success: function(data) {
+        wikiInfo["titles"] = data[1];
+        wikiInfo["descriptions"] = data[2];
+        wikiInfo["links"] = data[3];
+        wikiInfo["url"] = url;
+        wikiInfo["resOnDisp"] = end;
+        
+        const titles = wikiInfo.titles,
+              descriptions = wikiInfo.descriptions,
+              links = wikiInfo.links;
+
+        let wikiContent = '';
+        for (let entry = start; entry < end; ++entry) {
+          if (links[entry] !== undefined) {
+            if (descriptions[entry] === '') {
+              descriptions[entry] = "No description available at this time.";
+            }
+            wikiContent += '<a href="' + links[entry] + 
+                           '" class="search-result-box" target="_blank">' + 
+                           '<div class="search-result-item">' +
+                           '<h3>' + titles[entry] + '</h3>' +
+                           '<p>' + descriptions[entry] + '</p>' +
+                           '</div></a>';
+            $('#search-results').html(wikiContent);
+          }
+        }
+      },
+      fail: function(fail) {
+        console.log(fail);
+      },
+      error: function(err) {
+        console.log(err);
+      }
+    });
+  }            
 });

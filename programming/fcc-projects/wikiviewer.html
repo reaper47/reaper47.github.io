@@ -12,7 +12,7 @@
         <form id="search-mode">
           <fieldset>
             <legend>Search Mode</legend>
-            <input id="radio1" name="radios" value="fast" checked="" type="radio">
+            <input id="radio1" name="radios" value="fast" checked type="radio">
               <label for="radio1">Fast</label>
             <input id="radio2" name="radios" value="slow" type="radio">
               <label for="radio2">Slow</label>
@@ -33,14 +33,13 @@
             <i class="fa fa-random fa-2x" aria-hidden="true"></i>
           </button>
         </div>
-        
-        <div id="search-leg" class="search-color"></div>
-        <div id="search-results">
-          <div id="search-result-box">
-            <h3></h3>
-            <p></p>
-          </div>
+        <div id="search-leg" class="search-color">
+          <form id="searchForm">
+            <input type="search" id="search" name="search" placeholder="search">
+          </form>
         </div>
+        <div id="search-results"></div>
+        <button id="load-more">Load more results</button>
       </div>
     </main>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
