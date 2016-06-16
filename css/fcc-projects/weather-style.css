@@ -46,13 +46,20 @@ header img {
   margin-left: 1rem;
   cursor: default; 
 }
+#search-mode fieldset {
+    border-color: #F00;
+    border-style: solid;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    border-radius: 1rem;
+}
 input[type="submit"]::-moz-focus-inner { border: 0; outline: none; }
 input[type="submit"] {
-    font-family: FontAwesome;
-    border: 0 none;
-    background-color: #ecf0f1;
-    cursor: pointer;
-    outline: 0;
+  font-family: FontAwesome;
+  border: 0 none;
+  background-color: #ecf0f1;
+  cursor: pointer;
+  outline: 0;
 }
 input[type=radio] { display: none; }
 input[type="radio"] + label {

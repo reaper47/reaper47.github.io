@@ -1,0 +1,192 @@
+@import url(https://fonts.googleapis.com/css?family=Lato);
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-family: "Lato", sans-serif, Verdana, Arial, monospace;
+  color: #212121;
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  position: relative;
+}
+body:after {
+  content: '';
+  display: block;
+  height: 100px;
+}
+button { cursor: pointer; }
+button::-moz-focus-inner { border: 0; }
+
+/**** Header Properties ****/
+header {
+  border-bottom: solid 0.2rem #3498db;
+  display: flex;
+  flex-flow: row wrap;
+}
+#language-rand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.center {
+  width: 50%;
+  padding-top: 1.5rem;
+  text-align: center;
+}
+.left, .right, .center { flex: 4; }
+#search-mode {
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+
+}
+#search-mode fieldset {
+  width: 8.5rem;
+}
+
+/**** Styling the radio buttons ****/
+input[type=radio] { display: none; }
+input[type="radio"] + label {
+  display: inline-block;
+  margin: -0.1rem;
+  margin-bottom: 0;
+  padding: 0.4rem 1rem;
+  background-color: #f5f5f5;
+  background-image: -moz-linear-gradient(top,#fff,#e6e6e6);
+  background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#e6e6e6));
+  background-image: -webkit-linear-gradient(top,#fff,#e6e6e6);
+  background-image: linear-gradient(to bottom,#fff,#e6e6e6);
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+input[type="radio"]:checked + label {
+  background-image: none;
+  outline: 0;
+  background-color:#e0e0e0;
+  -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+  -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+}
+#icon-submit {
+  position: relative;
+  z-index: 1;
+  left: -25px;
+  top: 1px;
+  color: #7b7b7b;
+  cursor: pointer;
+  width: 0;
+}
+
+/**** Material design select box ****/
+/* inspired from http://stackoverflow.com/questions/26345665/material-design-select-dropdown */
+#language-rand {
+  position: relative;
+  padding: 0;
+  border: 0;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  background: #26A69A;
+  box-shadow: 0px 8px 17px 0px rgba(0, 0, 0, 0.2), 0px 6px 20px 0px rgba(0, 0, 0, 0.19);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+select {
+  padding: 0.25rem;
+  margin: 0;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: rgba(0,0,0,0) !important;
+  text-shadow: 0 0 0 #000;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+}
+option {
+  padding: 0.5rem;
+  font-size: 1rem;
+  color: #512da8;
+  border-radius: 0.5rem;
+}
+.lang {
+  text-align: center;
+  list-style-type: none;
+  background: #FFF;
+  border-radius: 0.5rem;
+  box-shadow: 0px 8px 17px 0px rgba(0, 0, 0, 0.2), 0px 6px 20px 0px rgba(0, 0, 0, 0.19);
+}
+#choose-language label { position: relative; }
+#choose-language label:after {
+  content: "<>";
+  font-size: 1rem;
+  color: #727272;
+  right: 0.5rem; 
+  top: 0.25rem;
+  position: absolute;
+  pointer-events: none;
+  transform: rotate(90deg);
+}
+
+/**** Create a progress bar ****/
+/* http://codepen.io/Michiel/pen/ogXrBX?editors=1100 */
+
+
+
+
+/**** Create the expand content button ****/
+/* http://codepen.io/grayghostvisuals/pen/MYygea */
+
+
+
+
+/**** Style the load more button ****/
+#load-more {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 2rem;
+  background-color: #4285f4;
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 1rem;
+  border: none;
+  left: 50%;
+  border-radius: 0.5rem;
+  transition: box-shadow 0.1s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s;
+  transition-delay: 0.2s;
+  box-shadow: 5px 7px 20px 0 rgba(0, 0, 0, 0.4);
+}
+#load-more:active {
+  box-shadow: 0 0 6rem 0 rgba(210, 33, 208, 1);
+  transition-delay: 0s;
+}
+#load-more:hover, #search-rand:hover { transform: scale(1.2); }
+
+/**** Style the random search button ****/
+#search-rand {
+  background-color: #e64a19;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  transition: box-shadow 0.1s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s;
+  transition-delay: 0.2s;
+  box-shadow: 3px 3px 2px 0 rgba(0, 0, 0, 0.3);
+}
+#search-rand:active {
+  box-shadow: 0 0 6rem 0 #ffc107;
+  transition-delay: 0s;
+}
+
+/**** Search icon morph Circle => Search icon ****/
+
+
+
+

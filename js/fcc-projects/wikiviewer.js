@@ -19,8 +19,8 @@ $(function(){
       languageList = languageList.sort();
       let options = '';
       for (let i = 0; i < languageList.length; ++i) {
-        if (languageList[i] === "English"){
-          options += '<option value="' + languagesObject[languageList[i]].abv + 
+        if (languageList[i] === "English") {
+          options += '<option class="lang" value="' + languagesObject[languageList[i]].abv + 
                      '"selected>' + languageList[i] + '</option>';
         } else {
           options += '<option value="' + languagesObject[languageList[i]].abv + 
@@ -38,6 +38,7 @@ $(function(){
   // 1.3. Focus on the search form
   document.getElementById('search').focus();
   $('#searchForm').children('input').val('');
+  document.getElementById('load-more').disabled = false;
 
   // 1.4. Make sure fast mode is checked on page load
   let noSubmit;
@@ -72,7 +73,7 @@ $(function(){
   // 3.0. Set up the wiki search API to search for any article. 
   // 3.1. Slow mode sends a request after a submit.
   let wikiInfo = {};
-  $('#searchForm').submit(function(e) {
+  $('#searchForm').on('submit', function(e) {
     e.preventDefault();
     if (document.getElementById("radio2").checked && noSubmit === false) {
       const selectTag = document.getElementById('language').selectedIndex,
@@ -81,21 +82,46 @@ $(function(){
           baseURL = "https://" + abv + ".wikipedia.org/w/api.php" + 
                     "?action=opensearch" + "&format=json" + "&limit=100" + 
                     "&profile=classic" + "&utf8=1" + "&formatversion=2" + $searchQuery;
-      $('#searchForm').children('input').val('');
-      if ($searchQuery.substr(8, $searchQuery.length-1).length > 0) {
-        getWikiArticles(baseURL, 0, 10);
-      }
+                          
+      // Request data if the search input is not empty
+      if ($searchQuery.substr(8, $searchQuery.length-1).length > 0) 
+        getWikiArticles(baseURL, 0, 10, "new");
+      
+      // Enable the load more button as a change in the search has been made
+      if (document.getElementById('load-more').disabled)
+        document.getElementById('load-more').disabled = false;
     }
   });
   
-  // 3.2. Fast mode sends an api request after every keyboard input.
+  // 3.2.1 Slow mode on icon click
+  $('#icon-submit').on('click', function(e) {
+    e.preventDefault();
+    if (document.getElementById("radio2").checked && noSubmit === false) {
+      const selectTag = document.getElementById('language').selectedIndex,
+          abv = document.getElementsByTagName('option')[selectTag].value,
+          $searchQuery = "&search=" + $('#search').val(),
+          baseURL = "https://" + abv + ".wikipedia.org/w/api.php" + 
+                    "?action=opensearch" + "&format=json" + "&limit=100" + 
+                    "&profile=classic" + "&utf8=1" + "&formatversion=2" + $searchQuery;
+                         
+      // Request data if the search input is not empty
+      if ($searchQuery.substr(8, $searchQuery.length-1).length > 0) 
+        getWikiArticles(baseURL, 0, 10, "new");
+      
+      // Enable the load more button as a change in the search has been made
+      if (document.getElementById('load-more').disabled)
+        document.getElementById('load-more').disabled = false;
+    }
+  });
+  
+  // 3.2.2 Fast mode sends an api request after every keyboard input.
   $('#search').keypress(function(event) {
     if (document.getElementById("radio1").checked && $('#search').val().length > 0) {
       const selectTag = document.getElementById('language').selectedIndex,
             abv = document.getElementsByTagName('option')[selectTag].value
             $searchQuery = "&search=" + $('#search').val();
       
-      // 3.3. Make sure all typed letters are in the query string
+      // 3.2.3. Make sure all typed letters are in the query string
       if (event.which !== 13 && event.which !== 8) {
         $searchQuery += String.fromCharCode(event.which);
       } else if (event.which === 8) {
@@ -104,24 +130,39 @@ $(function(){
         $('#searchForm').children('input').val('');
         return;
       } 
-            
+        
       const baseURL = "https://" + abv + ".wikipedia.org/w/api.php" + 
                       "?action=opensearch" + "&format=json" + "&limit=100" + 
                       "&profile=classic" + "&utf8=1" + "&formatversion=2" + $searchQuery;
       
       // Only request pages if the query length is not empty
-      if ($searchQuery.substr(8, $searchQuery.length-1).length > 0) {
-        getWikiArticles(baseURL, 0, 10);
-      }
+      if ($searchQuery.substr(8, $searchQuery.length-1).length > 0)
+        getWikiArticles(baseURL, 0, 10, "new");
+      
+      // Enable the load more button as a change in the search has been made
+      if (document.getElementById('load-more').disabled)
+        document.getElementById('load-more').disabled = false;
     }
   });  
   
+  // 3.3. Select all text when in focus
+  $(document).on('click', 'input[type=search]', function() { this.select(); });
+  
   // 4.0. Append more results when the load more button is clicked/pressed.
   $('#load-more').on('click', function() {
-    console.log(wikiInfo["resOnDisp"]);
+    const selectTag = document.getElementById('language').selectedIndex,
+          abv = document.getElementsByTagName('option')[selectTag].value
+          $searchQuery = "&search=" + $('#search').val(),
+          baseURL = "https://" + abv + ".wikipedia.org/w/api.php" + 
+                    "?action=opensearch" + "&format=json" + "&limit=100" + 
+                    "&profile=classic" + "&utf8=1" + "&formatversion=2" + $searchQuery;
+                    
+    getWikiArticles(baseURL, wikiInfo.resOnDisp, wikiInfo.resOnDisp + 10, "append")
+    if (wikiInfo.resOnDisp === 90) 
+      document.getElementById('load-more').disabled = true;
   });
   
-  function getWikiArticles(url, start, end) {
+  function getWikiArticles(url, start, end, type) {
     $.ajax({
       url: url,
       async: false,
@@ -153,11 +194,11 @@ $(function(){
                            '" class="search-result-box" target="_blank">' + 
                            '<div class="search-result-item">' +
                            '<h3>' + titles[entry] + '</h3>' +
-                           '<p>' + descriptions[entry] + '</p>' +
-                           '</div></a>';
-            $('#search-results').html(wikiContent);
+                           '<p>' + descriptions[entry] + '</p></div></a>';
           }
         }
+        if (type === "new") $('#search-results').html(wikiContent);
+        else if (type === "append") $('#search-results').append(wikiContent);
       },
       fail: function(fail) {
         console.log(fail);
