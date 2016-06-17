@@ -9,43 +9,54 @@
   </head>
   <body>   
     <main>
-      <header>
-        <form id="search-mode" class="left">
-          <fieldset>
-            <legend>Search Mode</legend>
-            <input id="radio1" name="radios" value="fast" checked type="radio">
-              <label for="radio1">Fast</label>
-            <input id="radio2" name="radios" value="slow" type="radio">
-              <label for="radio2">Slow</label>
-          </fieldset>
-        </form>
-        <div id="search-leg" class="search-color center">
+      <div class="expand-wrap">
+        <div class="expand">
+          <div class="expand-icon">
+            <svg xmlns="//www.w3.org/2000/svg" viewBox="0 0 48 48">
+              <path d="M38 26H26v12h-4V26H10v-4h12V10h4v12h12v4z"></path>
+            </svg>
+            <span class="visually-hidden" aria-hidden="true">Options</span>
+          </div>
+          <div class="expand-content" aria-hidden="true">
+            <form id="search-mode">
+              <fieldset>
+                <legend>Search Mode</legend>
+                <input id="radio1" name="radios" value="fast" checked type="radio">
+                <label for="radio1">Fast</label>
+                  <input id="radio2" name="radios" value="slow" type="radio">
+                <label for="radio2">Slow</label>
+              </fieldset>
+            </form>
+            <div id="language-rand">
+              <div id="choose-language">
+                <label>
+                  <select id="language" class="lang" name="language"></select>
+                </label>
+              </div>
+            </div>
+            <div class="search-n-random">
+              <div id="search-circle" class="search-color">
+                <div id="search-close"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="main-wrapper">
+        <div id="search-leg" class="search-color">
           <form id="searchForm">
             <input type="search" id="search" name="search" placeholder="search wiki">
             <i id="icon-submit" class="fa fa-search"></i>
           </form>
+          <button id="search-rand">
+            <i class="fa fa-random fa-2x" aria-hidden="true"></i>
+          </button>
         </div>
-        <div id="language-rand" class="right">
-          <div id="choose-language">
-            <label>
-              <select id="language" class="lang" name="language"></select>
-            </label>
-          </div>
-          <div class="search-n-random" class="right">
-            <div id="search-circle" class="search-color">
-              <div id="search-close"></div>
-            </div>
-            <button id="search-rand">
-              <i class="fa fa-random fa-2x" aria-hidden="true"></i>
-            </button>
-          </div>
-        </div>
-      </header>
-      <div class="main-wrapper">
-        <div id="search-results"></div>
-        <button id="load-more">Load more results</button>
       </div>
+        <div id="search-results"></div>
     </main>
+    <button id="load-more">Load more results</button>
+    <button id="to-top"><i class="fa fa-angle-up fa-2x" aria-hidden="true"></i></button>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="../../js/vendor/jquery-2.2.4.min.js"></script>
     <script src="../../js/fcc-projects/wikiviewer.js"></script>

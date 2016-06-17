@@ -3,20 +3,14 @@
 html, body {
   margin: 0;
   padding: 0;
-}
-html {
   font-family: "Lato", sans-serif, Verdana, Arial, monospace;
   color: #212121;
-  height: 100%;
+  background: #212121;
 }
+html { height: 100%; }
 body {
   min-height: 100%;
   position: relative;
-}
-body:after {
-  content: '';
-  display: block;
-  height: 100px;
 }
 button { cursor: pointer; }
 button::-moz-focus-inner { border: 0; }
@@ -32,28 +26,42 @@ header {
   align-items: center;
   justify-content: center;
 }
-.center {
-  width: 50%;
-  padding-top: 1.5rem;
+.left, .right, .center { flex: 2; }
+#search-mode { padding: 1rem 2rem; }
+fieldset {
+  border-radius: 0.5rem;
+  background: #26A69A;
+  border: none;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.1),2px 3px 11px rgba(0,0,0,0.5);
+}
+#search-results {
+	margin-top: 2rem;
+}
+/**** Main Content Properties ****/
+#search-leg {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 46%;
+  top: 2rem;
+}
+#search {
+  background: rgb(236, 240, 241) none repeat scroll 0% 0%;
+  border-radius: 1rem;
+  border: medium none;
   text-align: center;
+  padding: 0.2rem;
+  width: 15rem;
 }
-.left, .right, .center { flex: 4; }
-#search-mode {
-  padding-bottom: 0.5rem;
-  padding-top: 0.5rem;
-
-}
-#search-mode fieldset {
-  width: 8.5rem;
-}
-
 /**** Styling the radio buttons ****/
 input[type=radio] { display: none; }
 input[type="radio"] + label {
   display: inline-block;
   margin: -0.1rem;
   margin-bottom: 0;
-  padding: 0.4rem 1rem;
+  padding: 0.7rem 1rem;
   background-color: #f5f5f5;
   background-image: -moz-linear-gradient(top,#fff,#e6e6e6);
   background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#e6e6e6));
@@ -64,6 +72,7 @@ input[type="radio"] + label {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  padding-right: 1.25rem;
 }
 input[type="radio"]:checked + label {
   background-image: none;
@@ -73,11 +82,21 @@ input[type="radio"]:checked + label {
   -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
 }
+legend {
+  background: #795548;
+  text-align: center;
+  margin-left: 1rem;
+  border-radius: 0.4rem;
+  color: #ffffff;
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+  padding: 0.3rem;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1),2px 3px 6px rgba(0,0,0,0.5);
+}
 #icon-submit {
   position: relative;
   z-index: 1;
   left: -25px;
-  top: 1px;
   color: #7b7b7b;
   cursor: pointer;
   width: 0;
@@ -87,9 +106,9 @@ input[type="radio"]:checked + label {
 /* inspired from http://stackoverflow.com/questions/26345665/material-design-select-dropdown */
 #language-rand {
   position: relative;
-  padding: 0;
+  padding: 1rem;
   border: 0;
-  border-radius: 0.5rem;
+  border-radius: 2.5rem;
   font-size: 1.2rem;
   background: #26A69A;
   box-shadow: 0px 8px 17px 0px rgba(0, 0, 0, 0.2), 0px 6px 20px 0px rgba(0, 0, 0, 0.19);
@@ -120,7 +139,7 @@ option {
   text-align: center;
   list-style-type: none;
   background: #FFF;
-  border-radius: 0.5rem;
+  border-radius: 1.5rem;
   box-shadow: 0px 8px 17px 0px rgba(0, 0, 0, 0.2), 0px 6px 20px 0px rgba(0, 0, 0, 0.19);
 }
 #choose-language label { position: relative; }
@@ -142,10 +161,79 @@ option {
 
 
 /**** Create the expand content button ****/
-/* http://codepen.io/grayghostvisuals/pen/MYygea */
-
-
-
+/* inspired from http://codepen.io/grayghostvisuals/pen/MYygea */
+body, .expand-content, .expand {
+  display: flex;
+  flex-direction: column;
+}
+h1 {
+  color: red;
+  font-size: 1.5rem;
+}
+.expand-wrap {
+  position: relative;
+  width: 100%;
+  margin-top: 1rem;
+}
+.expand-icon {
+  border-radius: 1.5rem;
+  box-shadow: 0 1px 1.5px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+  height: 1.2rem;
+  width: 1.2rem;
+  padding: 0.7rem;
+  transition: 0.2s all cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 3;
+  text-align: center;
+  background: #7c4dff;
+  color: #FFF;
+  margin-left: 2rem;
+  margin-top: 0.5rem;
+}
+.expand-icon svg {
+  height: 1rem;
+  width: 1.3rem;
+  vertical-align: text-bottom;
+  fill: #FFF;
+}
+.expand-icon:hover { cursor: pointer; }
+.expand-content {
+  border-radius: 3rem;
+  margin: 0 auto;
+  position: absolute;
+  top: 0.8rem;
+  left: 2rem;
+  transform: scale(0) translateZ(0);
+  transition: 0.2s all cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: top left;
+  z-index: 2;
+  background: #cddc39;
+  opacity: 0;
+  box-shadow: 0 1px 1.5px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+}
+.expand-icon.active { transform: rotate(45deg); }
+.expand-content.active {
+  height: auto;
+  padding: 1.5rem;
+  transform: scale(1) translateZ(0);
+  opacity: 1;
+}
+.visually-hidden {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 0.1rem;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 0.1rem;
+}
+.visually-hidden.focussable:active, .visually-hidden.focussable:focus {
+  clip: auto;
+  height: auto;
+  width: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+}
 
 /**** Style the load more button ****/
 #load-more {
@@ -167,7 +255,7 @@ option {
   box-shadow: 0 0 6rem 0 rgba(210, 33, 208, 1);
   transition-delay: 0s;
 }
-#load-more:hover, #search-rand:hover { transform: scale(1.2); }
+#load-more:hover, #search-rand:hover, #to-top:hover { transform: scale(1.2); }
 
 /**** Style the random search button ****/
 #search-rand {
@@ -179,14 +267,69 @@ option {
   transition: box-shadow 0.1s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s;
   transition-delay: 0.2s;
   box-shadow: 3px 3px 2px 0 rgba(0, 0, 0, 0.3);
+  margin-left: 0.6rem;
 }
 #search-rand:active {
   box-shadow: 0 0 6rem 0 #ffc107;
   transition-delay: 0s;
 }
-
 /**** Search icon morph Circle => Search icon ****/
 
 
+/**** Search Results Properties ****/
+a {
+  width: 18rem;
+  display: inline-flex;
+  color: #212121;
+  background: #2c3e50;
+  border-radius: 1.5rem;
+  padding: 1rem;
+  flex-flow: row wrap;
+  margin-left: 3.2rem;
+  margin-top: 1.5rem;
+  text-decoration: none;
+  text-align: center;
+  padding-top: 0.2rem;
+  outline: 0;
+}
+a:link { color: #c26767; }
+a:visited { color: #6a8fc2; }
+a:hover { color: #c267b1; } 
+a:active { color: #6a8fc2; }
+a:focus { color: #6a8fc2; }
+main { margin-bottom: 8rem; }
 
+/**** Back-to-top button properties ****/
+#to-top {
+  width: 3rem;
+  border-radius: 2rem;
+  height: 3rem;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  margin-right: 1rem;
+  margin-bottom: 2rem;
+  border: 0px none;
+  box-shadow: 3px 3px 2px 0px rgba(0, 0, 0, 0.3);
+  background: rgb(46, 204, 113) none repeat scroll 0% 0%;
+  transition: box-shadow 0.1s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s;
+  transition-delay: 0.2s;
+  box-shadow: 5px 7px 20px 0 rgba(0, 0, 0, 0.4);
+}
+#to-top:active {
+  box-shadow: 0 0 6rem 0 rgb(231, 76, 60);
+  transition-delay: 0s;
+}
+@media (max-width: 360px) {
+  a { width: 14rem; margin-left: 2rem; }
+  #search-leg { left: 30%; top: 2rem; }
+  #search { width: 9.5rem; }
+  #load-more { left: 16%; }
+}
+@media (max-width: 450px) {
+  a { width: 17rem; }
+  #search-leg { left: 26%; top: 2rem; }
+  #search { width: 12.5rem; }
+  #load-more { left: 20%; }
+}
 

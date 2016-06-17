@@ -162,6 +162,11 @@ $(function(){
       document.getElementById('load-more').disabled = true;
   });
   
+  // 4.0. Show the options content panel.
+  $('.expand-icon').on('click', function() {
+    expandToggle.call(this);
+  });
+  
   function getWikiArticles(url, start, end, type) {
     $.ajax({
       url: url,
@@ -201,11 +206,27 @@ $(function(){
         else if (type === "append") $('#search-results').append(wikiContent);
       },
       fail: function(fail) {
-        console.log(fail);
+        alert("Query failed.");
       },
       error: function(err) {
-        console.log(err);
+        alert("An error occurred.");
       }
     });
-  }            
+  }
+  
+  $('#to-top').on('click', function() { 
+    scrollTo();
+  });
+  
+  function expandToggle() {
+    $(this).toggleClass('active');
+    $(this).next().toggleClass('active');
+    
+    $expand-content.attr('aria-hidden') === 'true' ? $expand.atttr('aria-hidden', 'false') : $expand.attr('aria-hidden', 'true');
+  }
+  
+  function scrollTo() {
+    $('html, body').animate({ scrollTop: $('.expand').offset().top }, 'slow');
+    return false;
+  }
 });
