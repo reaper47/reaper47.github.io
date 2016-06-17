@@ -168,6 +168,7 @@ $(function(){
   });
   
   function getWikiArticles(url, start, end, type) {
+    $('div[role="progressbar"').attr('aria-busy', 'true');
     $.ajax({
       url: url,
       async: false,
@@ -204,6 +205,7 @@ $(function(){
         }
         if (type === "new") $('#search-results').html(wikiContent);
         else if (type === "append") $('#search-results').append(wikiContent);
+        $('div[role="progressbar"').attr('aria-busy', 'false');
       },
       fail: function(fail) {
         alert("Query failed.");
@@ -221,8 +223,6 @@ $(function(){
   function expandToggle() {
     $(this).toggleClass('active');
     $(this).next().toggleClass('active');
-    
-    $expand-content.attr('aria-hidden') === 'true' ? $expand.atttr('aria-hidden', 'false') : $expand.attr('aria-hidden', 'true');
   }
   
   function scrollTo() {
