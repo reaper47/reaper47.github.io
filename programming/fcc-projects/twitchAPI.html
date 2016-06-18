@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Twitchmac</title>
+    <link rel="icon" href="../../img/home-page/programming/fcc-wikiviewer.svg">
+    <link rel="stylesheet" href="../../css/fcc-projects/twitchAPI.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  </head>
+  <body>
+    <main>
+      <div class="twitch-box">
+        <div class="twitch-filter">
+          <div class="twitch-options-box">  
+            <div class="twitch-option" id="online">
+              <span class="filter-icon" id="online-icon"><i class="fa fa-check"></i></span>
+              <p>Online</p>
+            </div>
+            <div class="twitch-option" id="all">
+              <span class="filter-icon" id="all-icon"><i class="fa fa-globe"></i></span>
+              <p>All</p>
+            </div>
+            <div class="twitch-option" id="offline">
+              <span class="filter-icon" id="offline-icon"><i class="fa fa-times-circle"></i></span>
+              <p>Offline</p>
+            </div>
+          </div>
+          <div class="twitch-search">
+            <form id="searchForm">
+              <span id="search-filter-icon"><i class="fa fa-search"></i></span>
+              <input type="search" name="user" id="search-filter" autofocus placeholder="filter...">
+            </form>
+          </div>
+        </div>
+        <div class="twitch-users">
+          <div class="hover-content">
+            <img src="" alt="">
+          </div>
+          <div class="twitch-user">
+            <div class="channel-visuals">
+              <i id="status-icon" class="fa fa-circle"></i>
+              <a href=""><img src="" alt=""></a>
+            </div>
+            <div class="channel-primary-info">
+              <a href="">
+                <div class="name-game">
+                  <p class="channel-username"></p>
+                  <p class="channel-game"></p>
+                </div>
+                <p class="channel-status"></p>
+              </a>
+            </div>
+            <div class="channel-bonus-info">
+              <div class="channel-lang">
+                <i class="fa fa-language" aria-hidden="true"></i>
+                <p class="lang"></p>
+              </div>
+              <div class="channel-viewers">
+                <i class="fa fa-eye" aria-hidden="true"></i>
+                <p class="viewers"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="twitch-user-area"></div>
+        <div id="twitch-reg-users"></div>
+      </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="../../js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="../../js/fcc-projects/twitchAPI.js"></script>
+  </body>
+</html>
