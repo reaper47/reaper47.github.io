@@ -11,6 +11,12 @@
     <main>
       <div class="twitch-box">
         <div class="twitch-filter">
+          <div class="twitch-search">
+            <form id="searchForm">
+              <span id="search-filter-icon"><i class="fa fa-search"></i></span>
+              <input type="search" name="user" id="search-filter" autofocus placeholder="filter...">
+            </form>
+          </div>
           <div class="twitch-options-box">  
             <div class="twitch-option" id="online">
               <span class="filter-icon" id="online-icon"><i class="fa fa-check"></i></span>
@@ -25,20 +31,14 @@
               <p>Offline</p>
             </div>
           </div>
-          <div class="twitch-search">
-            <form id="searchForm">
-              <span id="search-filter-icon"><i class="fa fa-search"></i></span>
-              <input type="search" name="user" id="search-filter" autofocus placeholder="filter...">
-            </form>
-          </div>
         </div>
-        <div class="twitch-users">
+        <div class="twitch-users" id="template">
           <div class="hover-content">
             <img src="" alt="">
           </div>
           <div class="twitch-user">
             <div class="channel-visuals">
-              <i id="status-icon" class="fa fa-circle"></i>
+              <i class="fa fa-circle fa-2x status-icon"></i>
               <a href=""><img src="" alt=""></a>
             </div>
             <div class="channel-primary-info">

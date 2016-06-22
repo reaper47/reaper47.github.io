@@ -10,7 +10,7 @@ body {
   min-height: 100%;
   position: relative;
 }
-
+main { background: #ecf0f1; }
 .twitch-box {
   width: 45rem;
   margin: 0 auto;
@@ -26,6 +26,73 @@ body {
 
 /**** Styling the search/filter box ****/
 /* http://webdesign.tutsplus.com/tutorials/css-experiments-with-a-search-form-input-and-button--cms-22069*/
-.online { color: green; }
-.offline { color: red; }
+.twitch-search { text-align: center; }
+.online { color: #388e3c; }
+.offline { color: #d32f2f; }
+.closed { color: #616161; }
+#template { display: none; }
+
+/**** Styling the status buttons ****/
+#online, #all, #offline {
+  align-items: center;
+  justify-content: center;
+  background-color: #212121;
+  border-top-right-radius: 1.5rem;
+  border-top-left-radius: 1.5rem;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;   
+}
+#all { background-color: #448aff; color: #FFF; }
+#online:hover, #all:hover, #offline:hover {
+  cursor: pointer !important;
+  color: #FFF !important;
+}
+#online:hover { background-color: #4caf50 !important; }
+#all:hover { background-color: #448aff !important; }
+#offline:hover { background-color: #ff5722 !important; }
+/**** Styling the Twitch users ****/
+.hover-content { display: none; }
+a {
+  text-decoration: none;
+  text-align: center;
+  outline: 0;
+}
+a:link { color: #c26767; }
+a:visited { color: #6a8fc2; }
+a:hover { color: #c267b1; } 
+a:active { color: #6a8fc2; }
+a:focus { color: #6a8fc2; }
+.twitch-user {
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  border: 2px solid red;
+}
+.channel-visuals { 
+  flex: 2;
+  text-align: center;
+}
+.channel-primary-info { flex: 4; }
+.channel-bonus-info { flex: 1; }
+.status-icon { 
+  position: absolute;
+  font-size: 1.5rem;
+  top: 0.4rem;
+  left: 0.4rem;
+}
+.channel-lang, .channel-viewers { 
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+}
+.channel-visuals a img {
+  width: 96px;
+  height: 96px;
+  border-radius: 2rem;
+  margin-top: 1rem;
+}
 
