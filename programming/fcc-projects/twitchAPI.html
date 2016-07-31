@@ -12,9 +12,10 @@
       <div class="twitch-box">
         <div class="twitch-filter">
           <div class="twitch-search">
-            <form id="searchForm">
+            <form id="searchForm" autocomplete='off'>
+              <input type="search" name="user" id="search-filter" 
+                     autofocus placeholder="filter usr...">
               <span id="search-filter-icon"><i class="fa fa-search"></i></span>
-              <input type="search" name="user" id="search-filter" autofocus placeholder="filter...">
             </form>
           </div>
           <div class="twitch-options-box">  
@@ -51,11 +52,11 @@
               </a>
             </div>
             <div class="channel-bonus-info">
-              <div class="channel-lang">
+              <div class="channel-lang" title="language">
                 <i class="fa fa-language" aria-hidden="true"></i>
                 <p class="lang"></p>
               </div>
-              <div class="channel-viewers">
+              <div class="channel-viewers" title="# of viewers">
                 <i class="fa fa-eye" aria-hidden="true"></i>
                 <p class="viewers"></p>
               </div>

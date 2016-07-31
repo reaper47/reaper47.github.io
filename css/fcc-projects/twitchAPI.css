@@ -14,6 +14,8 @@ main { background: #ecf0f1; }
 .twitch-box {
   width: 45rem;
   margin: 0 auto;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 .twitch-options-box {
   display: flex;
@@ -23,10 +25,77 @@ main { background: #ecf0f1; }
   display: inline-flex;
   flex: 3;
 }
+#online-icon, #offline-icon, #all-icon { padding-right: 0.3rem; }
 
 /**** Styling the search/filter box ****/
-/* http://webdesign.tutsplus.com/tutorials/css-experiments-with-a-search-form-input-and-button--cms-22069*/
-.twitch-search { text-align: center; }
+.twitch-search { 
+  text-align: center; 
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 0%;
+  min-width: 60px;
+  height: 60px;
+  float: right;
+  overflow: hidden;
+  webkit-transition: width 0.3s;
+  -moz-transition: width 0.3s;
+  transition: width 0.3s;
+  -webkit-backface-visibility: hidden;
+}
+.twitch-search:hover {
+  width: 300px;
+}
+
+#search-filter {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+  outline: none;
+  background: #fff;
+  width: 100%;
+  height: 60px;
+  margin: 0;
+  z-index: 10;
+  padding: 20px 65px 20px 20px;
+  font-family: inherit;
+  font-size: 20px;
+  color: #2c3e50;
+}
+input[type='search']#search-filter {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+}
+#search-filter::-webkit-input-placeholder { color: #efb480; }
+#search-filter::-moz-placeholder { color: #efb480; }
+#search-filter::-ms-input-placeholder { color: #efb480; }
+.search-filter-submit, #search-filter-icon {
+  width: 60px;
+  height: 60px;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0;
+  margin: 0;
+  line-height: 60px;
+  text-align: center;
+  cursor: pointer;
+}
+.search-filter-submit {
+  opacity: 0;
+  color: transparent;
+  border: none;
+  outline: none;
+  z-index: -1;
+}
+#search-filter-icon {
+  color: #fff;
+  background: #e67e22;
+  z-index: 90;
+  font-size: 22px;
+}
 .online { color: #388e3c; }
 .offline { color: #d32f2f; }
 .closed { color: #616161; }
@@ -53,8 +122,15 @@ main { background: #ecf0f1; }
 #online:hover { background-color: #4caf50 !important; }
 #all:hover { background-color: #448aff !important; }
 #offline:hover { background-color: #ff5722 !important; }
+
 /**** Styling the Twitch users ****/
-.hover-content { display: none; }
+.hover-content { 
+  display: flex;
+  flex-flow: row wrap;
+  width: 200px;
+  height: 142px;
+  border: 1px solid #7d5bbe;
+}
 a {
   text-decoration: none;
   text-align: center;
@@ -69,7 +145,12 @@ a:focus { color: #6a8fc2; }
   position: relative;
   display: flex;
   flex-flow: row wrap;
-  border: 2px solid red;
+  border: 1px solid #7d5bbe;
+  background-color: #433f4a;
+  width: 45rem;
+}
+.twitch-users { 
+  display: flex; 
 }
 .channel-visuals { 
   flex: 2;
@@ -88,11 +169,16 @@ a:focus { color: #6a8fc2; }
   flex-flow: row wrap;
   align-items: center;
   justify-content: center;
+  padding-top: 0.3rem;
+  margin-right: 1rem;
+  color: #efeef1;
 }
+.channel-lang p, .channel-viewers p { padding-left: 0.5rem; }
 .channel-visuals a img {
   width: 96px;
   height: 96px;
   border-radius: 2rem;
   margin-top: 1rem;
 }
-
+.channel-visuals a img:hover { opacity: 0.8; }
+.fa-circle { cursor: default; }
