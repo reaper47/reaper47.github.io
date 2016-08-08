@@ -33,10 +33,17 @@
  * Options 'n toys parameters
  *
  */
-#options-area 
+#options-area, #timer-controls
 {
   display: flex;
   flex-flow: row wrap;
+}
+#timer-controls
+{
+  width: 10rem;
+}
+#options-area 
+{
   margin: 0 auto;
   width: 34rem;
   position: absolute;
@@ -72,4 +79,8 @@
 .active
 {
   display: flex;
+}
+#toggle-sliders
+{
+  width: 7rem;
 }

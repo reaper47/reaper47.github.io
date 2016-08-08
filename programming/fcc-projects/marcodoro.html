@@ -13,76 +13,106 @@
   </head>
   <body>
     <main>
-      <!-- below lies all code dealing with the timer and its sliders -->
+    
+      <!-- Drawing the pomorodoro clock itself -->
       <div id="timer-area">
         <canvas id="outer-clock" width="640" height="480"></canvas>
         <canvas id="inner-clock" width="640" height="480"></canvas>
       </div>
       
-      <!-- below lies all code dealing with the various options -->
-      <div id="options-area" class="very-wide">
-        <div id="start-timer" class="small-box opt-padding" data-options="start">
-          <i class="fa fa-play" aria-hidden="true"></i>
-        </div>
-        <div id="pause-timer" class="small-box opt-padding" data-options="pause">
-          <i class="fa fa-pause" aria-hidden="true"></i>
-        </div>
-        <div id="options-timer" class="large-box opt-padding" data-options="options">
-          <p>options</p>
-        </div>
-        <div id="times-timer" class="large-box opt-padding" data-options="times">
-          <p>times</p>
-        </div>
-        <div id="reset-timer" class="small-box opt-padding" data-options="reset">
-          <i class="fa fa-undo" aria-hidden="true"></i>
-        </div>
-        <div id="stop-timer" class="small-box opt-padding" data-options="stop">
-          <i class="fa fa-stop" aria-hidden="true"></i>
-        </div>
-      </div>
-      
-      <div id="options-click" class="very-wide toggle">
-        <div id="options-font" data-options="close">
-          <i class="fa fa-chevron-left " aria-hidden="true"></i>
-        </div>
-        <div id="options-colors" data-options="colors">
-          <p>colors</p>
-        </div>
-        <div id="options-font" data-options="font">
-          <p>font</p>
+      <!-- Timer controls -->
+      <div id="timer-controls-notecard">
+        <div class="notecard">
+          <div class="front">
+            <span class="notecard-title">controls</span>
+          </div>
+          <div class="back">
+            <div id="timer-controls">
+              <div id="start-timer" class="opt-padding" data-control="start">
+                <i class="fa fa-play" aria-hidden="true"></i>
+              </div>
+              <div id="pause-timer" class="opt-padding" data-control="pause">
+                <i class="fa fa-pause" aria-hidden="true"></i>
+              </div>
+              <div id="reset-timer" class="opt-padding" data-control="reset">
+                <i class="fa fa-undo" aria-hidden="true"></i>
+              </div>
+              <div id="stop-timer" class="opt-padding" data-control="stop">
+                <i class="fa fa-stop" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       
-      <div id="options-click-font" class="very-wide toggle">
-        <div id="options-font-input">
-          <label for="set-font">set font: </label>
-          <input type="text" id="set-font">
+      <!-- Pomorodoro clock customization options -->
+      <div id="options-notecard">
+        <div class="notecard">
+          <div class="front">
+            <span class="notecard-title">options</span>
+          </div>
+          <div class="back">            
+            <div class="content-panel" id="panel-main" >
+              <div id="options-colors" data-control="colors">
+                <p>colors</p>
+              </div>
+              <div id="options-font" data-control="font">
+                <p>font</p>
+              </div>
+            </div>
+            <div class="content-panel toggle" id="panel-font">
+              <div id="options-set-font">
+                <label for="set-font">set font: </label>
+                <input type="text" id="set-font">
+              </div>
+            </div>
+            <div class="content-panel toggle" id="panel-colors1">
+              <div id="options-font" data-options="back">
+                <i class="fa fa-chevron-left " aria-hidden="true"></i>
+              </div>
+              <div id="options-colors-inner">
+                <p>inner</p>
+              </div>
+              <div id="options-colors-outer">
+                <p>outer</p>      
+              </div>
+            </div>
+            <div class="content-panel toggle" id="panel-colors2" >
+              <div id="options-colors-session">
+                <p>session</p>
+              </div>
+              <div id="options-colors-break">
+                <p>break</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       
-      <div id="options-click-colors" class="very-wide toggle">
-        <div id="options-font" data-options="close">
-          <i class="fa fa-chevron-left " aria-hidden="true"></i>
-        </div>
-        <div id="options-colors-inner">
-          <p>inner</p>
-        </div>
-        <div id="options-colors-outer">
-          <p>outer</p>      
+      <!-- Pomorodoro clock time options -->
+      <div id="times-notecard">
+        <div class="notecard">
+          <div class="front">
+            <span class="notecard-title">times</span>
+          </div>
+          <div class="back">
+            <p>sliders</p>
+            <form id="toggle-sliders">
+              <fieldset>
+                <legend>state</legend>
+                <input type="radio" id="radio1" name="radios" value="show">
+                  <label for="radio1">show</label>
+                <input type="radio" id="radio2" name="radios" value="hide">
+                  <label for="radio2">hide</label>
+              </fieldset>
+            </form>
+          </div>
         </div>
       </div>
       
-      <div id="options-colors-select-wheel" class="very-wide toggle">
-        <div id="options-colors-select-wheel-session">
-          <p>session</p>
-        </div>
-        <div id="options-colors-select-wheel-break">
-          <p>break</p>
-        </div>
-      </div>
     </main>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="../../js/vendor/jquery-2.2.4.min.js"></script>
-    <script src="../../js/fcc-projects/macodoro/options.js"></script>
+    <script src="../../js/fcc-projects/macodoro.js"></script>
   </body>
 </html>
