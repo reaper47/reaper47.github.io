@@ -2,7 +2,7 @@
   if ($('#calc-info').length) {
     createModal('#calc-info', 340, 300, 'aside', false);
   } else if ($('#weather-info').length) {
-    createModal('#weather-info', 340, 300, 'footer .right', true);
+    createModal('#weather-info', 340, 300, 'footer .right', true).fadeIn(1000);
     
   }
   

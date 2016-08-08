@@ -25,15 +25,28 @@ const modal = (function() {
       
       $modal.css({
         width: settings.width || 'auto',
-        heigth: settings.height || 'auto'
+        heigth: settings.height || 'auto',
+        opacity: 0,
+        top: 0
       }).appendTo('body');
       
+      // https://api.jquery.com/animate/
+      $modal.animate({
+        opacity: 1,
+        top: Math.max($window.height() - $modal.outerHeight(), 0) / 2
+      }, 500);
       modal.center();
       $(window).on('resize', modal.center);
     },
-    close: function() {
-      $content.empty();
-      $modal.detach();
+    close: function() {   
+      $modal.animate({
+        opacity: 0,
+        left: 0
+      }, 500, function() { console.log('hey')});
+      setTimeout(function() { 
+        $modal.detach();
+        $content.empty();
+      }, 600);
       $(window).off('resize', modal.center);
     },
     addContent: function(target, content) {

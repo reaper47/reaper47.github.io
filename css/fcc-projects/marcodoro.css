@@ -1,0 +1,75 @@
+/*
+ * Timer parameters
+ *
+ */
+#timer-area
+{
+  width: 35rem;
+  margin: 0 auto;
+  position: relative;
+}
+#outer-clock
+{
+  border: 1px solid red;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 0;
+  width: 640px;
+  height: 480px;
+}
+#inner-clock
+{
+  border: 1px solid blue;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
+  width: 631px;
+  height: 470px;
+  left: 0.4rem;
+  top: 0.25rem;
+}
+
+/*
+ * Options 'n toys parameters
+ *
+ */
+#options-area 
+{
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 auto;
+  width: 34rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 30rem;
+  cursor: default;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+#options-area .fa 
+{
+  vertical-align: -1rem;
+}
+.opt-padding 
+{
+  padding: 2rem;
+}
+.toggle
+{
+  display: none;
+  margin: 0 auto;
+  margin-top: -2rem;
+  border-radius: 50%;
+}
+.toggle div p, .toggle div i
+{
+  padding: 2rem;
+  margin: 0;
+  
+}
+.active
+{
+  display: flex;
+}
