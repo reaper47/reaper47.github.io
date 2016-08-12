@@ -22,109 +22,113 @@
       
       <!-- Timer controls -->
       <div class="notecards">
-        <div id="timer-controls-notecard">
-          <div class="notecard">
-            <div class="front">
-              <span class="notecard-title">controls</span>
-            </div>
-            <div class="back">
-              <div>
-                <div id="start-timer" class="opt-padding" data-control="start">
-                  <i class="fa fa-play" aria-hidden="true"></i>
-                </div>
-                <div id="pause-timer" class="opt-padding" data-control="pause">
-                  <i class="fa fa-pause" aria-hidden="true"></i>
-                </div>
-                <div id="reset-timer" class="opt-padding" data-control="reset">
-                  <i class="fa fa-undo" aria-hidden="true"></i>
-                </div>
-                <div id="stop-timer" class="opt-padding" data-control="stop">
-                  <i class="fa fa-stop" aria-hidden="true"></i>
-                </div>
+        <div class="notecard-container">
+          <div id="timer-controls-notecard">
+            <div class="notecard">
+              <div class="front">
+                <span class="notecard-title">controls</span>
               </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Pomorodoro clock customization options notecard -->
-        <div id="options-notecard">
-          <div class="notecard">
-            <div class="front">
-              <span class="notecard-title">options</span>
-            </div>
-            <div class="back">            
-              <div class="content-panel" id="panel-main" >
-                <div id="options-colors" data-control="colors">
-                  <p>colors</p>
+              <div class="back">
+                <div class="control-icon-set">
+                  <div id="timer-start" class="left-icon" data-control="start">
+                    <i class="fa fa-play fa-2x" aria-hidden="true"></i>
+                  </div>
+                  <div id="timer-pause" class="right-icon" data-control="pause">
+                    <i class="fa fa-pause fa-2x" aria-hidden="true"></i>
+                  </div>
                 </div>
-                <div id="options-colors" data-control="timer">
-                  <div id="options-colors" data-control="sliders">
-                    <p>sliders</p>
-                    <form id="toggle-sliders">
-                      <fieldset>
-                        <legend>state</legend>
-                        <input type="radio" id="radio1" name="radios" value="show">
-                        <label for="radio1">show</label>
-                        <input type="radio" id="radio2" name="radios" value="hide" checked>
-                        <label for="radio2">hide</label>
-                      </fieldset>
-                    </form>
-                    <div id="options-default-times" data-control="defaultTimes">
-                      <p>default</p>
-                    </div>
+                <div class="control-icon-set icon-bottom">
+                  <div id="timer-reset" class="left-icon" data-control="reset">
+                    <i class="fa fa-undo fa-2x" aria-hidden="true"></i>
+                  </div>
+                  <div id="timer-stop" class="right-icon" data-control="stop">
+                    <i class="fa fa-stop fa-2x" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
-              <div class="content-panel toggle" id="panel-colors1">
-                <div id="options-font" data-control="back">
-                  <i class="fa fa-chevron-left " aria-hidden="true"></i>
-                </div>
-                <div id="options-colors-body">
-                  <p>body 
-                    <span>
-                      <input type="color" id="body-color">
-                    </span>
-                  </p>
-                </div>
-                <div id="options-colors-session" data-control="session">
-                  <p>session</p>
-                </div>
-                <div id="options-colors-break" data-control="breaky">
-                  <p>break</p>
-                </div>
+            </div>
+          </div>
+          
+          <!-- Pomorodoro clock customization options notecard -->
+          <div id="options-notecard">
+            <div class="notecard">
+              <div class="front">
+                <span class="notecard-title">options</span>
               </div>
-              <div class="content-panel toggle" id="panel-colors2">
-                <div id="options-font" data-control="back">
-                  <i class="fa fa-chevron-left " aria-hidden="true"></i>
+              <div class="back">            
+                <div class="content-panel" id="panel-main" >
+                  <div id="options-colors" data-control="colors">
+                    <p>colors</p>
+                  </div>
+                  <div id="options-timer" data-control="timer">
+                    <div id="options-colors" data-control="sliders">
+                      <p>sliders</p>
+                      <form id="toggle-sliders">
+                        <fieldset>
+                          <legend>state</legend>
+                          <input type="radio" id="radio1" name="radios" value="show">
+                          <label for="radio1">show</label>
+                          <input type="radio" id="radio2" name="radios" value="hide" checked>
+                          <label for="radio2">hide</label>
+                        </fieldset>
+                      </form>
+                      <div id="options-default-times" data-control="defaultTimes">
+                        <p>default</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div id="options-colors-hourglass">
-                  <p>hourglass 
-                    <span>
-                      <input type="color" id="hourglass-color">
-                    </span>
-                  </p>
+                <div class="content-panel toggle" id="panel-colors1">
+                  <div id="options-font" data-control="back">
+                    <i class="fa fa-chevron-left " aria-hidden="true"></i>
+                  </div>
+                  <div id="options-colors-body">
+                    <p>body 
+                      <span>
+                        <input type="color" id="body-color">
+                      </span>
+                    </p>
+                  </div>
+                  <div id="options-colors-session" data-control="session">
+                    <p>session</p>
+                  </div>
+                  <div id="options-colors-break" data-control="breaky">
+                    <p>break</p>
+                  </div>
                 </div>
-                <div id="options-colors-inner">
-                  <p>inner 
-                    <span>
-                      <input type="color" id="inner-color">
-                    </span>
-                  </p>
-                </div>
-                <div id="options-colors-outer">
-                  <p>outer 
-                    <span>
-                      <input type="color" id="outer-color">
-                    </span>
-                  </p>
-                </div>
-                <div id="options-colors" data-control="defaultColor">
-                  <p>default</p>
+                <div class="content-panel toggle" id="panel-colors2">
+                  <div id="options-font" data-control="back">
+                    <i class="fa fa-chevron-left " aria-hidden="true"></i>
+                  </div>
+                  <div id="options-colors-hourglass">
+                    <p>hourglass 
+                      <span>
+                        <input type="color" id="hourglass-color">
+                      </span>
+                    </p>
+                  </div>
+                  <div id="options-colors-inner">
+                    <p>inner 
+                      <span>
+                        <input type="color" id="inner-color">
+                      </span>
+                    </p>
+                  </div>
+                  <div id="options-colors-outer">
+                    <p>outer 
+                      <span>
+                        <input type="color" id="outer-color">
+                      </span>
+                    </p>
+                  </div>
+                  <div id="options-colors" data-control="defaultColor">
+                    <p>default</p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>   
+          </div> 
+        </div>  
       </div>  
     </main>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
