@@ -49,6 +49,24 @@
   flex-flow: row wrap;
 }
 
+@mixin flexIt($type, $pos) {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-$type;
+  display: $type;
+  -webkit-box-align: $pos;
+  -moz-box-align: $pos;
+  -ms-flex-align: $pos;
+  -webkit-align-items: $pos;
+  align-items: $pos;
+  -webkit-box-pack: $pos;
+  -moz-box-pack: $pos;
+  -ms-flex-pack: $pos;
+  -webkit-justify-content: $pos;
+  justify-content: $pos; 
+}
+
 $controlHover: #212121;
 $activeControl: #c0392b;
 $notecardColor: #cfd8dc;
@@ -103,6 +121,7 @@ $timerControls: star pause reset stop;
   padding-top: 31rem;
   padding-left: 5rem;
   cursor: default;
+  color: #212121;
   
     .notecard-container {
       @include display(flex);
@@ -176,7 +195,7 @@ $timerControls: star pause reset stop;
         font-size: 1.3rem;
         
         .notecard-title {
-          @include hover-color(red);
+          @include hover-color(#757575);
           display: block;
           text-align: center;
           position: relative;
@@ -189,6 +208,7 @@ $timerControls: star pause reset stop;
         word-wrap: break-word;
         line-height: 3;
         @include transform(rotatey(-180deg));
+        color: #512da8;
         
         .content-panel {
           width: 100%;
@@ -210,7 +230,10 @@ $timerControls: star pause reset stop;
         .active {
           display: flex;
         }
-       
+        
+        #panel-colors1 {
+          color: red;
+        }
       }
     }
   }

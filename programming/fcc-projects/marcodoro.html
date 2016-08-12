@@ -60,27 +60,30 @@
                   <div id="options-colors" data-control="colors">
                     <p>colors</p>
                   </div>
-                  <div id="options-timer" data-control="timer">
-                    <div id="options-colors" data-control="sliders">
-                      <p>sliders</p>
-                      <form id="toggle-sliders">
-                        <fieldset>
-                          <legend>state</legend>
-                          <input type="radio" id="radio1" name="radios" value="show">
-                          <label for="radio1">show</label>
-                          <input type="radio" id="radio2" name="radios" value="hide" checked>
-                          <label for="radio2">hide</label>
-                        </fieldset>
-                      </form>
-                      <div id="options-default-times" data-control="defaultTimes">
-                        <p>default</p>
-                      </div>
-                    </div>
+                  <div id="options-sliders" data-control="sliders">
+                    <p>sliders</p>
+                  </div>
+                </div>
+                <div class="content-panel toggle"  id="panel-slider">
+                  <div id="options-font" data-control="back">
+                    <i class="fa fa-chevron-left " aria-hidden="true"></i>
+                  </div>
+                  <form id="toggle-sliders">
+                    <fieldset>
+                      <legend>state</legend>
+                      <input type="radio" id="radio1" name="radios" value="show">
+                      <label for="radio1">show</label>
+                      <input type="radio" id="radio2" name="radios" value="hide" checked>
+                      <label for="radio2">hide</label>
+                    </fieldset>
+                  </form>
+                  <div id="options-default-times" data-control="defaultTimes">
+                    <p>default</p>
                   </div>
                 </div>
                 <div class="content-panel toggle" id="panel-colors1">
                   <div id="options-font" data-control="back">
-                    <i class="fa fa-chevron-left " aria-hidden="true"></i>
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
                   </div>
                   <div id="options-colors-body">
                     <p>body 
@@ -94,6 +97,9 @@
                   </div>
                   <div id="options-colors-break" data-control="breaky">
                     <p>break</p>
+                  </div>
+                  <div id="options-colors" data-control="defaultColor">
+                    <p>default</p>
                   </div>
                 </div>
                 <div class="content-panel toggle" id="panel-colors2">
@@ -120,9 +126,6 @@
                         <input type="color" id="outer-color">
                       </span>
                     </p>
-                  </div>
-                  <div id="options-colors" data-control="defaultColor">
-                    <p>default</p>
                   </div>
                 </div>
               </div>

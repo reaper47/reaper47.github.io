@@ -12,7 +12,6 @@ $(function () {
     },
     pause: function () {
       currentControl = toggleControl("pause", currentControl);
-      
     },
     reset: function () {
       currentControl = toggleControl("undo", currentControl);
@@ -22,7 +21,9 @@ $(function () {
     },
     colors: function (div) {
       hid.push($(div.context.parentElement));
-      $(div.context.parentElement).hide();
+      $(div.context.parentElement).css("display", "none");
+      $("#panel-colors1").css({"display": "flex" });
+      //$(div.context.parentElement).hide();
       $("#panel-colors1").show();
     },
     session: function (div) {
@@ -35,8 +36,10 @@ $(function () {
       $(div.context.parentElement).hide();
       $("#panel-colors2").show();
     },
-    font: function () {
-      console.log("font");
+    sliders: function (div) {
+      hid.push($(div.context.parentElement));
+      $(div.context.parentElement).hide();
+      $("#panel-slider").show();
     },
     back: function (div) {
       if (div.context.parentElement.className !== "content-panel toggle") {
@@ -111,10 +114,37 @@ $(function () {
   }, false);
     
   /* 
-   * 3. Apply a font selected by the user from the text input box
-   *    visible from the font button of the options' menu.
-   *
+   * 3. Integrate keyboard functionality for controls
+   *    
    */
+   let playStatus = false;
+   const btnMap = { 
+     "32": function() {
+       if (!playStatus) {
+         btnActions["start"]($("timer-start")) ;
+         playStatus = true;
+       } else {
+         btnActions["stop"]($("timer-stop"));
+         playStatus = false;
+       }
+     }, 
+     "112": function() {
+       btnActions["pause"]($("timer-pause"));
+     },
+     "114": function() {
+       btnActions["reset"]($("timer-reset"));
+     },
+     "115": function() {
+       return;
+     }
+   };
+   
+   $("html").on("keypress", function(event) {
+     const key = parseInt(event.which);
+     if (btnMap.hasOwnProperty(key)) {
+       btnMap[key]();
+     }
+   });
      
     
   /*
