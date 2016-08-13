@@ -4,17 +4,23 @@ $(function () {
    * 1. Every button/action has their own respective function stored here.
    *
    */
-   
   let currentControl;
   const btnActions = {
     start: function () {
+      startAnimation();
       currentControl = toggleControl("play", currentControl);
     },
     pause: function () {
+      stopAnimation();
       currentControl = toggleControl("pause", currentControl);
+      
     },
     reset: function () {
+      animate = false;
       currentControl = toggleControl("undo", currentControl);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawArc(320, 0, Math.PI * 2, false, null, 10, "black", "arc"); 
+      currentPercent = 0;
     },
     stop: function () {
       currentControl = toggleControl("stop", currentControl);
@@ -22,8 +28,7 @@ $(function () {
     colors: function (div) {
       hid.push($(div.context.parentElement));
       $(div.context.parentElement).css("display", "none");
-      $("#panel-colors1").css({"display": "flex" });
-      //$(div.context.parentElement).hide();
+      $(div.context.parentElement).hide();
       $("#panel-colors1").show();
     },
     session: function (div) {
@@ -71,6 +76,17 @@ $(function () {
     }
   }
      
+  function toggleControl(control, current) {
+    const iconActivate = ".fa-" + control;
+    
+    if (current !== iconActivate) {
+      $(current).removeClass("activeControl");
+    }
+    
+    $(iconActivate).addClass("activeControl");
+    return iconActivate;
+  }  
+ 
   /*
    * 2. Listen for any changes in the color of the inner and outer circle
    *    of the pomorodoro timer and store the values in the local storage
@@ -121,18 +137,22 @@ $(function () {
    const btnMap = { 
      "32": function() {
        if (!playStatus) {
-         btnActions["start"]($("timer-start")) ;
+         btnActions["start"]($("timer-start"));
          playStatus = true;
-       } else {
-         btnActions["stop"]($("timer-stop"));
-         playStatus = false;
-       }
+         return;
+       } 
+       
+       btnActions["pause"]($("timer-stop"));
+       playStatus = false;
+
      }, 
      "112": function() {
        btnActions["pause"]($("timer-pause"));
+       playStatus = false;
      },
      "114": function() {
        btnActions["reset"]($("timer-reset"));
+       playStatus = false;
      },
      "115": function() {
        return;
@@ -140,13 +160,27 @@ $(function () {
    };
    
    $("html").on("keypress", function(event) {
+     event.preventDefault();
      const key = parseInt(event.which);
      if (btnMap.hasOwnProperty(key)) {
        btnMap[key]();
      }
    });
+   
+   $("#outer-clock").on("click", function(event) {
+     event.preventDefault();
      
-    
+     if (!playStatus) {
+       btnActions["start"]($("timer-start"));
+       playStatus = true;
+       return;
+     }
+     
+     btnActions["pause"]($("timer-stop"));
+     playStatus = false;
+
+   });
+     
   /*
    * 4. Manage the flow between main menu items.
    *
@@ -163,16 +197,92 @@ $(function () {
     } catch (error) {
       return;
     }
+    
   });
   
-  function toggleControl(control, current) {
-    const iconActivate = ".fa-" + control;
+  /*
+   * 5. Run the clock's hourglass and arc animations.
+   *
+   */
+  const canvas = document.getElementById("outer-clock"), 
+        ctx = canvas.getContext("2d");
+        
+  let requestOuter, requestInner, requestHour,
+      animate = true,
+      sessionTime = null,
+      breakTime = null,
+      circle = Math.PI * 2,
+      quarter = Math.PI / 2,
+      currentPercent = 0,
+      endPercentage = 100;
+   
+  drawArc(320, 0, Math.PI * 2, false, null, 10, "black", "arc");
+   
+  function arcAnimationLoop(timestamp) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+    drawArc(350, -quarter, (circle * currentPercent/100) - quarter, false, null, 30, "black", "arc");
+    drawArc(330, quarter, (circle * currentPercent/100) + quarter, false, null, 10, "red", "arc");
+    drawArc(320, 0, currentPercent, false, "blue", 10, null, "circle");
+    currentPercent++;
     
-    if (current !== iconActivate) {
-      $(current).removeClass("activeControl");
+    if (animate && (currentPercent <= endPercentage)) {
+        requestOuter = requestAnimationFrame(arcAnimationLoop);
     }
-    
-    $(iconActivate).addClass("activeControl");
-    return iconActivate;
   }
+    
+  function drawArc(circleRad, sAng, eAng, cc, fill, lwidth, stroke, type) {
+    const centerX = canvas.width / 2,
+          centerY = canvas.width / 2,
+          radius = circleRad,
+          sAngle = sAng || 0,
+          eAngle = eAng || 2 * Math.PI,
+          counterClock = cc;
+       
+    ctx.save();  
+    ctx.beginPath();
+    
+    if (type === "circle") {
+      ctx.arc(centerX, centerY, radius, 0, Math.PI * 2, cc);
+      ctx.clip();
+      ctx.fillStyle = fill;
+      
+      ctx.fillRect(centerX - circleRad, centerY + circleRad, circleRad * 2, -currentPercent*6.35);
+      ctx.restore();
+      
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, circleRad, 0, Math.PI * 2, false);
+      ctx.lineWidth = lwidth;
+      ctx.strokeStyle = stroke;
+      ctx.stroke();
+
+    } else {
+      ctx.arc(centerX, centerY, radius, sAng, eAng, cc);
+      
+      if (fill) {
+        ctx.fillStyle = fill;
+        ctx.fill();
+      }
+      
+      if (stroke) {
+        ctx.lineWidth = lwidth;
+        ctx.strokeStyle = stroke;
+        ctx.stroke();
+      }
+    }
+
+    ctx.restore();
+  }
+      
+  function startAnimation() {
+    animate = true;
+    requestOuter = requestAnimationFrame(arcAnimationLoop);
+  }
+  
+  function stopAnimation() {
+    if (requestOuter) {
+      animate = false;
+      cancelAnimationFrame(requestOuter);
+    }
+  }  
 });

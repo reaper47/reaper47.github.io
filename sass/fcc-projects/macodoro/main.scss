@@ -70,39 +70,10 @@
 $controlHover: #212121;
 $activeControl: #c0392b;
 $notecardColor: #cfd8dc;
+$optionsColor: #512da8;
+$mediumText: 1.5rem;
+
 $timerControls: star pause reset stop;
-
-#timer-area {
-  width: 35rem;
-  margin: 0 auto;
-  position: relative;
-  
-  #outer-clock {
-    border: 1px solid red;
-    border-radius: 50%;
-    position: absolute;
-    z-index: 0;
-    width: 640px;
-    height: 480px;
-  }
-  
-  #inner-clock {
-    border: 1px solid blue;
-    border-radius: 50%;
-    position: absolute;
-    z-index: 1;
-    width: 631px;
-    height: 470px;
-    left: 0.4rem;
-    top: 0.25rem;
-  }
-}
-
-#options-area, #timer-controls
-{
-  @include display(flex);
-}
-
 @each $control in $timerControls {
   #timer-#{$control} {
     @if $control == "stop" {
@@ -115,11 +86,62 @@ $timerControls: star pause reset stop;
   }
 }
 
+$optionsColorsIds: back body session break default default2 hourglass inner outer;
+@each $option in $optionsColorsIds {
+  #options-colors-#{$option}:hover {
+    color: lighten($optionsColor, 20%);
+  }
+}
+
+$optionsSliderIds: back times;
+@each $option in $optionsSliderIds {
+  #options-sliders-#{$option}:hover {
+    color: lighten($optionsColor, 20%);
+  }
+}
+
+#options-sliders-form {
+  input[type="radio"] {
+    display: none;
+  }
+  
+  input[type="radio"] + label {
+    @include user-select(none);
+    border-radius: 1rem;
+  }
+  
+  label {
+    flex: 1;
+    padding: 1rem 1rem;
+    text-align: center;
+    color: #59d;
+  }
+  
+  input:checked + label {
+    color: #fff;
+    background: #59d;
+    @include user-select(none);
+    outline: 0;
+    -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+    -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+  }
+}
+
+#outer-clock {
+  width: 40rem;
+  display: flex;
+  margin: 0 auto;
+}
+
+#options-area, #timer-controls
+{
+  @include display(flex);
+}
+
 .notecards {
   @include display(flex);
   @include user-select(none);
-  padding-top: 31rem;
-  padding-left: 5rem;
   cursor: default;
   color: #212121;
   
@@ -130,11 +152,11 @@ $timerControls: star pause reset stop;
     .notecard {
       width: 18rem;
       height: 13rem;
-      border: 0.12rem solid #795548;
       margin: 20px;
       font-family: monospace, sans-serif;
       box-shadow: 0.1rem 0.1rem 0.2rem 0.2rem rgba(0,0,0,0.2);
       background-color: $notecardColor;
+      border-radius: 2rem;
       @include transform-style(preserve-3d);
       @include transition(0.4s);
 
@@ -200,6 +222,7 @@ $timerControls: star pause reset stop;
           text-align: center;
           position: relative;
           top: 5rem;
+          opacity: 0.7;
         }
       }
       
@@ -208,11 +231,25 @@ $timerControls: star pause reset stop;
         word-wrap: break-word;
         line-height: 3;
         @include transform(rotatey(-180deg));
-        color: #512da8;
+        color: $optionsColor;
+        
+        #panel-main {
+          font-size: $mediumText;
+          width: 15rem;
+          margin: -0.5rem auto;
+        }
         
         .content-panel {
           width: 100%;
           height: 100%;
+                        
+            #options-colors > p:hover {
+              color: lighten($optionsColor, 20%);
+            }
+            
+            #options-sliders > p:hover {
+              color: lighten($optionsColor, 20%);
+            }
         }
         
         .toggle {
@@ -232,7 +269,99 @@ $timerControls: star pause reset stop;
         }
         
         #panel-colors1 {
-          color: red;
+          display: none;
+          
+          #options-colors-back {
+            position: absolute;
+            left: 2rem;
+            font-size: $mediumText;
+            margin-top: 2.5rem;
+          }
+          
+          #options-colors-body {
+            @extend #options-colors-back;
+            margin-top: 1rem;
+            left: 5rem;
+          }
+          
+          #options-colors-session {
+            @extend #options-colors-back;
+            margin-top: 8rem;
+            
+            p {
+              margin: 0;
+            }
+          }
+          
+          #options-colors-break {
+            @extend #options-colors-session;
+            left: 11rem;
+            p {
+              margin: 0;
+            }
+          }
+          
+          #options-colors-default {
+            @extend #options-colors-back;
+            margin-top: 11rem;
+            left: 6rem;
+            
+            p {
+              margin: 0;
+            }
+          }
+        }
+        
+        #panel-colors2 {
+          #options-colors-default2 {
+            position: absolute;
+            left: 2rem;
+            margin-top: 2.5rem;
+            font-size: $mediumText;
+          }
+          
+          #options-colors-hourglass {
+            @extend #options-colors-default2;
+            left: 4.5rem;
+            margin-top: 1rem;
+          }
+          
+          #options-colors-inner {
+            @extend #options-colors-hourglass;
+            margin-top: 7.5rem;
+            p {
+              margin: 0;
+            }
+          }
+          
+          #options-colors-outer {
+            @extend #options-colors-hourglass;
+            margin-top: 10rem;
+            p {
+              margin: 0;
+            }
+          }
+        }
+        
+        #panel-slider {
+          #options-sliders-back {
+            position: absolute;
+            left: 2rem;
+            margin-top: 2.5rem;
+            font-size: $mediumText;
+          }
+          
+          #options-sliders-times {
+            @extend #options-sliders-back;
+            left: 4.5rem;
+            margin-top: 1rem;
+          }
+          
+          #options-sliders-toggle {
+            @extend #options-sliders-back;
+            margin-top: 9.5rem;
+            left: 3rem;
+          }
         }
       }
     }
