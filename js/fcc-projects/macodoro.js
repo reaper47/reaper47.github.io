@@ -7,21 +7,37 @@ $(function () {
   let currentControl;
   const btnActions = {
     start: function () {
+	  clearInterval(counter);
       startAnimation();
       currentControl = toggleControl("play", currentControl);
+	  $("#slider-div").fadeOut("slow");
+	  counter = setInterval(function() { timer(); }, 1000);
     },
     pause: function () {
       stopAnimation();
       currentControl = toggleControl("pause", currentControl);
+	  $("#slider-div").fadeIn("slow");
+	  clearInterval(counter);
     },
     reset: function () {
+	  clearInterval(counter);
       currentPercent = 0; 
       currentControl = toggleControl("undo", currentControl);
+	  writeTime(sessionTime, 0);
+	  countSec = 60;
+	  counter = setInterval(function() { timer(); }, 1000);
+	  currentPercent = 0;
+	  ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawArc(320, 0, Math.PI * 2, false, null, 10, "black", "arc"); 
+	  startAnimation();
     },
     stop: function () {
       animate = false;
       currentControl = toggleControl("stop", currentControl);
       stopAnimation();
+	  $("#slider-div").fadeIn("slow");
+	  clearInterval(counter);
+	  currentPercent = 0;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       drawArc(320, 0, Math.PI * 2, false, null, 10, "black", "arc"); 
       currentPercent = 0;
@@ -148,12 +164,12 @@ $(function () {
 
      }, 
      "112": function() {
-       btnActions["pause"]($("timer-pause"));
+       btnActions["stop"]($("timer-pause"));
        playStatus = false;
      },
      "114": function() {
        btnActions["reset"]($("timer-reset"));
-       playStatus = false;
+      // playStatus = true;
      },
      "115": function() {
        return;
@@ -168,7 +184,7 @@ $(function () {
      }
    });
    
-   $("#content").on("click", function(event) {
+   $("#time-box, canvas").on("click", function(event) {
      event.preventDefault();
      
      if (!playStatus) {
@@ -210,8 +226,8 @@ $(function () {
         
   let requestOuter, requestInner, requestHour,
       animate = true,
-      sessionTime = true,
-      breakTime = false,
+      sessionOn = true,
+      breakOn = false,
       circle = Math.PI * 2,
       quarter = Math.PI / 2,
       currentPercent = 0,
@@ -291,5 +307,97 @@ $(function () {
       animate = false;
       cancelAnimationFrame(requestOuter);
     }
-  }  
+  } 
+
+  /*
+   * 6. Data binding of the input sliders
+   *
+   */
+   let sessionTime = 25,
+       breakTime = 5,
+       countMin = 24,
+	   countSec = 60,
+	   counter;
+	   
+   const inputSession = $("#session-slider"),
+         inputBreak = $("#break-slider");
+		 
+   inputSession.bind('input', function() {
+     getRangeValue(inputSession);
+   });
+   
+   inputBreak.bind('input', function() {
+     getRangeValue(inputBreak);
+   });
+     
+   function getRangeValue(e) {
+	  const value = $(e).val();
+	  
+	  if (e.selector === "#session-slider") {
+		$('.slider-left .value').text(value);
+	    $('.slider-left .range').attr('data-value', value);
+	    inputSession.attr('value', value);
+		
+		if (value > 9 && $("#time-type")[0].textContent === "Session") {
+	      $("time").text(value + ":00");
+		  sessionTime = parseInt(value);
+		  countMin = sessionTime - 1;
+		} else if (value < 10 && $("#time-type")[0].textContent === "Session"){
+		  $("time").text("0" + value + ":00");
+		  sessionTime = parseInt(value);
+		  countMin = sessionTime - 1;
+		}
+		countSec = 60;
+		return;
+	  }
+	  
+	  $('.slider-right .value').text(value);
+	  $('.slider-right .range').attr('data-value', value);
+	  inputBreak.attr('value', value);
+
+      if (value > 9 && $("#time-type")[0].textContent === "Break") {
+	    $("time").text(value + ":00");
+	    breakTime = parseInt(value);
+		countMin = breakTime - 1;
+	  } else if (value < 10 && $("#time-type")[0].textContent === "Break"){
+	    $("time").text("0" + value + ":00");
+	    breakTime = parseInt(value);
+		countMin = breakTime - 1;
+	  }
+	  countSec = 60;
+    }
+
+  /*
+   * Implementing the timer
+   *
+   */  
+	function timer() {
+		
+		countSec--;
+
+		if (countMin < 1 && $("#time-type")[0].textContent === "Session" && countSec < 0) {
+			console.log("sessiontime over");
+			clearInterval(counter);
+			return;
+		} else if (countMin < 1 && countSec < 0) {
+			console.log("break-time over");
+			clearInterval(counter);
+			return;
+		}
+
+		writeTime(countMin, countSec);
+	}
+	
+	function writeTime(min, sec) {
+		if (min < 10 && sec > 9) {
+			$("time").html("0" + min + ":" + sec);
+		} else if (min < 10 && sec < 10) {
+			$("time").html("0" + min + ":" + "0" + sec);
+		} else if (min > 9 && sec > 9) {
+			$("time").html(min + ":" + sec);
+		} else if (min > 9 && sec < 10) {
+			$("time").html(min + ":" + "0" + sec);
+		}
+	}
+	
 });

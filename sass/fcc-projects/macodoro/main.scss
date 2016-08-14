@@ -111,6 +111,7 @@ $optionsSliderIds: back times;
 }
 
 #content {
+	font: 1.5rem "Palatino Linotype", "Book Antiqua", Palatino, serif;
   #time-box {
     position: absolute;
     top: 2rem;
@@ -122,11 +123,135 @@ $optionsSliderIds: back times;
     color: #212121;
     @include user-select(none);
     cursor: default;
+	z-index: 999;
   }
+  
+  canvas {
+ 	  z-index: 999;
+  }
+  
   p {
     margin-left: 2rem;
     margin-bottom: 0;
   }
+  
+  #slider-div {
+	  position: absolute;
+      top: 3rem;
+	  left: 50%;
+	  width: 58rem;
+	  margin-top: 10rem;
+	  cursor: default;
+	  margin-left: -29rem;
+	  
+	  .slider-left {
+		float: left;
+		
+		p {
+			margin-left: -6rem;
+			margin-top: -9rem;
+			transform: rotate(-90deg);
+		}
+	  }
+	  
+	  .slider-right {
+		  float: right;
+		  
+		  p {
+			margin-right: -4.5rem;
+			margin-top: 3rem;
+			transform: rotate(90deg);
+		  }
+	  }
+	  
+	  /* design inspiration from http://codepen.io/mmt-zinee/pen/mEjoNO?editors=0100 */
+	  .slider-label {
+		  position: absolute;
+		  top: -3rem;
+
+		  .value {
+			color: #fff;
+			z-index: 130;
+			position: absolute;
+			margin-left: 1.7rem;
+			margin-top: 1.3rem;
+		  }
+		  
+		  .drop {
+		    width: 80px;
+		    height: 80px;
+			border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
+			background: #795548;
+			-webkit-transform: rotateZ(135deg);
+			transform: rotateZ(105deg);
+		  }
+	  }
+  }
+}
+
+#slider-label-right .drop {
+    -webkit-transform: rotateZ(177deg) !important;
+    transform: rotateZ(177deg) !important;
+    margin-left: 8rem !important;
+}
+
+#slider-label-right .value {
+    margin-left: 9.7rem !important;
+}
+
+
+input[type=range] {
+	-webkit-appearance: none;
+	margin: auto;
+	outline: 0;
+	background: transparent;
+	border-radius: 1rem;
+    width: 200px;
+    height:10px;
+    margin-top: 100px;
+    -webkit-transform:rotate(90deg);       
+    -moz-transform:rotate(90deg);
+    -o-transform:rotate(90deg);
+    -ms-transform:rotate(90deg);
+    transform:rotate(90deg);
+    z-index: 0;
+	background: #DC2424;
+	background: -webkit-linear-gradient(to left, #DC2424 , #4A569D);
+	background: linear-gradient(to left, #DC2424 , #4A569D);
+	box-shadow: 0px 8px 17px 0px rgba(0, 0, 0, 0.2), 0px 6px 20px 0px rgba(0, 0, 0, 0.19);
+}
+
+input[type=range]::-moz-range-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+	padding: 1rem;
+	border-radius: 50%;
+	background: #4B79A1;
+	background: -webkit-linear-gradient(to left, #4B79A1 , #283E51);
+	background: linear-gradient(to left, #4B79A1 , #283E51);
+	border: 0;
+	box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, 0.2), 0px 5px 10px 0px rgba(0, 0, 0, 0.19);
+}
+
+input[type=range]::-moz-range-track {
+	box-shadow: none;
+	border: none;
+	background: transparent;
+	-webkit-appearance: none;
+	
+}
+
+input[type=range]::-ms-track {
+	width: 100%;
+	cursor: default;
+	background: transparent;
+	border-color: transparent;
+	color: transparent;
+}
+
+input[type=range]:-moz-focus-outer {
+  border: 0;
 }
 
 #options-sliders-form {
@@ -389,7 +514,7 @@ $optionsSliderIds: back times;
           #options-sliders-toggle {
             @extend #options-sliders-back;
             margin-top: 9.5rem;
-            left: 3rem;
+            left: 2rem;
           }
         }
       }

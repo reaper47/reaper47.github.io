@@ -15,11 +15,6 @@
     <main>
     
       <!-- Drawing the pomorodoro clock itself http://jsfiddle.net/b76Xe/221/ -->
-      <!--
-      <div id="timer-area">
-        <canvas id="outer-clock" width="640" height="480"></canvas>
-        <canvas id="inner-clock" width="640" height="480"></canvas>
-      </div> -->
       <div id="content">
         <div id="time-box">
           <p id="time-type" class="xlarge-text">Session</p>
@@ -27,15 +22,25 @@
         </div>
         <canvas id="outer-clock" width="750" height="750"></canvas>
         <div id="slider-div">
-          <div id="session-slider">
-            <input type="range" min="1" max="100" value="5" data-rangeslider>
+          <div class="slider-left">
+		    <label class="slider-label">
+			  <div class="value">25</div>
+			  <div class="drop"></div>
+			</label>
+            <input id="session-slider" class="verticalSlider" type="range" min="1" max="99" value="25" data-rangeslider>
+			<p>Session</p>
           </div>
-          <div id="break-slider">
-            <input type="range" min="1" max="100" value="25" data-rangeslider>
+          <div class="slider-right">
+		    <label class="slider-label" id="slider-label-right">
+			  <div class="value">5</div>
+			  <div class="drop"></div>
+			</label>
+            <input id="break-slider" class="verticalSlider" type="range" min="1" max="30" value="5" data-rangeslider>
+			<p>Break</p>
           </div>
         </div>
       </div>
-      
+	        
       <!-- Timer controls -->
       <div class="notecards">
         <div class="notecard-container">
@@ -89,10 +94,10 @@
                   </div>
                   <div id="options-sliders-toggle">
                     <form id="options-sliders-form">
-                      <input type="radio" id="radio1" name="radios" value="show">
-                      <label for="radio1">show</label>
-                      <input type="radio" id="radio2" name="radios" value="hide" checked>
-                      <label for="radio2">hide</label>
+                      <input type="radio" id="radio1" name="radios" value="show" checked>
+                      <label for="radio1">fade</label>
+                      <input type="radio" id="radio2" name="radios" value="hide">
+                      <label for="radio2">no fade</label>
                     </form>
                   </div>
                 </div>
