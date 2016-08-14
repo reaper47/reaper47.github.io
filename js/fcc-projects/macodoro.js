@@ -13,17 +13,18 @@ $(function () {
     pause: function () {
       stopAnimation();
       currentControl = toggleControl("pause", currentControl);
-      
     },
     reset: function () {
-      animate = false;
+      currentPercent = 0; 
       currentControl = toggleControl("undo", currentControl);
+    },
+    stop: function () {
+      animate = false;
+      currentControl = toggleControl("stop", currentControl);
+      stopAnimation();
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       drawArc(320, 0, Math.PI * 2, false, null, 10, "black", "arc"); 
       currentPercent = 0;
-    },
-    stop: function () {
-      currentControl = toggleControl("stop", currentControl);
     },
     colors: function (div) {
       hid.push($(div.context.parentElement));
@@ -167,7 +168,7 @@ $(function () {
      }
    });
    
-   $("#outer-clock").on("click", function(event) {
+   $("#content").on("click", function(event) {
      event.preventDefault();
      
      if (!playStatus) {
@@ -209,21 +210,22 @@ $(function () {
         
   let requestOuter, requestInner, requestHour,
       animate = true,
-      sessionTime = null,
-      breakTime = null,
+      sessionTime = true,
+      breakTime = false,
       circle = Math.PI * 2,
       quarter = Math.PI / 2,
       currentPercent = 0,
       endPercentage = 100;
+      
    
   drawArc(320, 0, Math.PI * 2, false, null, 10, "black", "arc");
    
   function arcAnimationLoop(timestamp) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
         
-    drawArc(350, -quarter, (circle * currentPercent/100) - quarter, false, null, 30, "black", "arc");
-    drawArc(330, quarter, (circle * currentPercent/100) + quarter, false, null, 10, "red", "arc");
-    drawArc(320, 0, currentPercent, false, "blue", 10, null, "circle");
+    drawArc(350, -quarter, (circle * currentPercent/100) - quarter, false, null, 30, "#212121", "arc");
+    drawArc(330, quarter, (circle * currentPercent/100) + quarter, false, null, 10, "#ff5722", "arc");
+    drawArc(320, 0, currentPercent, false, "#b2ebf2", 10, null, "circle");
     currentPercent++;
     
     if (animate && (currentPercent <= endPercentage)) {
@@ -247,7 +249,12 @@ $(function () {
       ctx.clip();
       ctx.fillStyle = fill;
       
-      ctx.fillRect(centerX - circleRad, centerY + circleRad, circleRad * 2, -currentPercent*6.35);
+      if (sessionTime) {
+        ctx.fillRect(centerX - circleRad, centerY + circleRad, circleRad * 2, -currentPercent*6.35);
+      } else {
+        ctx.fillRect(centerX - circleRad, centerY + circleRad, circleRad , -currentPercent);
+      }
+      
       ctx.restore();
       
       ctx.beginPath();

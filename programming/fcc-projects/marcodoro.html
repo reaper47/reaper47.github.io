@@ -20,7 +20,21 @@
         <canvas id="outer-clock" width="640" height="480"></canvas>
         <canvas id="inner-clock" width="640" height="480"></canvas>
       </div> -->
-      <canvas id="outer-clock" width="750" height="750"></canvas>
+      <div id="content">
+        <div id="time-box">
+          <p id="time-type" class="xlarge-text">Session</p>
+          <time class="large-text">25:00</time>
+        </div>
+        <canvas id="outer-clock" width="750" height="750"></canvas>
+        <div id="slider-div">
+          <div id="session-slider">
+            <input type="range" min="1" max="100" value="5" data-rangeslider>
+          </div>
+          <div id="break-slider">
+            <input type="range" min="1" max="100" value="25" data-rangeslider>
+          </div>
+        </div>
+      </div>
       
       <!-- Timer controls -->
       <div class="notecards">

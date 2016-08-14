@@ -72,6 +72,8 @@ $activeControl: #c0392b;
 $notecardColor: #cfd8dc;
 $optionsColor: #512da8;
 $mediumText: 1.5rem;
+$largeText: 8rem;
+$xlargeText: 4.5rem;
 
 $timerControls: star pause reset stop;
 @each $control in $timerControls {
@@ -97,6 +99,33 @@ $optionsSliderIds: back times;
 @each $option in $optionsSliderIds {
   #options-sliders-#{$option}:hover {
     color: lighten($optionsColor, 20%);
+  }
+}
+
+.xlarge-text {
+  font: italic $xlargeText "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+.large-text {
+  font: $largeText "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+#content {
+  #time-box {
+    position: absolute;
+    top: 2rem;
+    left: 50%;
+    width: 10rem;
+    margin-left: -8rem;
+    margin-top: 4rem;
+    color: #689f38;
+    color: #212121;
+    @include user-select(none);
+    cursor: default;
+  }
+  p {
+    margin-left: 2rem;
+    margin-bottom: 0;
   }
 }
 

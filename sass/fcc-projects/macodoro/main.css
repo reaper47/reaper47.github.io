@@ -43,6 +43,31 @@
 #options-sliders-times:hover {
   color: #8665d6; }
 
+.xlarge-text {
+  font: italic 4.5rem "Palatino Linotype", "Book Antiqua", Palatino, serif; }
+
+.large-text {
+  font: 8rem "Palatino Linotype", "Book Antiqua", Palatino, serif; }
+
+#content #time-box {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  width: 10rem;
+  margin-left: -8rem;
+  margin-top: 4rem;
+  color: #689f38;
+  color: #212121;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  cursor: default; }
+#content p {
+  margin-left: 2rem;
+  margin-bottom: 0; }
+
 #options-sliders-form input[type="radio"] {
   display: none; }
 #options-sliders-form input[type="radio"] + label {
