@@ -1,69 +1,64 @@
-$(function () {
-  "use strict";
+$( () => {
   /*
    * 1. Every button/action has their own respective function stored here.
    *
    */
   let currentControl;
   const btnActions = {
-    start: function () {
+    start: () => {
 	  clearInterval(counter);
       startAnimation();
       currentControl = toggleControl("play", currentControl);
 	  $("#slider-div").fadeOut("slow");
-	  counter = setInterval(function() { timer(); }, 1000);
+	  counter = setInterval( () => { timer(); }, 1000);
     },
-    pause: function () {
+    pause: () => {
+	  clearInterval(counter);
       stopAnimation();
       currentControl = toggleControl("pause", currentControl);
 	  $("#slider-div").fadeIn("slow");
-	  clearInterval(counter);
+	  
     },
-    reset: function () {
+    reset: () => {
 	  clearInterval(counter);
-      currentPercent = 0; 
+	  startAnimation();
       currentControl = toggleControl("undo", currentControl);
+	  counter = setInterval( () => { timer(); }, 1000);
 	  writeTime(sessionTime, 0);
 	  countSec = 60;
-	  counter = setInterval(function() { timer(); }, 1000);
-	  currentPercent = 0;
 	  ctx.clearRect(0, 0, canvas.width, canvas.height);
       drawArc(320, 0, Math.PI * 2, false, null, 10, "black", "arc"); 
-	  startAnimation();
     },
-    stop: function () {
-      animate = false;
-      currentControl = toggleControl("stop", currentControl);
-      stopAnimation();
-	  $("#slider-div").fadeIn("slow");
+    stop: () => {
 	  clearInterval(counter);
-	  currentPercent = 0;
+	  stopAnimation();
+      currentControl = toggleControl("stop", currentControl);
+	  $("#slider-div").fadeIn("slow");
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       drawArc(320, 0, Math.PI * 2, false, null, 10, "black", "arc"); 
-      currentPercent = 0;
     },
-    colors: function (div) {
-      hid.push($(div.context.parentElement));
+    colors: (div) => {
+      hid.push( $(div.context.parentElement) );
       $(div.context.parentElement).css("display", "none");
       $(div.context.parentElement).hide();
       $("#panel-colors1").show();
     },
-    session: function (div) {
+    session: (div) => {
       hid.push($(div.context.parentElement));
       $(div.context.parentElement).hide();
       $("#panel-colors2").show();
     },
-    breaky: function (div) {
+    breaky: (div) => {
       hid.push($(div.context.parentElement));
       $(div.context.parentElement).hide();
       $("#panel-colors2").show();
     },
-    sliders: function (div) {
+    sliders: (div) => {
       hid.push($(div.context.parentElement));
       $(div.context.parentElement).hide();
       $("#panel-slider").show();
     },
-    back: function (div) {
+    back: (div) => {
       if (div.context.parentElement.className !== "content-panel toggle") {
         $(div).hide();
       } else {
@@ -72,7 +67,7 @@ $(function () {
       hid[hid.length - 1].show();
       hid.pop();
     },
-    defaultColor: function () {
+    defaultColor: () => {
       const bodyColor = "#fff",
         outerBorder = "red",
         innerBorder = "green",
@@ -88,7 +83,7 @@ $(function () {
       localStorage.setItem("innerStoreValue", innerBorder);
       localStorage.setItem("outerStoreValue", outerBorder);
     },
-    defaultTimes: function () {
+    defaultTimes: () => {
       return;
     }
   }
@@ -126,22 +121,22 @@ $(function () {
     $("#inner-clock").css("background-color", hourglassColor);
   }
 
-  bodyColor.addEventListener("input", function () {
+  bodyColor.addEventListener("input", () => {
     $("body").css("background-color", this.value);
     localStorage.setItem("bodyStoreValue", this.value);
   }, false);
   
-  hourglassColor.addEventListener("input", function () {
+  hourglassColor.addEventListener("input", () => {
     $("#inner-clock").css("background-color", this.value);
     localStorage.setItem("hourglassStoreValue", this.value);
   }, false);
 
-  innerColor.addEventListener("input", function () {
+  innerColor.addEventListener("input", () => {
     $("#inner-clock").css("border-color", this.value);
     localStorage.setItem("innerStoreValue", this.value);
   }, false);
     
-  outerColor.addEventListener("input", function () {
+  outerColor.addEventListener("input", () => {
     $("#outer-clock").css("border-color", this.value);
     localStorage.setItem("outerStoreValue", this.value);
   }, false);
@@ -151,8 +146,12 @@ $(function () {
    *    
    */
    let playStatus = false;
+   const canvas = document.getElementById("outer-clock"),
+         timeBoxEl = document.getElementById("time-box"),
+         ctx = canvas.getContext("2d");
+		 
    const btnMap = { 
-     "32": function() {
+     "32": () => {
        if (!playStatus) {
          btnActions["start"]($("timer-start"));
          playStatus = true;
@@ -163,47 +162,56 @@ $(function () {
        playStatus = false;
 
      }, 
-     "112": function() {
+     "112": () => {
        btnActions["stop"]($("timer-pause"));
        playStatus = false;
      },
-     "114": function() {
+     "114": () => {
        btnActions["reset"]($("timer-reset"));
-      // playStatus = true;
+       playStatus = false;
      },
-     "115": function() {
+     "115": () => {
        return;
      }
    };
    
-   $("html").on("keypress", function(event) {
+   $("html").on("keypress", (event) => {
      event.preventDefault();
      const key = parseInt(event.which);
-     if (btnMap.hasOwnProperty(key)) {
+     if ( btnMap.hasOwnProperty(key) ) {
        btnMap[key]();
      }
    });
+
+   timeBoxEl.addEventListener('click', (event) => {
+	  event.preventDefault();
+      stopStartAnim();
+   });
    
-   $("#time-box, canvas").on("click", function(event) {
-     event.preventDefault();
-     
-     if (!playStatus) {
-       btnActions["start"]($("timer-start"));
-       playStatus = true;
-       return;
-     }
+   canvas.addEventListener('click', (event) => {
+	  event.preventDefault();
+      stopStartAnim();
+   });
+   
+	function stopStartAnim() {
+      if (!playStatus) {
+        btnActions["start"]($("timer-start"));
+        playStatus = true;
+        return;
+    }
      
      btnActions["pause"]($("timer-stop"));
      playStatus = false;
-
-   });
+	}
+   
+   
      
   /*
    * 4. Manage the flow between main menu items.
    *
    */
   let hid = [];
-  $(".back").on("click", function (e) {
+  $(".back").on("click", (e) => {
     let clicked = $(e.target).attr("data-control");
     if (!clicked) {
       clicked = $(e.target.parentElement).attr("data-control");
@@ -220,33 +228,69 @@ $(function () {
   /*
    * 5. Run the clock's hourglass and arc animations.
    *
-   */
-  const canvas = document.getElementById("outer-clock"), 
-        ctx = canvas.getContext("2d");
-        
-  let requestOuter, requestInner, requestHour,
-      animate = true,
-      sessionOn = true,
+   */   
+  let sessionOn = true,
       breakOn = false,
       circle = Math.PI * 2,
-      quarter = Math.PI / 2,
-      currentPercent = 0,
-      endPercentage = 100;
-      
-   
+      quarter = Math.PI / 2,	  
+	  secEndAngle = 0,
+	  minEndAngle = 0, 
+	  clockStarted = false, 
+	  drawOuterArc = true,
+	  innerClr = "#ff5252";  
+  
   drawArc(320, 0, Math.PI * 2, false, null, 10, "black", "arc");
    
+   let Clock = {
+	   totalSeconds: 0,
+	   totalMinutes: 0,
+	   
+	   start: function() {
+		   let self = this;
+		   
+		   this.interval = setInterval(function() {
+			   self.totalSeconds += 0.03;
+			   self.totalMinutes += 0.03/60;
+			   
+			   if (self.totalSeconds > 60) self.totalSeconds = 1;
+			   
+			   arcAnimationLoop(self.totalSeconds);
+		   }, 30);
+	   },
+	   
+	   pause: function() {
+		   clearInterval(this.interval);
+		   delete this.interval;
+	   },
+	   
+	   resume: function() {
+		   if (!this.interval) this.start();
+	   }
+   };
+   
   function arcAnimationLoop(timestamp) {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-    drawArc(350, -quarter, (circle * currentPercent/100) - quarter, false, null, 30, "#212121", "arc");
-    drawArc(330, quarter, (circle * currentPercent/100) + quarter, false, null, 10, "#ff5722", "arc");
-    drawArc(320, 0, currentPercent, false, "#b2ebf2", 10, null, "circle");
-    currentPercent++;
-    
-    if (animate && (currentPercent <= endPercentage)) {
-        requestOuter = requestAnimationFrame(arcAnimationLoop);
-    }
+       	
+	secEndAngle = timestamp/60 * circle;
+	minEndAngle = (Clock.totalMinutes)/sessionTime * circle;
+	
+	if (drawOuterArc) {
+		drawArc(350, -(minEndAngle + quarter), minEndAngle - quarter, true, null, 30, "#212121", "arc");
+		drawOuterArc = false;
+	}
+	
+    if (secEndAngle >= 6.28) {
+		
+		if (innerClr === "#ff5252") {
+			innerClr = "#FFF";
+		} else {
+			innerClr = "#ff5252";
+		}
+		
+    } else {
+		drawArc(350, -quarter, minEndAngle - quarter, false, null, 30, "#448aff", "arc");
+	    drawArc(330, -quarter, -(secEndAngle + quarter), true, null, 10, innerClr, "arc");
+	    drawArc(320, 0, secEndAngle, false, "#b2ebf2", 10, null, "circle");
+	}
   }
     
   function drawArc(circleRad, sAng, eAng, cc, fill, lwidth, stroke, type) {
@@ -266,9 +310,9 @@ $(function () {
       ctx.fillStyle = fill;
       
       if (sessionTime) {
-        ctx.fillRect(centerX - circleRad, centerY + circleRad, circleRad * 2, -currentPercent*6.35);
+        ctx.fillRect(centerX - circleRad, centerY + circleRad, circleRad * 2, -eAng*6.35);
       } else {
-        ctx.fillRect(centerX - circleRad, centerY + circleRad, circleRad , -currentPercent);
+        ctx.fillRect(centerX - circleRad, centerY + circleRad, circleRad , -eAng);
       }
       
       ctx.restore();
@@ -296,19 +340,17 @@ $(function () {
 
     ctx.restore();
   }
-      
+  
   function startAnimation() {
-    animate = true;
-    requestOuter = requestAnimationFrame(arcAnimationLoop);
+	Clock.resume();
+	playStatus = false;
   }
   
   function stopAnimation() {
-    if (requestOuter) {
-      animate = false;
-      cancelAnimationFrame(requestOuter);
-    }
+	  playStatus = true;
+	  Clock.pause();
   } 
-
+ 
   /*
    * 6. Data binding of the input sliders
    *
@@ -322,13 +364,8 @@ $(function () {
    const inputSession = $("#session-slider"),
          inputBreak = $("#break-slider");
 		 
-   inputSession.bind('input', function() {
-     getRangeValue(inputSession);
-   });
-   
-   inputBreak.bind('input', function() {
-     getRangeValue(inputBreak);
-   });
+   inputSession.bind('input', () => getRangeValue(inputSession) );
+   inputBreak.bind('input', () => getRangeValue(inputBreak) );
      
    function getRangeValue(e) {
 	  const value = $(e).val();
@@ -376,28 +413,26 @@ $(function () {
 		countSec--;
 
 		if (countMin < 1 && $("#time-type")[0].textContent === "Session" && countSec < 0) {
-			console.log("sessiontime over");
 			clearInterval(counter);
 			return;
 		} else if (countMin < 1 && countSec < 0) {
-			console.log("break-time over");
 			clearInterval(counter);
 			return;
 		}
 
+		if (countSec < 0) {
+			countSec = 59;
+			countMin--;
+		}
+		
 		writeTime(countMin, countSec);
 	}
 	
 	function writeTime(min, sec) {
-		if (min < 10 && sec > 9) {
-			$("time").html("0" + min + ":" + sec);
-		} else if (min < 10 && sec < 10) {
-			$("time").html("0" + min + ":" + "0" + sec);
-		} else if (min > 9 && sec > 9) {
-			$("time").html(min + ":" + sec);
-		} else if (min > 9 && sec < 10) {
-			$("time").html(min + ":" + "0" + sec);
-		}
+		if (min < 10 && sec > 9) $("time").html("0" + min + ":" + sec);
+		else if (min < 10 && sec < 10) $("time").html("0" + min + ":" + "0" + sec);
+		else if (min > 9 && sec > 9) $("time").html(min + ":" + sec);
+		else if (min > 9 && sec < 10) $("time").html(min + ":" + "0" + sec);
 	}
 	
 });
