@@ -22,11 +22,11 @@
         <canvas id="outer-clock" width="750" height="750"></canvas>
         <div id="slider-div">
           <div class="slider-left">
-		    <label class="slider-label">
+		    <label class="slider-label" id="slider-label-left">
 			  <div class="value">25</div>
 			  <div class="drop"></div>
 			</label>
-            <input id="session-slider" class="verticalSlider" type="range" min="1" max="99" value="25" data-rangeslider>
+            <input autocomplete="off" id="session-slider" class="verticalSlider" type="range" min="1" max="99" value="25" data-rangeslider>
 			<p>Session</p>
           </div>
           <div class="slider-right">
@@ -34,7 +34,7 @@
 			  <div class="value">5</div>
 			  <div class="drop"></div>
 			</label>
-            <input id="break-slider" class="verticalSlider" type="range" min="1" max="30" value="5" data-rangeslider>
+            <input autocomplete="off" id="break-slider" class="verticalSlider" type="range" min="1" max="30" value="5" data-rangeslider>
 			<p>Break</p>
           </div>
         </div>
@@ -93,9 +93,9 @@
                   </div>
                   <div id="options-sliders-toggle">
                     <form id="options-sliders-form">
-                      <input type="radio" id="radio1" name="radios" value="show" checked>
+                      <input autocomplete="off" type="radio" id="radio1" name="radios" value="show" checked>
                       <label for="radio1">fade</label>
-                      <input type="radio" id="radio2" name="radios" value="hide">
+                      <input autocomplete="off" type="radio" id="radio2" name="radios" value="hide">
                       <label for="radio2">no fade</label>
                     </form>
                   </div>

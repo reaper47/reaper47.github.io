@@ -9,33 +9,48 @@ $( () => {
 	  clearInterval(counter);
       startAnimation();
       currentControl = toggleControl("play", currentControl);
-	  $("#slider-div").fadeOut("slow");
+	  if (fade) $("#slider-div").fadeOut("slow");
 	  counter = setInterval( () => { timer(); }, 1000);
     },
     pause: () => {
 	  clearInterval(counter);
       stopAnimation();
       currentControl = toggleControl("pause", currentControl);
-	  $("#slider-div").fadeIn("slow");
-	  
+	  if (fade) $("#slider-div").fadeIn("slow");
     },
     reset: () => {
 	  clearInterval(counter);
-	  startAnimation();
+	  
       currentControl = toggleControl("undo", currentControl);
-	  counter = setInterval( () => { timer(); }, 1000);
-	  writeTime(sessionTime, 0);
+      writeTime(sessionTime, 0);
 	  countSec = 60;
+	  
 	  ctx.clearRect(0, 0, canvas.width, canvas.height);
-      drawArc(320, 0, Math.PI * 2, false, null, 10, "black", "arc"); 
+      drawArc(350, 0, Math.PI * 2, false, null, 30, "black", "arc");
+      drawArc(320, 0, Math.PI * 2, false, null, 10, "black", "arc");
+      
+      Clock.totalSeconds = 0;
+	  Clock.totalMinutes = 0;
+	  
+	  btnActions["start"]($("timer-start"));
+	  
     },
     stop: () => {
 	  clearInterval(counter);
 	  stopAnimation();
       currentControl = toggleControl("stop", currentControl);
-	  $("#slider-div").fadeIn("slow");
+	  if (fade) $("#slider-div").fadeIn("slow");
+	  
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      drawArc(320, 0, Math.PI * 2, false, null, 10, "black", "arc"); 
+      drawArc(350, 0, Math.PI * 2, false, null, 30, "black", "arc");
+      drawArc(320, 0, Math.PI * 2, false, null, 10, "black", "arc");
+      
+      if (sessionOn) getRangeValue(inputSession);
+      else getRangeValue(inputBreak);
+
+      Clock.totalSeconds = 0;
+	  Clock.totalMinutes = 0;
+      
     },
     colors: (div) => {
       hid.push( $(div.context.parentElement) );
@@ -84,7 +99,16 @@ $( () => {
       localStorage.setItem("outerStoreValue", outerBorder);
     },
     defaultTimes: () => {
-      return;
+      document.getElementById('session-slider').value = 25;
+      document.getElementById('break-slider').value = 5;
+      document.getElementById("slider-label-left").children[0].innerHTML = 25;
+      document.getElementById("slider-label-right").children[0].innerHTML = 5;
+      
+      if (sessionOn) writeTime(25, 0);
+      else writeTime(5, 0);
+      
+      btnActions["stop"]($("timer-pause"));
+      
     }
   }
      
@@ -145,7 +169,8 @@ $( () => {
    * 3. Integrate keyboard functionality for controls
    *    
    */
-   let playStatus = false;
+   let playStatus = false,
+       fade = true;
    const canvas = document.getElementById("outer-clock"),
          timeBoxEl = document.getElementById("time-box"),
          ctx = canvas.getContext("2d");
@@ -168,10 +193,20 @@ $( () => {
      },
      "114": () => {
        btnActions["reset"]($("timer-reset"));
-       playStatus = false;
      },
      "115": () => {
-       return;
+       radio1 = document.getElementById("radio1");
+       radio2 = document.getElementById("radio2");
+       
+       if (radio1.checked) {
+         document.getElementById("radio1").checked = false;
+         document.getElementById("radio2").checked = true;
+         fade = false;
+       } else {
+         document.getElementById("radio2").checked = false;
+         document.getElementById("radio1").checked = true;
+         fade = true; 
+       }
      }
    };
    
@@ -187,7 +222,7 @@ $( () => {
 	  event.preventDefault();
       stopStartAnim();
    });
-   
+      
    canvas.addEventListener('click', (event) => {
 	  event.preventDefault();
       stopStartAnim();
@@ -203,9 +238,7 @@ $( () => {
      btnActions["pause"]($("timer-stop"));
      playStatus = false;
 	}
-   
-   
-     
+       
   /*
    * 4. Manage the flow between main menu items.
    *
@@ -239,6 +272,7 @@ $( () => {
 	  drawOuterArc = true,
 	  innerClr = "#ff5252";  
   
+  drawArc(350, 0, Math.PI * 2, false, null, 30, "black", "arc");
   drawArc(320, 0, Math.PI * 2, false, null, 10, "black", "arc");
    
    let Clock = {
@@ -289,7 +323,6 @@ $( () => {
     } else {
 		drawArc(350, -quarter, minEndAngle - quarter, false, null, 30, "#448aff", "arc");
 	    drawArc(330, -quarter, -(secEndAngle + quarter), true, null, 10, innerClr, "arc");
-	    drawArc(320, 0, secEndAngle, false, "#b2ebf2", 10, null, "circle");
 	}
   }
     
@@ -304,38 +337,17 @@ $( () => {
     ctx.save();  
     ctx.beginPath();
     
-    if (type === "circle") {
-      ctx.arc(centerX, centerY, radius, 0, Math.PI * 2, cc);
-      ctx.clip();
+    ctx.arc(centerX, centerY, radius, sAng, eAng, cc);
+      
+    if (fill) {
       ctx.fillStyle = fill;
+      ctx.fill();
+    }
       
-      if (sessionTime) {
-        ctx.fillRect(centerX - circleRad, centerY + circleRad, circleRad * 2, -eAng*6.35);
-      } else {
-        ctx.fillRect(centerX - circleRad, centerY + circleRad, circleRad , -eAng);
-      }
-      
-      ctx.restore();
-      
-      ctx.beginPath();
-      ctx.arc(centerX, centerY, circleRad, 0, Math.PI * 2, false);
+    if (stroke) {
       ctx.lineWidth = lwidth;
       ctx.strokeStyle = stroke;
       ctx.stroke();
-
-    } else {
-      ctx.arc(centerX, centerY, radius, sAng, eAng, cc);
-      
-      if (fill) {
-        ctx.fillStyle = fill;
-        ctx.fill();
-      }
-      
-      if (stroke) {
-        ctx.lineWidth = lwidth;
-        ctx.strokeStyle = stroke;
-        ctx.stroke();
-      }
     }
 
     ctx.restore();
@@ -434,5 +446,4 @@ $( () => {
 		else if (min > 9 && sec > 9) $("time").html(min + ":" + sec);
 		else if (min > 9 && sec < 10) $("time").html(min + ":" + "0" + sec);
 	}
-	
 });
