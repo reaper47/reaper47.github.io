@@ -5,15 +5,16 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Marcodoro Timer</title>
     <meta name="author" content="Marc-Andre Charland">
-    <meta name="description" content="A simple pomorodoro timer built by reaper47.">
+    <meta name="description" content="A simple pomodoro timer built by reaper47.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../../sass/fcc-projects/macodoro/main.css">
-    <link rel="icon" href="../../img/home-page/programming/fcc-wikiviewer.svg">
+    <link rel="icon" href="../../img/home-page/programming/fcc-timer-icon.png">
     <script src="https://use.fontawesome.com/4f0ed2212b.js"></script>
   </head>
   <body>
     <main>
     
+	  <!-- The timer itself -->
       <div id="content">
         <div id="time-box">
           <p id="time-type" class="xlarge-text">Session</p>
@@ -50,19 +51,19 @@
               </div>
               <div class="back">
                 <div class="control-icon-set">
-                  <div id="timer-start" class="left-icon" data-control="start">
-                    <i class="fa fa-play fa-2x" aria-hidden="true"></i>
+                  <div id="timer-start" class="left-icon" data-control="start" >
+                    <i class="fa fa-play fa-2x" aria-hidden="true" title="play (space)"></i>
                   </div>
                   <div id="timer-pause" class="right-icon" data-control="pause">
-                    <i class="fa fa-pause fa-2x" aria-hidden="true"></i>
+                    <i class="fa fa-pause fa-2x" aria-hidden="true" title="pause (space)"></i>
                   </div>
                 </div>
                 <div class="control-icon-set icon-bottom">
                   <div id="timer-reset" class="left-icon" data-control="reset">
-                    <i class="fa fa-undo fa-2x" aria-hidden="true"></i>
+                    <i class="fa fa-undo fa-2x" aria-hidden="true" title="reset (r)"></i>
                   </div>
                   <div id="timer-stop" class="right-icon" data-control="stop">
-                    <i class="fa fa-stop fa-2x" aria-hidden="true"></i>
+                    <i class="fa fa-stop fa-2x" aria-hidden="true" title="stop (p)"></i>
                   </div>
                 </div>
               </div>
@@ -78,7 +79,7 @@
               <div class="back">            
                 <div class="content-panel" id="panel-main" >
                   <div id="options-colors" data-control="colors">
-                    <p class="med-size">colors</p>
+                    <p class="med-size">sound</p>
                   </div>
                   <div id="options-sliders" class="med-size" data-control="sliders">
                     <p>sliders</p>
@@ -94,9 +95,9 @@
                   <div id="options-sliders-toggle">
                     <form id="options-sliders-form">
                       <input autocomplete="off" type="radio" id="radio1" name="radios" value="show" checked>
-                      <label for="radio1">fade</label>
+                      <label for="radio1" title="keyboard: s">fade</label>
                       <input autocomplete="off" type="radio" id="radio2" name="radios" value="hide">
-                      <label for="radio2">no fade</label>
+                      <label for="radio2" title="keyboard: s">no fade</label>
                     </form>
                   </div>
                 </div>
@@ -104,47 +105,21 @@
                   <div id="options-colors-back" data-control="back">
                     <i class="fa fa-chevron-left" aria-hidden="true"></i>
                   </div>
-                  <div id="options-colors-body">
-                    <p>body 
-                      <span>
-                        <input type="color" id="body-color">
-                      </span>
-                    </p>
+				  <div id="options-sound1-toggle">
+                    <form id="options-sound2-form">
+                      <input autocomplete="off" type="radio" id="sound1" name="radiosound" value="show" checked>
+                      <label for="sound1" title="keyboard: a">on</label>
+                      <input autocomplete="off" type="radio" id="sound2" name="radiosound" value="hide">
+                      <label for="sound2" title="keyboard: a">off</label>
+                    </form>
                   </div>
-                  <div id="options-colors-session" data-control="session">
-                    <p>session</p>
-                  </div>
-                  <div id="options-colors-break" data-control="breaky">
-                    <p>break</p>
-                  </div>
-                  <div id="options-colors-default" data-control="defaultColor">
-                    <p>default</p>
-                  </div>
-                </div>
-                <div class="content-panel toggle" id="panel-colors2">
-                  <div id="options-colors-default2" data-control="back">
-                    <i class="fa fa-chevron-left " aria-hidden="true"></i>
-                  </div>
-                  <div id="options-colors-hourglass">
-                    <p>hourglass 
-                      <span>
-                        <input type="color" id="hourglass-color">
-                      </span>
-                    </p>
-                  </div>
-                  <div id="options-colors-inner">
-                    <p>inner 
-                      <span>
-                        <input type="color" id="inner-color">
-                      </span>
-                    </p>
-                  </div>
-                  <div id="options-colors-outer">
-                    <p>outer 
-                      <span>
-                        <input type="color" id="outer-color">
-                      </span>
-                    </p>
+				  <div id="options-sound2-toggle">
+                    <form id="options-sound1-form">
+                      <input autocomplete="off" type="radio" id="sound3" name="radiosound" value="show" checked>
+                      <label for="sound3" title="keyboard: d">ticks on</label>
+                      <input autocomplete="off" type="radio" id="sound4" name="radiosound" value="hide">
+                      <label for="sound4" title="keyboard: d">ticks off</label>
+                    </form>
                   </div>
                 </div>
               </div>

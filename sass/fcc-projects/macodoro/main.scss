@@ -72,6 +72,7 @@ $activeControl: #c0392b;
 $notecardColor: #cfd8dc;
 $optionsColor: #512da8;
 $mediumText: 1.5rem;
+$mediumSmallText: 1.11rem;
 $largeText: 8rem;
 $xlargeText: 4.5rem;
 
@@ -269,7 +270,7 @@ input[type=range]:-moz-focus-outer {
 
 
 
-#options-sliders-form {
+#options-sliders-form, #options-sound1-form, #options-sound2-form {
   input[type="radio"] {
     display: none;
   }
@@ -450,72 +451,20 @@ input[type=range]:-moz-focus-outer {
             font-size: $mediumText;
             margin-top: 2.5rem;
           }
-          
-          #options-colors-body {
-            @extend #options-colors-back;
-            margin-top: 1rem;
-            left: 5rem;
-          }
-          
-          #options-colors-session {
-            @extend #options-colors-back;
-            margin-top: 8rem;
-            
-            p {
-              margin: 0;
-            }
-          }
-          
-          #options-colors-break {
-            @extend #options-colors-session;
-            left: 11rem;
-            p {
-              margin: 0;
-            }
-          }
-          
-          #options-colors-default {
-            @extend #options-colors-back;
-            margin-top: 11rem;
-            left: 6rem;
-            
-            p {
-              margin: 0;
-            }
-          }
+              
+		  #options-sound1-toggle {
+			  font-size: $mediumText;
+			  padding-top: 2.5rem;
+			  padding-left: 5rem;
+		  }
+			  
+		  #options-sound2-toggle {
+			  font-size: $mediumSmallText;
+			  padding-top: 3rem;
+			  padding-left: 2rem;
+		  }
         }
-        
-        #panel-colors2 {
-          #options-colors-default2 {
-            position: absolute;
-            left: 2rem;
-            margin-top: 2.5rem;
-            font-size: $mediumText;
-          }
-          
-          #options-colors-hourglass {
-            @extend #options-colors-default2;
-            left: 4.5rem;
-            margin-top: 1rem;
-          }
-          
-          #options-colors-inner {
-            @extend #options-colors-hourglass;
-            margin-top: 7.5rem;
-            p {
-              margin: 0;
-            }
-          }
-          
-          #options-colors-outer {
-            @extend #options-colors-hourglass;
-            margin-top: 10rem;
-            p {
-              margin: 0;
-            }
-          }
-        }
-        
+
         #panel-slider {
           #options-sliders-back {
             position: absolute;

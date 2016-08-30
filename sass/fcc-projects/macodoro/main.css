@@ -10,13 +10,13 @@
 #timer-stop {
   padding-left: 2rem; }
 
-#options-colors-back:hover, .notecards .notecard-container .notecard .back #panel-colors1 #options-colors-body:hover, .notecards .notecard-container .notecard .back #panel-colors1 #options-colors-session:hover, .notecards .notecard-container .notecard .back #panel-colors1 #options-colors-break:hover, .notecards .notecard-container .notecard .back #panel-colors1 #options-colors-default:hover {
+#options-colors-back:hover {
   color: #8665d6; }
 
 #options-colors-body:hover {
   color: #8665d6; }
 
-#options-colors-session:hover, .notecards .notecard-container .notecard .back #panel-colors1 #options-colors-break:hover {
+#options-colors-session:hover {
   color: #8665d6; }
 
 #options-colors-break:hover {
@@ -25,10 +25,10 @@
 #options-colors-default:hover {
   color: #8665d6; }
 
-#options-colors-default2:hover, .notecards .notecard-container .notecard .back #panel-colors2 #options-colors-hourglass:hover, .notecards .notecard-container .notecard .back #panel-colors2 #options-colors-inner:hover, .notecards .notecard-container .notecard .back #panel-colors2 #options-colors-outer:hover {
+#options-colors-default2:hover {
   color: #8665d6; }
 
-#options-colors-hourglass:hover, .notecards .notecard-container .notecard .back #panel-colors2 #options-colors-inner:hover, .notecards .notecard-container .notecard .back #panel-colors2 #options-colors-outer:hover {
+#options-colors-hourglass:hover {
   color: #8665d6; }
 
 #options-colors-inner:hover {
@@ -178,23 +178,23 @@ input[type=range]::-ms-track {
 input[type=range]:-moz-focus-outer {
   border: 0; }
 
-#options-sliders-form input[type="radio"] {
+#options-sliders-form input[type="radio"], #options-sound1-form input[type="radio"], #options-sound2-form input[type="radio"] {
   display: none; }
-#options-sliders-form input[type="radio"] + label {
+#options-sliders-form input[type="radio"] + label, #options-sound1-form input[type="radio"] + label, #options-sound2-form input[type="radio"] + label {
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   -o-user-select: none;
   border-radius: 1rem; }
-#options-sliders-form label {
+#options-sliders-form label, #options-sound1-form label, #options-sound2-form label {
   flex: 1;
   padding: 1rem 1rem;
   text-align: center;
   color: #59d; }
-  #options-sliders-form label:hover {
+  #options-sliders-form label:hover, #options-sound1-form label:hover, #options-sound2-form label:hover {
     color: #ff5722; }
-#options-sliders-form input:checked + label {
+#options-sliders-form input:checked + label, #options-sound1-form input:checked + label, #options-sound2-form input:checked + label {
   color: #fff;
   background: #59d;
   user-select: none;
@@ -206,7 +206,7 @@ input[type=range]:-moz-focus-outer {
   -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05); }
-  #options-sliders-form input:checked + label:hover {
+  #options-sliders-form input:checked + label:hover, #options-sound1-form input:checked + label:hover, #options-sound2-form input:checked + label:hover {
     color: #ff5722; }
 
 #outer-clock {
@@ -333,43 +333,19 @@ input[type=range]:-moz-focus-outer {
           display: flex; }
         .notecards .notecard-container .notecard .back #panel-colors1 {
           display: none; }
-          .notecards .notecard-container .notecard .back #panel-colors1 #options-colors-back, .notecards .notecard-container .notecard .back #panel-colors1 #options-colors-body, .notecards .notecard-container .notecard .back #panel-colors1 #options-colors-session, .notecards .notecard-container .notecard .back #panel-colors1 #options-colors-break, .notecards .notecard-container .notecard .back #panel-colors1 #options-colors-default {
+          .notecards .notecard-container .notecard .back #panel-colors1 #options-colors-back {
             position: absolute;
             left: 2rem;
             font-size: 1.5rem;
             margin-top: 2.5rem; }
-          .notecards .notecard-container .notecard .back #panel-colors1 #options-colors-body {
-            margin-top: 1rem;
-            left: 5rem; }
-          .notecards .notecard-container .notecard .back #panel-colors1 #options-colors-session, .notecards .notecard-container .notecard .back #panel-colors1 #options-colors-break {
-            margin-top: 8rem; }
-            .notecards .notecard-container .notecard .back #panel-colors1 #options-colors-session p, .notecards .notecard-container .notecard .back #panel-colors1 #options-colors-break p {
-              margin: 0; }
-          .notecards .notecard-container .notecard .back #panel-colors1 #options-colors-break {
-            left: 11rem; }
-            .notecards .notecard-container .notecard .back #panel-colors1 #options-colors-break p {
-              margin: 0; }
-          .notecards .notecard-container .notecard .back #panel-colors1 #options-colors-default {
-            margin-top: 11rem;
-            left: 6rem; }
-            .notecards .notecard-container .notecard .back #panel-colors1 #options-colors-default p {
-              margin: 0; }
-        .notecards .notecard-container .notecard .back #panel-colors2 #options-colors-default2, .notecards .notecard-container .notecard .back #panel-colors2 #options-colors-hourglass, .notecards .notecard-container .notecard .back #panel-colors2 #options-colors-inner, .notecards .notecard-container .notecard .back #panel-colors2 #options-colors-outer {
-          position: absolute;
-          left: 2rem;
-          margin-top: 2.5rem;
-          font-size: 1.5rem; }
-        .notecards .notecard-container .notecard .back #panel-colors2 #options-colors-hourglass, .notecards .notecard-container .notecard .back #panel-colors2 #options-colors-inner, .notecards .notecard-container .notecard .back #panel-colors2 #options-colors-outer {
-          left: 4.5rem;
-          margin-top: 1rem; }
-        .notecards .notecard-container .notecard .back #panel-colors2 #options-colors-inner {
-          margin-top: 7.5rem; }
-          .notecards .notecard-container .notecard .back #panel-colors2 #options-colors-inner p {
-            margin: 0; }
-        .notecards .notecard-container .notecard .back #panel-colors2 #options-colors-outer {
-          margin-top: 10rem; }
-          .notecards .notecard-container .notecard .back #panel-colors2 #options-colors-outer p {
-            margin: 0; }
+          .notecards .notecard-container .notecard .back #panel-colors1 #options-sound1-toggle {
+            font-size: 1.5rem;
+            padding-top: 2.5rem;
+            padding-left: 5rem; }
+          .notecards .notecard-container .notecard .back #panel-colors1 #options-sound2-toggle {
+            font-size: 1.11rem;
+            padding-top: 3rem;
+            padding-left: 2rem; }
         .notecards .notecard-container .notecard .back #panel-slider #options-sliders-back, .notecards .notecard-container .notecard .back #panel-slider #options-sliders-times, .notecards .notecard-container .notecard .back #panel-slider #options-sliders-toggle {
           position: absolute;
           left: 2rem;

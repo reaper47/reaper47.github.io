@@ -30,7 +30,7 @@ main { background: #ecf0f1; }
 /**** Styling the search/filter box ****/
 .twitch-search { 
   text-align: center; 
-  position: absolute;
+  position: fixed
   top: 1rem;
   right: 1rem;
   width: 0%;
