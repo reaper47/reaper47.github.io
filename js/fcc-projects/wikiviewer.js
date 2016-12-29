@@ -20,7 +20,8 @@ $(function(){
       let options = '';
       for (let i = 0; i < languageList.length; ++i) {
         if (languageList[i] === "English") {
-          options += '<option class="lang" value="' + languagesObject[languageList[i]].abv + 
+          options += '<option class="lang" value="' + 
+                     languagesObject[languageList[i]].abv + 
                      '"selected>' + languageList[i] + '</option>';
         } else {
           options += '<option value="' + languagesObject[languageList[i]].abv + 
@@ -81,7 +82,8 @@ $(function(){
           $searchQuery = "&search=" + $('#search').val(),
           baseURL = "https://" + abv + ".wikipedia.org/w/api.php" + 
                     "?action=opensearch" + "&format=json" + "&limit=100" + 
-                    "&profile=classic" + "&utf8=1" + "&formatversion=2" + $searchQuery;
+                    "&profile=classic" + "&utf8=1" + "&formatversion=2" + 
+                    $searchQuery;
                           
       // Request data if the search input is not empty
       if ($searchQuery.substr(8, $searchQuery.length-1).length > 0) 
@@ -102,7 +104,8 @@ $(function(){
           $searchQuery = "&search=" + $('#search').val(),
           baseURL = "https://" + abv + ".wikipedia.org/w/api.php" + 
                     "?action=opensearch" + "&format=json" + "&limit=100" + 
-                    "&profile=classic" + "&utf8=1" + "&formatversion=2" + $searchQuery;
+                    "&profile=classic" + "&utf8=1" + "&formatversion=2" + 
+                    $searchQuery;
                          
       // Request data if the search input is not empty
       if ($searchQuery.substr(8, $searchQuery.length-1).length > 0) 
@@ -133,7 +136,8 @@ $(function(){
         
       const baseURL = "https://" + abv + ".wikipedia.org/w/api.php" + 
                       "?action=opensearch" + "&format=json" + "&limit=100" + 
-                      "&profile=classic" + "&utf8=1" + "&formatversion=2" + $searchQuery;
+                      "&profile=classic" + "&utf8=1" + "&formatversion=2" + 
+                      $searchQuery;
       
       // Only request pages if the query length is not empty
       if ($searchQuery.substr(8, $searchQuery.length-1).length > 0)
@@ -155,7 +159,8 @@ $(function(){
           $searchQuery = "&search=" + $('#search').val(),
           baseURL = "https://" + abv + ".wikipedia.org/w/api.php" + 
                     "?action=opensearch" + "&format=json" + "&limit=100" + 
-                    "&profile=classic" + "&utf8=1" + "&formatversion=2" + $searchQuery;
+                    "&profile=classic" + "&utf8=1" + "&formatversion=2" + 
+                    $searchQuery;
                     
     getWikiArticles(baseURL, wikiInfo.resOnDisp, wikiInfo.resOnDisp + 10, "append")
     if (wikiInfo.resOnDisp === 90) 

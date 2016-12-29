@@ -2,8 +2,12 @@ $(function() {
 
   // 1. Place current date in the header
   const dob = new Date(),
-        today = { day: dob.getDate(), month: dob.getMonth(), year: dob.getFullYear() };
-        
+        today = {
+          day: dob.getDate(), 
+          month: dob.getMonth(), 
+          year: dob.getFullYear()
+        };
+      
   $('#current-time')
     .attr('datetime', today.year + '-' + today.month + '-' + today.day)
     .text(dob.toDateString());
@@ -29,7 +33,7 @@ $(function() {
 		  
 		  $.getJSON(ip)
 		    .done(function(data) {
-			    const latlng = { lat: data.lat, long: data.lon,	accuracy: 'N/A' };
+			    const latlng = {lat: data.lat, long: data.lon, accuracy: 'N/A'};
 				$('#current-temp > p').text('Currently at ' + data.city + ', ' + data.country);
 				elMap.textContent =  data.city + ', ' + data.country;
 				currentGeoData = latlng;
@@ -91,7 +95,11 @@ $(function() {
             accuracy: 'N/A'
           }
           const queryLocation = responseObject.results[0].formatted_address,
-                modalWindowInfo = [currentGeoData.lat, currentGeoData.long, currentGeoData.accuracy];
+                modalWindowInfo = [
+                  currentGeoData.lat, 
+                  currentGeoData.long, 
+                  currentGeoData.accuracy
+                ];
           
           // Display new place in current forecast and footer
           $('#current-temp > p').text('Currently at ' + queryLocation);
@@ -156,13 +164,14 @@ $(function() {
           UNITS = '?units=si';
 
     $.ajax({
-      url: 'https://api.forecast.io/forecast/' + APIKEY + '/' + LATITUDE + ',' + LONGITUDE + UNITS,
+      url: 'https://api.forecast.io/forecast/' + APIKEY + '/' 
+           + LATITUDE + ',' + LONGITUDE + UNITS,
       type: 'GET',
       data: {},
       dataType: 'jsonp',
       timeOut: 2000,
       beforeSend: function(xhr) {
-        if (xhr.overrideMimeType) { xhr.overrideMimeType("application/jsonp"); }
+        if (xhr.overrideMimeType) {xhr.overrideMimeType("application/jsonp");}
         $('.loading').text('Loading...');
       },
       success: function(data) {
@@ -186,16 +195,19 @@ $(function() {
         $('#today-humidity p:nth-child(2)')
           .text(data.daily.data[0].humidity * 100 + '%');
         $('#today-sun p:first-child')
-          .text('Sunrise: ' + convertUnixTime(data.daily.data[0].sunriseTime), false, false);
+          .text('Sunrise: ' + convertUnixTime(data.daily.data[0].sunriseTime), 
+                false, false);
         $('#today-sun p:last-child')
-          .text('Sunset: ' + convertUnixTime(data.daily.data[0].sunsetTime), false, false);
+          .text('Sunset: ' + convertUnixTime(data.daily.data[0].sunsetTime), 
+                false, false);
         $('#today-min-max p:first-child')
           .addClass('celsius')
-          .html(Math.round(Math.round(data.daily.data[0].apparentTemperatureMin)) + tempUnitSign());
+          .html(Math.round(Math.round(data.daily.data[0].apparentTemperatureMin)) +
+                tempUnitSign());
         $('#today-min-max p:last-child')
           .addClass('celsius')
-          .html(Math.round(Math.round(data.daily.data[0].apparentTemperatureMax)) + tempUnitSign());
-
+          .html(Math.round(Math.round(data.daily.data[0].apparentTemperatureMax)) +
+                tempUnitSign());
 
         // 2.3.1. Modify the class of the hourly forecast
         $('.hourly-forecast > div > p.hourly-1').each(function(index, value) {
@@ -225,9 +237,11 @@ $(function() {
           $('#hour-' + i + ' > p:nth-child(4)')
             .addClass('celsius')
             .html(Math.round(data.hourly.data[i].apparentTemperature) + tempUnitSign());
-          $('#hour-' + i + ' > div:nth-child(5) canvas').addClass(data.hourly.data[i].precipType);
+          $('#hour-' + i + ' > div:nth-child(5) canvas')
+            .addClass(data.hourly.data[i].precipType);
           $('#hour-' + i + ' > div:nth-child(5) p')
             .text(Math.round(data.hourly.data[i].precipProbability * 100) + '%');
+            
           try {
             $('#hour-' + i + ' > p:nth-child(6)')
               .html(windDirection(data.hourly.data[i].windBearing) + 
@@ -249,7 +263,8 @@ $(function() {
           // Add the day to the header
           const $unix_time = data.daily.data[i].time;
           const $date = convertUnixTime($unix_time, true, false);
-          $('#tomorrow-' + i + '> p' ).text($date.substr(0, 3) + ', ' + $date.substr(4, 6));
+          $('#tomorrow-' + i + '> p' ).text($date.substr(0, 3) + ', ' + 
+            $date.substr(4, 6));
           
           // Add the icon and the summary data to the body
           $('#tomorrow-' + i + '> div > canvas').addClass(data.daily.data[i].icon);
@@ -260,10 +275,12 @@ $(function() {
           // Add the temperature and chance-of-precipitation data to the footer
           $('#tomorrow-' + i + ' div:last-child p.min')
             .addClass('celsius')
-            .html(Math.round(data.daily.data[i].apparentTemperatureMin) + tempUnitSign());
+            .html(Math.round(data.daily.data[i].apparentTemperatureMin) + 
+                  tempUnitSign());
           $('#tomorrow-' + i + ' div:last-child p.max')
             .addClass('celsius')
-            .html(Math.round(data.daily.data[i].apparentTemperatureMax) + tempUnitSign());
+            .html(Math.round(data.daily.data[i].apparentTemperatureMax) + 
+                  tempUnitSign());
           $('#tomorrow-' + i + ' div:last-child > div > img')
             .addClass(data.daily.data[i].precipType);
           $('#tomorrow-' + i + ' div:last-child > div > p')
@@ -339,13 +356,16 @@ $(function() {
       $('#current-temp .loading').text(quota + hours + '.');
       $('#current-temp > p').text("Daily quota reached.");
     } else if (msg === "REQUEST_DENIED") {
-      $('#current-temp .loading').text("This request has been denied. Please query a new request.");
+      $('#current-temp .loading')
+        .text("This request has been denied. Please query a new request.");
       $('#current-temp > p').text("Request denied");
     } else if (msg === "INVALID_REQUEST") {
-      $('#current-temp .loading').text("Query is missing. Please enter an address, components of an address or a latitude, longitude in the search box.");
+      $('#current-temp .loading')
+        .text("Query is missing. Please enter an address, components of an address or a latitude, longitude in the search box.");
       $('#current-temp > p').text("Invalid request");
     } else if (msg === "UNKNOWN_ERROR") {
-      $('#current-temp .loading').text("An unknown error has occurred. Please try again later.");
+      $('#current-temp .loading')
+        .text("An unknown error has occurred. Please try again later.");
       $('#current-temp > p').text("Unknown error");
     }
   }
