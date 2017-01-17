@@ -5,12 +5,15 @@ html, body {
   font-family: "Lato", sans-serif, Verdana, Arial, monospace;
   color: #212121;
 }
-html { height: 100%; }
+html {
+  height: 100%;
+  background: #ecf0f1;
+}
 body {
   min-height: 100%;
   position: relative;
 }
-main { background: #ecf0f1; }
+main { background: #ecf0f1; height: 100%;}
 .twitch-box {
   width: 45rem;
   margin: 0 auto;
@@ -28,9 +31,9 @@ main { background: #ecf0f1; }
 #online-icon, #offline-icon, #all-icon { padding-right: 0.3rem; }
 
 /**** Styling the search/filter box ****/
-.twitch-search { 
-  text-align: center; 
-  position: fixed
+.twitch-search {
+  text-align: center;
+  position: fixed;
   top: 1rem;
   right: 1rem;
   width: 0%;
@@ -112,7 +115,7 @@ input[type='search']#search-filter {
   -webkit-user-select: none;   /* Chrome/Safari/Opera */
   -moz-user-select: none;      /* Firefox */
   -ms-user-select: none;       /* Internet Explorer/Edge */
-  user-select: none;   
+  user-select: none;
 }
 #all { background-color: #448aff; color: #FFF; }
 #online:hover, #all:hover, #offline:hover {
@@ -124,13 +127,13 @@ input[type='search']#search-filter {
 #offline:hover { background-color: #ff5722 !important; }
 
 /**** Styling the Twitch users ****/
-.hover-content { 
+.hover-content {
   display: flex;
   flex-flow: row wrap;
   border: 1px solid #7d5bbe;
 }
 
-.hover-content img { 
+.hover-content img {
   width: 10rem;
   height: 10rem;
 }
@@ -142,7 +145,7 @@ a {
 }
 a:link { color: #c26767; }
 a:visited { color: #6a8fc2; }
-a:hover { color: #c267b1; } 
+a:hover { color: #c267b1; }
 a:active { color: #6a8fc2; }
 a:focus { color: #6a8fc2; }
 .twitch-user {
@@ -153,22 +156,22 @@ a:focus { color: #6a8fc2; }
   background-color: #433f4a;
   width: 45rem;
 }
-.twitch-users { 
-  display: flex; 
+.twitch-users {
+  display: flex;
 }
-.channel-visuals { 
+.channel-visuals {
   flex: 2;
   text-align: center;
 }
 .channel-primary-info { flex: 4; }
 .channel-bonus-info { flex: 1; }
-.status-icon { 
+.status-icon {
   position: absolute;
   font-size: 1.5rem;
   top: 0.4rem;
   left: 0.4rem;
 }
-.channel-lang, .channel-viewers { 
+.channel-lang, .channel-viewers {
   display: flex;
   flex-flow: row wrap;
   align-items: center;

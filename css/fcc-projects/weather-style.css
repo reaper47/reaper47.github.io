@@ -35,8 +35,9 @@ header img {
   margin-top: 0.3rem;
   margin-right: 0.4rem;
   width: 64px;
+  height:64px;
 }
-.center { 
+.center {
   width: 50%;
   padding-top: 1.5rem;
 }
@@ -44,7 +45,7 @@ header img {
 #h-left-inline { display: inline-flex; }
 .left #h-left-inline {
   margin-left: 1rem;
-  cursor: default; 
+  cursor: default;
 }
 #search-mode fieldset {
     border-color: #F00;
@@ -97,10 +98,9 @@ input[type="radio"]:checked + label {
 main {
   padding-bottom: 1rem;
   background-color: #fff;
-  min-height: 100%;
 }
 main > p { margin: 0; }
-#current-temp { 
+#current-temp {
   flex: 1.5;
   text-align: center;
   line-height: 1.5rem;
@@ -111,11 +111,11 @@ main > p { margin: 0; }
   margin-bottom: 4rem;
   padding-top: 1.5rem;
 }
-.row.today-forecast { 
+.row.today-forecast {
   display: flex;
   flex-flow: row wrap;
 }
-#current-temp > p { 
+#current-temp > p {
   margin: 0;
   margin-top: 0rem;
   line-height: 2rem;
@@ -135,7 +135,7 @@ main > p { margin: 0; }
 #current-temp .icon-text-grp.info-grp > p {
   margin-top: 1rem;
 }
-#today-temp { 
+#today-temp {
   flex: 2;
   border: 1px solid #bdc3c7;
   border-radius: 1rem;
@@ -143,15 +143,15 @@ main > p { margin: 0; }
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
-#today-temp .info-grp { 
+#today-temp .info-grp {
   flex: 2;
   border-radius: 1rem;
   text-align: left;
 }
 #today-temp .mid-large-text { margin-bottom: 0.7rem; }
 #today-summary, #today-wind, #today-sun, #today-humidity { flex: 4; }
-.icon-text-grp p { 
-  flex: 1; 
+.icon-text-grp p {
+  flex: 1;
   margin: 0;
   text-align: left;
 }
@@ -177,30 +177,39 @@ main > p { margin: 0; }
   text-align: center;
   margin-bottom: 1rem;
 }
-.to-the-hour-icon { width: 64px; }
+.to-the-hour-icon {
+  width: 40px;
+  height: 40px;
+}
 .rain-chance.icon-text-grp.hourly {
     width: 50%;
     margin: 0 auto;
     display: flex;
 }
-.hourly-icon { 
+.hourly-icon {
   height: 20px;
   padding-right: 0.5rem;
   padding-left: 0.3rem;
 }
-#current-weather-icon { width: 128px; }
-.future-weather-icons { width: 96px; }
+#current-weather-icon {
+  width: 96px;
+  height: 96px;
+}
+.future-weather-icons {
+  width: 64px;
+  height: 64px;
+}
 .daily-precip-icons {
     height: 25px;
     padding-right: 0.5rem;
 }
 #hour-1, #hour-2, #hour-3, #hour-4,
-#hour-5, #hour-6, #hour-7, #hour-8 { 
+#hour-5, #hour-6, #hour-7, #hour-8 {
   flex: 8;
   border: 1px solid #bdc3c7;
   border-radius: 1rem;
   margin-left: 0.7rem;
-  
+
 }
 #hour-1 {
   padding-left: 0.5rem;
@@ -223,7 +232,7 @@ main > p { margin: 0; }
   width: 90%;
   margin: 0 auto;
 }
-.min-max.mid-large-text p:first-child, 
+.min-max.mid-large-text p:first-child,
 .min-max.mid-large-text p:nth-child(2),
 .min-max.mid-large-text div:last-child { flex: 3; }
 .rain-chance.icon-text-grp.daily {
@@ -277,20 +286,20 @@ header, footer { background-color: #ecf0f1; }
   border-radius: 1rem;
   line-height: 1.rem;
 }
-#ul-info { 
+#ul-info {
   padding-left: 1.5rem;
   font-family: monospace;
 }
 #weather-info > p:first-child { margin-top: 0; }
-#weather-info > div:last-child, #weather-info p { 
+#weather-info > div:last-child, #weather-info p {
   text-align: center;
   margin-bottom: 0;
 }
-#weather-info > div:last-child { 
+#weather-info > div:last-child {
   padding-right: 2.2rem;
   margin-top: -0.5rem;
 }
-.modal-content li { 
+.modal-content li {
   list-style-type: none;
   line-height: 1.5rem;
 }
