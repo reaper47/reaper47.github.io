@@ -4,6 +4,7 @@ $(() => {
    *
    */
   let currentControl;
+  
   const btnActions = {
     start: () => {
       if (soundOn) soundObj.start.play();
@@ -493,7 +494,6 @@ $(() => {
    *
    */
   function timer() {
-
     countSec--;
 
     if (countMin < 1 && $("#time-type")[0].textContent === "Session" && countSec < 1) {
@@ -514,10 +514,8 @@ $(() => {
       return;
     }
 
-    if (countSec === 0) {
-      if (soundOn && ticksOn) soundObj.minute.play();
-    }
-
+    if (countSec === 0 && soundOn && ticksOn) soundObj.minute.play();
+   
     if (countSec < 0) {
       countSec = 59;
       countMin--;

@@ -71,7 +71,8 @@ function convert1s(ones, romanString) {
   return romanString;
 };
 
-function convertToRoman(num, romanString, lowNum, medNum, highNum, firstRomanNum, secondRomanNum) {
+function convertToRoman(num, romanString, lowNum, medNum, 
+                        highNum, firstRomanNum, secondRomanNum) {
   if (num >= medNum && num < highNum) {
     romanString += firstRomanNum;
     romanString += secondRomanNum;
@@ -104,19 +105,25 @@ function convert(num, romanString) {
   }
   
   if (num >= 1000) {
-    return convertToRoman(num, romanString, 1000, 9999, 0, romanLetters.thousand, romanLetters.thousand);
+    return convertToRoman(num, romanString, 1000, 9999, 0, romanLetters.thousand, 
+                          romanLetters.thousand);
   } else if (num >= 900) {
-      return convertToRoman(num, romanString, 500, 900, 1000, romanLetters.hundred, romanLetters.thousand);
+      return convertToRoman(num, romanString, 500, 900, 1000, romanLetters.hundred,
+                            romanLetters.thousand);
   } else if (num >= 500) {
-      return convertToRoman(num, romanString, 500, 900, 1000, romanLetters.fiveHundred, romanLetters.thousand);
+      return convertToRoman(num, romanString, 500, 900, 1000, romanLetters.fiveHundred,
+                            romanLetters.thousand);
   } else if (num < 500 && num >= 100) {
       return convertToRoman(num, romanString, 100, 400, 500, romanLetters.hundred, romanLetters.fiveHundred);
   } else if (num >=90 && num < 100) {
-      return convertToRoman(num, romanString, 50, 90, 100, romanLetters.ten, romanLetters.hundred);
+      return convertToRoman(num, romanString, 50, 90, 100, romanLetters.ten, 
+                            romanLetters.hundred);
   } else if (num >=50 && num < 100) {
-      return convertToRoman(num, romanString, 50, 90, 100, romanLetters.fifty, romanLetters.hundred);
+      return convertToRoman(num, romanString, 50, 90, 100, romanLetters.fifty, 
+                            romanLetters.hundred);
   } else if (num >= 10 && num < 50) {
-      return convertToRoman(num, romanString, 10, 40, 50, romanLetters.ten, romanLetters.fifty);
+      return convertToRoman(num, romanString, 10, 40, 50, romanLetters.ten, 
+                            romanLetters.fifty);
   } else {
       return convert1s(num, romanString);
   }
